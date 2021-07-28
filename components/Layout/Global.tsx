@@ -1,0 +1,85 @@
+import { createGlobalStyle } from 'styled-components';
+
+const Global = createGlobalStyle`
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body, 
+  p,
+  ol,
+  ul,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    overflow-x: hidden;
+    font-size: 20px;
+
+    scroll-behavior: smooth;
+  }
+
+  body {
+    padding: var(--nav-height) 0 0 0;
+    color: var(--dark-gray);
+    font-family: var(--sans-serif);
+
+    line-height: 1.55;
+  }
+
+  section,
+  article,
+  footer,
+  header {
+    position: relative;
+  }
+
+  button {
+    padding: 0;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  button,
+  input[type='submit'] {
+    border-radius: 0;
+    font-family: var(--sans-serif);
+  }
+
+  fieldset {
+    padding: 0;
+    border: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--dark-gray);
+  }
+
+  *::selection {
+    background-color: var(--dark-gray);
+    color: #fff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--serif);
+    font-weight: 400;
+  }
+`;
+
+export { Global };
