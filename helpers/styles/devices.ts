@@ -1,7 +1,7 @@
 const minD = {
-  mobileS: '(min-width: 321px)',
-  mobileM: '(min-width: 410px)',
-  mobileL: '(min-width: 568px)',
+  phoneS: '(min-width: 321px)',
+  phoneM: '(min-width: 410px)',
+  phoneL: '(min-width: 568px)',
   tablet: '(min-width: 768px)',
   tabletL: '(min-width: 992px)',
   laptop: '(min-width: 1280px)',
@@ -10,9 +10,9 @@ const minD = {
 };
 
 const maxD = {
-  mobileS: '(max-width: 320px)',
-  mobileM: '(max-width: 409px)',
-  mobileL: '(max-width: 567px)',
+  phoneS: '(max-width: 320px)',
+  phoneM: '(max-width: 409px)',
+  phoneL: '(max-width: 567px)',
   tablet: '(max-width: 767px)',
   tabletL: '(max-width: 991px)',
   laptop: '(max-width: 1279px)',
