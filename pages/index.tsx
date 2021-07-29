@@ -1,7 +1,9 @@
 import Head from 'next/head';
 
-export default function Home() {
-  return (
+import { Header } from '../components/Header';
+
+const Home = () => (
+  <>
     <Head>
       <title>Robert Orliński</title>
       <meta
@@ -10,5 +12,8 @@ export default function Home() {
       />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-  );
-}
+    <Header>asd</Header>
+  </>
+);
+
+export default Home;
