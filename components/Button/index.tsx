@@ -6,7 +6,7 @@ import { LinkContainer } from '../Foundations/Clickable/LinkContainer';
 import { LinkType } from '../../types/global';
 import { pseudoElement } from '../../helpers/styles/mixins';
 
-const Inner = styled.a`
+export const ButtonInner = styled.a`
   --transition-duration: var(--short-animation-duration);
   --transition-timing-function: cubic-bezier(0.35, 0.9, 0.5, 1);
 
@@ -48,6 +48,6 @@ const Inner = styled.a`
 
 export const Button: FC<LinkType> = ({ children, href }) => (
   <LinkContainer href={href}>
-    <Inner>{children}</Inner>
+    <ButtonInner>{children}</ButtonInner>
   </LinkContainer>
 );

@@ -51,7 +51,7 @@ export const mySummary = [
   },
   {
     type: 'text',
-    text: 'oraz jako ',
+    text: ' oraz jako ',
     href: '',
   },
   {

@@ -1,6 +1,7 @@
 import Head from 'next/head';
+import { Intro } from '../components/Intro';
 
-import { Header } from '../components/Headers/Main';
+import { MainBanner } from '../components/MainBanner';
 
 const Home = () => (
   <>
@@ -12,7 +13,10 @@ const Home = () => (
       />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <Header></Header>
+    <MainBanner />
+    <main>
+      <Intro />
+    </main>
   </>
 );
 
