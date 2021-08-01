@@ -5,7 +5,7 @@ import { HiddenMainPageTitle } from '../Foundations/HiddenMainPageTitle';
 import { SocialMedia } from '../SocialMedia';
 import { Search } from '../Search';
 
-import { NavWrapper } from './Wrapper';
+import { NavBar } from './Bar';
 import { Brand } from './Brand';
 import { NavMenu } from './Menu';
 import { NavLinks } from './Links';
@@ -19,21 +19,30 @@ const Container = styled.div`
 export const Nav = () => {
   const [isNavVisibleOnMobile, setNavVisibilityOnMobile] = useState(false);
 
-  const navOnMobileVisibility = isNavVisibleOnMobile ? { '--translation': '0' } : undefined;
-  const hamburgerTransformation = isNavVisibleOnMobile
-    ? {
-        '--top-bar-transform': 'rotate(90deg) translateY(-8px)',
-        '--middle-bar-transform': 'rotate(-45deg)',
-        '--bottom-bar-transform': 'rotate(90deg) translateY(7px)',
-      }
-    : undefined;
+  const navOnMobileVisibility = (
+    isNavVisibleOnMobile
+      ? {
+          '--translation': '0',
+        }
+      : undefined
+  ) as CSSProperties | undefined;
+
+  const hamburgerTransformation = (
+    isNavVisibleOnMobile
+      ? {
+          '--top-bar-transform': 'rotate(90deg) translateY(-8px)',
+          '--middle-bar-transform': 'rotate(-45deg)',
+          '--bottom-bar-transform': 'rotate(90deg) translateY(7px)',
+        }
+      : undefined
+  ) as CSSProperties | undefined;
 
   return (
-    <NavWrapper>
+    <NavBar>
       <HiddenMainPageTitle />
       <Brand />
       <Container>
-        <NavLinks style={navOnMobileVisibility as CSSProperties}>
+        <NavLinks style={navOnMobileVisibility}>
           <NavMenu />
           <SocialMedia />
         </NavLinks>
@@ -45,6 +54,6 @@ export const Nav = () => {
           />
         </Container>
       </Container>
-    </NavWrapper>
+    </NavBar>
   );
 };

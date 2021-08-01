@@ -6,8 +6,11 @@ export const Variables = createGlobalStyle`
     --serif: 'Playfair Display', serif;
 
     --dark-gray: #222;
+    --blue-gray: #ecf0f3;
 
     --nav-height: 96px;
+
+    --short-animation-duration: 250ms;
 
     @media (max-width: 991px) {
       --nav-height: 84px;

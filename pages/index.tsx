@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { Header } from '../components/Header';
+import { Header } from '../components/Headers/Main';
 
 const Home = () => (
   <>

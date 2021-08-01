@@ -11,5 +11,5 @@ export const flex = ({ wrap, flexDirection, justifyContent, alignItems }: FlexTy
 export const pseudoElement = ({ display, position, content }: PseudoElementType) => `
   display: ${display || 'block'};
   position: ${position || 'absolute'};
-  content: ${content || ''};
+  content: ${content || `''`};
 `;

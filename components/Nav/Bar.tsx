@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { to } from '../../helpers/styles/devices';
+import { WideWrapper } from '../Foundations/Wrapper';
 
 const Outer = styled.nav`
   position: fixed;
@@ -16,33 +16,16 @@ const Outer = styled.nav`
   transition: height 300ms ease, box-shadow 300ms ease;
 `;
 
-const Inner = styled.div`
+const Inner = styled(WideWrapper)`
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   position: relative;
-
-  width: calc(100vw - 140px);
-  max-width: 1350px;
   height: 100%;
-
-  margin: auto;
-
-  @media ${to.laptop} {
-    width: calc(100vw - 100px);
-  }
-
-  @media ${to.tabletL} {
-    width: calc(100vw - 80px);
-  }
-
-  @media ${to.phoneL} {
-    width: 86%;
-  }
 `;
 
-export const NavWrapper: FC = ({ children }) => (
+export const NavBar: FC = ({ children }) => (
   <Outer>
     <Inner>{children}</Inner>
   </Outer>

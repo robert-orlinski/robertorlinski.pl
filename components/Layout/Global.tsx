@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { to } from '../../helpers/styles/devices';
+
 export const Global = createGlobalStyle`
   * {
     box-sizing: border-box;
@@ -22,9 +24,13 @@ export const Global = createGlobalStyle`
 
   html {
     overflow-x: hidden;
-    font-size: 20px;
+    font-size: 18px;
 
     scroll-behavior: smooth;
+
+    @media ${to.phoneL} {
+      font-size: 16px;
+    }
   }
 
   body {
