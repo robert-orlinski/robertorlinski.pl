@@ -1,4 +1,4 @@
-const minD = {
+const from = {
   phoneS: '(min-width: 321px)',
   phoneM: '(min-width: 410px)',
   phoneL: '(min-width: 568px)',
@@ -9,7 +9,7 @@ const minD = {
   desktop: '(min-width: 1740px)',
 };
 
-const maxD = {
+const to = {
   phoneS: '(max-width: 320px)',
   phoneM: '(max-width: 409px)',
   phoneL: '(max-width: 567px)',
@@ -20,4 +20,4 @@ const maxD = {
   desktop: '(max-width: 1739px)',
 };
 
-export { minD, maxD };
+export { from, to };

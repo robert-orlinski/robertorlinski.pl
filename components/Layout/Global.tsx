@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-const Global = createGlobalStyle`
+export const Global = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
@@ -43,7 +43,9 @@ const Global = createGlobalStyle`
   }
 
   button {
+    appearance: none;
     padding: 0;
+    background-color: transparent;
 
     &:hover {
       cursor: pointer;
@@ -80,6 +82,8 @@ const Global = createGlobalStyle`
     font-family: var(--serif);
     font-weight: 400;
   }
-`;
 
-export { Global };
+  ul {
+    list-style: none;
+  }
+`;

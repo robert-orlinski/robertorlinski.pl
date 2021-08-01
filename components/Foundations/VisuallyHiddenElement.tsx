@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const HiddenElement = styled.div`
+export const VisuallyHiddenElement = styled.div`
   position: absolute;
   overflow: hidden;
 

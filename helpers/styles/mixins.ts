@@ -1,4 +1,4 @@
-import { FlexType } from './types';
+import { FlexType, PseudoElementType } from './types';
 
 export const flex = ({ wrap, flexDirection, justifyContent, alignItems }: FlexType) => `
   display: flex;
@@ -6,4 +6,10 @@ export const flex = ({ wrap, flexDirection, justifyContent, alignItems }: FlexTy
   flex-direction: ${flexDirection || 'row'};
   justify-content: ${justifyContent || 'center'};
   align-items: ${alignItems || 'center'};
+`;
+
+export const pseudoElement = ({ display, position, content }: PseudoElementType) => `
+  display: ${display || 'block'};
+  position: ${position || 'absolute'};
+  content: ${content || ''};
 `;

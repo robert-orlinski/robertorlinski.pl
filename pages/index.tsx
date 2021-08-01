@@ -12,7 +12,7 @@ const Home = () => (
       />
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <Header>asd</Header>
+    <Header></Header>
   </>
 );
 
