@@ -16,17 +16,17 @@ const icons = [
   },
   {
     name: 'YouTube',
-    href: 'https://www.facebook.com/robertorlinski.blog',
+    href: 'https://www.youtube.com/channel/UC_qgM2UztycBZGQLNaGs9Jg',
     component: <YouTubeIcon />,
   },
   {
     name: 'Instagram',
-    href: 'https://www.facebook.com/robertorlinski.blog',
+    href: 'https://www.instagram.com/robert.orlinski',
     component: <InstagramIcon />,
   },
   {
     name: 'GitHub',
-    href: 'https://www.facebook.com/robertorlinski.blog',
+    href: 'https://github.com/robert-orlinski',
     component: <GitHubIcon />,
   },
 ];
