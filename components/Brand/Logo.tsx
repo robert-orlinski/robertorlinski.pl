@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { to } from '../../../helpers/styles/devices';
+import { to } from '../../helpers/styles/devices';
 
 const Icon = styled.svg`
   height: 34px;

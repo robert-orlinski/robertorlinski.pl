@@ -6,7 +6,7 @@ import { SocialMedia } from '../SocialMedia';
 import { Search } from '../Search';
 
 import { NavBar } from './Bar';
-import { Brand } from './Brand';
+import { Brand } from '../Brand';
 import { NavMenu } from './Menu';
 import { NavLinks } from './Links';
 import { Hamburger } from './Hamburger';

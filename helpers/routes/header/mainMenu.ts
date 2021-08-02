@@ -1,4 +1,6 @@
-export const mainMenuRoutes = [
+import { CatalogedLinksArrayType } from '../../../types/global';
+
+export const mainMenu: CatalogedLinksArrayType = [
   {
     href: '/newsletter',
     title: 'Darmowy e-book',

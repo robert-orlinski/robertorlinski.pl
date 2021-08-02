@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 import { WideWrapper } from '../Foundations/Wrapper';
-import { Nav } from '../Nav';
+import { Nav } from '../TopNav';
 
 import { to } from '../../helpers/styles/devices';
 
@@ -45,7 +45,7 @@ export const MainBanner = () => (
   <header>
     <Nav />
     <Banner>
-      <Title>Cześć, jestem Robert,</Title>
+      <Title>Cześć, jestem Robert</Title>
       <ImageContainer>
         <StyledImage
           src={bannerImage}

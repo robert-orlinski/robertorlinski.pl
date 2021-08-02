@@ -5,7 +5,7 @@ import { Icon } from '../../Foundations/Icon';
 
 import { to } from '../../../helpers/styles/devices';
 
-interface IconType {
+interface Props {
   viewBox: string;
 }
 
@@ -18,7 +18,7 @@ const SocialIcon = styled(Icon)`
   }
 `;
 
-export const SocialIconBase: FC<IconType> = ({ children, viewBox }) => (
+export const SocialIconBase: FC<Props> = ({ children, viewBox }) => (
   <SocialIcon viewBox={viewBox} xmlns="http://www.w3.org/2000/svg">
     {children}
   </SocialIcon>

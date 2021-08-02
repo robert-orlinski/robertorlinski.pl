@@ -1,7 +1,9 @@
-export const mySummary = [
+import { ArrayOfTextsType } from '../../types/global';
+
+export const mySummary: ArrayOfTextsType = [
   {
     type: 'text',
-    text: 'Tworzę kod: ',
+    text: 'Tworzę kod ',
     href: '',
   },
   {

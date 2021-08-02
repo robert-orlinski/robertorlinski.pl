@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 import { NarrowWrapper } from '../Foundations/Wrapper';
 import { P } from '../Text/Paragraph';
-import { Link } from '../Text/Link';
-import { ButtonInner, Button } from '../Button';
+import { Button } from '../Button';
+import { TextWithLinks } from '../TextWithLinks';
 
 import { mySummary } from '../../helpers/routes/mySummary';
 
@@ -15,37 +15,18 @@ const Content = styled(NarrowWrapper)`
 
 const ButtonContainer = styled.footer`
   margin-top: 0.8rem;
-
-  & > ${ButtonInner} {
-    margin: 0 0.4rem;
-  }
 `;
 
 export const Intro = () => (
   <Content>
     <P>
-      Przez parę ostatnich lat pracowałem z WordPressem - aż do momentu, w którym okazało się, że
-      niewiele może mnie w nim już zaskoczyć - dlatego niedawno przerzuciłem się na front-end
-      stricte.
+      Przez parę ostatnich lat pracowałem z WordPressem, aż do momentu, w którym okazało się, że
+      niewiele może mnie w nim już zaskoczyć - dlatego niedawno przerzuciłem się w pełni na
+      front-end.
     </P>
-    <P>
-      {mySummary.map(({ type, text, href }) =>
-        type === 'text' ? (
-          text
-        ) : type === 'internal-link' ? (
-          <Link href={href} withLineVisible>
-            {text}
-          </Link>
-        ) : (
-          <Link href={href} external withLineVisible>
-            {text}
-          </Link>
-        ),
-      )}
-    </P>
+    <TextWithLinks text={mySummary} />
     <ButtonContainer>
-      <Button href="/moje-projekty">Moje projekty</Button>
-      <Button href="/tematy">Tematy artykułów</Button>
+      <Button href="/najpopularniejsze-artykuly">Moje projekty</Button>
     </ButtonContainer>
   </Content>
 );

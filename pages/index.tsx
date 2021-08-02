@@ -1,7 +1,8 @@
 import Head from 'next/head';
-import { Intro } from '../components/Intro';
 
-import { MainBanner } from '../components/MainBanner';
+import { MainBanner } from '../components/MainHeader';
+import { Intro } from '../components/Intro';
+import { Footer } from '../components/Footer';
 
 const Home = () => (
   <>
@@ -17,6 +18,7 @@ const Home = () => (
     <main>
       <Intro />
     </main>
+    <Footer />
   </>
 );
 

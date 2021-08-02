@@ -1,6 +1,4 @@
 export interface FlexType {
-  wrap?: string;
-  flexDirection?: string;
   justifyContent?: string;
   alignItems?: string;
 }
