@@ -19,7 +19,7 @@ export const copyright: ArrayOfTextsType = [
   {
     type: 'external-link',
     text: 'GitHubie',
-    href: 'https://github.com/robert-orlinski',
+    href: 'https://github.com/robert-orlinski/robertorlinski.pl',
   },
   {
     type: 'text',
