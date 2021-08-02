@@ -26,7 +26,7 @@ export const Intro = () => (
     </P>
     <TextWithLinks text={mySummary} />
     <ButtonContainer>
-      <Button href="/najpopularniejsze-artykuly">Moje projekty</Button>
+      <Button href="/najpopularniejsze">Najpopularniejsze artykuły</Button>
     </ButtonContainer>
   </Content>
 );

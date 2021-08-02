@@ -6,7 +6,7 @@ export const mainMenu: CatalogedLinksArrayType = [
     title: 'Darmowy e-book',
   },
   {
-    href: '/wszystkie-wpisy',
+    href: '/artykuly',
     title: 'Wszystkie artykuły',
   },
   {

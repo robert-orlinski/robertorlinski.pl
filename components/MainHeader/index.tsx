@@ -3,6 +3,7 @@ import Image from 'next/image';
 
 import { WideWrapper } from '../Foundations/Wrapper';
 import { Nav } from '../TopNav';
+import { Title } from '../SectionTitle';
 
 import { to } from '../../helpers/styles/devices';
 
@@ -19,7 +20,7 @@ const Banner = styled(WideWrapper)`
   }
 `;
 
-const Title = styled.h1`
+const MainTitle = styled(Title)`
   position: absolute;
   z-index: 9;
   left: 0;
@@ -28,7 +29,6 @@ const Title = styled.h1`
   padding: 0.5rem 2rem 0.5rem 0;
 
   white-space: pre;
-  font-size: 4rem;
 
   background-color: #fff;
 `;
@@ -45,7 +45,7 @@ export const MainBanner = () => (
   <header>
     <Nav />
     <Banner>
-      <Title>Cześć, jestem Robert</Title>
+      <MainTitle>Cześć, jestem Robert</MainTitle>
       <ImageContainer>
         <StyledImage
           src={bannerImage}

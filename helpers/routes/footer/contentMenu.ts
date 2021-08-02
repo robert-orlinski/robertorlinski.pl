@@ -6,7 +6,7 @@ export const contentMenu: CatalogedLinksArrayType = [
     title: 'Tematy',
   },
   {
-    href: '/wszystkie-wpisy',
+    href: '/artykuly',
     title: 'Wszystkie artykuły',
   },
 ];

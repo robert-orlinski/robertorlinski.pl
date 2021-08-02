@@ -29,7 +29,7 @@ export const mySummary: ArrayOfTextsType = [
   {
     type: 'internal-link',
     text: 'piszę artykuły',
-    href: '/wszystkie-artykuly',
+    href: '/artykuly',
   },
   {
     type: 'text',
