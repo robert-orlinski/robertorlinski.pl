@@ -1,5 +1,7 @@
 import Head from 'next/head';
 
+import { Title } from '../components/Titles/SectionTitle';
+import { WideWrapper } from '../components/Foundations/Wrapper';
 import { MainBanner } from '../components/MainHeader';
 import { Intro } from '../components/Intro';
 import { Footer } from '../components/Footer';
@@ -15,9 +17,12 @@ const Home = () => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
     <MainBanner />
-    <main>
+    <WideWrapper as="main">
       <Intro />
-    </main>
+      <section>
+        <Title>Najnowsze artykuły</Title>
+      </section>
+    </WideWrapper>
     <Footer />
   </>
 );
