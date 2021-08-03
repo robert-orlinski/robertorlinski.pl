@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 import { WideWrapper } from '../Foundations/Wrapper';
 import { Nav } from '../TopNav';
-import { Title } from '../Titles/SectionTitle';
+import { Title } from '../SectionTitle';
 
 import { to } from '../../helpers/styles/devices';
 

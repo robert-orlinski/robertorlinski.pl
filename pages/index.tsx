@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-import { Title } from '../components/Titles/SectionTitle';
+import { Title } from '../components/SectionTitle';
 import { WideWrapper } from '../components/Foundations/Wrapper';
 import { MainBanner } from '../components/MainHeader';
 import { Intro } from '../components/Intro';
