@@ -9,13 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mdx-js/loader": "^1.6.22",
+    "@mdx-js/loader": "^0.15.4",
     "@next/mdx": "^11.0.1",
+    "gray-matter": "^4.0.3",
     "mdx-prism": "^0.3.4",
     "next": "11.0.1",
     "next-mdx-remote": "^3.0.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "remark-code-titles": "^0.1.2",
+    "remark-slug": "^6.1.0",
     "styled-components": "^5.3.0"
   },
   "devDependencies": {
