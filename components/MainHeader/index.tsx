@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
@@ -6,8 +7,6 @@ import { Nav } from '../TopNav';
 import { Title } from '../SectionTitle';
 
 import { to } from '../../helpers/styles/devices';
-
-import bannerImage from './banner.jpg';
 
 const Banner = styled(WideWrapper)`
   display: flex;
@@ -41,16 +40,21 @@ const StyledImage = styled(Image)`
   object-fit: cover;
 `;
 
-export const MainBanner = () => (
+interface Props {
+  title: string;
+  image: {
+    src: StaticImageData;
+    alt: string;
+  };
+}
+
+export const MainBanner: FC<Props> = ({ title, image: { src, alt } }) => (
   <header>
     <Nav />
     <Banner>
-      <MainTitle>Cześć, jestem Robert</MainTitle>
+      <MainTitle>{title}</MainTitle>
       <ImageContainer>
-        <StyledImage
-          src={bannerImage}
-          alt={`Robert zamierzający uderzyć ogromny, pluszowy przycisk "enter", który jednocześnie można podłączyć na USB i tym samym zatwierdzać rzeczy z potężnym impetem.`}
-        />
+        <StyledImage src={src} alt={alt} />
       </ImageContainer>
     </Banner>
   </header>

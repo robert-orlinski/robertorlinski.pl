@@ -7,14 +7,14 @@ import { MenuItem } from '../MenuItem';
 import { LinkContainer } from '../Foundations/Clickable/LinkContainer';
 import { CatalogedLinkType } from '../../types/global';
 
-interface Props {
-  source: Array<CatalogedLinkType>;
-}
-
 const StyledLink = styled.a`
   font-size: 0.85rem;
   text-transform: uppercase;
 `;
+
+interface Props {
+  source: Array<CatalogedLinkType>;
+}
 
 export const FooterMenu: FC<Props> = ({ source }) => (
   <ul>
