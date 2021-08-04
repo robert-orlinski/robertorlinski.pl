@@ -7,9 +7,9 @@ import { FooterMenu } from './Menu';
 import { Brand } from '../Brand';
 import { TextWithLinks } from '../TextWithLinks';
 
-import { contentMenu } from '../../helpers/routes/footer/contentMenu';
-import { formalitiesMenu } from '../../helpers/routes/footer/formalitiesMenu';
-import { copyright } from '../../helpers/routes/footer/copyright';
+import { contentMenu } from '../../helpers/content/footer/contentMenu';
+import { formalitiesMenu } from '../../helpers/content/footer/formalitiesMenu';
+import { copyright } from '../../helpers/content/footer/copyright';
 import { to } from '../../helpers/styles/devices';
 
 const FooterWrapper = styled(WideWrapper)`
