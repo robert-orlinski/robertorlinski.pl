@@ -3,7 +3,6 @@ import { Title } from '../components/SectionTitle';
 import { WideWrapper } from '../components/Foundations/Wrapper';
 import { MainBanner } from '../components/MainHeader';
 import { Intro } from '../components/Intro';
-import { Footer } from '../components/Footer';
 
 import bannerImage from '../public/images/banners/me.jpg';
 
@@ -29,7 +28,6 @@ const Home = () => (
         <Title>Najnowsze artykuły</Title>
       </section>
     </WideWrapper>
-    <Footer />
   </>
 );
 

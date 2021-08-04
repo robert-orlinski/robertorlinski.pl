@@ -1,5 +1,4 @@
 import { Head } from '../../components/Head';
-import { Footer } from '../../components/Footer';
 import { WideWrapper } from '../../components/Foundations/Wrapper';
 import { MainBanner } from '../../components/MainHeader';
 
@@ -22,7 +21,6 @@ const Blog = () => (
       }}
     />
     <WideWrapper as="main"></WideWrapper>
-    <Footer />
   </>
 );
 
