@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { to } from '../../helpers/styles/devices';
 
-const Base = styled.section`
+export const WrapperBase = styled.section`
   margin-right: auto;
   margin-left: auto;
 
@@ -11,7 +11,7 @@ const Base = styled.section`
   }
 `;
 
-export const Wrapper = styled(Base)`
+export const Wrapper = styled(WrapperBase)`
   width: 1170px;
 
   @media ${to.laptop} {
@@ -31,7 +31,7 @@ export const NarrowWrapper = styled(Wrapper)`
   width: 740px;
 `;
 
-export const WideWrapper = styled(Base)`
+export const WideWrapper = styled(WrapperBase)`
   width: min(1350px, calc(100vw - 140px));
 
   @media ${to.tablet} {

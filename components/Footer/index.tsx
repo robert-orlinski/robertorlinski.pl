@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-import { WideWrapper } from '../Foundations/Wrapper';
-import { Top } from './Top';
-import { Bottom } from './Bottom';
+import { WrapperBase, WideWrapper } from '../Foundations/Wrapper';
 import { FooterMenu } from './Menu';
 import { Brand } from '../Brand';
 import { TextWithLinks } from '../TextWithLinks';
@@ -10,6 +8,7 @@ import { TextWithLinks } from '../TextWithLinks';
 import { contentMenu } from '../../helpers/content/footer/contentMenu';
 import { formalitiesMenu } from '../../helpers/content/footer/formalitiesMenu';
 import { copyright } from '../../helpers/content/footer/copyright';
+import { flex } from '../../helpers/styles/mixins';
 import { to } from '../../helpers/styles/devices';
 
 const FooterWrapper = styled(WideWrapper)`
@@ -17,6 +16,31 @@ const FooterWrapper = styled(WideWrapper)`
 
   @media ${to.tablet} {
     padding: 50px 0;
+  }
+`;
+
+const Top = styled.section`
+  ${flex({ justifyContent: 'space-between' })}
+  margin-bottom: 60px;
+
+  @media ${to.tabletL} {
+    margin-bottom: 50px;
+  }
+
+  @media ${to.tablet} {
+    flex-direction: column;
+    margin-bottom: 35px;
+  }
+`;
+
+const Bottom = styled(WrapperBase)`
+  max-width: 460px;
+
+  font-size: 0.9rem;
+  text-align: center;
+
+  @media ${to.tablet} {
+    max-width: 400px;
   }
 `;
 
