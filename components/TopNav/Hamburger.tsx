@@ -2,7 +2,8 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import { ElementWithOpacity } from '../Foundations/Clickable/ElementWithOpacity';
-import { ClickableElmentType, ElementWithInlineStyleType } from '../../types/global';
+import { ClickableElment } from '../../types/links';
+import { ElementWithInlineStyle } from '../../types/styled-components';
 
 import { from } from '../../helpers/styles/devices';
 
@@ -56,10 +57,7 @@ const Inner = styled.span`
   }
 `;
 
-export const Hamburger: FC<ClickableElmentType & ElementWithInlineStyleType> = ({
-  onClick,
-  style,
-}) => (
+export const Hamburger: FC<ClickableElment & ElementWithInlineStyle> = ({ onClick, style }) => (
   <Button as="button" onClick={onClick} style={style}>
     <Inner />
   </Button>

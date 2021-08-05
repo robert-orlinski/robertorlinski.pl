@@ -5,9 +5,9 @@ import { FooterMenu } from './Menu';
 import { Brand } from '../Brand';
 import { TextWithLinks } from '../TextWithLinks';
 
-import { contentMenu } from '../../helpers/content/footer/contentMenu';
-import { formalitiesMenu } from '../../helpers/content/footer/formalitiesMenu';
-import { copyright } from '../../helpers/content/footer/copyright';
+import { contentMenu } from '../../data/footer/contentMenu';
+import { formalitiesMenu } from '../../data/footer/formalitiesMenu';
+import { copyright } from '../../data/footer/copyright';
 import { flex } from '../../helpers/styles/mixins';
 import { to } from '../../helpers/styles/devices';
 

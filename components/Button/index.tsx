@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { LinkContainer } from '../Foundations/Clickable/LinkContainer';
 
-import { LinkType } from '../../types/global';
+import { Link } from '../../types/links';
 import { pseudoElement } from '../../helpers/styles/mixins';
 
 export const ButtonInner = styled.a`
@@ -46,7 +46,7 @@ export const ButtonInner = styled.a`
   }
 `;
 
-export const Button: FC<LinkType> = ({ children, href }) => (
+export const Button: FC<Link> = ({ children, href }) => (
   <LinkContainer href={href}>
     <ButtonInner>{children}</ButtonInner>
   </LinkContainer>

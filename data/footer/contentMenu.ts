@@ -1,6 +1,6 @@
-import { CatalogedLinksArrayType } from '../../../types/global';
+import { CatalogedLinksArray } from '../../types/links';
 
-export const contentMenu: CatalogedLinksArrayType = [
+export const contentMenu: CatalogedLinksArray = [
   {
     href: '/tematy',
     title: 'Tematy',

@@ -1,6 +1,6 @@
-import { CatalogedLinksArrayType } from '../../../types/global';
+import { CatalogedLinksArray } from '../../types/links';
 
-export const formalitiesMenu: CatalogedLinksArrayType = [
+export const formalitiesMenu: CatalogedLinksArray = [
   {
     href: '/kontakt',
     title: 'Kontakt',

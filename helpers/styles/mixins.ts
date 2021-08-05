@@ -1,12 +1,21 @@
-import { FlexType, PseudoElementType } from './types';
+interface Flex {
+  justifyContent?: string;
+  alignItems?: string;
+}
 
-export const flex = ({ justifyContent, alignItems }: FlexType) => `
+export const flex = ({ justifyContent, alignItems }: Flex) => `
   display: flex;
   justify-content: ${justifyContent || 'center'};
   align-items: ${alignItems || 'center'};
 `;
 
-export const pseudoElement = ({ display, position, content }: PseudoElementType) => `
+interface PseudoElement {
+  display?: string;
+  position?: string;
+  content?: string;
+}
+
+export const pseudoElement = ({ display, position, content }: PseudoElement) => `
   display: ${display || 'block'};
   position: ${position || 'absolute'};
   content: ${content || `''`};

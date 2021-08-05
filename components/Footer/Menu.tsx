@@ -5,7 +5,7 @@ import { MenuItem } from '../MenuItem';
 
 // import { to } from '../../helpers/styles/devices';
 import { LinkContainer } from '../Foundations/Clickable/LinkContainer';
-import { CatalogedLinkType } from '../../types/global';
+import { CatalogedLink } from '../../types/links';
 
 const StyledLink = styled.a`
   font-size: 0.85rem;
@@ -13,7 +13,7 @@ const StyledLink = styled.a`
 `;
 
 interface Props {
-  source: Array<CatalogedLinkType>;
+  source: [CatalogedLink];
 }
 
 export const FooterMenu: FC<Props> = ({ source }) => (

@@ -5,7 +5,7 @@ import { P } from '../Text/Paragraph';
 import { Button } from '../Button';
 import { TextWithLinks } from '../TextWithLinks';
 
-import { mySummary } from '../../helpers/content/mySummary';
+import { mySummary } from '../../data/mySummary';
 
 const Content = styled(NarrowWrapper)`
   padding: 4rem 0;
