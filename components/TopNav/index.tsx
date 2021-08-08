@@ -2,6 +2,7 @@ import { useState, CSSProperties } from 'react';
 import styled from 'styled-components';
 
 import { HiddenMainPageTitle } from '../Foundations/HiddenMainPageTitle';
+import { Separator } from '../Foundations/Separator';
 import { SocialMedia } from '../SocialMedia';
 import { Search } from '../Search';
 
@@ -13,6 +14,7 @@ import { Hamburger } from './Hamburger';
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
   justify-content: flex-end;
 `;
 
@@ -46,6 +48,7 @@ export const Nav = () => {
           <NavMenu />
           <SocialMedia />
         </NavLinks>
+        <Separator />
         <Container>
           <Search />
           <Hamburger
