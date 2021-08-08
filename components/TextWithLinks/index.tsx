@@ -1,7 +1,7 @@
 import { FC, Fragment } from 'react';
 
 import { Link } from '../Text/Link';
-import { P } from '../Text/Paragraph';
+import { P } from '../Text/P';
 
 import { ArrayOfTexts } from '../../types/data';
 

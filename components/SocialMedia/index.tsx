@@ -34,17 +34,6 @@ const icons = [
 const IconsContainer = styled.ul`
   display: flex;
   align-items: center;
-
-  &::after {
-    content: '';
-
-    width: 40px;
-    height: 1px;
-
-    margin: 0 10px;
-
-    background-color: var(--dark-gray);
-  }
 `;
 
 export const SocialMedia = () => (
