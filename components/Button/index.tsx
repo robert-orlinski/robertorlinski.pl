@@ -1,13 +1,12 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { LinkContainer } from '../Foundations/Clickable/LinkContainer';
+import { LinkContainer } from '../Foundations/LinkContainer';
 
 import { Link } from '../../types/links';
-import { pseudoElement } from '../../helpers/styles/mixins';
 
 export const ButtonInner = styled.a`
-  --transition-duration: var(--short-animation-duration);
+  --transition-duration: var(--short-transition-duration);
   --transition-timing-function: cubic-bezier(0.35, 0.9, 0.5, 1);
 
   display: inline-block;
@@ -23,8 +22,11 @@ export const ButtonInner = styled.a`
     transform var(--transition-duration) var(--transition-timing-function);
 
   &::after {
-    ${pseudoElement}
+    content: '';
+    position: absolute;
 
+    width: 100%;
+    height: 100%;
     left: 0;
     top: 0;
     opacity: 0;

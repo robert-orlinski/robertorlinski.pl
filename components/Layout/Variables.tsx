@@ -10,7 +10,7 @@ export const Variables = createGlobalStyle`
 
     --nav-height: 96px;
 
-    --short-animation-duration: 250ms;
+    --short-transition-duration: 250ms;
 
     @media (max-width: 991px) {
       --nav-height: 84px;
