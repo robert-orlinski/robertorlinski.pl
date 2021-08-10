@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 
-import { VisuallyHiddenElement } from './VisuallyHiddenElement';
+import { VisuallyHiddenElement } from '../VisuallyHiddenElement';
 
 export const HiddenMainPageTitle = () => {
   const router = useRouter();

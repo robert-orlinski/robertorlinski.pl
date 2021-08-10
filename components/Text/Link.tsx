@@ -1,9 +1,9 @@
 import { FC, CSSProperties } from 'react';
 
-import { LinkContainer } from '../Foundations/Clickable/LinkContainer';
+import { LinkContainer } from '../LinkContainer';
 
 import { Link as LinkType } from '../../types/links';
-import { UnderlinedLink } from '../Foundations/Clickable/UnderlinedLink';
+import { UnderlinedLink } from '../UnderlinedLink';
 
 export const Link: FC<LinkType> = ({ children, href, external, withLineVisible }) => {
   const lineVisibility = (

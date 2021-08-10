@@ -3,10 +3,10 @@ import { FC, Fragment } from 'react';
 import { Link } from '../Text/Link';
 import { P } from '../Text/P';
 
-import { ArrayOfTexts } from '../../types/data';
+import { Text } from '../../types/data';
 
 interface Props {
-  text: ArrayOfTexts;
+  text: Array<Text>;
 }
 
 export const TextWithLinks: FC<Props> = ({ text }) => (

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ElementWithOpacity } from '../Foundations/Clickable/ElementWithOpacity';
+import { ElementWithOpacity } from '../ElementWithOpacity';
 import { Logo } from './Logo';
 
 const BrandLink = styled(ElementWithOpacity)`

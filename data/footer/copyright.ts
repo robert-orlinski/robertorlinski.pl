@@ -1,6 +1,6 @@
-import { ArrayOfTexts } from '../../types/data';
+import { Text } from '../../types/data';
 
-export const copyright: ArrayOfTexts = [
+export const copyright: Array<Text> = [
   {
     type: 'text',
     text: 'Zaprojektowane i zakodowane przeze mnie. Napisałem też ',

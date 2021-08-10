@@ -1,4 +1,4 @@
-import { Icon } from '../Foundations/Icon';
+import { Icon } from '../Icon';
 
 export const MagnifierIcon = () => (
   <Icon viewBox="0 0 56.966 56.966">

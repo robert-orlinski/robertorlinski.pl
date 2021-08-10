@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { NarrowWrapper } from '../Foundations/Wrapper';
+import { NarrowWrapper } from '../Wrapper';
 import { P } from '../Text/P';
 import { Button } from '../Button';
 import { TextWithLinks } from '../TextWithLinks';
@@ -8,7 +8,7 @@ import { TextWithLinks } from '../TextWithLinks';
 import { mySummary } from '../../data/mySummary';
 
 const Content = styled(NarrowWrapper)`
-  padding: 4rem 0;
+  padding-bottom: 4rem;
   text-align: center;
   font-size: 1.1rem;
 `;

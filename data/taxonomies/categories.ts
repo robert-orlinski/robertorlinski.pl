@@ -1,8 +1,8 @@
-import { Category } from '../../types/data';
+import { ListedCategory } from '../../types/data';
 
 import { images } from '../../public/images/categories';
 
-export const categories: Array<Category> = [
+export const categories: Array<ListedCategory> = [
   {
     name: 'Front-end',
     slug: 'front-end',

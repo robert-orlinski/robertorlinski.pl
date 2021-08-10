@@ -6,7 +6,7 @@ export interface CatalogedLink extends LinkContainer {
   title: string;
 }
 
-export type CatalogedLinksArray = [CatalogedLink];
+export type CatalogedLinksArray = Array<CatalogedLink>;
 
 export interface Link extends LinkContainer {
   external?: boolean;

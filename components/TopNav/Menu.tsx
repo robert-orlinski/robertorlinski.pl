@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { UnderlinedLink } from '../Foundations/Clickable/UnderlinedLink';
-import { LinkContainer } from '../Foundations/Clickable/LinkContainer';
+import { UnderlinedLink } from '../UnderlinedLink';
+import { LinkContainer } from '../LinkContainer';
 import { mainMenu } from '../../data/header/mainMenu';
 import { MenuItem } from '../MenuItem';
 

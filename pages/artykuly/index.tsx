@@ -1,6 +1,6 @@
 import { Head } from '../../components/Head';
-import { WideWrapper } from '../../components/Foundations/Wrapper';
 import { MainBanner } from '../../components/MainHeader';
+import { PostsList } from '../../components/PostsListing';
 
 import bannerImage from '../../public/images/banners/forest.jpg';
 
@@ -20,7 +20,7 @@ const Blog = () => (
         alt: 'Robert zamierzający uderzyć ogromny, pluszowy przycisk "enter", który jednocześnie można podłączyć na USB i tym samym zatwierdzać rzeczy z potężnym impetem.',
       }}
     />
-    <WideWrapper as="main"></WideWrapper>
+    <PostsList />
   </>
 );
 

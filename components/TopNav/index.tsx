@@ -1,8 +1,8 @@
 import { useState, CSSProperties } from 'react';
 import styled from 'styled-components';
 
-import { HiddenMainPageTitle } from '../Foundations/HiddenMainPageTitle';
-import { Separator } from '../Foundations/Separator';
+import { HiddenMainPageTitle } from '../HiddenMainPageTitle';
+import { Separator } from '../Separator';
 import { SocialMedia } from '../SocialMedia';
 import { Search } from '../Search';
 

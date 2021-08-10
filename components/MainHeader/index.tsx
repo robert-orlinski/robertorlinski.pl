@@ -2,9 +2,9 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-import { WideWrapper } from '../Foundations/Wrapper';
+import { WideWrapper } from '../Wrapper';
 import { Nav } from '../TopNav';
-import { Title } from '../SectionTitle';
+import { SectionTitle } from '../SectionTitle';
 
 import { to } from '../../helpers/styles/devices';
 
@@ -14,12 +14,14 @@ const Banner = styled(WideWrapper)`
 
   position: relative;
 
+  margin-bottom: 4rem;
+
   @media ${to.tabletL} {
     flex-direction: column-reverse;
   }
 `;
 
-const MainTitle = styled(Title)`
+const MainTitle = styled(SectionTitle)`
   position: absolute;
   z-index: 9;
   left: 0;
@@ -48,13 +50,13 @@ interface Props {
   };
 }
 
-export const MainBanner: FC<Props> = ({ title, image: { src, alt } }) => (
+export const MainBanner: FC<Props> = ({ title, image }) => (
   <header>
     <Nav />
     <Banner>
       <MainTitle>{title}</MainTitle>
       <ImageContainer>
-        <StyledImage src={src} alt={alt} />
+        <StyledImage {...image} />
       </ImageContainer>
     </Banner>
   </header>

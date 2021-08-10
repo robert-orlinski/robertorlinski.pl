@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { WideWrapper } from '../Foundations/Wrapper';
+import { WideWrapper } from '../Wrapper';
 
 const Outer = styled.nav`
   position: fixed;

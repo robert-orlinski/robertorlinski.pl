@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { WrapperBase, WideWrapper } from '../Foundations/Wrapper';
+import { WrapperBase, WideWrapper } from '../Wrapper';
 import { FooterMenu } from './Menu';
 import { Brand } from '../Brand';
 import { TextWithLinks } from '../TextWithLinks';

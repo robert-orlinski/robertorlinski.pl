@@ -3,8 +3,7 @@ import styled from 'styled-components';
 
 import { MenuItem } from '../MenuItem';
 
-// import { to } from '../../helpers/styles/devices';
-import { LinkContainer } from '../Foundations/Clickable/LinkContainer';
+import { LinkContainer } from '../LinkContainer';
 import { CatalogedLink } from '../../types/links';
 
 const StyledLink = styled.a`

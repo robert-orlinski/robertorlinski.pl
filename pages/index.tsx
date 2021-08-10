@@ -1,6 +1,6 @@
 import { Head } from '../components/Head';
-import { Title } from '../components/SectionTitle';
-import { WideWrapper } from '../components/Foundations/Wrapper';
+import { SectionTitle } from '../components/SectionTitle';
+import { WideWrapper } from '../components/Wrapper';
 import { MainBanner } from '../components/MainHeader';
 import { Intro } from '../components/Intro';
 
@@ -25,7 +25,7 @@ const Home = () => (
     <WideWrapper as="main">
       <Intro />
       <section>
-        <Title>Najnowsze artykuły</Title>
+        <SectionTitle>Najnowsze artykuły</SectionTitle>
       </section>
     </WideWrapper>
   </>

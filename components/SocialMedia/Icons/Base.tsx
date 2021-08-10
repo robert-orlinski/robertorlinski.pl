@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { Icon } from '../../Foundations/Icon';
+import { Icon } from '../../Icon';
 
 import { to } from '../../../helpers/styles/devices';
 

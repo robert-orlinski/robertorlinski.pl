@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { LinkContainer } from '../Foundations/LinkContainer';
+import { LinkContainer } from '../LinkContainer';
 
 import { Link } from '../../types/links';
 
