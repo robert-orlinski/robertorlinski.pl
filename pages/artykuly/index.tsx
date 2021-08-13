@@ -1,6 +1,6 @@
 import { Head } from '../../components/Head';
 import { MainBanner } from '../../components/MainBanner';
-import { WideWrapper } from '../../components/Wrappers';
+import { WideWrapper } from '../../components/WideWrapper';
 import { PostsList } from '../../components/PostsList';
 
 import bannerImage from '../../public/images/banners/forest.jpg';
