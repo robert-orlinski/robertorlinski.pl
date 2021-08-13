@@ -53,7 +53,7 @@ const Meta = styled.p`
   display: flex;
   align-items: center;
 
-  margin: 5px 0 4px;
+  margin: 0.27rem 0 0.2rem;
 
   font-size: 0.88rem;
 `;

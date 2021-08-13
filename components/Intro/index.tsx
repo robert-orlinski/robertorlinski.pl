@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { NarrowWrapper } from '../Wrapper';
+import { NarrowWrapper } from '../Wrappers';
 import { P } from '../Text/P';
 import { Button } from '../Button';
 import { TextWithLinks } from '../TextWithLinks';

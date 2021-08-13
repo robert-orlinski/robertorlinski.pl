@@ -16,7 +16,7 @@ export const NavLinks = styled.div`
     width: var(--width);
     height: calc(100vh - var(--nav-height));
 
-    padding: 50px 40px;
+    padding: 2.4rem;
     top: var(--nav-height);
     right: 0;
 

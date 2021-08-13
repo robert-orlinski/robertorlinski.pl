@@ -6,10 +6,10 @@ import { Icon } from '../../Icon';
 import { to } from '../../../helpers/styles/devices';
 
 const SocialIcon = styled(Icon)`
-  margin: 0 5px;
+  margin: 0 0.22rem;
 
   @media ${to.tabletL} {
-    margin: 0 10px 0 0;
+    margin: 0 0.55rem 0 0;
     fill: #fff;
   }
 `;
@@ -18,7 +18,5 @@ interface Props {
 }
 
 export const SocialIconBase: FC<Props> = ({ children, viewBox }) => (
-  <SocialIcon viewBox={viewBox} xmlns="http://www.w3.org/2000/svg">
-    {children}
-  </SocialIcon>
+  <SocialIcon viewBox={viewBox}>{children}</SocialIcon>
 );

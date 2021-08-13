@@ -2,16 +2,19 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import { ElementWithOpacity } from '../ElementWithOpacity';
-import { ClickableElement } from '../../types/links';
 import { ElementWithInlineStyle } from '../../types/styled-components';
 
 import { from } from '../../helpers/styles/devices';
 
-const Button = styled(ElementWithOpacity)`
-  width: 30px;
-  height: 30px;
+import { ClickableElement } from '../../types/links';
 
-  margin-left: 20px;
+const Button = styled(ElementWithOpacity)`
+  --hamburger-size: 1.66rem;
+
+  width: var(--hamburger-size);
+  height: var(--hamburger-size);
+
+  margin-left: 1.1rem;
   border: none;
 
   @media ${from.tabletL} {
@@ -21,7 +24,7 @@ const Button = styled(ElementWithOpacity)`
 
 const Inner = styled.span`
   position: relative;
-  width: 30px;
+  width: var(--hamburger-size);
 
   transform: var(--middle-bar-transform, none);
 
@@ -39,18 +42,18 @@ const Inner = styled.span`
   &::after {
     position: absolute;
     content: '';
-    width: 15px;
+    width: calc(var(--hamburger-size) / 2);
   }
 
   &::before {
-    top: -8px;
+    top: calc(var(--hamburger-size) / -3.8);
     left: 0;
 
     transform: var(--top-bar-transform, none);
   }
 
   &::after {
-    top: 8px;
+    top: calc(var(--hamburger-size) / 3.8);
     right: 0;
 
     transform: var(--bottom-bar-transform, none);

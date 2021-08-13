@@ -7,28 +7,6 @@ import { MenuItem } from '../MenuItem';
 
 import { from, to } from '../../helpers/styles/devices';
 
-const Menu = styled.ul`
-  margin-right: 15px;
-
-  @media ${to.tabletL} {
-    margin-bottom: 10px;
-  }
-
-  @media ${from.tabletL} {
-    transform: translateY(-12%);
-  }
-`;
-
-const StyledLink = styled(UnderlinedLink)`
-  font-size: 0.95rem;
-  font-weight: 600;
-
-  @media ${to.tabletL} {
-    color: #fff;
-    font-size: 19px;
-  }
-`;
-
 export const NavMenu = () => (
   <Menu>
     {mainMenu &&
@@ -41,3 +19,25 @@ export const NavMenu = () => (
       ))}
   </Menu>
 );
+
+const Menu = styled.ul`
+  @media ${to.tabletL} {
+    margin-bottom: 1rem;
+  }
+
+  @media ${from.tabletL} {
+    margin-right: 0.8rem;
+
+    transform: translateY(-12%);
+  }
+`;
+
+const StyledLink = styled(UnderlinedLink)`
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  @media ${to.tabletL} {
+    color: #fff;
+    font-size: 1.1rem;
+  }
+`;

@@ -13,6 +13,6 @@ export interface Link extends LinkContainer {
   withLineVisible?: boolean;
 }
 
-export interface ClickableElment {
+export interface ClickableElement {
   onClick: () => void;
 }

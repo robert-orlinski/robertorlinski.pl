@@ -6,13 +6,8 @@ import { MenuItem } from '../MenuItem';
 import { LinkContainer } from '../LinkContainer';
 import { CatalogedLink } from '../../types/links';
 
-const StyledLink = styled.a`
-  font-size: 0.85rem;
-  text-transform: uppercase;
-`;
-
 interface Props {
-  source: [CatalogedLink];
+  source: Array<CatalogedLink>;
 }
 
 export const FooterMenu: FC<Props> = ({ source }) => (
@@ -27,3 +22,8 @@ export const FooterMenu: FC<Props> = ({ source }) => (
       ))}
   </ul>
 );
+
+const StyledLink = styled.a`
+  font-size: 0.85rem;
+  text-transform: uppercase;
+`;

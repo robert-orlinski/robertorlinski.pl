@@ -1,10 +1,11 @@
 import { Head } from '../components/Head';
 import { SectionTitle } from '../components/SectionTitle';
-import { WideWrapper } from '../components/Wrapper';
-import { MainBanner } from '../components/MainHeader';
+import { WideWrapper } from '../components/Wrappers';
+import { MainBanner } from '../components/MainBanner';
 import { Intro } from '../components/Intro';
 
 import bannerImage from '../public/images/banners/me.jpg';
+import { PostsList } from '../components/PostsList';
 
 const meta = {
   title: 'Robert Orliński',
@@ -26,6 +27,7 @@ const Home = () => (
       <Intro />
       <section>
         <SectionTitle>Najnowsze artykuły</SectionTitle>
+        <PostsList />
       </section>
     </WideWrapper>
   </>

@@ -5,14 +5,20 @@ import { LinkContainer } from '../LinkContainer';
 
 import { Link } from '../../types/links';
 
-export const ButtonInner = styled.a`
+export const Button: FC<Link> = ({ children, href }) => (
+  <LinkContainer href={href}>
+    <ButtonInner>{children}</ButtonInner>
+  </LinkContainer>
+);
+
+const ButtonInner = styled.a`
   --transition-duration: var(--short-transition-duration);
   --transition-timing-function: cubic-bezier(0.35, 0.9, 0.5, 1);
 
   display: inline-block;
   position: relative;
 
-  padding: 4px 22px 8px;
+  padding: 0.22rem 1.2rem 0.5rem;
   border: 1px solid var(--dark-gray);
 
   text-align: center;
@@ -31,7 +37,7 @@ export const ButtonInner = styled.a`
     top: 0;
     opacity: 0;
 
-    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11), 0 5px 15px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0.85rem 1.8rem 0 rgba(0, 0, 0, 0.11), 0 0.28rem 0.85rem 0 rgba(0, 0, 0, 0.08);
 
     transition: opacity var(--transition-duration) var(--transition-timing-function);
   }
@@ -47,9 +53,3 @@ export const ButtonInner = styled.a`
     }
   }
 `;
-
-export const Button: FC<Link> = ({ children, href }) => (
-  <LinkContainer href={href}>
-    <ButtonInner>{children}</ButtonInner>
-  </LinkContainer>
-);

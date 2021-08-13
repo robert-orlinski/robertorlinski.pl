@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import { to } from '../../helpers/styles/devices';
+
 export const Variables = createGlobalStyle`
   html {
     --sans-serif: 'Darker Grotesque', -apple-system, sans-serif;
@@ -8,7 +10,7 @@ export const Variables = createGlobalStyle`
     --dark-gray: #222;
     --blue-gray: #ecf0f3;
 
-    --nav-height: 96px;
+    --nav-height: 5.2rem;
 
     --short-transition-duration: 250ms;
     --medium-transition-duration: 500ms;
@@ -19,8 +21,8 @@ export const Variables = createGlobalStyle`
     --max-z-index: 30;
     --extreme-z-index: 10000;
 
-    @media (max-width: 991px) {
-      --nav-height: 84px;
+    @media ${to.tabletL} {
+      --nav-height: 4.6rem;
     }
   }
 `;

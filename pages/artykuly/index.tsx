@@ -1,6 +1,7 @@
 import { Head } from '../../components/Head';
-import { MainBanner } from '../../components/MainHeader';
-import { PostsList } from '../../components/PostsListing';
+import { MainBanner } from '../../components/MainBanner';
+import { WideWrapper } from '../../components/Wrappers';
+import { PostsList } from '../../components/PostsList';
 
 import bannerImage from '../../public/images/banners/forest.jpg';
 
@@ -20,7 +21,9 @@ const Blog = () => (
         alt: 'Robert zamierzający uderzyć ogromny, pluszowy przycisk "enter", który jednocześnie można podłączyć na USB i tym samym zatwierdzać rzeczy z potężnym impetem.',
       }}
     />
-    <PostsList />
+    <WideWrapper as="main">
+      <PostsList />
+    </WideWrapper>
   </>
 );
 

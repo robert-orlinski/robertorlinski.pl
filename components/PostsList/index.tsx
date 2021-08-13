@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { WideWrapper } from '../Wrapper';
 import { ListedPost } from './ListedPost';
 
 import { Posts } from '../../types/content';
@@ -9,15 +8,13 @@ import { Posts } from '../../types/content';
 import bannerImage from '../../public/images/banners/me.jpg';
 
 export const PostsList: FC<Posts> = () => (
-  <WideWrapper as="main">
-    <List>
-      {dummyPosts.map((post) => {
-        const { title } = post;
+  <List>
+    {dummyPosts.map((post) => {
+      const { title } = post;
 
-        return <ListedPost key={title} {...post} />;
-      })}
-    </List>
-  </WideWrapper>
+      return <ListedPost key={title} {...post} />;
+    })}
+  </List>
 );
 
 const List = styled.ul`

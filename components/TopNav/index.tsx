@@ -12,11 +12,7 @@ import { NavMenu } from './Menu';
 import { NavLinks } from './Links';
 import { Hamburger } from './Hamburger';
 
-const Container = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-`;
+import { to } from '../../helpers/styles/devices';
 
 export const Nav = () => {
   const [isNavVisibleOnMobile, setNavVisibilityOnMobile] = useState(false);
@@ -32,9 +28,10 @@ export const Nav = () => {
   const hamburgerTransformation = (
     isNavVisibleOnMobile
       ? {
-          '--top-bar-transform': 'rotate(90deg) translateY(-8px)',
+          '--top-bar-transform': 'rotate(90deg) translateY(calc(var(--hamburger-size) / -3.8))',
           '--middle-bar-transform': 'rotate(-45deg)',
-          '--bottom-bar-transform': 'rotate(90deg) translateY(7px)',
+          '--bottom-bar-transform':
+            'rotate(90deg) translateY(calc((var(--hamburger-size) / 3.8) - 1px))',
         }
       : undefined
   ) as CSSProperties | undefined;
@@ -48,7 +45,7 @@ export const Nav = () => {
           <NavMenu />
           <SocialMedia />
         </NavLinks>
-        <Separator />
+        <SeparatorHiddenOnMobile />
         <Container>
           <Search />
           <Hamburger
@@ -60,3 +57,15 @@ export const Nav = () => {
     </NavBar>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
+const SeparatorHiddenOnMobile = styled(Separator)`
+  @media ${to.tabletL} {
+    display: none;
+  }
+`;
