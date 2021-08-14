@@ -9,7 +9,6 @@ import { TextWithLinks } from '../TextWithLinks';
 import { contentMenu } from '../../data/footer/contentMenu';
 import { formalitiesMenu } from '../../data/footer/formalitiesMenu';
 import { copyright } from '../../data/footer/copyright';
-import { flex } from '../../helpers/styles/mixins';
 import { to } from '../../helpers/styles/devices';
 
 export const Footer = () => {
@@ -39,7 +38,10 @@ const FooterWrapper = styled(WideWrapper)`
 `;
 
 const Top = styled.section`
-  ${flex({ justifyContent: 'space-between' })}
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   margin-bottom: 3.35rem;
 
   @media ${to.tabletL} {
