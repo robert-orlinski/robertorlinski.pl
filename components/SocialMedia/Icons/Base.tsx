@@ -5,6 +5,14 @@ import { Icon } from '../../Icon';
 
 import { to } from '../../../helpers/styles/devices';
 
+type Props = {
+  viewBox: string;
+};
+
+export const SocialIconBase: FC<Props> = ({ children, viewBox }) => (
+  <SocialIcon viewBox={viewBox}>{children}</SocialIcon>
+);
+
 const SocialIcon = styled(Icon)`
   margin: 0 0.22rem;
 
@@ -13,10 +21,3 @@ const SocialIcon = styled(Icon)`
     fill: #fff;
   }
 `;
-interface Props {
-  viewBox: string;
-}
-
-export const SocialIconBase: FC<Props> = ({ children, viewBox }) => (
-  <SocialIcon viewBox={viewBox}>{children}</SocialIcon>
-);

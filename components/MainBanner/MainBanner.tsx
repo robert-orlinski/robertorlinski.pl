@@ -8,13 +8,13 @@ import { SectionTitle } from '../SectionTitle';
 
 import { to } from '../../helpers/styles/devices';
 
-interface Props {
+type Props = {
   title: string;
   image: {
     src: StaticImageData;
     alt: string;
   };
-}
+};
 
 export const MainBanner: FC<Props> = ({ title, image }) => (
   <header>

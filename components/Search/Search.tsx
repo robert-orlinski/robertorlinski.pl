@@ -4,11 +4,6 @@ import { ElementWithOpacity } from '../ElementWithOpacity';
 import { SearchForm } from './Form';
 import { MagnifierIcon } from './MagnifierIcon';
 
-const Button = styled(ElementWithOpacity)`
-  display: flex;
-  border: none;
-`;
-
 export const Search = () => (
   <>
     <Button as="button">
@@ -17,3 +12,8 @@ export const Search = () => (
     <SearchForm />
   </>
 );
+
+const Button = styled(ElementWithOpacity)`
+  display: flex;
+  border: none;
+`;

@@ -6,9 +6,9 @@ import { MenuItem } from '../MenuItem';
 import { LinkContainer } from '../LinkContainer';
 import { CatalogedLink } from '../../types/links';
 
-interface Props {
+type Props = {
   source: Array<CatalogedLink>;
-}
+};
 
 export const FooterMenu: FC<Props> = ({ source }) => (
   <ul>

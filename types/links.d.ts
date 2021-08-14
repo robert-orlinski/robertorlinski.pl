@@ -1,18 +1,18 @@
-export interface LinkContainer {
+export type LinkContainer = {
   href: string;
-}
+};
 
-export interface CatalogedLink extends LinkContainer {
+export type CatalogedLink = {
   title: string;
-}
+} & LinkContainer;
 
 export type CatalogedLinksArray = Array<CatalogedLink>;
 
-export interface Link extends LinkContainer {
+export type Link = {
   external?: boolean;
   withLineVisible?: boolean;
-}
+} & LinkContainer;
 
-export interface ClickableElement {
+export type ClickableElement = {
   onClick: () => void;
-}
+};

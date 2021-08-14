@@ -7,7 +7,7 @@ import { CoveringLink } from '../CoveringLink';
 import { Overlay } from '../Overlay';
 import { ElementWithOpacity } from '../ElementWithOpacity';
 import { ListedPostContainer } from './ListedPostContainer';
-import { Link } from '../Text/Link';
+import { Link } from '../Link';
 
 import { Post } from '../../types/content';
 

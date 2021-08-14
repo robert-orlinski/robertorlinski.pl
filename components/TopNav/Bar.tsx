@@ -3,6 +3,12 @@ import styled from 'styled-components';
 
 import { WideWrapper } from '../WideWrapper';
 
+export const NavBar: FC = ({ children }) => (
+  <Outer>
+    <Inner>{children}</Inner>
+  </Outer>
+);
+
 const Outer = styled.nav`
   position: fixed;
   width: 100vw;
@@ -24,9 +30,3 @@ const Inner = styled(WideWrapper)`
   position: relative;
   height: 100%;
 `;
-
-export const NavBar: FC = ({ children }) => (
-  <Outer>
-    <Inner>{children}</Inner>
-  </Outer>
-);

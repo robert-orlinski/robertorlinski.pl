@@ -8,6 +8,18 @@ import { YouTubeIcon } from './Icons/YouTube';
 import { InstagramIcon } from './Icons/Instagram';
 import { GitHubIcon } from './Icons/GitHub';
 
+export const SocialMedia = () => (
+  <IconsContainer>
+    {icons.map(({ name, href, component }) => (
+      <li key={`icon-${name}`}>
+        <LinkContainer href={href}>
+          <ElementWithOpacity>{component}</ElementWithOpacity>
+        </LinkContainer>
+      </li>
+    ))}
+  </IconsContainer>
+);
+
 const icons = [
   {
     name: 'Facebook',
@@ -35,15 +47,3 @@ const IconsContainer = styled.ul`
   display: flex;
   align-items: center;
 `;
-
-export const SocialMedia = () => (
-  <IconsContainer>
-    {icons.map(({ name, href, component }) => (
-      <li key={`icon-${name}`}>
-        <LinkContainer href={href}>
-          <ElementWithOpacity>{component}</ElementWithOpacity>
-        </LinkContainer>
-      </li>
-    ))}
-  </IconsContainer>
-);

@@ -8,6 +8,12 @@ import { from } from '../../helpers/styles/devices';
 
 import { ClickableElement } from '../../types/links';
 
+export const Hamburger: FC<ClickableElement & ElementWithInlineStyle> = ({ onClick, style }) => (
+  <Button as="button" onClick={onClick} style={style}>
+    <Inner />
+  </Button>
+);
+
 const Button = styled(ElementWithOpacity)`
   --hamburger-size: 1.66rem;
 
@@ -59,9 +65,3 @@ const Inner = styled.span`
     transform: var(--bottom-bar-transform, none);
   }
 `;
-
-export const Hamburger: FC<ClickableElement & ElementWithInlineStyle> = ({ onClick, style }) => (
-  <Button as="button" onClick={onClick} style={style}>
-    <Inner />
-  </Button>
-);

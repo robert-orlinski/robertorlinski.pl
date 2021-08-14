@@ -1,7 +1,7 @@
-export interface ElementWithInlineStyle {
+export type ElementWithInlineStyle = {
   style?: CSSProperties;
-}
+};
 
-export interface ElementWithCustomZIndex {
+export type ElementWithCustomZIndex = {
   zIndex?: 'min' | 'med' | 'max' | 'extreme';
-}
+};

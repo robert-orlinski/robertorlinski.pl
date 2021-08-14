@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import HeadTag from 'next/head';
 
-interface Props {
+type Props = {
   title: string;
   description: string;
-}
+};
 
 export const Head: FC<Props> = ({ title, description }) => (
   <HeadTag>
