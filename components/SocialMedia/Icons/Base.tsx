@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { Icon } from '../../Icon';
 
-import { to } from '../../../helpers/styles/devices';
+import { to } from 'Devices';
 
 type Props = {
   viewBox: string;

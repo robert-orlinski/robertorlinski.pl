@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { to } from '../../helpers/styles/devices';
+import { to } from 'Devices';
 
 export const WrapperBase = styled.section`
   margin-right: auto;

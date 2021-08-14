@@ -1,4 +1,4 @@
-import { CatalogedLinksArray } from '../../types/links';
+import { CatalogedLinksArray } from 'Types/links';
 
 export const formalitiesMenu: CatalogedLinksArray = [
   {

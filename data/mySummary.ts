@@ -1,4 +1,4 @@
-import { Text } from '../types/data';
+import { Text } from 'Types/data';
 
 export const mySummary: Array<Text> = [
   {

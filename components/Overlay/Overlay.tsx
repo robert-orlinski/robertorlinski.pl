@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ElementWithCustomZIndex } from '../../types/styled-components';
+import { ElementWithCustomZIndex } from 'Types/styled-components';
 
 export const Overlay = styled.div<ElementWithCustomZIndex>`
   position: absolute;

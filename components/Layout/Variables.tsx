@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 
-import { to } from '../../helpers/styles/devices';
+import { to } from 'Devices';
 
 export const Variables = createGlobalStyle`
   html {

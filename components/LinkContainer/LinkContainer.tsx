@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 
-import { LinkContainer as LinkContainerType } from '../../types/links';
+import { LinkContainer as LinkContainerType } from 'Types/links';
 
 export const LinkContainer: FC<LinkContainerType> = ({ children, href }) => (
   <Link href={href} passHref>

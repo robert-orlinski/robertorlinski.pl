@@ -3,7 +3,7 @@ import { FC, Fragment } from 'react';
 import { Link } from '../Link';
 import { P } from '../P';
 
-import { Text } from '../../types/data';
+import { Text } from 'Types/data';
 
 type Props = {
   text: Array<Text>;

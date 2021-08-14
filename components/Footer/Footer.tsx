@@ -9,7 +9,7 @@ import { TextWithLinks } from '../TextWithLinks';
 import { contentMenu } from '../../data/footer/contentMenu';
 import { formalitiesMenu } from '../../data/footer/formalitiesMenu';
 import { copyright } from '../../data/footer/copyright';
-import { to } from '../../helpers/styles/devices';
+import { to } from 'Devices';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();

@@ -6,7 +6,7 @@ import { WideWrapper } from '../WideWrapper';
 import { Nav } from '../TopNav';
 import { SectionTitle } from '../SectionTitle';
 
-import { to } from '../../helpers/styles/devices';
+import { to } from 'Devices';
 
 type Props = {
   title: string;

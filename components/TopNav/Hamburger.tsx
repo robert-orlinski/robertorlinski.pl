@@ -2,11 +2,11 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import { ElementWithOpacity } from '../ElementWithOpacity';
-import { ElementWithInlineStyle } from '../../types/styled-components';
+import { ElementWithInlineStyle } from 'Types/styled-components';
 
-import { from } from '../../helpers/styles/devices';
+import { from } from 'Devices';
 
-import { ClickableElement } from '../../types/links';
+import { ClickableElement } from 'Types/links';
 
 export const Hamburger: FC<ClickableElement & ElementWithInlineStyle> = ({ onClick, style }) => (
   <Button as="button" onClick={onClick} style={style}>

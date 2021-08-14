@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { MenuItem } from '../MenuItem';
 
 import { LinkContainer } from '../LinkContainer';
-import { CatalogedLink } from '../../types/links';
+import { CatalogedLink } from 'Types/links';
 
 type Props = {
   source: Array<CatalogedLink>;

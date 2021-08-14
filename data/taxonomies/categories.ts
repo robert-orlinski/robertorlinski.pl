@@ -1,6 +1,6 @@
-import { ListedCategory } from '../../types/data';
+import { ListedCategory } from 'Types/data';
 
-import { images } from '../../public/images/categories';
+import { images } from 'Images/categories';
 
 export const categories: Array<ListedCategory> = [
   {

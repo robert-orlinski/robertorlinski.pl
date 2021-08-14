@@ -9,7 +9,7 @@ import { ElementWithOpacity } from '../ElementWithOpacity';
 import { ListedPostContainer } from './ListedPostContainer';
 import { Link } from '../Link';
 
-import { Post } from '../../types/content';
+import { Post } from 'Types/content';
 
 export const ListedPost: FC<Post> = ({ title, slug, category, time, thumbnail }) => (
   <ListedPostContainer>

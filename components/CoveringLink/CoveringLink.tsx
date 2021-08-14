@@ -3,8 +3,8 @@ import { FC } from 'react';
 import { LinkContainer } from '../LinkContainer';
 import { Overlay } from '../Overlay';
 
-import { LinkContainer as LinkContainerType } from '../../types/links';
-import { ElementWithCustomZIndex, ElementWithInlineStyle } from '../../types/styled-components';
+import { LinkContainer as LinkContainerType } from 'Types/links';
+import { ElementWithCustomZIndex, ElementWithInlineStyle } from 'Types/styled-components';
 
 type Props = LinkContainerType & ElementWithInlineStyle & ElementWithCustomZIndex;
 

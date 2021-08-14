@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { WrapperBase } from '../WrapperBase';
 
-import { to } from '../../helpers/styles/devices';
+import { to } from 'Devices';
 
 export const WideWrapper = styled(WrapperBase)`
   width: min(1350px, calc(100vw - 140px));

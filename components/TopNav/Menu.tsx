@@ -5,7 +5,7 @@ import { LinkContainer } from '../LinkContainer';
 import { mainMenu } from '../../data/header/mainMenu';
 import { MenuItem } from '../MenuItem';
 
-import { from, to } from '../../helpers/styles/devices';
+import { from, to } from 'Devices';
 
 export const NavMenu = () => (
   <Menu>

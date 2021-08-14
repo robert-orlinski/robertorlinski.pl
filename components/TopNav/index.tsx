@@ -12,7 +12,7 @@ import { NavMenu } from './Menu';
 import { NavLinks } from './Links';
 import { Hamburger } from './Hamburger';
 
-import { to } from '../../helpers/styles/devices';
+import { to } from 'Devices';
 
 export const Nav = () => {
   const [isNavVisibleOnMobile, setNavVisibilityOnMobile] = useState(false);

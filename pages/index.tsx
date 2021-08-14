@@ -4,7 +4,7 @@ import { WideWrapper } from '../components/WideWrapper';
 import { MainBanner } from '../components/MainBanner';
 import { Intro } from '../components/Intro';
 
-import bannerImage from '../public/images/banners/me.jpg';
+import bannerImage from 'Images/banners/me.jpg';
 import { PostsList } from '../components/PostsList';
 
 const meta = {

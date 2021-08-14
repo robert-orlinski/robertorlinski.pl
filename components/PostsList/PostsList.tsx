@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 import { ListedPost } from './ListedPost';
 
-import { Posts } from '../../types/content';
+import { Posts } from 'Types/content';
 
-import bannerImage from '../../public/images/banners/me.jpg';
+import bannerImage from 'Images/banners/me.jpg';
 
 export const PostsList: FC<Posts> = () => (
   <List>

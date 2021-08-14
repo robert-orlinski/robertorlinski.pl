@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { LinkContainer } from '../LinkContainer';
 
-import { Link } from '../../types/links';
+import { Link } from 'Types/links';
 
 export const Button: FC<Link> = ({ children, href }) => (
   <LinkContainer href={href}>

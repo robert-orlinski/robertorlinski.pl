@@ -2,7 +2,7 @@ import { FC, CSSProperties } from 'react';
 
 import { LinkContainer } from '../LinkContainer';
 
-import { Link as LinkType } from '../../types/links';
+import { Link as LinkType } from 'Types/links';
 import { UnderlinedLink } from '../UnderlinedLink';
 
 export const Link: FC<LinkType> = ({ children, href, external, withLineVisible }) => {

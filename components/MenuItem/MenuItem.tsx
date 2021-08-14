@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { from, to } from '../../helpers/styles/devices';
+import { from, to } from 'Devices';
 
 export const MenuItem = styled.li`
   padding: 0 0.6rem;
