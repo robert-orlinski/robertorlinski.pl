@@ -13,7 +13,7 @@ import { Post } from 'Types/content';
 
 export const ListedPost: FC<Post> = ({ title, slug, category, time, thumbnail }) => (
   <ListedPostContainer>
-    <CoveringLink href={`/${slug}`} zIndex="med" />
+    <CoveringLink href={`/artykuly/${slug}`} zIndex="med" />
     <ThumbnailContainer>
       <Thumbnail as={Image} src={thumbnail} alt="" />
     </ThumbnailContainer>

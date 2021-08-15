@@ -13,7 +13,7 @@ export const SocialMedia = () => (
     {icons.map(({ name, href, component }) => (
       <li key={`icon-${name}`}>
         <LinkContainer href={href}>
-          <ElementWithOpacity>{component}</ElementWithOpacity>
+          <ElementWithOpacity target="_blank">{component}</ElementWithOpacity>
         </LinkContainer>
       </li>
     ))}

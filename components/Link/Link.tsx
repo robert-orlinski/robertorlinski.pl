@@ -5,9 +5,9 @@ import { LinkContainer } from '../LinkContainer';
 import { Link as LinkType } from 'Types/links';
 import { UnderlinedLink } from '../UnderlinedLink';
 
-export const Link: FC<LinkType> = ({ children, href, external, withLineVisible }) => {
+export const Link: FC<LinkType> = ({ children, href, withUnderlineVisible }) => {
   const lineVisibility = (
-    withLineVisible
+    withUnderlineVisible
       ? {
           '--line-size-initial': '100% 1px',
           '--line-size-hovered': '0 1px',
@@ -17,7 +17,9 @@ export const Link: FC<LinkType> = ({ children, href, external, withLineVisible }
       : undefined
   ) as CSSProperties | undefined;
 
-  return external ? (
+  const isExternal = href.includes('http');
+
+  return isExternal ? (
     <UnderlinedLink href={href} target="_blank" rel="noreferrer" style={lineVisibility}>
       {children}
     </UnderlinedLink>

@@ -9,8 +9,8 @@ export type CatalogedLink = {
 export type CatalogedLinksArray = Array<CatalogedLink>;
 
 export type Link = {
-  external?: boolean;
-  withLineVisible?: boolean;
+  children: string;
+  withUnderlineVisible?: boolean;
 } & LinkContainer;
 
 export type ClickableElement = {

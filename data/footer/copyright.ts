@@ -7,7 +7,7 @@ export const copyright: Array<Text> = [
     href: '',
   },
   {
-    type: 'internal-link',
+    type: 'link',
     text: 'wpis o tworzeniu tego bloga',
     href: '/nowa-wersja-bloga',
   },
@@ -17,7 +17,7 @@ export const copyright: Array<Text> = [
     href: '',
   },
   {
-    type: 'external-link',
+    type: 'link',
     text: 'GitHubie',
     href: 'https://github.com/robert-orlinski/robertorlinski.pl',
   },

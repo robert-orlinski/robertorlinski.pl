@@ -7,7 +7,7 @@ export const mySummary: Array<Text> = [
     href: '',
   },
   {
-    type: 'internal-link',
+    type: 'link',
     text: 'open source',
     href: '/projekty#open-source',
   },
@@ -17,7 +17,7 @@ export const mySummary: Array<Text> = [
     href: '',
   },
   {
-    type: 'internal-link',
+    type: 'link',
     text: 'dla klientów',
     href: '/projekty#komercyjne',
   },
@@ -27,7 +27,7 @@ export const mySummary: Array<Text> = [
     href: '',
   },
   {
-    type: 'internal-link',
+    type: 'link',
     text: 'piszę artykuły',
     href: '/artykuly',
   },
@@ -37,7 +37,7 @@ export const mySummary: Array<Text> = [
     href: '',
   },
   {
-    type: 'external-link',
+    type: 'link',
     text: 'nagrywam filmy na YouTubie',
     href: 'https://www.youtube.com/channel/UC_qgM2UztycBZGQLNaGs9Jg',
   },
@@ -47,7 +47,7 @@ export const mySummary: Array<Text> = [
     href: '',
   },
   {
-    type: 'external-link',
+    type: 'link',
     text: 'warsztatach programowania',
     href: 'https://girlsjs.pl',
   },
@@ -57,7 +57,7 @@ export const mySummary: Array<Text> = [
     href: '',
   },
   {
-    type: 'internal-link',
+    type: 'link',
     text: 'aktywista',
     href: '/programista-wolontariusz',
   },

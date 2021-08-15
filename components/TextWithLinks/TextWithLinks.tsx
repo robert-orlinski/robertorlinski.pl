@@ -15,12 +15,8 @@ export const TextWithLinks: FC<Props> = ({ text }) => (
       <Fragment key={`text-element-${i}`}>
         {type === 'text' ? (
           text
-        ) : type === 'internal-link' ? (
-          <Link href={href} withLineVisible>
-            {text}
-          </Link>
         ) : (
-          <Link href={href} external withLineVisible>
+          <Link href={href} withUnderlineVisible>
             {text}
           </Link>
         )}

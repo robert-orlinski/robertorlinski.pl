@@ -1,7 +1,7 @@
 import { LinkHref } from './links';
 
 type Text = {
-  type: 'text' | 'internal-link' | 'external-link';
+  type: 'text' | 'link';
   text: string;
   href: LinkHref;
 };
