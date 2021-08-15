@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { UnderlinedLink } from '../UnderlinedLink';
 import { LinkContainer } from '../LinkContainer';
-import { mainMenu } from '../../data/header/mainMenu';
+import { mainMenu } from 'Data/header/mainMenu';
 import { MenuItem } from '../MenuItem';
 
 import { from, to } from 'Devices';

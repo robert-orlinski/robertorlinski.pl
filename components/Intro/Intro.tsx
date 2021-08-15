@@ -5,7 +5,7 @@ import { P } from '../P';
 import { Button } from '../Button';
 import { TextWithLinks } from '../TextWithLinks';
 
-import { mySummary } from '../../data/mySummary';
+import { mySummary } from 'Data/mySummary';
 
 export const Intro = () => (
   <Content>

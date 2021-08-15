@@ -6,9 +6,9 @@ import { FooterMenu } from './Menu';
 import { Brand } from '../Brand';
 import { TextWithLinks } from '../TextWithLinks';
 
-import { contentMenu } from '../../data/footer/contentMenu';
-import { formalitiesMenu } from '../../data/footer/formalitiesMenu';
-import { copyright } from '../../data/footer/copyright';
+import { contentMenu } from 'Data/footer/contentMenu';
+import { formalitiesMenu } from 'Data/footer/formalitiesMenu';
+import { copyright } from 'Data/footer/copyright';
 import { to } from 'Devices';
 
 export const Footer = () => {
