@@ -93,4 +93,8 @@ export const Global = createGlobalStyle`
   ul {
     list-style: none;
   }
+
+  figure {
+    position: relative;
+  }
 `;
