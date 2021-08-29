@@ -18,7 +18,11 @@
       "Types/*": ["./types/*"],
       "Data/*": ["./data/*"],
       "Images/*": ["./public/images/*"],
-      "Devices": ["./helpers/styles/devices.ts"]
+      "DataHelpers/*": ["./helpers/data/*"],
+      "ContentHelpers/*": ["./helpers/content/*"],
+      "Devices": ["./helpers/devices.ts"],
+      "Constants": ["./helpers/constants.ts"],
+      "SiteName": ["./helpers/metaData/siteName.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.tsx"],
