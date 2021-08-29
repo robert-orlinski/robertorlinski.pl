@@ -9,10 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@mdx-js/loader": "^1.6.22",
-    "@next/mdx": "^11.1.0",
-    "mdx-prism": "^0.3.4",
+    "esbuild": "^0.12.20",
+    "gray-matter": "^4.0.3",
+    "mdx-bundler": "^6.0.1",
     "next": "11.1.0",
+    "prism-react-renderer": "^1.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "remark-code-titles": "^0.1.2",
