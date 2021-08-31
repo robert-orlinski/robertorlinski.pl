@@ -3,10 +3,12 @@ import { MainBanner } from '../../components/MainBanner';
 import { WideWrapper } from '../../components/WideWrapper';
 import { PostsList } from '../../components/PostsList';
 
+import { siteName } from 'SiteName';
+
 import bannerImage from '../../public/images/banners/forest.jpg';
 
 const meta = {
-  title: 'Artykuły | Robert Orliński',
+  title: `Artykuły | ${siteName}`,
   description:
     'Wszystkie artykuły, które do tej pory pojawiły się na blogu. Przeczytasz o front-endzie, WordPressie, trochę przemyśleń i trochę rzeczy związanych z designem oraz pracą jako programista',
 };

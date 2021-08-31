@@ -2,10 +2,12 @@ import { Category } from './data';
 
 export type Post = {
   title: string;
-  slug: string;
+  abstract: string;
+  isPublished: boolean;
+  featuredImage: string;
   category: Category;
-  time: string;
-  thumbnail: StaticImageData;
 };
 
 export type Posts = Array<Post>;
+
+export type Resource = Post;

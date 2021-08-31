@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ListedPostContainer } from '../PostsList/ListedPostContainer';
+import { ListedPostContainer } from '../ListedPostContainer';
 
 export const UnderlinedLink = styled.a`
   position: relative;

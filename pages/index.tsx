@@ -3,12 +3,17 @@ import { SectionTitle } from '../components/SectionTitle';
 import { WideWrapper } from '../components/WideWrapper';
 import { MainBanner } from '../components/MainBanner';
 import { Intro } from '../components/Intro';
-
-import bannerImage from 'Images/banners/me.jpg';
 import { PostsList } from '../components/PostsList';
 
+import { P } from 'components/P';
+import { Link } from 'components/Link';
+
+import { siteName } from 'SiteName';
+
+import bannerImage from 'Images/banners/me.jpg';
+
 const meta = {
-  title: 'Robert Orliński',
+  title: siteName,
   description:
     'W WordPressie widziałem już prawie wszystko, więc teraz skupiam się na front-endzie. Programuję dla siebie oraz klientów, piszę na blogu i nagrywam filmy na YouTubie. Po godzinach działam jako aktywista ✨',
 };

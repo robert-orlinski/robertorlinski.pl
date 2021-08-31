@@ -1,11 +1,9 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { ListedPost } from './ListedPost';
+import { ListedPost } from '../ListedPost';
 
 import { Posts } from 'Types/content';
-
-import bannerImage from 'Images/banners/me.jpg';
 
 export const PostsList: FC<Posts> = () => (
   <List>
@@ -25,53 +23,38 @@ const List = styled.ul`
 
 const dummyPosts: Posts = [
   {
-    title: 'Własne bloki w WordPress Gutenberg #006 – Format API',
-    slug: 'wordpress-gutenberg-006',
-    category: {
-      name: 'Front-end',
-      slug: 'front-end',
-    },
-    time: '7 minut',
-    thumbnail: bannerImage,
+    title: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
+    abstract: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
+    isPublished: true,
+    featuredImage: '/images/banners/me.jpg',
+    category: 'Front-end',
   },
   {
     title: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    slug: 'wordpress-gutenberg-006',
-    category: {
-      name: 'Front-end',
-      slug: 'front-end',
-    },
-    time: '7 minut',
-    thumbnail: bannerImage,
+    abstract: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
+    isPublished: true,
+    featuredImage: '/images/banners/me.jpg',
+    category: 'Front-end',
   },
   {
     title: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    slug: 'wordpress-gutenberg-006',
-    category: {
-      name: 'Front-end',
-      slug: 'front-end',
-    },
-    time: '7 minut',
-    thumbnail: bannerImage,
+    abstract: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
+    isPublished: true,
+    featuredImage: '/images/banners/me.jpg',
+    category: 'Front-end',
   },
   {
     title: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    slug: 'wordpress-gutenberg-006',
-    category: {
-      name: 'Front-end',
-      slug: 'front-end',
-    },
-    time: '7 minut',
-    thumbnail: bannerImage,
+    abstract: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
+    isPublished: true,
+    featuredImage: '/images/banners/me.jpg',
+    category: 'Front-end',
   },
   {
     title: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    slug: 'wordpress-gutenberg-006',
-    category: {
-      name: 'Front-end',
-      slug: 'front-end',
-    },
-    time: '7 minut',
-    thumbnail: bannerImage,
+    abstract: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
+    isPublished: true,
+    featuredImage: '/images/banners/me.jpg',
+    category: 'Front-end',
   },
 ];
