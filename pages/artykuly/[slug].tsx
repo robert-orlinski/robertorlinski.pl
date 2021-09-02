@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { Head } from 'components/Head';
 import { NarrowWrapper } from 'components/NarrowWrapper';
-import { MDX } from 'components/MDX';
+import { MDXArticle } from 'components/MDXArticle';
 
 import { getPostBySlug, getPostsPaths } from 'ContentHelpers/posts';
 import { siteName } from 'SiteName';
@@ -46,7 +46,7 @@ const Post: FC<any> = ({ metaData, content }) => (
     <RawHeader />
     <NarrowWrapper as="main">
       <PostHeader {...metaData} />
-      <MDX source={content} />
+      <MDXArticle source={content} />
     </NarrowWrapper>
   </>
 );
