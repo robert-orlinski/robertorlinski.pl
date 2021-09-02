@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 import { WideWrapper } from '../WideWrapper';
-import { Nav } from '../TopNav';
+import { Nav } from '../Nav';
 import { SectionTitle } from '../SectionTitle';
 
 import { to } from 'Devices';
