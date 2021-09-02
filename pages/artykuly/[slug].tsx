@@ -6,6 +6,7 @@ import { MDX } from 'components/MDX';
 
 import { getPostBySlug, getPostsPaths } from 'ContentHelpers/posts';
 import { siteName } from 'SiteName';
+import { RawHeader } from 'components/RawHeader';
 import { PostHeader } from 'components/PostHeader';
 
 const meta = {
@@ -42,8 +43,9 @@ export const getStaticPaths = async () => {
 const Post: FC<any> = ({ metaData, content }) => (
   <>
     <Head {...meta} />
-    <PostHeader {...metaData} />
+    <RawHeader />
     <NarrowWrapper as="main">
+      <PostHeader {...metaData} />
       <MDX source={content} />
     </NarrowWrapper>
   </>
