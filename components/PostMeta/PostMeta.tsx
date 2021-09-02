@@ -26,13 +26,11 @@ export const PostMeta: FC<Props> = ({ category, time, date }) => {
   );
 };
 
-const Meta = styled.p`
-  display: flex;
+const Meta = styled.span`
+  display: inline-flex;
   align-items: center;
 
   margin: 0.27rem 0 0.2rem;
-
-  font-size: 0.88rem;
 `;
 
 const Category = styled(ElementWithOpacity)`

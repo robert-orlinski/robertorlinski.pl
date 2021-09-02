@@ -16,7 +16,9 @@ export const ListedPost: FC<Post> = ({ title, category, featuredImage }) => (
     <ThumbnailContainer>
       <Thumbnail as={Image} src={featuredImage} alt="" layout="fill" />
     </ThumbnailContainer>
-    <PostMeta {...{ category, time: '7 minut' }} />
+    <MetaContainer>
+      <PostMeta {...{ category, time: '7 minut' }} />
+    </MetaContainer>
     <Title>
       <Link href="#">{title}</Link>
     </Title>
@@ -40,6 +42,10 @@ const Thumbnail = styled(Overlay)`
   ${ListedPostContainer}:hover & {
     transform: scale(1.05);
   }
+`;
+
+const MetaContainer = styled.p`
+  font-size: 0.88rem;
 `;
 
 const Title = styled.h2`

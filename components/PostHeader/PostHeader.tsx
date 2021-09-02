@@ -12,17 +12,28 @@ export const PostHeader: FC<Props> = ({ title, category, date, featuredImage, sl
   const featureImagePath = `/images/posts/${slug}${featuredImage}`;
 
   return (
-    <header>
+    <Container>
       <Title>{title}</Title>
-      <PostMeta {...{ category, date }} />
+      <MetaContainer>
+        <PostMeta {...{ category, date }} />
+      </MetaContainer>
       <Image src={featureImagePath} alt="" width="850" height="500" />
-    </header>
+    </Container>
   );
 };
+
+const Container = styled.header`
+  padding: 6.2rem 0 3rem;
+`;
 
 const Title = styled.h1`
   margin-bottom: 0.33rem;
   padding: 0 4rem;
 
+  text-align: center;
+`;
+
+const MetaContainer = styled.p`
+  padding: 0.6rem 0 2.5rem;
   text-align: center;
 `;
