@@ -4,27 +4,21 @@ import Image from 'next/image';
 
 import { PostMeta } from 'components/PostMeta';
 
-import { to } from 'Devices';
+import { Post } from 'Types/content';
 
-import { Category } from 'Types/data';
+type Props = Post & { slug: string };
 
-type Props = {
-  title: string;
-  category: Category;
-  date: string;
-  image: {
-    src: StaticImageData;
-    alt: string;
-  };
+export const PostHeader: FC<Props> = ({ title, category, date, featuredImage, slug }) => {
+  const featureImagePath = `/images/posts/${slug}${featuredImage}`;
+
+  return (
+    <header>
+      <Title>{title}</Title>
+      <PostMeta {...{ category, date }} />
+      <Image src={featureImagePath} alt="" width="850" height="500" />
+    </header>
+  );
 };
-
-export const PostHeader: FC<Props> = ({ title, category, date, image }) => (
-  <header>
-    <Title>{title}</Title>
-    <PostMeta {...{ category, date }} />
-    <Image {...image} />
-  </header>
-);
 
 const Title = styled.h1`
   margin-bottom: 0.33rem;

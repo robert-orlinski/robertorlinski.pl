@@ -1,17 +1,14 @@
 import fs from 'fs';
 import path from 'path';
 
-import { DATE_PATTERN } from 'Constants';
 import { prepareMDX } from './mdx';
 
 const { readFile, readdir } = fs.promises;
 
-export const getResourcePaths = async (searchedPath: string) => {
-  const resources = await readdir(searchedPath);
+export const getResourcePaths = async (searchedDirectory: string) => {
+  const resources = await readdir(searchedDirectory);
 
-  const resourcePaths = resources
-    .map((path) => path.replace(DATE_PATTERN, ''))
-    .map((slug) => ({ params: { slug } }));
+  const resourcePaths = resources.map((slug) => ({ params: { slug } }));
 
   return resourcePaths;
 };
@@ -23,14 +20,17 @@ const getResourceSourceBySlug = async (resourcePath: string) => {
   return resourceSource;
 };
 
-export const getResourceBySlug = async (resourcesPath: string, resourceSlug: string) => {
-  const resourceDirectory = path.join(resourcesPath, resourceSlug);
-  const resourceFile = path.join(resourceDirectory, 'index.mdx');
+export const getResourceBySlug = async (resourcesDirectory: string, resourceSlug: string) => {
+  const resourcePath = path.join(resourcesDirectory, resourceSlug);
+  const resourceMainFile = path.join(resourcePath, 'index.mdx');
 
-  const source = await getResourceSourceBySlug(resourceFile);
+  const source = await getResourceSourceBySlug(resourceMainFile);
+
+  const imagesDirectory = `/images/posts/${resourceSlug}/`;
 
   const { content, metaData } = await prepareMDX(source, {
-    resourceDirectory,
+    resourcePath,
+    imagesDirectory,
   });
 
   return {

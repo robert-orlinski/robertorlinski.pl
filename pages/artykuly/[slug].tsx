@@ -6,6 +6,7 @@ import { MDX } from 'components/MDX';
 
 import { getPostBySlug, getPostsPaths } from 'ContentHelpers/posts';
 import { siteName } from 'SiteName';
+import { PostHeader } from 'components/PostHeader';
 
 const meta = {
   title: `Test | ${siteName}`,
@@ -20,7 +21,10 @@ export const getStaticProps = async ({ params: { slug } }: Props) => {
 
   return {
     props: {
-      metaData,
+      metaData: {
+        ...metaData,
+        slug,
+      },
       content,
     },
   };
@@ -38,6 +42,7 @@ export const getStaticPaths = async () => {
 const Post: FC<any> = ({ metaData, content }) => (
   <>
     <Head {...meta} />
+    <PostHeader {...metaData} />
     <NarrowWrapper as="main">
       <MDX source={content} />
     </NarrowWrapper>

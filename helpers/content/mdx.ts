@@ -6,7 +6,8 @@ import { remarkMdxImages } from 'remark-mdx-images';
 export const prepareMDX = async (
   source: string,
   options: {
-    resourceDirectory: string;
+    resourcePath: string;
+    imagesDirectory: string;
   },
 ) => {
   if (process.platform === 'win32') {
@@ -26,24 +27,24 @@ export const prepareMDX = async (
     );
   }
 
-  const { resourceDirectory } = options;
+  const { resourcePath, imagesDirectory } = options;
 
   const { code, frontmatter } = await bundleMDX(source, {
-    cwd: resourceDirectory,
+    cwd: resourcePath,
     xdmOptions: (options) => ({
       ...options,
       remarkPlugins: [...(options.remarkPlugins ?? []), remarkMdxImages],
     }),
     esbuildOptions: (options) => ({
       ...options,
-      outdir: path.join(process.cwd(), 'public', resourceDirectory),
+      outdir: path.join(process.cwd(), 'public', imagesDirectory),
       loader: {
         ...options.loader,
         '.png': 'file',
         '.jpg': 'file',
         '.gif': 'file',
       },
-      publicPath: resourceDirectory,
+      publicPath: imagesDirectory,
       write: true,
     }),
   });
