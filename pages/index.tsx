@@ -5,9 +5,6 @@ import { MainBanner } from '../components/MainBanner';
 import { Intro } from '../components/Intro';
 import { PostsList } from '../components/PostsList';
 
-import { P } from 'components/P';
-import { Link } from 'components/Link';
-
 import { siteName } from 'SiteName';
 
 import bannerImage from 'Images/banners/me.jpg';
