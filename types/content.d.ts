@@ -5,6 +5,7 @@ export type Post = {
   abstract: string;
   isPublished: boolean;
   featuredImage: string;
+  date: string;
   category: Category;
 };
 
