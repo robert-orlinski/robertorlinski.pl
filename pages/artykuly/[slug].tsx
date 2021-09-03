@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import styled from 'styled-components';
 
 import { Head } from 'components/Head';
 import { NarrowWrapper } from 'components/NarrowWrapper';
@@ -46,9 +47,15 @@ const Post: FC<any> = ({ metaData, content }) => (
     <RawHeader />
     <NarrowWrapper as="main">
       <PostHeader {...metaData} />
-      <MDXArticle source={content} />
+      <ArticleInner>
+        <MDXArticle source={content} />
+      </ArticleInner>
     </NarrowWrapper>
   </>
 );
+
+const ArticleInner = styled.article`
+  padding: 0 55px;
+`;
 
 export default Post;

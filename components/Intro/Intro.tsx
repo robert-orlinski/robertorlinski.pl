@@ -22,6 +22,8 @@ export const Intro = () => (
 );
 
 const Content = styled(NarrowWrapper)`
+  --width: 740px;
+
   padding-bottom: 4rem;
   text-align: center;
   font-size: 1.1rem;

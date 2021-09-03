@@ -13,13 +13,7 @@ export const TextWithLinks: FC<Props> = ({ text }) => (
   <P>
     {text.map(({ type, text, href }, i) => (
       <Fragment key={`text-element-${i}`}>
-        {type === 'text' ? (
-          text
-        ) : (
-          <Link href={href} withUnderlineVisible>
-            {text}
-          </Link>
-        )}
+        {type === 'text' ? text : <Link href={href}>{text}</Link>}
       </Fragment>
     ))}
   </P>

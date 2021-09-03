@@ -20,7 +20,9 @@ export const ListedPost: FC<Post> = ({ title, category, featuredImage }) => (
       <PostMeta {...{ category, time: '7 minut' }} />
     </MetaContainer>
     <Title>
-      <Link href="#">{title}</Link>
+      <Link href="#" withUnderlineInvisible>
+        {title}
+      </Link>
     </Title>
   </ListedPostContainer>
 );

@@ -10,7 +10,7 @@ export type CatalogedLinksArray = Array<CatalogedLink>;
 
 export type Link = {
   children: string;
-  withUnderlineVisible?: boolean;
+  withUnderlineInvisible?: boolean;
 } & LinkContainer;
 
 export type ClickableElement = {
