@@ -18,7 +18,7 @@ const Home = () => (
   <>
     <Head {...meta} />
     <MainBanner
-      title="Cześć, jestem Robert"
+      title="Cześć, jestem Robert!"
       image={{
         src: bannerImage,
         alt: 'Robert zamierzający uderzyć ogromny, pluszowy przycisk "enter", który jednocześnie można podłączyć na USB i tym samym zatwierdzać rzeczy z potężnym impetem.',

@@ -2,11 +2,11 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-import { WideWrapper } from '../WideWrapper';
+import { Wrapper } from '../Wrapper';
 import { Nav } from '../Nav';
 import { SectionTitle } from '../SectionTitle';
 
-import { to } from 'Devices';
+import { from, to } from 'Devices';
 
 type Props = {
   title: string;
@@ -28,7 +28,7 @@ export const MainBanner: FC<Props> = ({ title, image }) => (
   </header>
 );
 
-const Banner = styled(WideWrapper)`
+const Banner = styled(Wrapper)`
   display: flex;
   justify-content: flex-end;
 
@@ -36,26 +36,36 @@ const Banner = styled(WideWrapper)`
 
   margin-bottom: 4rem;
 
-  @media ${to.tabletL} {
+  @media ${to.phoneL} {
     flex-direction: column-reverse;
   }
 `;
 
 const MainTitle = styled(SectionTitle)`
-  position: absolute;
-  z-index: 9;
-  left: 0;
-  bottom: 1rem;
+  padding: 0.8rem 0 0.5rem 0;
 
-  padding: 0.5rem 2rem 0.5rem 0;
+  @media ${from.phoneL} {
+    position: absolute;
+    z-index: 9;
+    left: 0;
+    bottom: 1rem;
 
-  white-space: pre;
+    padding: 0.5rem 2rem 0.5rem 0;
 
-  background-color: #fff;
+    white-space: pre;
+
+    background-color: #fff;
+  }
 `;
 
 const ImageContainer = styled.figure`
-  width: 65%;
+  @media ${from.phoneL} {
+    width: 88%;
+  }
+
+  @media ${from.tabletL} {
+    width: 65%;
+  }
 `;
 
 const StyledImage = styled(Image)`
