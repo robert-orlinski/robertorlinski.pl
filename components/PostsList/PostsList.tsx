@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import { ListedPost } from '../ListedPost';
 
+import { from } from 'Devices';
+
 import { Posts } from 'Types/content';
 
 export const PostsList: FC<Posts> = () => (
@@ -17,8 +19,15 @@ export const PostsList: FC<Posts> = () => (
 
 const List = styled.ul`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 3.2rem 1.8rem;
+  gap: calc(var(--section-space) * 0.8) calc(var(--section-space) * 0.45);
+
+  @media ${from.phoneL} {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media ${from.tabletL} {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `;
 
 const dummyPosts: Posts = [

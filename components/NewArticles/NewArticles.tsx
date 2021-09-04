@@ -17,5 +17,5 @@ export const NewArticles = () => (
 );
 
 const MoreButtonContainer = styled(ButtonContainer)`
-  padding-top: 2.5rem;
+  padding-top: calc(var(--section-space) * 0.7);
 `;

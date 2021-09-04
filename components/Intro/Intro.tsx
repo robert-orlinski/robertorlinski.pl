@@ -8,6 +8,8 @@ import { P } from '../P';
 
 import { mySummary } from 'Data/mySummary';
 
+import { from } from 'Devices';
+
 export const Intro = () => (
   <Content size="small">
     <P>
@@ -23,7 +25,10 @@ export const Intro = () => (
 );
 
 const Content = styled(Wrapper)`
-  padding-bottom: 4rem;
-  text-align: center;
+  padding-bottom: var(--section-space);
   font-size: 1.1rem;
+
+  @media ${from.phoneL} {
+    text-align: center;
+  }
 `;

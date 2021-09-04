@@ -34,21 +34,24 @@ const Banner = styled(Wrapper)`
 
   position: relative;
 
-  margin-bottom: 4rem;
+  margin-bottom: var(--section-space);
 
   @media ${to.phoneL} {
     flex-direction: column-reverse;
+
+    margin-bottom: calc(var(--section-space) * 0.5);
   }
 `;
 
 const MainTitle = styled(SectionTitle)`
-  padding: 0.8rem 0 0.5rem 0;
+  padding: 0.8rem 0 0 0;
+  margin: 0;
 
   @media ${from.phoneL} {
     position: absolute;
-    z-index: 9;
+    z-index: var(--min-z-index);
     left: 0;
-    bottom: 1rem;
+    bottom: max(2.5rem, 1.2em);
 
     padding: 0.5rem 2rem 0.5rem 0;
 

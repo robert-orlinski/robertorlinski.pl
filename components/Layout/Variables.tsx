@@ -12,6 +12,8 @@ export const Variables = createGlobalStyle`
 
     --nav-height: 5.2rem;
 
+    --section-space: 3.8rem;
+
     --short-transition-duration: 250ms;
     --medium-transition-duration: 500ms;
     --long-transition-duration: 750ms;
@@ -23,6 +25,7 @@ export const Variables = createGlobalStyle`
 
     @media ${to.tabletL} {
       --nav-height: 4.6rem;
+      --section-space: 2.5rem;
     }
   }
 `;
