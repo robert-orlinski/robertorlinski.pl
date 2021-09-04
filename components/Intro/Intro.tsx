@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
+import { Wrapper } from '../Wrapper';
 import { ButtonContainer } from '../ButtonContainer';
-import { NarrowWrapper } from '../NarrowWrapper';
 import { TextWithLinks } from '../TextWithLinks';
 import { Button } from '../Button';
 import { P } from '../P';
@@ -9,7 +9,7 @@ import { P } from '../P';
 import { mySummary } from 'Data/mySummary';
 
 export const Intro = () => (
-  <Content>
+  <Content size="small">
     <P>
       Przez parę ostatnich lat pracowałem z WordPressem, aż do momentu, w którym okazało się, że
       niewiele może mnie w nim już zaskoczyć - dlatego niedawno przerzuciłem się w pełni na
@@ -22,9 +22,7 @@ export const Intro = () => (
   </Content>
 );
 
-const Content = styled(NarrowWrapper)`
-  --width: 740px;
-
+const Content = styled(Wrapper)`
   padding-bottom: 4rem;
   text-align: center;
   font-size: 1.1rem;

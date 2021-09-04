@@ -1,6 +1,6 @@
 import { Head } from 'Components/Head';
 import { MainBanner } from 'Components/MainBanner';
-import { WideWrapper } from 'Components/WideWrapper';
+import { Wrapper } from 'Components/Wrapper';
 import { PostsList } from 'Components/PostsList';
 
 import { siteName } from 'SiteName';
@@ -23,9 +23,9 @@ const Blog = () => (
         alt: 'Robert zamierzający uderzyć ogromny, pluszowy przycisk "enter", który jednocześnie można podłączyć na USB i tym samym zatwierdzać rzeczy z potężnym impetem.',
       }}
     />
-    <WideWrapper as="main">
+    <Wrapper as="main">
       <PostsList />
-    </WideWrapper>
+    </Wrapper>
   </>
 );
 

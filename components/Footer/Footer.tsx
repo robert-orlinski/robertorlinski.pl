@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-import { WrapperBase } from '../WrapperBase';
-import { WideWrapper } from '../WideWrapper';
+import { Wrapper } from '../Wrapper';
 import { FooterMenu } from './Menu';
 import { Brand } from '../Brand';
 import { TextWithLinks } from '../TextWithLinks';
@@ -29,7 +28,7 @@ export const Footer = () => {
   );
 };
 
-const FooterWrapper = styled(WideWrapper)`
+const FooterWrapper = styled(Wrapper)`
   padding: 3.8rem 0;
 
   @media ${to.tablet} {
@@ -54,13 +53,13 @@ const Top = styled.section`
   }
 `;
 
-const Bottom = styled(WrapperBase)`
-  max-width: 460px;
+const Bottom = styled(Wrapper)`
+  --width: 460px;
 
   font-size: 0.9rem;
   text-align: center;
 
   @media ${to.tablet} {
-    max-width: 400px;
+    --width: 400px;
   }
 `;

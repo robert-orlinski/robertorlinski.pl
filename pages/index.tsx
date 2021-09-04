@@ -1,4 +1,4 @@
-import { WideWrapper } from 'Components/WideWrapper';
+import { Wrapper } from 'Components/Wrapper';
 import { MainBanner } from 'Components/MainBanner';
 import { Intro } from 'Components/Intro';
 import { Head } from 'Components/Head';
@@ -24,10 +24,10 @@ const Home = () => (
         alt: 'Robert zamierzający uderzyć ogromny, pluszowy przycisk "enter", który jednocześnie można podłączyć na USB i tym samym zatwierdzać rzeczy z potężnym impetem.',
       }}
     />
-    <WideWrapper as="main">
+    <Wrapper as="main">
       <Intro />
       <NewArticles />
-    </WideWrapper>
+    </Wrapper>
   </>
 );
 

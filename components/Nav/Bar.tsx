@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { WideWrapper } from '../WideWrapper';
+import { Wrapper } from '../Wrapper';
 
 export const NavBar: FC = ({ children }) => (
   <Outer>
@@ -22,7 +22,7 @@ const Outer = styled.nav`
   transition: height 300ms ease, box-shadow 300ms ease;
 `;
 
-const Inner = styled(WideWrapper)`
+const Inner = styled(Wrapper)`
   display: flex;
   align-items: center;
   justify-content: space-between;

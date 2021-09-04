@@ -1,1 +1,0 @@
-export { WideWrapper } from './WideWrapper';
