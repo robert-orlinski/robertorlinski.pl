@@ -30,7 +30,7 @@ const Meta = styled.span`
   display: inline-flex;
   align-items: center;
 
-  margin: 0.27rem 0 0.2rem;
+  margin: 0.5rem 0 0.35rem;
 `;
 
 const Category = styled(ElementWithOpacity)`

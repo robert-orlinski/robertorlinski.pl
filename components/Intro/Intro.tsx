@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
+import { ButtonContainer } from '../ButtonContainer';
 import { NarrowWrapper } from '../NarrowWrapper';
-import { P } from '../P';
-import { Button } from '../Button';
 import { TextWithLinks } from '../TextWithLinks';
+import { Button } from '../Button';
+import { P } from '../P';
 
 import { mySummary } from 'Data/mySummary';
 
@@ -27,8 +28,4 @@ const Content = styled(NarrowWrapper)`
   padding-bottom: 4rem;
   text-align: center;
   font-size: 1.1rem;
-`;
-
-const ButtonContainer = styled.footer`
-  margin-top: 0.8rem;
 `;

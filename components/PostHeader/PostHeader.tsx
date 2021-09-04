@@ -34,6 +34,6 @@ const Title = styled.h1`
 `;
 
 const MetaContainer = styled.p`
-  padding: 0.6rem 0 2.5rem;
+  padding: 0.3rem 0 2.2rem;
   text-align: center;
 `;

@@ -2,6 +2,7 @@ import { WideWrapper } from 'Components/WideWrapper';
 import { MainBanner } from 'Components/MainBanner';
 import { Intro } from 'Components/Intro';
 import { Head } from 'Components/Head';
+import { NewArticles } from 'Components/NewArticles';
 
 import { siteName } from 'SiteName';
 
@@ -25,6 +26,7 @@ const Home = () => (
     />
     <WideWrapper as="main">
       <Intro />
+      <NewArticles />
     </WideWrapper>
   </>
 );
