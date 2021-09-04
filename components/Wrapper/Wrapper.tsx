@@ -45,6 +45,6 @@ export const Wrapper = styled.section<Props>`
   }
 
   @media ${to.phoneL} {
-    width: calc(100% - 60px);
+    width: calc(100vw - 60px);
   }
 `;
