@@ -3,6 +3,7 @@ const path = require('path');
 module.exports = {
   resolve: {
     alias: {
+      Components: path.resolve(__dirname, 'components/'),
       Types: path.resolve(__dirname, 'types/'),
       Data: path.resolve(__dirname, 'data/'),
       Images: path.resolve(__dirname, 'public/images/'),

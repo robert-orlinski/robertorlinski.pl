@@ -1,7 +1,7 @@
-import { Head } from '../../components/Head';
-import { MainBanner } from '../../components/MainBanner';
-import { WideWrapper } from '../../components/WideWrapper';
-import { PostsList } from '../../components/PostsList';
+import { Head } from 'Components/Head';
+import { MainBanner } from 'Components/MainBanner';
+import { WideWrapper } from 'Components/WideWrapper';
+import { PostsList } from 'Components/PostsList';
 
 import { siteName } from 'SiteName';
 

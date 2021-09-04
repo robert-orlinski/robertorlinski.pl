@@ -15,6 +15,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
+      "Components/*": ["./components/*"],
       "Types/*": ["./types/*"],
       "Data/*": ["./data/*"],
       "Images/*": ["./public/images/*"],

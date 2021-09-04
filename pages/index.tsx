@@ -1,9 +1,7 @@
-import { Head } from '../components/Head';
-import { SectionTitle } from '../components/SectionTitle';
-import { WideWrapper } from '../components/WideWrapper';
-import { MainBanner } from '../components/MainBanner';
-import { Intro } from '../components/Intro';
-import { PostsList } from '../components/PostsList';
+import { WideWrapper } from 'Components/WideWrapper';
+import { MainBanner } from 'Components/MainBanner';
+import { Intro } from 'Components/Intro';
+import { Head } from 'Components/Head';
 
 import { siteName } from 'SiteName';
 
@@ -27,10 +25,6 @@ const Home = () => (
     />
     <WideWrapper as="main">
       <Intro />
-      <section>
-        <SectionTitle>Najnowsze artykuły</SectionTitle>
-        <PostsList />
-      </section>
     </WideWrapper>
   </>
 );

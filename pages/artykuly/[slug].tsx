@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { Head } from 'components/Head';
-import { NarrowWrapper } from 'components/NarrowWrapper';
-import { MDXArticle } from 'components/MDXArticle';
+import { Head } from 'Components/Head';
+import { NarrowWrapper } from 'Components/NarrowWrapper';
+import { MDXArticle } from 'Components/MDXArticle';
 
 import { getPostBySlug, getPostsPaths } from 'ContentHelpers/posts';
 import { siteName } from 'SiteName';
-import { RawHeader } from 'components/RawHeader';
-import { PostHeader } from 'components/PostHeader';
+import { RawHeader } from 'Components/RawHeader';
+import { PostHeader } from 'Components/PostHeader';
 
 const meta = {
   title: `Test | ${siteName}`,
