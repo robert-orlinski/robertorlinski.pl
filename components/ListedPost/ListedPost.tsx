@@ -12,7 +12,7 @@ import { getPostFeaturedImage, getPostLink } from 'Helpers/components/posts';
 
 import { Post } from 'Types/content';
 
-export const ListedPost: FC<Post> = ({ title, category, slug }) => {
+export const ListedPost: FC<Post> = ({ title, category, slug, readingTime }) => {
   const featuredImage = getPostFeaturedImage(slug);
   const link = getPostLink(slug);
 
@@ -23,7 +23,7 @@ export const ListedPost: FC<Post> = ({ title, category, slug }) => {
         <Thumbnail as={Image} src={featuredImage} alt="" layout="fill" />
       </ThumbnailContainer>
       <MetaContainer>
-        <PostMeta {...{ category, time: '7 minut' }} />
+        <PostMeta {...{ category, readingTime }} />
       </MetaContainer>
       <Title>
         <Link href={link} withUnderlineInvisible>

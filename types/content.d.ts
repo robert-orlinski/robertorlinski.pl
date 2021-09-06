@@ -2,6 +2,7 @@ import { Category } from './data';
 
 export type Post = {
   slug: string;
+  readingTime: string;
   title: string;
   abstract: string;
   isPublished: boolean;

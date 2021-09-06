@@ -1,5 +1,8 @@
 import fs from 'fs';
 import path from 'path';
+import readingTime from 'reading-time';
+
+import { polishPlurals } from 'polish-plurals';
 
 import { prepareMDX } from './mdx';
 
@@ -13,11 +16,18 @@ export const getResourcePaths = async (resourcesDirectory: string) => {
   return resourcePaths;
 };
 
-const getResourceSourceBySlug = async (resourcePath: string) => {
-  const resourceSourceBuffer = await readFile(resourcePath);
-  const resourceSource = resourceSourceBuffer.toString();
+export const getAllResources = async (resourcesDirectory: string) => {
+  const resourceSlugs = await readdir(resourcesDirectory);
 
-  return resourceSource;
+  const allResourcesToResolve = resourceSlugs.map(async (resourceSlug: string) => {
+    const { metaData } = await getResourceBySlug(resourcesDirectory, resourceSlug);
+
+    return metaData;
+  });
+
+  const allResources = await Promise.all(allResourcesToResolve);
+
+  return allResources;
 };
 
 export const getResourceBySlug = async (resourcesDirectory: string, resourceSlug: string) => {
@@ -33,25 +43,36 @@ export const getResourceBySlug = async (resourcesDirectory: string, resourceSlug
     imagesDirectory,
   });
 
+  const readingTime = getResourceReadingTime(content);
+
   return {
     content,
     metaData: {
       slug: resourceSlug,
+      readingTime,
       ...metaData,
     },
   };
 };
 
-export const getAllResources = async (resourcesDirectory: string) => {
-  const resourceSlugs = await readdir(resourcesDirectory);
+const getResourceSourceBySlug = async (resourcePath: string) => {
+  const resourceSourceBuffer = await readFile(resourcePath);
+  const resourceSource = resourceSourceBuffer.toString();
 
-  const allResourcesToResolve = resourceSlugs.map(async (resourceSlug: string) => {
-    const { metaData } = await getResourceBySlug(resourcesDirectory, resourceSlug);
+  return resourceSource;
+};
 
-    return metaData;
-  });
+const getResourceReadingTime = (content: string) => {
+  const contentReadingTime = readingTime(content).minutes;
+  const roundedReadingTime = Math.round(contentReadingTime);
+  const readingTimePlural = polishPlurals(
+    'minuta czytania',
+    'minuty czytania',
+    'minut czytania',
+    roundedReadingTime,
+  );
 
-  const allResources = await Promise.all(allResourcesToResolve);
+  const formattedReadingTime = `${roundedReadingTime} ${readingTimePlural}`;
 
-  return allResources;
+  return formattedReadingTime;
 };

@@ -10,18 +10,18 @@ import { Category as CategoryType } from 'Types/data';
 
 type Props = {
   category: CategoryType;
-  time?: string;
+  readingTime?: string;
   date?: string;
 };
 
-export const PostMeta: FC<Props> = ({ category, time, date }) => {
+export const PostMeta: FC<Props> = ({ category, readingTime, date }) => {
   const categoryLink = getCategoryLink(category);
 
   return (
     <Meta>
       <Category href={categoryLink}>{category}</Category>
       <Separator />
-      <span>{time || date}</span>
+      <span>{readingTime || date}</span>
     </Meta>
   );
 };
