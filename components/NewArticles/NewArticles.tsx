@@ -19,5 +19,5 @@ export const NewArticles: FC<PostsContainer> = ({ posts }) => (
 );
 
 const MoreButtonContainer = styled(ButtonContainer)`
-  padding-top: calc(var(--section-space) * 0.7);
+  padding-top: calc(var(--section-space) * 0.5);
 `;
