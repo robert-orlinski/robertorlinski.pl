@@ -1,3 +1,6 @@
+import { FC } from 'react';
+import { GetStaticProps } from 'next';
+
 import { Wrapper } from 'Components/Wrapper';
 import { MainBanner } from 'Components/MainBanner';
 import { Intro } from 'Components/Intro';
@@ -5,6 +8,9 @@ import { Head } from 'Components/Head';
 import { NewArticles } from 'Components/NewArticles';
 
 import { siteName } from 'SiteName';
+import { getAllPosts } from 'Helpers/content/posts';
+
+import { PostsContainer } from 'Types/content';
 
 import bannerImage from 'Images/banners/me.jpg';
 
@@ -14,7 +20,7 @@ const meta = {
     'W WordPressie widziałem już prawie wszystko, więc teraz skupiam się na front-endzie. Programuję dla siebie oraz klientów, piszę na blogu i nagrywam filmy na YouTubie. Po godzinach działam jako aktywista ✨',
 };
 
-const Home = () => (
+const Home: FC<PostsContainer> = ({ posts }) => (
   <>
     <Head {...meta} />
     <MainBanner
@@ -26,9 +32,17 @@ const Home = () => (
     />
     <Wrapper as="main">
       <Intro />
-      <NewArticles />
+      <NewArticles {...{ posts }} />
     </Wrapper>
   </>
 );
+
+export const getStaticProps: GetStaticProps = async () => {
+  const posts = await getAllPosts();
+
+  return {
+    props: { posts },
+  };
+};
 
 export default Home;

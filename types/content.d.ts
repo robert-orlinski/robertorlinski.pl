@@ -1,6 +1,7 @@
 import { Category } from './data';
 
 export type Post = {
+  slug: string;
   title: string;
   abstract: string;
   isPublished: boolean;
@@ -11,4 +12,11 @@ export type Post = {
 
 export type Posts = Array<Post>;
 
-export type Resource = Post;
+export type PostsContainer = {
+  posts: Posts;
+};
+
+export type PostWithContent = {
+  metaData: Post;
+  content: string;
+};

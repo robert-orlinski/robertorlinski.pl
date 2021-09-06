@@ -5,8 +5,8 @@ import { prepareMDX } from './mdx';
 
 const { readFile, readdir } = fs.promises;
 
-export const getResourcePaths = async (searchedDirectory: string) => {
-  const resources = await readdir(searchedDirectory);
+export const getResourcePaths = async (resourcesDirectory: string) => {
+  const resources = await readdir(resourcesDirectory);
 
   const resourcePaths = resources.map((slug) => ({ params: { slug } }));
 
@@ -35,6 +35,23 @@ export const getResourceBySlug = async (resourcesDirectory: string, resourceSlug
 
   return {
     content,
-    metaData,
+    metaData: {
+      slug: resourceSlug,
+      ...metaData,
+    },
   };
+};
+
+export const getAllResources = async (resourcesDirectory: string) => {
+  const resourceSlugs = await readdir(resourcesDirectory);
+
+  const allResourcesToResolve = resourceSlugs.map(async (resourceSlug: string) => {
+    const { metaData } = await getResourceBySlug(resourcesDirectory, resourceSlug);
+
+    return metaData;
+  });
+
+  const allResources = await Promise.all(allResourcesToResolve);
+
+  return allResources;
 };

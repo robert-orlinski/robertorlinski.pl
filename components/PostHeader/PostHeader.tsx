@@ -2,14 +2,14 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-import { PostMeta } from 'components/PostMeta';
+import { PostMeta } from '../PostMeta';
+
+import { getPostFeaturedImage } from 'Helpers/components/posts';
 
 import { Post } from 'Types/content';
 
-type Props = Post & { slug: string };
-
-export const PostHeader: FC<Props> = ({ title, category, date, featuredImage, slug }) => {
-  const featureImagePath = `/images/posts/${slug}${featuredImage}`;
+export const PostHeader: FC<Post> = ({ title, category, date, slug }) => {
+  const featuredImage = getPostFeaturedImage(slug);
 
   return (
     <Container>
@@ -17,7 +17,7 @@ export const PostHeader: FC<Props> = ({ title, category, date, featuredImage, sl
       <MetaContainer>
         <PostMeta {...{ category, date }} />
       </MetaContainer>
-      <Image src={featureImagePath} alt="" width="850" height="500" />
+      <Image src={featuredImage} alt="" width="850" height="500" />
     </Container>
   );
 };

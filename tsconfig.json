@@ -20,7 +20,7 @@
       "Data/*": ["./data/*"],
       "Images/*": ["./public/images/*"],
       "DataHelpers/*": ["./helpers/data/*"],
-      "ContentHelpers/*": ["./helpers/content/*"],
+      "Helpers/*": ["./helpers/*"],
       "Devices": ["./helpers/devices.ts"],
       "Constants": ["./helpers/constants.ts"],
       "SiteName": ["./helpers/metaData/siteName.ts"]

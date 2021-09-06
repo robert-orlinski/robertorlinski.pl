@@ -8,24 +8,31 @@ import { ListedPostContainer } from '../ListedPostContainer';
 import { Link } from '../Link';
 import { PostMeta } from '../PostMeta';
 
+import { getPostFeaturedImage, getPostLink } from 'Helpers/components/posts';
+
 import { Post } from 'Types/content';
 
-export const ListedPost: FC<Post> = ({ title, category, featuredImage }) => (
-  <ListedPostContainer>
-    <CoveringLink href={`/artykuly/#`} zIndex="med" />
-    <ThumbnailContainer>
-      <Thumbnail as={Image} src={featuredImage} alt="" layout="fill" />
-    </ThumbnailContainer>
-    <MetaContainer>
-      <PostMeta {...{ category, time: '7 minut' }} />
-    </MetaContainer>
-    <Title>
-      <Link href="#" withUnderlineInvisible>
-        {title}
-      </Link>
-    </Title>
-  </ListedPostContainer>
-);
+export const ListedPost: FC<Post> = ({ title, category, slug }) => {
+  const featuredImage = getPostFeaturedImage(slug);
+  const link = getPostLink(slug);
+
+  return (
+    <ListedPostContainer>
+      <CoveringLink href={link} zIndex="med" />
+      <ThumbnailContainer>
+        <Thumbnail as={Image} src={featuredImage} alt="" layout="fill" />
+      </ThumbnailContainer>
+      <MetaContainer>
+        <PostMeta {...{ category, time: '7 minut' }} />
+      </MetaContainer>
+      <Title>
+        <Link href={link} withUnderlineInvisible>
+          {title}
+        </Link>
+      </Title>
+    </ListedPostContainer>
+  );
+};
 
 const ThumbnailContainer = styled.figure`
   overflow: hidden;
@@ -51,5 +58,5 @@ const MetaContainer = styled.p`
 `;
 
 const Title = styled.h2`
-  font-size: 1rem;
+  font-size: 1.1rem;
 `;

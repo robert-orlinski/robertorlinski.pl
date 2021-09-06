@@ -8,7 +8,7 @@ module.exports = {
       Data: path.resolve(__dirname, 'data/'),
       Images: path.resolve(__dirname, 'public/images/'),
       DataHelpers: path.resolve(__dirname, 'helpers/data/'),
-      ContentHelpers: path.resolve(__dirname, 'helpers/content/'),
+      Helpers: path.resolve(__dirname, 'helpers/'),
       Devices$: path.resolve(__dirname, 'helpers/devices.ts'),
       Constants$: path.resolve(__dirname, 'helpers/constants.ts'),
       SiteName$: path.resolve(__dirname, 'helpers/metaData/siteName.ts'),

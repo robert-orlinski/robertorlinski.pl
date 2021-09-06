@@ -5,14 +5,14 @@ import { ListedPost } from '../ListedPost';
 
 import { from } from 'Devices';
 
-import { Posts } from 'Types/content';
+import { PostsContainer } from 'Types/content';
 
-export const PostsList: FC<Posts> = () => (
+export const PostsList: FC<PostsContainer> = ({ posts }) => (
   <List>
-    {dummyPosts.map((post) => {
-      const { title } = post;
+    {posts.map((post) => {
+      const { slug } = post;
 
-      return <ListedPost key={title} {...post} />;
+      return <ListedPost key={slug} {...post} />;
     })}
   </List>
 );
@@ -29,41 +29,3 @@ const List = styled.ul`
     grid-template-columns: 1fr 1fr 1fr;
   }
 `;
-
-const dummyPosts: Posts = [
-  {
-    title: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    abstract: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    isPublished: true,
-    featuredImage: '/images/banners/me.jpg',
-    category: 'Front-end',
-  },
-  {
-    title: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    abstract: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    isPublished: true,
-    featuredImage: '/images/banners/me.jpg',
-    category: 'Front-end',
-  },
-  {
-    title: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    abstract: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    isPublished: true,
-    featuredImage: '/images/banners/me.jpg',
-    category: 'Front-end',
-  },
-  {
-    title: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    abstract: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    isPublished: true,
-    featuredImage: '/images/banners/me.jpg',
-    category: 'Front-end',
-  },
-  {
-    title: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    abstract: 'Własne bloki w WordPress Gutenberg #005 – Toolbar',
-    isPublished: true,
-    featuredImage: '/images/banners/me.jpg',
-    category: 'Front-end',
-  },
-];
