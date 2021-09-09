@@ -7,7 +7,7 @@ type Props = {
   name: string;
   register: UseFormRegister<FieldValues>;
   errors: DeepMap<FieldValues, FieldError>;
-} & FieldProps;
+};
 
 export const Input: FC<Props> = ({ label, name, register, errors }) => (
   <Container>
@@ -27,6 +27,7 @@ const Container = styled.p`
 `;
 
 const Field = styled.input`
+  width: 100%;
   height: 2.5rem;
 
   border: 0;
