@@ -3,13 +3,18 @@ import styled from 'styled-components';
 
 import { LinkContainer } from '../LinkContainer';
 
-import { Link } from 'Types/links';
+import { Button as ButtonType } from 'Types/links';
 
-export const Button: FC<Link> = ({ children, href }) => (
-  <LinkContainer href={href}>
-    <ButtonInner>{children}</ButtonInner>
-  </LinkContainer>
-);
+export const Button: FC<ButtonType> = ({ children, href, type, onClick }) =>
+  href ? (
+    <LinkContainer href={href}>
+      <ButtonInner>{children}</ButtonInner>
+    </LinkContainer>
+  ) : (
+    <ButtonInner as="button" {...{ type, onClick }}>
+      {children}
+    </ButtonInner>
+  );
 
 const ButtonInner = styled.a`
   --transition-duration: var(--short-transition-duration);
@@ -18,7 +23,8 @@ const ButtonInner = styled.a`
   display: inline-block;
   position: relative;
 
-  padding: 0.22rem 1.2rem 0.5rem;
+  margin-top: 0.8rem;
+  padding: 0.27rem 1.2rem 0.55rem;
   border: 1px solid var(--dark-gray);
 
   text-align: center;

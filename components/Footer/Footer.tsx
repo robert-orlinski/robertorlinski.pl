@@ -30,6 +30,7 @@ export const Footer = () => {
 
 const FooterWrapper = styled(Wrapper)`
   padding: 3.8rem 0;
+  border-top: 1px solid var(--blue-gray);
 
   @media ${to.tablet} {
     padding: 2.8rem 0;

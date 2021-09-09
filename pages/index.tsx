@@ -1,14 +1,15 @@
 import { FC } from 'react';
 import { GetStaticProps } from 'next';
 
-import { Wrapper } from 'Components/Wrapper';
+import { NewArticles } from 'Components/NewArticles';
 import { MainBanner } from 'Components/MainBanner';
+import { Newsletter } from 'Components/Newsletter';
+import { Wrapper } from 'Components/Wrapper';
 import { Intro } from 'Components/Intro';
 import { Head } from 'Components/Head';
-import { NewArticles } from 'Components/NewArticles';
 
-import { siteName } from 'SiteName';
 import { getAllPosts } from 'Helpers/content/posts';
+import { siteName } from 'SiteName';
 
 import { PostsContainer } from 'Types/content';
 
@@ -33,6 +34,7 @@ const Home: FC<PostsContainer> = ({ posts }) => (
     <Wrapper as="main">
       <Intro />
       <NewArticles {...{ posts }} />
+      <Newsletter />
     </Wrapper>
   </>
 );

@@ -4,10 +4,10 @@ import styled from 'styled-components';
 import { MenuItem } from '../MenuItem';
 
 import { LinkContainer } from '../LinkContainer';
-import { CatalogedLink } from 'Types/links';
+import { CatalogedLinksArray } from 'Types/links';
 
 type Props = {
-  source: Array<CatalogedLink>;
+  source: CatalogedLinksArray;
 };
 
 export const FooterMenu: FC<Props> = ({ source }) => (

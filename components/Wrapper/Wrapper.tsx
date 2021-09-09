@@ -11,7 +11,7 @@ const sizes = {
     tiny: '460px',
     small: '740px',
     medium: '850px',
-    big: 'min(1350px, calc(100vw - 140px))',
+    big: 'min(1350px, 84vw)',
   },
   tablet: {
     tiny: '460px',

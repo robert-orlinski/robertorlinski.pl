@@ -37,9 +37,13 @@ export const Global = createGlobalStyle`
   body {
     padding: var(--nav-height) 0 0 0;
     color: var(--dark-gray);
-    font-family: var(--sans-serif);
 
     line-height: 1.55;
+  }
+
+  body, 
+  input {
+    font-family: var(--sans-serif);
   }
 
   section,
@@ -50,8 +54,10 @@ export const Global = createGlobalStyle`
   }
 
   button {
+    display: block;
     appearance: none;
     padding: 0;
+    font-size: 1rem;
     background-color: transparent;
 
     &:hover {
@@ -96,5 +102,15 @@ export const Global = createGlobalStyle`
 
   figure {
     position: relative;
+  }
+
+  button:focus,
+  input:focus,
+  a:focus {
+	  outline: none;
+  }
+
+  input {
+    font-size: 1rem;
   }
 `;

@@ -16,13 +16,13 @@ type Props = {
   };
 };
 
-export const MainBanner: FC<Props> = ({ title, image }) => (
+export const MainBanner: FC<Props> = ({ title, image: { src, alt } }) => (
   <header>
     <Nav />
     <Banner>
       <MainTitle>{title}</MainTitle>
       <ImageContainer>
-        <StyledImage {...image} />
+        <Image {...{ src, alt }} />
       </ImageContainer>
     </Banner>
   </header>
@@ -69,8 +69,4 @@ const ImageContainer = styled.figure`
   @media ${from.tabletL} {
     width: 65%;
   }
-`;
-
-const StyledImage = styled(Image)`
-  object-fit: cover;
 `;
