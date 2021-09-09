@@ -37,8 +37,8 @@ export const NewsletterForm: FC<Props> = ({ centered }) => {
 
   return (
     <form onSubmit={handleSubmit(signUp)}>
-      <Input wide label="Twoje imię" name="NAME" {...{ register, errors }} />
-      <Input wide label="Twój e-mail" name="EMAIL" {...{ register, errors }} />
+      <Input label="Twoje imię" name="NAME" {...{ register, errors }} />
+      <Input label="Twój e-mail" name="EMAIL" {...{ register, errors }} />
       <Button type="submit">Zapisuję się</Button>
     </form>
   );
