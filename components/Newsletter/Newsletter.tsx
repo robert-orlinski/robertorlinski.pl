@@ -3,39 +3,33 @@ import styled from 'styled-components';
 import { NewsletterForm } from 'Components/NewsletterForm';
 import { SectionTitle } from 'Components/SectionTitle';
 import { Wrapper } from 'Components/Wrapper';
-import { from, to } from 'Helpers/devices';
+import { Row } from 'Components/Row';
+import { P } from 'Components/P';
 
 export const Newsletter = () => (
   <Wrapper>
     <SectionTitle>Chętnie zaproponuję Ci coś jeszcze</SectionTitle>
-    <Content>
-      <Text>
-        Wiesz, że stworzyłem e-booka z 30 rzeczami, o które trzeba zadbać oddając stronę na
-        WordPressie? A wiesz też, że co jakiś czas wysyłam dobre linki (swoje i innych twórców) w
-        zakresie wszystkiego, o czym można czytać na blogu? A to wszystko, może być Twoje, po tym,
-        gdy wpiszesz swojego maila w formularzu!
-      </Text>
+    <Content as="article">
+      <div>
+        <Text>
+          Co jakiś czas, w ramach newslettera piszę o rzeczach, które nie pojawiają się na blogu,
+          wysyłam linki do autorskich treści, jak i do wartościowych rzeczy, na które natrafiłem w
+          Internecie. Zero spamu. Tylko treści, które mogą przydać Ci się w karierze programisty!
+        </Text>
+        <Text>
+          PS. Nie musisz wpisywać swojego imienia, ale dzięki niemu, będę w stanie witać Cię,
+          używając go, a to zawsze jest milsze ☀️
+        </Text>
+      </div>
       <NewsletterForm />
     </Content>
   </Wrapper>
 );
 
-const Content = styled.article`
-  display: grid;
-
-  padding-bottom: var(--section-space);
-
-  @media ${from.tabletL} {
-    grid-template-columns: 1.5fr 1fr;
-    grid-column-gap: 3rem;
-    align-items: center;
-  }
-
-  @media ${to.tabletL} {
-    grid-row-gap: 1.5rem;
-  }
+const Content = styled(Row)`
+  --columns: 1.5fr 1fr;
 `;
 
-const Text = styled.p`
-  font-size: 1.15rem;
+const Text = styled(P)`
+  font-size: 1.1rem;
 `;

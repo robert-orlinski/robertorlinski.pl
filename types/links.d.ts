@@ -1,4 +1,4 @@
-import { ObligatoryChildren } from 'Helpers/types';
+import { ObligatoryChildren } from './global';
 
 export type LinkContainer = {
   href: string;

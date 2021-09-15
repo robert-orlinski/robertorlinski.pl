@@ -1,4 +1,4 @@
-import type { AppProps } from 'next/app';
+import { AppProps } from 'next/app';
 
 import { Layout } from 'Components/Layout';
 
@@ -9,4 +9,5 @@ function MyApp({ Component, pageProps }: AppProps) {
     </Layout>
   );
 }
+
 export default MyApp;

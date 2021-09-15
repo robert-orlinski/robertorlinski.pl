@@ -1,10 +1,17 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 import styled from 'styled-components';
+import router from 'next/router';
 
-import { Button } from 'Components/Button';
-import { Input } from 'Components/Input';
 import { ButtonContainer } from 'Components/ButtonContainer';
+import { SubmitButton } from './SubmitButton';
+import { EmailInput } from './EmailInput';
+import { NameInput } from './NameInput';
+import { Error } from './Error';
+
+import { subscribeToTheNewsletter } from 'Helpers/requests/subscribeToTheNewsletter';
+
+import { ErrorMessage, NewsletterData } from 'Types/newsletter';
 
 type Props = {
   centered?: boolean;
@@ -17,32 +24,47 @@ export const NewsletterForm: FC<Props> = ({ centered }) => {
     formState: { errors },
   } = useForm<FieldValues>();
 
-  const signUp: SubmitHandler<FieldValues> = async (data) => {
-    console.log(data);
+  const [errorMessage, setErrorMessage] = useState<ErrorMessage>(false);
+
+  const signUp: SubmitHandler<NewsletterData> = async (data) => {
+    const response = await subscribeToTheNewsletter(data);
+    const { error } = await response.json();
+
+    if (!error) {
+      router.push('/newsletter/potwierdzenie');
+    } else {
+      setErrorMessage(error);
+    }
   };
 
   if (centered) {
     return (
-      <form onSubmit={handleSubmit(signUp)}>
+      <Form onSubmit={handleSubmit(signUp)}>
         <Inputs>
-          <Input label="Twoje imię" name="NAME" {...{ register, errors }} />
-          <Input label="Twój e-mail" name="EMAIL" {...{ register, errors }} />
+          <NameInput {...{ register, errors }} />
+          <EmailInput {...{ register, errors }} />
         </Inputs>
         <ButtonContainer>
-          <Button type="submit">Zapisuję się</Button>
+          <SubmitButton />
         </ButtonContainer>
-      </form>
+        <Error {...{ errorMessage }} />
+      </Form>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit(signUp)}>
-      <Input label="Twoje imię" name="NAME" {...{ register, errors }} />
-      <Input label="Twój e-mail" name="EMAIL" {...{ register, errors }} />
-      <Button type="submit">Zapisuję się</Button>
-    </form>
+    <Form onSubmit={handleSubmit(signUp)}>
+      <NameInput {...{ register, errors }} />
+      <EmailInput {...{ register, errors }} />
+      <SubmitButton />
+      <Error {...{ errorMessage }} />
+    </Form>
   );
 };
+
+const Form = styled.form`
+  margin-top: -0.7rem;
+`;
 
 const Inputs = styled.article`
   display: grid;

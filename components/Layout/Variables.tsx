@@ -9,6 +9,7 @@ export const Variables = createGlobalStyle`
 
     --dark-gray: #222;
     --blue-gray: #ecf0f3;
+    --error-red: #d32f2f;
 
     --nav-height: 5.2rem;
 

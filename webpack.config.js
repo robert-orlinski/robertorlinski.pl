@@ -10,7 +10,7 @@ module.exports = {
       DataHelpers: path.resolve(__dirname, 'helpers/data/'),
       Helpers: path.resolve(__dirname, 'helpers/'),
       Devices$: path.resolve(__dirname, 'helpers/devices.ts'),
-      Constants$: path.resolve(__dirname, 'helpers/constants.ts'),
+      Patterns$: path.resolve(__dirname, 'helpers/patterns.ts'),
       SiteName$: path.resolve(__dirname, 'helpers/metaData/siteName.ts'),
     },
     resolve: {

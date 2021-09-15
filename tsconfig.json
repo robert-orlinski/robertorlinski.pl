@@ -22,7 +22,7 @@
       "DataHelpers/*": ["./helpers/data/*"],
       "Helpers/*": ["./helpers/*"],
       "Devices": ["./helpers/devices.ts"],
-      "Constants": ["./helpers/constants.ts"],
+      "Patterns": ["./helpers/patterns.ts"],
       "SiteName": ["./helpers/metaData/siteName.ts"]
     }
   },
