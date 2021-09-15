@@ -12,6 +12,7 @@ module.exports = {
       Devices$: path.resolve(__dirname, 'helpers/devices.ts'),
       Patterns$: path.resolve(__dirname, 'helpers/patterns.ts'),
       SiteName$: path.resolve(__dirname, 'helpers/metaData/siteName.ts'),
+      AddressSeparator$: path.resolve(__dirname, 'helpers/metaData/addressSeparator.ts'),
     },
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.wasm'],

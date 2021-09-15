@@ -23,7 +23,8 @@
       "Helpers/*": ["./helpers/*"],
       "Devices": ["./helpers/devices.ts"],
       "Patterns": ["./helpers/patterns.ts"],
-      "SiteName": ["./helpers/metaData/siteName.ts"]
+      "SiteName": ["./helpers/metaData/siteName.ts"],
+      "AddressSeparator": ["./helpers/metaData/addressSeparator.ts"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.tsx"],
