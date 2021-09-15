@@ -9,12 +9,14 @@ import { from } from 'Devices';
 import { ClickableElement } from 'Types/links';
 
 export const Hamburger: FC<ClickableElement & ElementWithInlineStyle> = ({ onClick, style }) => (
-  <Button as="button" onClick={onClick} style={style}>
+  <Button onClick={onClick} style={style}>
     <Inner />
   </Button>
 );
 
-const Button = styled(ElementWithOpacity)`
+const Button = styled(ElementWithOpacity).attrs({
+  as: 'button',
+})`
   --hamburger-size: 1.66rem;
 
   width: var(--hamburger-size);

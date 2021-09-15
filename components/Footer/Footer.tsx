@@ -14,7 +14,7 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <FooterWrapper as="footer">
+    <FooterWrapper>
       <Top>
         <FooterMenu source={contentMenu} />
         <Brand />
@@ -28,7 +28,9 @@ export const Footer = () => {
   );
 };
 
-const FooterWrapper = styled(Wrapper)`
+const FooterWrapper = styled(Wrapper).attrs({
+  as: 'footer',
+})`
   padding: 3.8rem 0;
   border-top: 1px solid var(--blue-gray);
 

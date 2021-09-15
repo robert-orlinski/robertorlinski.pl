@@ -44,6 +44,7 @@ const Banner = styled(Wrapper)`
 `;
 
 const MainTitle = styled(SectionTitle)`
+  min-width: 42%;
   padding: 0.8rem 0 0 0;
   margin: 0;
 

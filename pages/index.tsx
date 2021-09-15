@@ -1,15 +1,20 @@
 import { FC } from 'react';
 import { GetStaticProps } from 'next';
 
+import { ButtonContainer } from 'Components/ButtonContainer';
+import { TextWithLinks } from 'Components/TextWithLinks';
 import { NewArticles } from 'Components/NewArticles';
 import { MainBanner } from 'Components/MainBanner';
 import { Newsletter } from 'Components/Newsletter';
 import { Wrapper } from 'Components/Wrapper';
+import { Button } from 'Components/Button';
 import { Intro } from 'Components/Intro';
 import { Head } from 'Components/Head';
+import { P } from 'Components/P';
 
 import { getAllPosts } from 'Helpers/content/posts';
 import { siteName } from 'SiteName';
+import { mySummary } from 'Data/mySummary';
 
 import { PostsContainer } from 'Types/content';
 
@@ -32,7 +37,17 @@ const Home: FC<PostsContainer> = ({ posts }) => (
       }}
     />
     <Wrapper as="main">
-      <Intro />
+      <Intro>
+        <P>
+          Przez parę ostatnich lat pracowałem z WordPressem, aż do momentu, w którym okazało się, że
+          niewiele może mnie w nim już zaskoczyć - dlatego niedawno przerzuciłem się w pełni na
+          front-end.
+        </P>
+        <TextWithLinks text={mySummary} />
+        <ButtonContainer>
+          <Button href="/najpopularniejsze">Najpopularniejsze artykuły</Button>
+        </ButtonContainer>
+      </Intro>
       <NewArticles {...{ posts }} />
       <Newsletter />
     </Wrapper>

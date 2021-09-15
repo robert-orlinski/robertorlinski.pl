@@ -9,7 +9,7 @@ import { P } from 'Components/P';
 export const Newsletter = () => (
   <Wrapper>
     <SectionTitle>Chętnie zaproponuję Ci coś jeszcze</SectionTitle>
-    <Content as="article">
+    <Content>
       <div>
         <Text>
           Co jakiś czas, w ramach newslettera piszę o rzeczach, które nie pojawiają się na blogu,
@@ -26,7 +26,9 @@ export const Newsletter = () => (
   </Wrapper>
 );
 
-const Content = styled(Row)`
+const Content = styled(Row).attrs({
+  as: 'article',
+})`
   --columns: 1.5fr 1fr;
 `;
 
