@@ -3,8 +3,9 @@ import styled from 'styled-components';
 
 import { MenuItem } from '../MenuItem';
 
-import { LinkContainer } from '../LinkContainer';
+import { ElementWithOpacity } from 'Components/ElementWithOpacity';
 import { CatalogedLinksArray } from 'Types/links';
+import { LinkContainer } from '../LinkContainer';
 
 type Props = {
   source: CatalogedLinksArray;
@@ -23,7 +24,7 @@ export const FooterMenu: FC<Props> = ({ source }) => (
   </ul>
 );
 
-const StyledLink = styled.a`
+const StyledLink = styled(ElementWithOpacity)`
   font-size: 0.85rem;
   text-transform: uppercase;
 `;

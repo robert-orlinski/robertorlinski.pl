@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { Wrapper } from '../Wrapper';
-import { FooterMenu } from './Menu';
+import { FooterMenu } from './FooterMenu';
 import { Brand } from '../Brand';
 import { TextWithLinks } from '../TextWithLinks';
 
@@ -17,7 +17,9 @@ export const Footer = () => {
     <FooterWrapper>
       <Top>
         <FooterMenu source={contentMenu} />
-        <Brand />
+        <BrandContainer>
+          <Brand />
+        </BrandContainer>
         <FooterMenu source={formalitiesMenu} />
       </Top>
       <Bottom>
@@ -54,6 +56,18 @@ const Top = styled.section`
     flex-direction: column;
     margin-bottom: 1.6rem;
   }
+`;
+
+const BrandContainer = styled.div`
+  display: flex;
+  justify-content: center;
+
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  z-index: -1;
 `;
 
 const Bottom = styled(Wrapper)`
