@@ -13,6 +13,9 @@ package-lock.json
 /.next/
 /out/
 
+# vscode
+/.vscode
+
 # production
 /build
 
