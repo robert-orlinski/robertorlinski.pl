@@ -13,6 +13,7 @@ import { CommentsButton } from 'Components/CommentsButton';
 import { getPostBySlug, getPostsPaths } from 'Helpers/content/posts';
 
 import { ResourceWithContent, Post as PostType } from 'Types/content';
+import { from } from 'Helpers/devices';
 
 const meta = {
   title: `Test | ${siteName}`,
@@ -35,7 +36,9 @@ const Post: FC<ResourceWithContent<PostType>> = ({ metaData, content }) => (
 );
 
 const ArticleInner = styled.article`
-  padding: 0 55px;
+  @media ${from.tablet} {
+    padding: 0 55px;
+  }
 `;
 
 type Props = { params: { slug: string } };

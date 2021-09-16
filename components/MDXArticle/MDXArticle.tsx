@@ -11,6 +11,8 @@ import { H4 } from 'components/H4';
 import { H5 } from 'components/H5';
 import { H6 } from 'components/H6';
 
+import { to } from 'Devices';
+
 type Props = { source: string };
 
 export const MDXArticle: FC<Props> = ({ source }) => {
@@ -34,4 +36,8 @@ export const MDXArticle: FC<Props> = ({ source }) => {
 
 const BiggerP = styled(P)`
   font-size: 1.2rem;
+
+  @media ${to.phoneL} {
+    font-size: 1.1rem;
+  }
 `;
