@@ -30,7 +30,7 @@ const Blog: FC<PostsContainer> = ({ posts }) => (
         alt: 'Robert zamierzający uderzyć ogromny, pluszowy przycisk "enter", który jednocześnie można podłączyć na USB i tym samym zatwierdzać rzeczy z potężnym impetem.',
       }}
     />
-    <Wrapper as="main">
+    <Wrapper as="main" withSpaceBelow>
       <PostsList {...{ posts }} />
     </Wrapper>
   </>

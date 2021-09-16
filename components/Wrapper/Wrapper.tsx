@@ -1,9 +1,11 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { to } from 'Devices';
 
 type Props = {
   size?: 'tiny' | 'small' | 'medium' | 'big';
+  withSpaceAbove?: boolean;
+  withSpaceBelow?: boolean;
 };
 
 const sizes = {
@@ -28,6 +30,18 @@ export const Wrapper = styled.section<Props>`
       : size === 'medium'
       ? sizes.desktop.medium
       : sizes.desktop.big};
+
+  ${({ withSpaceAbove }) =>
+    withSpaceAbove &&
+    css`
+      margin-top: var(--section-space);
+    `}
+
+  ${({ withSpaceBelow }) =>
+    withSpaceBelow &&
+    css`
+      margin-bottom: var(--section-space);
+    `}
 
   margin-right: auto;
   margin-left: auto;
