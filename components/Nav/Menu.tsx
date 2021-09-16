@@ -11,11 +11,11 @@ export const NavMenu = () => (
   <Menu>
     {mainMenu &&
       mainMenu.map(({ href, title }, i) => (
-        <MenuItem key={`main-menu-${i}`}>
+        <TopMenuItem key={`main-menu-${i}`}>
           <LinkContainer href={href}>
             <StyledLink>{title}</StyledLink>
           </LinkContainer>
-        </MenuItem>
+        </TopMenuItem>
       ))}
   </Menu>
 );
@@ -29,6 +29,12 @@ const Menu = styled.ul`
     margin-right: 0.8rem;
 
     transform: translateY(-12%);
+  }
+`;
+
+const TopMenuItem = styled(MenuItem)`
+  @media ${to.tabletL} {
+    padding: 0 0 0.5rem 0;
   }
 `;
 

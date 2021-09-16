@@ -1,14 +1,15 @@
 import styled from 'styled-components';
 
 import { Wrapper } from '../Wrapper';
-import { FooterMenu } from './FooterMenu';
+import { FooterMenu } from './Menu';
 import { Brand } from '../Brand';
 import { TextWithLinks } from '../TextWithLinks';
 
 import { contentMenu } from 'Data/footer/contentMenu';
 import { formalitiesMenu } from 'Data/footer/formalitiesMenu';
 import { copyright } from 'Data/footer/copyright';
-import { to } from 'Devices';
+import { from, to } from 'Devices';
+import { Separator } from 'Components/Separator';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -19,10 +20,11 @@ export const Footer = () => {
         <FooterMenu source={contentMenu} />
         <BrandContainer>
           <Brand />
+          <BrandSeparator />
         </BrandContainer>
         <FooterMenu source={formalitiesMenu} />
       </Top>
-      <Bottom>
+      <Bottom size="tiny">
         <p>Copyright | {currentYear}</p>
         <TextWithLinks text={copyright} />
       </Bottom>
@@ -49,34 +51,38 @@ const Top = styled.section`
   margin-bottom: 3.35rem;
 
   @media ${to.tabletL} {
-    margin-bottom: 2.8rem;
-  }
-
-  @media ${to.tablet} {
     flex-direction: column;
     margin-bottom: 1.6rem;
   }
 `;
 
 const BrandContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  @media ${from.tabletL} {
+    display: flex;
+    justify-content: center;
 
-  position: absolute;
+    position: absolute;
 
-  left: 0;
-  right: 0;
+    left: 0;
+    right: 0;
 
-  z-index: -1;
+    z-index: -1;
+  }
+
+  @media ${to.tabletL} {
+    order: -1;
+  }
+`;
+
+const BrandSeparator = styled(Separator)`
+  margin: 0.5rem auto 1.5rem auto;
+
+  @media ${from.tabletL} {
+    display: none;
+  }
 `;
 
 const Bottom = styled(Wrapper)`
-  --width: 460px;
-
   font-size: 0.9rem;
   text-align: center;
-
-  @media ${to.tablet} {
-    --width: 400px;
-  }
 `;

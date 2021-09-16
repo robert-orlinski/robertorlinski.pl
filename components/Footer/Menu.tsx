@@ -1,18 +1,19 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
+import { ElementWithOpacity } from '../ElementWithOpacity';
+import { LinkContainer } from '../LinkContainer';
 import { MenuItem } from '../MenuItem';
 
-import { ElementWithOpacity } from 'Components/ElementWithOpacity';
 import { CatalogedLinksArray } from 'Types/links';
-import { LinkContainer } from '../LinkContainer';
+import { to } from 'Helpers/devices';
 
 type Props = {
   source: CatalogedLinksArray;
 };
 
 export const FooterMenu: FC<Props> = ({ source }) => (
-  <ul>
+  <Container>
     {source &&
       source.map(({ href, title }, i) => (
         <MenuItem key={`main-menu-${i}`}>
@@ -21,8 +22,14 @@ export const FooterMenu: FC<Props> = ({ source }) => (
           </LinkContainer>
         </MenuItem>
       ))}
-  </ul>
+  </Container>
 );
+
+const Container = styled.ul`
+  @media ${to.tabletL} {
+    text-align: center;
+  }
+`;
 
 const StyledLink = styled(ElementWithOpacity)`
   font-size: 0.85rem;

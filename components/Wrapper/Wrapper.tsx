@@ -14,13 +14,13 @@ const sizes = {
     big: 'min(1350px, 84vw)',
   },
   tablet: {
-    tiny: '460px',
+    tiny: '400px',
     default: '500px',
   },
 };
 
 export const Wrapper = styled.section<Props>`
-  width: ${({ size }) =>
+  max-width: ${({ size }) =>
     size === 'tiny'
       ? sizes.desktop.tiny
       : size === 'small'
