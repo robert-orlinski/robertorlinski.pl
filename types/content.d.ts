@@ -1,23 +1,28 @@
 import { Category } from './data';
 
-export type Post = {
+export type Resource = {
   slug: string;
-  readingTime: string;
   title: string;
   abstract: string;
   isPublished: boolean;
-  featuredImage: string;
   date: string;
-  category: Category;
+  featuredImage: string;
 };
+
+export type Resources = Array<Resource>;
+
+export type ResourceWithContent<T> = {
+  metaData: T;
+  content: string;
+};
+
+export type Post = {
+  readingTime: string;
+  category: Category;
+} & Resource;
 
 export type Posts = Array<Post>;
 
 export type PostsContainer = {
   posts: Posts;
-};
-
-export type PostWithContent = {
-  metaData: Post;
-  content: string;
 };

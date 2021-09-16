@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "dayjs": "^1.10.7",
     "esbuild": "^0.12.24",
     "mdx-bundler": "^6.0.1",
     "next": "11.1.2",

@@ -12,7 +12,7 @@ import { Intro } from 'Components/Intro';
 import { Head } from 'Components/Head';
 import { P } from 'Components/P';
 
-import { getAllPosts } from 'Helpers/content/posts';
+import { getNewestPosts } from 'Helpers/content/posts';
 import { siteName } from 'SiteName';
 import { mySummary } from 'Data/mySummary';
 
@@ -55,7 +55,7 @@ const Home: FC<PostsContainer> = ({ posts }) => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllPosts();
+  const posts = await getNewestPosts();
 
   return {
     props: { posts },

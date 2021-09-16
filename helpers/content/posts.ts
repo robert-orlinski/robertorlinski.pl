@@ -1,11 +1,20 @@
 import path from 'path';
 
-import { getAllResources, getResourceBySlug, getResourcePaths } from './resources';
+import { getResourcesByDateDescending, getResourceBySlug, getResourcePaths } from './resources';
+
+import { Post } from 'Types/content';
 
 const POSTS_PATH = path.join(process.cwd(), 'content/posts');
 
 export const getPostsPaths = () => getResourcePaths(POSTS_PATH);
 
-export const getAllPosts = async () => await getAllResources(POSTS_PATH);
+export const getAllPosts = async () => await getResourcesByDateDescending<Post>(POSTS_PATH);
 
-export const getPostBySlug = async (slug: string) => await getResourceBySlug(POSTS_PATH, slug);
+export const getNewestPosts = async () => {
+  const posts = await getResourcesByDateDescending<Post>(POSTS_PATH);
+  const newestSixPosts = posts.slice(0, 6);
+
+  return newestSixPosts;
+};
+
+export const getPostBySlug = (slug: string) => getResourceBySlug(POSTS_PATH, slug);

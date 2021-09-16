@@ -1,10 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 import readingTime from 'reading-time';
-
 import { polishPlurals } from 'polish-plurals';
-
 import { prepareMDX } from './mdx';
+
+import { Resource, ResourceWithContent } from 'Types/content';
+import dayjs from 'dayjs';
 
 const { readFile, readdir } = fs.promises;
 
@@ -16,21 +17,34 @@ export const getResourcePaths = async (resourcesDirectory: string) => {
   return resourcePaths;
 };
 
-export const getAllResources = async (resourcesDirectory: string) => {
+export const getResources = async <T>(resourcesDirectory: string) => {
   const resourceSlugs = await readdir(resourcesDirectory);
 
-  const allResourcesToResolve = resourceSlugs.map(async (resourceSlug: string) => {
-    const { metaData } = await getResourceBySlug(resourcesDirectory, resourceSlug);
+  const resourcesToResolve = resourceSlugs.map(async (resourceSlug: string) => {
+    const { metaData } = await getResourceBySlug<T & Resource>(resourcesDirectory, resourceSlug);
 
     return metaData;
   });
 
-  const allResources = await Promise.all(allResourcesToResolve);
+  const resources = await Promise.all(resourcesToResolve);
 
-  return allResources;
+  return resources;
 };
 
-export const getResourceBySlug = async (resourcesDirectory: string, resourceSlug: string) => {
+export const getResourcesByDateDescending = async <T>(resourcesDirectory: string) => {
+  const resources = await getResources<T>(resourcesDirectory);
+
+  const sortedResources = resources.sort((a, b) => {
+    const firstDate = dayjs(a.date);
+    const secondDate = dayjs(b.date);
+
+    return firstDate.isBefore(secondDate) ? 1 : -1;
+  });
+
+  return sortedResources;
+};
+
+export const getResourceBySlug = async <T>(resourcesDirectory: string, resourceSlug: string) => {
   const resourcePath = path.join(resourcesDirectory, resourceSlug);
   const resourceMainFile = path.join(resourcePath, 'index.mdx');
 
@@ -45,7 +59,7 @@ export const getResourceBySlug = async (resourcesDirectory: string, resourceSlug
 
   const readingTime = getResourceReadingTime(content);
 
-  return {
+  const resource: unknown = {
     content,
     metaData: {
       slug: resourceSlug,
@@ -53,6 +67,8 @@ export const getResourceBySlug = async (resourcesDirectory: string, resourceSlug
       ...metaData,
     },
   };
+
+  return resource as ResourceWithContent<T>;
 };
 
 const getResourceSourceBySlug = async (resourcePath: string) => {
