@@ -10,7 +10,7 @@ import { siteName } from 'SiteName';
 import { RawHeader } from 'Components/RawHeader';
 import { PostHeader } from 'Components/PostHeader';
 
-import { ResourceWithContent, Post } from 'Types/content';
+import { ResourceWithContent, Post as PostType } from 'Types/content';
 
 const meta = {
   title: `Test | ${siteName}`,
@@ -18,7 +18,7 @@ const meta = {
     'Wszystkie artykuły, które do tej pory pojawiły się na blogu. Przeczytasz o front-endzie, WordPressie, trochę przemyśleń i trochę rzeczy związanych z designem oraz pracą jako programista',
 };
 
-const Post: FC<ResourceWithContent<Post>> = ({ metaData, content }) => (
+const Post: FC<ResourceWithContent<PostType>> = ({ metaData, content }) => (
   <>
     <Head {...meta} />
     <RawHeader />
