@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 import { CoveringLink } from '../CoveringLink';
-import { Overlay } from '../Overlay';
 import { ListedPostContainer } from '../ListedPostContainer';
 import { Link } from '../Link';
 import { PostMeta } from '../PostMeta';
@@ -20,7 +19,7 @@ export const ListedPost: FC<Post> = ({ title, category, slug, readingTime }) => 
     <ListedPostContainer>
       <CoveringLink href={link} zIndex="med" />
       <ThumbnailContainer>
-        <Thumbnail as={Image} src={featuredImage} alt="" layout="fill" />
+        <Thumbnail as={Image} src={featuredImage} alt="" width="420" height="252" />
       </ThumbnailContainer>
       <MetaContainer>
         <PostMeta {...{ category, readingTime }} />
@@ -36,15 +35,10 @@ export const ListedPost: FC<Post> = ({ title, category, slug, readingTime }) => 
 
 const ThumbnailContainer = styled.figure`
   overflow: hidden;
-
-  &::after {
-    content: '';
-    display: block;
-    padding-bottom: 58.82%;
-  }
 `;
 
-const Thumbnail = styled(Overlay)`
+const Thumbnail = styled.div`
+  position: absolute;
   transition: transform var(--long-transition-duration);
   object-fit: cover;
 
