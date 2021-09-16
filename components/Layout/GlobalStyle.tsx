@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 import { to } from 'Devices';
 
-export const Global = createGlobalStyle`
+export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
@@ -44,6 +44,7 @@ export const Global = createGlobalStyle`
   body, 
   input {
     font-family: var(--sans-serif);
+    font-size: 1rem;
   }
 
   section,
@@ -102,15 +103,5 @@ export const Global = createGlobalStyle`
 
   figure {
     position: relative;
-  }
-
-  button:focus,
-  input:focus,
-  a:focus {
-	  outline: none;
-  }
-
-  input {
-    font-size: 1rem;
   }
 `;

@@ -1,14 +1,14 @@
 import { FC } from 'react';
 
-import { Variables } from './Variables';
-import { Global } from './Global';
+import { CssVariables } from './CssVariables';
+import { GlobalStyle } from './GlobalStyle';
 
 import { Footer } from '../Footer';
 
 export const Layout: FC = ({ children }) => (
   <>
-    <Variables />
-    <Global />
+    <CssVariables />
+    <GlobalStyle />
     {children}
     <Footer />
   </>

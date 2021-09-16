@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 import { to } from 'Devices';
 
-export const Variables = createGlobalStyle`
+export const CssVariables = createGlobalStyle`
   html {
     --sans-serif: 'Darker Grotesque', -apple-system, sans-serif;
     --serif: 'Playfair Display', serif;
