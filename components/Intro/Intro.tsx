@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { Wrapper } from '../Wrapper';
 
-import { from } from 'Helpers/devices';
+import { from } from 'Devices';
 
 export const Intro = styled(Wrapper).attrs({
   size: 'small',

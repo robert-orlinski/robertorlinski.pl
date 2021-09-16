@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { from, to } from 'Helpers/devices';
+import { from, to } from 'Devices';
 
 export const Row = styled.section`
   display: grid;
