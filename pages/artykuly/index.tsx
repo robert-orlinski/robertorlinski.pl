@@ -8,7 +8,7 @@ import { PostsList } from 'Components/PostsList';
 
 import { siteName } from 'SiteName';
 import { addressSeparator } from 'Helpers/metaData/addressSeparator';
-import { getAllPosts } from 'Helpers/content/posts';
+import { getPosts } from 'Helpers/content/posts';
 
 import { PostsContainer } from 'Types/content';
 
@@ -37,7 +37,7 @@ const Blog: FC<PostsContainer> = ({ posts }) => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getAllPosts();
+  const posts = await getPosts();
 
   return {
     props: { posts },

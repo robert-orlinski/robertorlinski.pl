@@ -8,7 +8,7 @@ const POSTS_PATH = path.join(process.cwd(), 'content/posts');
 
 export const getPostsPaths = () => getResourcePaths(POSTS_PATH);
 
-export const getAllPosts = async () => await getResourcesByDateDescending<Post>(POSTS_PATH);
+export const getPosts = async () => await getResourcesByDateDescending<Post>(POSTS_PATH);
 
 export const getNewestPosts = async () => {
   const posts = await getResourcesByDateDescending<Post>(POSTS_PATH);
