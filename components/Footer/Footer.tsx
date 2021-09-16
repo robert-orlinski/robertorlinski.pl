@@ -15,7 +15,7 @@ export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <FooterWrapper>
+    <FooterWrapper withSpaceAbove>
       <Top>
         <FooterMenu source={contentMenu} />
         <BrandContainer>
