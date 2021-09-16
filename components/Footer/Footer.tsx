@@ -36,7 +36,7 @@ const FooterWrapper = styled(Wrapper).attrs({
   as: 'footer',
 })`
   padding: 3.8rem 0;
-  border-top: 1px solid var(--blue-gray);
+  border-top: 1px solid var(--line-gray);
 
   @media ${to.tablet} {
     padding: 2.8rem 0;

@@ -1,30 +1,59 @@
 import { FC } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { LinkContainer } from '../LinkContainer';
 
 import { Button as ButtonType } from 'Types/links';
 
-export const Button: FC<ButtonType> = ({ children, href, type, onClick }) =>
+type InnerProps = {
+  size?: 'default' | 'big';
+  withSpaceAbove?: boolean;
+  withSpaceBelow?: boolean;
+};
+
+export const Button: FC<ButtonType & InnerProps> = ({
+  children,
+  href,
+  type,
+  onClick,
+  size,
+  withSpaceAbove,
+  withSpaceBelow,
+}) =>
   href ? (
     <LinkContainer href={href}>
-      <ButtonInner>{children}</ButtonInner>
+      <ButtonInner
+        {...{
+          size,
+          withSpaceAbove,
+          withSpaceBelow,
+        }}
+      >
+        {children}
+      </ButtonInner>
     </LinkContainer>
   ) : (
-    <ButtonInner as="button" {...{ type, onClick }}>
+    <ButtonInner
+      as="button"
+      {...{
+        type,
+        onClick,
+        size,
+        withSpaceAbove,
+        withSpaceBelow,
+      }}
+    >
       {children}
     </ButtonInner>
   );
 
-const ButtonInner = styled.a`
+const ButtonInner = styled.a<InnerProps>`
   --transition-duration: var(--short-transition-duration);
   --transition-timing-function: cubic-bezier(0.35, 0.9, 0.5, 1);
 
   display: inline-block;
   position: relative;
 
-  margin-top: 0.8rem;
-  padding: 0.27rem 1.2rem 0.55rem;
   border: 1px solid var(--dark-gray);
 
   text-align: center;
@@ -32,6 +61,20 @@ const ButtonInner = styled.a`
   transition: background-color var(--transition-duration) var(--transition-timing-function),
     color var(--transition-duration) var(--transition-timing-function),
     transform var(--transition-duration) var(--transition-timing-function);
+
+  padding: ${({ size }) => (size === 'big' ? '0.45rem 2.2rem 0.75rem' : '0.27rem 1.2rem 0.55rem')};
+
+  ${({ withSpaceAbove }) =>
+    withSpaceAbove &&
+    css`
+      margin-top: 0.8rem;
+    `};
+
+  ${({ withSpaceBelow }) =>
+    withSpaceBelow &&
+    css`
+      margin-bottom: 0.8rem;
+    `};
 
   &::after {
     content: '';

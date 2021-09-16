@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { to } from 'Devices';
 
 type Props = {
-  size?: 'tiny' | 'small' | 'medium' | 'big';
+  size?: 'tiny' | 'small' | 'medium' | 'default';
   withSpaceAbove?: boolean;
   withSpaceBelow?: boolean;
 };

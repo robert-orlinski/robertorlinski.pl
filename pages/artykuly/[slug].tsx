@@ -5,10 +5,12 @@ import { Head } from 'Components/Head';
 import { Wrapper } from 'Components/Wrapper';
 import { MDXArticle } from 'Components/MDXArticle';
 
-import { getPostBySlug, getPostsPaths } from 'Helpers/content/posts';
 import { siteName } from 'SiteName';
 import { RawHeader } from 'Components/RawHeader';
 import { PostHeader } from 'Components/PostHeader';
+import { CommentsButton } from 'Components/CommentsButton';
+
+import { getPostBySlug, getPostsPaths } from 'Helpers/content/posts';
 
 import { ResourceWithContent, Post as PostType } from 'Types/content';
 
@@ -26,6 +28,7 @@ const Post: FC<ResourceWithContent<PostType>> = ({ metaData, content }) => (
       <PostHeader {...metaData} />
       <ArticleInner>
         <MDXArticle source={content} />
+        <CommentsButton />
       </ArticleInner>
     </Wrapper>
   </>

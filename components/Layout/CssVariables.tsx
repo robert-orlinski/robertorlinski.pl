@@ -8,7 +8,7 @@ export const CssVariables = createGlobalStyle`
     --serif: 'Playfair Display', serif;
 
     --dark-gray: #222;
-    --blue-gray: #ecf0f3;
+    --line-gray: #ecf0f3;
     --error-red: #d32f2f;
 
     --nav-height: 5.2rem;
