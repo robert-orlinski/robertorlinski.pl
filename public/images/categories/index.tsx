@@ -8,6 +8,7 @@ import work from './work.jpg';
 import productivity from './productivity.jpg';
 import learning from './learning.jpg';
 import thoughts from './thoughts.jpg';
+import others from './others.jpg';
 
 export const images = {
   frontEnd,
@@ -20,4 +21,5 @@ export const images = {
   productivity,
   learning,
   thoughts,
+  others,
 };

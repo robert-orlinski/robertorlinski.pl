@@ -18,7 +18,8 @@ export type Category =
   | 'Praca'
   | 'Produktywność'
   | 'Nauka'
-  | 'Przemyślenia';
+  | 'Przemyślenia'
+  | 'Inne';
 
 export type ListedCategory = {
   name: Category;

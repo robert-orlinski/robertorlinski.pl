@@ -43,4 +43,8 @@ export const categories: Array<ListedCategory> = [
     name: 'Przemyślenia',
     image: images.thoughts,
   },
+  {
+    name: 'Inne',
+    image: images.others,
+  },
 ];
