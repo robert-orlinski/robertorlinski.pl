@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { GetStaticProps } from 'next';
 
-import { ButtonContainer } from 'Components/ButtonContainer';
+import { CenteredText } from 'Components/CenteredText';
 import { TextWithLinks } from 'Components/TextWithLinks';
 import { NewArticles } from 'Components/NewArticles';
 import { MainBanner } from 'Components/MainBanner';
@@ -44,9 +44,9 @@ const Home: FC<PostsContainer> = ({ posts }) => (
           front-end.
         </P>
         <TextWithLinks text={mySummary} />
-        <ButtonContainer>
+        <CenteredText as="footer">
           <Button href="/najpopularniejsze">Najpopularniejsze artykuły</Button>
-        </ButtonContainer>
+        </CenteredText>
       </Intro>
       <NewArticles {...{ posts }} />
       <Newsletter />

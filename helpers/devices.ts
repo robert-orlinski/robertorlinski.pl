@@ -1,4 +1,4 @@
-const from = {
+export const from = {
   phoneS: '(min-width: 321px)',
   phoneM: '(min-width: 410px)',
   phoneL: '(min-width: 568px)',
@@ -9,7 +9,7 @@ const from = {
   desktop: '(min-width: 1740px)',
 };
 
-const to = {
+export const to = {
   phoneS: '(max-width: 320px)',
   phoneM: '(max-width: 409px)',
   phoneL: '(max-width: 567px)',
@@ -20,4 +20,6 @@ const to = {
   desktop: '(max-width: 1739px)',
 };
 
-export { from, to };
+export const between = {
+  tabletAndTabletL: '(min-width: 768px) and (max-width: 991px)',
+};

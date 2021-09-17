@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { ButtonContainer } from 'Components/ButtonContainer';
+import { CenteredText } from 'Components/CenteredText';
 import { Button } from 'Components/Button';
 
 import { Button as ButtonType } from 'Types/links';
@@ -12,8 +12,6 @@ export const DistantButton: FC<ButtonType> = ({ children, href, type, onClick })
   </DistantButtonContainer>
 );
 
-const DistantButtonContainer = styled(ButtonContainer).attrs({
-  as: 'div',
-})`
+const DistantButtonContainer = styled(CenteredText)`
   padding-bottom: calc(var(--section-space) * 0.6);
 `;

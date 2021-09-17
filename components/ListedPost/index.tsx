@@ -1,1 +1,1 @@
-export { ListedPost } from './ListedPost';
+export { ListedPost, ListedPostContainer } from './ListedPost';

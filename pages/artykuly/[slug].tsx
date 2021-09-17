@@ -10,10 +10,11 @@ import { RawHeader } from 'Components/RawHeader';
 import { PostHeader } from 'Components/PostHeader';
 import { CommentsButton } from 'Components/CommentsButton';
 
-import { getPostBySlug, getPostsPaths } from 'Helpers/content/posts';
+import { getPostBySlug, getPostsPaths, getRelatedPosts } from 'Helpers/content/posts';
 
-import { ResourceWithContent, Post as PostType } from 'Types/content';
+import { PostWithContent } from 'Types/content';
 import { from } from 'Helpers/devices';
+import { RelatedPosts } from 'Components/RelatedPosts';
 
 const meta = {
   title: `Test | ${siteName}`,
@@ -21,7 +22,7 @@ const meta = {
     'Wszystkie artykuły, które do tej pory pojawiły się na blogu. Przeczytasz o front-endzie, WordPressie, trochę przemyśleń i trochę rzeczy związanych z designem oraz pracą jako programista',
 };
 
-const Post: FC<ResourceWithContent<PostType>> = ({ metaData, content }) => (
+const Post: FC<PostWithContent> = ({ metaData, content, relatedPosts }) => (
   <>
     <Head {...meta} />
     <RawHeader />
@@ -32,6 +33,7 @@ const Post: FC<ResourceWithContent<PostType>> = ({ metaData, content }) => (
         <CommentsButton />
       </ArticleInner>
     </Wrapper>
+    <RelatedPosts posts={relatedPosts} />
   </>
 );
 
@@ -46,8 +48,12 @@ type Props = { params: { slug: string } };
 export const getStaticProps = async ({ params: { slug } }: Props) => {
   const { content, metaData } = await getPostBySlug(slug);
 
+  const currentPostCategory = metaData.category;
+
+  const relatedPosts = await getRelatedPosts(currentPostCategory);
+
   return {
-    props: { metaData, content },
+    props: { metaData, content, relatedPosts },
   };
 };
 

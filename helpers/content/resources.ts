@@ -44,6 +44,28 @@ export const getResourcesByDateDescending = async <T>(resourcesDirectory: string
   return sortedResources;
 };
 
+const getResourceSourceBySlug = async (resourcePath: string) => {
+  const resourceSourceBuffer = await readFile(resourcePath);
+  const resourceSource = resourceSourceBuffer.toString();
+
+  return resourceSource;
+};
+
+const getResourceReadingTime = (content: string) => {
+  const contentReadingTime = readingTime(content).minutes;
+  const roundedReadingTime = Math.round(contentReadingTime);
+  const readingTimePlural = polishPlurals(
+    'minuta czytania',
+    'minuty czytania',
+    'minut czytania',
+    roundedReadingTime,
+  );
+
+  const formattedReadingTime = `${roundedReadingTime} ${readingTimePlural}`;
+
+  return formattedReadingTime;
+};
+
 export const getResourceBySlug = async <T>(resourcesDirectory: string, resourceSlug: string) => {
   const resourcePath = path.join(resourcesDirectory, resourceSlug);
   const resourceMainFile = path.join(resourcePath, 'index.mdx');
@@ -69,26 +91,4 @@ export const getResourceBySlug = async <T>(resourcesDirectory: string, resourceS
   };
 
   return resource as ResourceWithContent<T>;
-};
-
-const getResourceSourceBySlug = async (resourcePath: string) => {
-  const resourceSourceBuffer = await readFile(resourcePath);
-  const resourceSource = resourceSourceBuffer.toString();
-
-  return resourceSource;
-};
-
-const getResourceReadingTime = (content: string) => {
-  const contentReadingTime = readingTime(content).minutes;
-  const roundedReadingTime = Math.round(contentReadingTime);
-  const readingTimePlural = polishPlurals(
-    'minuta czytania',
-    'minuty czytania',
-    'minut czytania',
-    roundedReadingTime,
-  );
-
-  const formattedReadingTime = `${roundedReadingTime} ${readingTimePlural}`;
-
-  return formattedReadingTime;
 };

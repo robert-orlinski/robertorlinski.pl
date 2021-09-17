@@ -12,9 +12,25 @@ export const getPosts = async () => await getResourcesByDateDescending<Post>(POS
 
 export const getNewestPosts = async () => {
   const posts = await getResourcesByDateDescending<Post>(POSTS_PATH);
-  const newestSixPosts = posts.slice(0, 6);
+  const lastSixPosts = posts.slice(0, 6);
 
-  return newestSixPosts;
+  return lastSixPosts;
 };
 
-export const getPostBySlug = (slug: string) => getResourceBySlug(POSTS_PATH, slug);
+export const getRelatedPosts = async (givenCategory: string) => {
+  const posts = await getResourcesByDateDescending<Post>(POSTS_PATH);
+  const postsInGivenCategory = posts.filter(({ category }) => category === givenCategory);
+
+  if (postsInGivenCategory.length >= 3) {
+    const threePostsInGivenCategory = postsInGivenCategory.slice(0, 3);
+
+    return threePostsInGivenCategory;
+  } else {
+    const numberOfPostsNeeded = 3 - postsInGivenCategory.length;
+    const theRestFromOtherCategories = posts.slice(0, numberOfPostsNeeded);
+
+    return postsInGivenCategory.concat(theRestFromOtherCategories);
+  }
+};
+
+export const getPostBySlug = (slug: string) => getResourceBySlug<Post>(POSTS_PATH, slug);

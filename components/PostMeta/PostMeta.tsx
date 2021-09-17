@@ -20,8 +20,18 @@ export const PostMeta: FC<Props> = ({ category, readingTime, date }) => {
   return (
     <Meta>
       <Category href={categoryLink}>{category}</Category>
-      <Separator />
-      <span>{readingTime || date}</span>
+      {date && (
+        <>
+          <Separator />
+          <span>{date}</span>
+        </>
+      )}
+      {readingTime && (
+        <>
+          <Separator />
+          <span>{readingTime}</span>
+        </>
+      )}
     </Meta>
   );
 };

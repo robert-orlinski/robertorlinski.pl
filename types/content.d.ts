@@ -23,6 +23,10 @@ export type Post = {
 
 export type Posts = Array<Post>;
 
+export type PostWithContent = {
+  relatedPosts: Posts;
+} & ResourceWithContent<Post>;
+
 export type PostsContainer = {
   posts: Posts;
 };

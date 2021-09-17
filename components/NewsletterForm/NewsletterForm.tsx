@@ -3,7 +3,7 @@ import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 import styled from 'styled-components';
 import router from 'next/router';
 
-import { ButtonContainer } from 'Components/ButtonContainer';
+import { CenteredText } from 'Components/CenteredText';
 import { SubmitButton } from './SubmitButton';
 import { EmailInput } from './EmailInput';
 import { NameInput } from './NameInput';
@@ -44,9 +44,9 @@ export const NewsletterForm: FC<Props> = ({ centered }) => {
           <NameInput {...{ register, errors }} />
           <EmailInput {...{ register, errors }} />
         </Inputs>
-        <ButtonContainer>
+        <CenteredText as="footer">
           <SubmitButton />
-        </ButtonContainer>
+        </CenteredText>
         <Error {...{ errorMessage }} />
       </Form>
     );

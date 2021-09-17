@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export const ButtonContainer = styled.footer`
+export const CenteredText = styled.div`
   text-align: center;
 `;

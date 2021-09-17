@@ -3,13 +3,13 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 import { CoveringLink } from '../CoveringLink';
-import { ListedPostContainer } from '../ListedPostContainer';
 import { Link } from '../Link';
 import { PostMeta } from '../PostMeta';
 
 import { getPostFeaturedImage, getPostLink } from 'Helpers/components/posts';
 
 import { Post } from 'Types/content';
+import { between } from 'Devices';
 
 export const ListedPost: FC<Post> = ({ title, category, slug, readingTime }) => {
   const featuredImage = getPostFeaturedImage(slug);
@@ -19,19 +19,33 @@ export const ListedPost: FC<Post> = ({ title, category, slug, readingTime }) => 
     <ListedPostContainer>
       <CoveringLink href={link} zIndex="med" />
       <ThumbnailContainer>
-        <Thumbnail as={Image} src={featuredImage} alt="" width="420" height="252" />
+        <Thumbnail as={Image} src={featuredImage} alt="" width="500" height="300" />
       </ThumbnailContainer>
-      <MetaContainer>
-        <PostMeta {...{ category, readingTime }} />
-      </MetaContainer>
-      <Title>
-        <Link href={link} withUnderlineInvisible>
-          {title}
-        </Link>
-      </Title>
+      <Content>
+        <MetaContainer>
+          <PostMeta {...{ category, readingTime }} />
+        </MetaContainer>
+        <Title>
+          <Link href={link} withUnderlineInvisible>
+            {title}
+          </Link>
+        </Title>
+      </Content>
     </ListedPostContainer>
   );
 };
+
+export const ListedPostContainer = styled.li`
+  position: relative;
+
+  @media ${between.tabletAndTabletL} {
+    display: flex;
+
+    & > * {
+      flex: 1 1 0;
+    }
+  }
+`;
 
 const ThumbnailContainer = styled.figure`
   overflow: hidden;
@@ -44,6 +58,12 @@ const Thumbnail = styled.div`
 
   ${ListedPostContainer}:hover & {
     transform: scale(1.05);
+  }
+`;
+
+const Content = styled.div`
+  @media ${between.tabletAndTabletL} {
+    padding-left: 2rem;
   }
 `;
 

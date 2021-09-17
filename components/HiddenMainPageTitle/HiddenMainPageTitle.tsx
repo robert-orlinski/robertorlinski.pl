@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 
 import { VisuallyHiddenElement } from '../VisuallyHiddenElement';
 
+import { siteName } from 'SiteName';
+
 export const HiddenMainPageTitle = () => {
   const router = useRouter();
 
@@ -9,5 +11,5 @@ export const HiddenMainPageTitle = () => {
     return null;
   }
 
-  return <VisuallyHiddenElement as="h1">Robert Orliński</VisuallyHiddenElement>;
+  return <VisuallyHiddenElement as="h1">{siteName}</VisuallyHiddenElement>;
 };

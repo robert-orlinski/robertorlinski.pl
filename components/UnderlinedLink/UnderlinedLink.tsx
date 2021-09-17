@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 
-import { ListedPostContainer } from '../ListedPostContainer';
+import { ListedPostContainer } from '../ListedPost';
 
 export const UnderlinedLink = styled.a`
   position: relative;
+
+  padding-bottom: 2px;
 
   background: linear-gradient(var(--dark-gray), var(--dark-gray)) no-repeat;
   background-size: var(--line-size-initial, 0 1px);
