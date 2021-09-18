@@ -32,5 +32,5 @@ const Container = styled.header`
 const Title = styled.h1`
   margin: 0.8rem 0 2rem;
 
-  font-size: clamp(1.6rem, 4vw, 3rem);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
 `;
