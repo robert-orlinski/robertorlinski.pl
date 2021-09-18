@@ -8,14 +8,12 @@ import { PostsContainer } from 'Types/content';
 import { SectionTitle } from 'Components/SectionTitle';
 
 export const RelatedPosts: FC<PostsContainer> = ({ posts }) => (
-  <SectionContainer>
-    <Wrapper as="div" withSpaceAbove withSpaceBelow>
-      <SectionTitle>Mogą Cię zainteresować:</SectionTitle>
-      <PostsList {...{ posts }} />
-    </Wrapper>
-  </SectionContainer>
+  <WrapperWithBorder withSpaceAbove withSpaceBelow>
+    <SectionTitle>Mogą Cię zainteresować:</SectionTitle>
+    <PostsList {...{ posts }} />
+  </WrapperWithBorder>
 );
 
-const SectionContainer = styled.section`
+const WrapperWithBorder = styled(Wrapper)`
   border-top: 1px solid var(--line-gray);
 `;

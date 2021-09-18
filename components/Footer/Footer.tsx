@@ -48,6 +48,8 @@ const Top = styled.section`
   justify-content: space-between;
   align-items: center;
 
+  min-height: var(--logo-height);
+
   margin-bottom: 3.35rem;
 
   @media ${to.tabletL} {

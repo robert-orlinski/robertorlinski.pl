@@ -12,6 +12,7 @@ export const CssVariables = createGlobalStyle`
     --error-red: #d32f2f;
 
     --nav-height: 5.2rem;
+    --logo-height: 1.9rem;
 
     --section-space: 3.8rem;
 
