@@ -15,25 +15,27 @@ import { PostWithContent } from 'Types/content';
 import { siteName } from 'SiteName';
 import { from } from 'Devices';
 
-const meta = {
-  title: `Test | ${siteName}`,
-  description:
-    'Wszystkie artykuły, które do tej pory pojawiły się na blogu. Przeczytasz o front-endzie, WordPressie, trochę przemyśleń i trochę rzeczy związanych z designem oraz pracą jako programista',
-};
+const Post: FC<PostWithContent> = ({ metaData, content, relatedPosts }) => {
+  const meta = {
+    title: `${metaData.title} | ${siteName}`,
+    description:
+      'Wszystkie artykuły, które do tej pory pojawiły się na blogu. Przeczytasz o front-endzie, WordPressie, trochę przemyśleń i trochę rzeczy związanych z designem oraz pracą jako programista',
+  };
 
-const Post: FC<PostWithContent> = ({ metaData, content, relatedPosts }) => (
-  <>
-    <Head {...meta} />
-    <RawHeader />
-    <Wrapper as="main" size="medium" withSpaceBelow>
-      <PostHeader {...metaData} />
-      <ArticleInner>
-        <MDXArticle source={content} />
-      </ArticleInner>
-    </Wrapper>
-    <RelatedPosts posts={relatedPosts} />
-  </>
-);
+  return (
+    <>
+      <Head {...meta} />
+      <RawHeader />
+      <Wrapper as="main" size="medium" withSpaceBelow>
+        <PostHeader {...metaData} />
+        <ArticleInner>
+          <MDXArticle source={content} />
+        </ArticleInner>
+      </Wrapper>
+      <RelatedPosts posts={relatedPosts} />
+    </>
+  );
+};
 
 const ArticleInner = styled.article`
   @media ${from.tablet} {

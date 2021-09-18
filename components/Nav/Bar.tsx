@@ -47,6 +47,7 @@ const Outer = styled.nav`
 
     top: 0;
     left: 0;
+    z-index: -1;
 
     box-shadow: var(--box-shadow);
     transition: box-shadow 300ms ease;
