@@ -5,7 +5,6 @@ import { Head } from 'Components/Head';
 import { Wrapper } from 'Components/Wrapper';
 import { MDXArticle } from 'Components/MDXArticle';
 
-import { Comments } from 'Components/Comments';
 import { RawHeader } from 'Components/RawHeader';
 import { PostHeader } from 'Components/PostHeader';
 import { RelatedPosts } from 'Components/RelatedPosts';
@@ -33,7 +32,6 @@ const Post: FC<PostWithContent> = ({ metaData, content, relatedPosts }) => (
       </ArticleInner>
     </Wrapper>
     <RelatedPosts posts={relatedPosts} />
-    <Comments />
   </>
 );
 
