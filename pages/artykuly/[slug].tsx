@@ -13,7 +13,7 @@ import { CommentsButton } from 'Components/CommentsButton';
 import { getPostBySlug, getPostsPaths, getRelatedPosts } from 'Helpers/content/posts';
 
 import { PostWithContent } from 'Types/content';
-import { from } from 'Helpers/devices';
+import { from } from 'Devices';
 import { RelatedPosts } from 'Components/RelatedPosts';
 
 const meta = {

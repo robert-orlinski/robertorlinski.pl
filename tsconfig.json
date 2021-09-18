@@ -15,16 +15,16 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
+      "Devices": ["./helpers/devices.ts"],
+      "Patterns": ["./helpers/patterns.ts"],
+      "SiteName": ["./helpers/metaData/siteName.ts"],
+      "AddressSeparator": ["./helpers/metaData/addressSeparator.ts"],
       "Components/*": ["./components/*"],
       "Types/*": ["./types/*"],
       "Data/*": ["./data/*"],
       "Images/*": ["./public/images/*"],
       "DataHelpers/*": ["./helpers/data/*"],
-      "Helpers/*": ["./helpers/*"],
-      "Devices": ["./helpers/devices.ts"],
-      "Patterns": ["./helpers/patterns.ts"],
-      "SiteName": ["./helpers/metaData/siteName.ts"],
-      "AddressSeparator": ["./helpers/metaData/addressSeparator.ts"]
+      "Helpers/*": ["./helpers/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.tsx"],

@@ -7,7 +7,7 @@ import { PostMeta } from '../PostMeta';
 import { getPostFeaturedImage } from 'Helpers/components/posts';
 
 import { Post } from 'Types/content';
-import { to } from 'Helpers/devices';
+import { to } from 'Devices';
 
 export const PostHeader: FC<Post> = ({ title, category, date, slug }) => {
   const featuredImage = getPostFeaturedImage(slug);
