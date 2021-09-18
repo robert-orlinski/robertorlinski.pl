@@ -1,9 +1,10 @@
-import { FC, CSSProperties } from 'react';
+import { FC } from 'react';
 
+import { UnderlinedLink } from '../UnderlinedLink';
 import { LinkContainer } from '../LinkContainer';
 
 import { Link as LinkType } from 'Types/links';
-import { UnderlinedLink } from '../UnderlinedLink';
+import { InlineStyle } from 'Types/styled-components';
 
 export const Link: FC<LinkType> = ({ children, href, withUnderlineInvisible }) => {
   const lineVisibility = (
@@ -15,7 +16,7 @@ export const Link: FC<LinkType> = ({ children, href, withUnderlineInvisible }) =
           '--line-position-initial': '0 100%',
           '--line-position-hovered': '100% 100%',
         }
-  ) as CSSProperties | undefined;
+  ) as InlineStyle;
 
   const isExternal = href.includes('http');
 

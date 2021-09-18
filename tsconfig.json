@@ -19,12 +19,14 @@
       "Patterns": ["./helpers/patterns.ts"],
       "SiteName": ["./helpers/metaData/siteName.ts"],
       "AddressSeparator": ["./helpers/metaData/addressSeparator.ts"],
+      "Slogan": ["./helpers/metaData/slogan.ts"],
       "Components/*": ["./components/*"],
       "Types/*": ["./types/*"],
       "Data/*": ["./data/*"],
       "Images/*": ["./public/images/*"],
       "DataHelpers/*": ["./helpers/data/*"],
-      "Helpers/*": ["./helpers/*"]
+      "Helpers/*": ["./helpers/*"],
+      "Hooks/*": ["./hooks/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.tsx"],

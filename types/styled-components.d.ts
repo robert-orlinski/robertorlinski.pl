@@ -1,3 +1,5 @@
+export type InlineStyle = CSSProperties | undefined;
+
 export type ElementWithInlineStyle = {
   style?: CSSProperties;
 };

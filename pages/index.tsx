@@ -13,15 +13,17 @@ import { Head } from 'Components/Head';
 import { P } from 'Components/P';
 
 import { getNewestPosts } from 'Helpers/content/posts';
-import { siteName } from 'SiteName';
+import { addressSeparator } from 'AddressSeparator';
 import { mySummary } from 'Data/mySummary';
+import { siteName } from 'SiteName';
+import { slogan } from 'Slogan';
 
 import { PostsContainer } from 'Types/content';
 
 import bannerImage from 'Images/banners/me.jpg';
 
 const meta = {
-  title: siteName,
+  title: `${siteName} ${addressSeparator} ${slogan}`,
   description:
     'W WordPressie widziałem już prawie wszystko, więc teraz skupiam się na front-endzie. Programuję dla siebie oraz klientów, piszę na blogu i nagrywam filmy na YouTubie. Po godzinach działam jako aktywista ✨',
 };

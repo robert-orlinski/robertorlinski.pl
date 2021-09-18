@@ -1,4 +1,4 @@
-import { useState, CSSProperties } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 import { HiddenMainPageTitle } from '../HiddenMainPageTitle';
@@ -14,8 +14,14 @@ import { Hamburger } from './Hamburger';
 
 import { to } from 'Devices';
 
+import { useStickyElement } from 'Hooks/useStickyElement';
+
+import { InlineStyle } from 'Types/styled-components';
+
 export const Nav = () => {
   const [isNavVisibleOnMobile, setNavVisibilityOnMobile] = useState(false);
+
+  const [isSticky] = useStickyElement();
 
   const navOnMobileVisibility = (
     isNavVisibleOnMobile
@@ -23,7 +29,7 @@ export const Nav = () => {
           '--translation': '0',
         }
       : undefined
-  ) as CSSProperties | undefined;
+  ) as InlineStyle;
 
   const hamburgerTransformation = (
     isNavVisibleOnMobile
@@ -34,10 +40,10 @@ export const Nav = () => {
             'rotate(90deg) translateY(calc((var(--hamburger-size) / 3.8) - 1px))',
         }
       : undefined
-  ) as CSSProperties | undefined;
+  ) as InlineStyle;
 
   return (
-    <NavBar>
+    <NavBar {...{ isSticky }}>
       <HiddenMainPageTitle />
       <Brand />
       <Container>
