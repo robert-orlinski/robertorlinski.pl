@@ -16,8 +16,10 @@ import { siteName } from 'SiteName';
 import { from } from 'Devices';
 
 const Post: FC<PostWithContent> = ({ metaData, content, relatedPosts }) => {
+  const seoTitle = metaData.seoTitle || metaData.title;
+
   const meta = {
-    title: `${metaData.title} | ${siteName}`,
+    title: `${seoTitle} | ${siteName}`,
     description:
       'Wszystkie artykuły, które do tej pory pojawiły się na blogu. Przeczytasz o front-endzie, WordPressie, trochę przemyśleń i trochę rzeczy związanych z designem oraz pracą jako programista',
   };

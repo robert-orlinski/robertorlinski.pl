@@ -3,6 +3,7 @@ import { Category } from './data';
 export type Resource = {
   slug: string;
   title: string;
+  seoTitle?: string;
   abstract: string;
   isPublished: boolean;
   date: string;
