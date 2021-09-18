@@ -9,7 +9,7 @@ import { SectionTitle } from 'Components/SectionTitle';
 
 export const RelatedPosts: FC<PostsContainer> = ({ posts }) => (
   <SectionContainer>
-    <Wrapper as="div">
+    <Wrapper as="div" withSpaceAbove>
       <SectionTitle>Mogą Cię zainteresować:</SectionTitle>
       <PostsList {...{ posts }} />
     </Wrapper>
@@ -17,6 +17,5 @@ export const RelatedPosts: FC<PostsContainer> = ({ posts }) => (
 );
 
 const SectionContainer = styled.section`
-  padding-top: var(--section-space);
   border-top: 1px solid var(--line-gray);
 `;

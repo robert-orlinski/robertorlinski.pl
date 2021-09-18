@@ -5,16 +5,16 @@ import { Head } from 'Components/Head';
 import { Wrapper } from 'Components/Wrapper';
 import { MDXArticle } from 'Components/MDXArticle';
 
-import { siteName } from 'SiteName';
+import { Comments } from 'Components/Comments';
 import { RawHeader } from 'Components/RawHeader';
 import { PostHeader } from 'Components/PostHeader';
-import { CommentsButton } from 'Components/CommentsButton';
+import { RelatedPosts } from 'Components/RelatedPosts';
 
 import { getPostBySlug, getPostsPaths, getRelatedPosts } from 'Helpers/content/posts';
 
 import { PostWithContent } from 'Types/content';
+import { siteName } from 'SiteName';
 import { from } from 'Devices';
-import { RelatedPosts } from 'Components/RelatedPosts';
 
 const meta = {
   title: `Test | ${siteName}`,
@@ -30,10 +30,10 @@ const Post: FC<PostWithContent> = ({ metaData, content, relatedPosts }) => (
       <PostHeader {...metaData} />
       <ArticleInner>
         <MDXArticle source={content} />
-        <CommentsButton />
       </ArticleInner>
     </Wrapper>
     <RelatedPosts posts={relatedPosts} />
+    <Comments />
   </>
 );
 

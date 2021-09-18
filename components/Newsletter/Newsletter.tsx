@@ -7,7 +7,7 @@ import { Row } from 'Components/Row';
 import { P } from 'Components/P';
 
 export const Newsletter = () => (
-  <Wrapper>
+  <Wrapper withSpaceAbove>
     <SectionTitle>Chętnie zaproponuję Ci coś jeszcze</SectionTitle>
     <Content>
       <div>
