@@ -25,7 +25,7 @@ const Post: FC<PostWithContent> = ({ metaData, content, relatedPosts }) => (
   <>
     <Head {...meta} />
     <RawHeader />
-    <Wrapper as="main" size="medium">
+    <Wrapper as="main" size="medium" withSpaceBelow>
       <PostHeader {...metaData} />
       <ArticleInner>
         <MDXArticle source={content} />

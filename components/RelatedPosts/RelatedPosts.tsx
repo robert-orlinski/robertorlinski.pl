@@ -9,7 +9,7 @@ import { SectionTitle } from 'Components/SectionTitle';
 
 export const RelatedPosts: FC<PostsContainer> = ({ posts }) => (
   <SectionContainer>
-    <Wrapper as="div" withSpaceAbove>
+    <Wrapper as="div" withSpaceAbove withSpaceBelow>
       <SectionTitle>Mogą Cię zainteresować:</SectionTitle>
       <PostsList {...{ posts }} />
     </Wrapper>
