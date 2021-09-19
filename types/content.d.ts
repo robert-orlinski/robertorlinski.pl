@@ -18,6 +18,7 @@ export type ResourceWithContent<T> = {
 export type Post = {
   readingTime: string;
   topic: string;
+  isPopular: string;
 } & Resource;
 
 export type Posts = Array<Post>;
