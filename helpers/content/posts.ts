@@ -17,19 +17,19 @@ export const getNewestPosts = async () => {
   return lastSixPosts;
 };
 
-export const getRelatedPosts = async (givenCategory: string) => {
+export const getRelatedPosts = async (givenTopic: string) => {
   const posts = await getResourcesByDateDescending<Post>(POSTS_PATH);
-  const postsInGivenCategory = posts.filter(({ category }) => category === givenCategory);
+  const postsInGivenTopic = posts.filter(({ topic }) => topic === givenTopic);
 
-  if (postsInGivenCategory.length >= 3) {
-    const threePostsInGivenCategory = postsInGivenCategory.slice(0, 3);
+  if (postsInGivenTopic.length >= 3) {
+    const threePostsInGivenTopic = postsInGivenTopic.slice(0, 3);
 
-    return threePostsInGivenCategory;
+    return threePostsInGivenTopic;
   } else {
-    const numberOfPostsNeeded = 3 - postsInGivenCategory.length;
-    const theRestFromOtherCategories = posts.slice(0, numberOfPostsNeeded);
+    const numberOfPostsNeeded = 3 - postsInGivenTopic.length;
+    const theRestFromOtherTopics = posts.slice(0, numberOfPostsNeeded);
 
-    return postsInGivenCategory.concat(theRestFromOtherCategories);
+    return postsInGivenTopic.concat(theRestFromOtherTopics);
   }
 };
 

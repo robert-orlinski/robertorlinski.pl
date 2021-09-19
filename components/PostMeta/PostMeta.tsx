@@ -4,22 +4,20 @@ import styled from 'styled-components';
 import { ElementWithOpacity } from '../ElementWithOpacity';
 import { Separator } from 'components/Separator';
 
-import { getCategoryLink } from 'DataHelpers/categories';
-
-import { Category as CategoryType } from 'Types/data';
+import { getTopicLink } from 'DataHelpers/topics';
 
 type Props = {
-  category: CategoryType;
+  topic: string;
   readingTime?: string;
   date?: string;
 };
 
-export const PostMeta: FC<Props> = ({ category, readingTime, date }) => {
-  const categoryLink = getCategoryLink(category);
+export const PostMeta: FC<Props> = ({ topic, readingTime, date }) => {
+  const topicLink = getTopicLink(topic);
 
   return (
     <Meta>
-      <Category href={categoryLink}>{category}</Category>
+      <Topic href={topicLink}>{topic}</Topic>
       {date && (
         <>
           <Separator />
@@ -43,6 +41,6 @@ const Meta = styled.span`
   margin: 0.5rem 0 0.35rem;
 `;
 
-const Category = styled(ElementWithOpacity)`
+const Topic = styled(ElementWithOpacity)`
   z-index: var(--max-z-index);
 `;

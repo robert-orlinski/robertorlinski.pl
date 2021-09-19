@@ -8,20 +8,12 @@ type Text = {
 
 export type ArrayOfTexts = Array<Text>;
 
-export type Category =
-  | 'Front-end'
-  | 'WordPress'
-  | 'Własne bloki w WordPress Gutenberg'
-  | 'Dostępność'
-  | 'Design'
-  | 'Narzędzia'
-  | 'Praca'
-  | 'Produktywność'
-  | 'Nauka'
-  | 'Przemyślenia'
-  | 'Inne';
+export type Topic = {
+  name: string;
+  featuredImage: StaticImageData;
+};
 
-export type ListedCategory = {
-  name: Category;
-  image: StaticImageData;
+export type TopicsGroup = {
+  groupName: string;
+  topics: Array<Topic>;
 };

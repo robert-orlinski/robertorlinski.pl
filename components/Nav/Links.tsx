@@ -23,7 +23,8 @@ export const NavLinks = styled.div`
     background-color: var(--dark-gray);
 
     transform: translateX(var(--translation, var(--width)));
-    transition: height 300ms ease, transform 650ms cubic-bezier(0.77, 0, 0.175, 1);
+    transition: height var(--short-transition-duration),
+      transform 650ms cubic-bezier(0.77, 0, 0.175, 1);
   }
 
   @media ${to.phoneS} {

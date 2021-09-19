@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { to } from 'Devices';
 
 type Props = {
-  size?: 'tiny' | 'small' | 'medium' | 'default';
+  size?: 'tiny' | 'small' | 'medium' | 'big' | 'default';
   withSpaceAbove?: boolean;
   withSpaceBelow?: boolean;
 };
@@ -13,11 +13,12 @@ const sizes = {
     tiny: '460px',
     small: '740px',
     medium: '850px',
-    big: 'min(1350px, 84vw)',
+    big: 'min(1100px, 84vw)',
+    default: 'min(1350px, 84vw)',
   },
   tablet: {
     tiny: '400px',
-    default: '500px',
+    default: '84vw',
   },
 };
 
@@ -29,7 +30,9 @@ export const Wrapper = styled.section<Props>`
       ? sizes.desktop.small
       : size === 'medium'
       ? sizes.desktop.medium
-      : sizes.desktop.big};
+      : size === 'big'
+      ? sizes.desktop.big
+      : sizes.desktop.default};
 
   ${({ withSpaceAbove }) =>
     withSpaceAbove &&
@@ -47,18 +50,18 @@ export const Wrapper = styled.section<Props>`
   margin-left: auto;
 
   @media ${to.laptop} {
-    width: 900px;
+    max-width: 900px;
   }
 
   @media ${to.tabletL} {
-    width: 690px;
+    max-width: 690px;
   }
 
   @media ${to.tablet} {
-    width: ${({ size }) => (size === 'tiny' ? sizes.tablet.tiny : sizes.tablet.default)};
+    max-width: ${({ size }) => (size === 'tiny' ? sizes.tablet.tiny : sizes.tablet.default)};
   }
 
   @media ${to.phoneL} {
-    width: calc(100vw - 60px);
+    max-width: calc(100vw - 60px);
   }
 `;

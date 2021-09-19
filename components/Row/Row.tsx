@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 import { from, to } from 'Devices';
 
-export const Row = styled.section`
+import { Wrapper } from 'Components/Wrapper';
+
+export const Row = styled(Wrapper)`
   display: grid;
 
   padding-bottom: var(--section-space);
@@ -13,6 +15,6 @@ export const Row = styled.section`
   }
 
   @media ${to.tabletL} {
-    grid-row-gap: var(--section-space);
+    grid-row-gap: calc(var(--section-space) * 0.7);
   }
 `;

@@ -11,6 +11,10 @@ export const CssVariables = createGlobalStyle`
     --line-gray: #ecf0f3;
     --error-red: #d32f2f;
 
+    --dark-gray-transparent-min: rgba(34, 34, 34, 0.3);
+    --dark-gray-transparent-med: rgba(34, 34, 34, 0.6);
+    --dark-gray-transparent-max: rgba(34, 34, 34, 0.8);
+
     --nav-height: 5.2rem;
     --logo-height: 1.9rem;
 
@@ -26,8 +30,11 @@ export const CssVariables = createGlobalStyle`
     --extreme-z-index: 10000;
 
     @media ${to.tabletL} {
-      --nav-height: 4.6rem;
       --section-space: 2.5rem;
+    }
+
+    @media ${to.tablet} {
+      --nav-height: 4.6rem;
     }
   }
 `;

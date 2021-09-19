@@ -97,6 +97,30 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+
+  h4 {
+    font-size: 1.42rem;
+  }
+
+  h5 {
+    font-size: 1.35rem;
+  }
+
+  h6 {
+    font-size: 1.25rem;
+  }
+
   ul {
     list-style: none;
   }

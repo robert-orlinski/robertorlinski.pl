@@ -55,6 +55,7 @@ const ButtonInner = styled.a<InnerProps>`
   position: relative;
 
   border: 1px solid var(--dark-gray);
+  margin-top: 0.5rem;
 
   text-align: center;
 

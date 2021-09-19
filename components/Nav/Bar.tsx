@@ -13,7 +13,7 @@ export const NavBar: FC<Props> = ({ children, isSticky }) => {
   const stickyNavStyle = (
     isSticky
       ? {
-          '--height': 'calc(var(--nav-height) * 0.85)',
+          '--height': 'calc(var(--nav-height) * 0.9)',
           '--box-shadow': 'rgba(34,34,34,0.1) 0 5px 10px',
         }
       : undefined
@@ -36,7 +36,7 @@ const Outer = styled.nav`
 
   background-color: #fff;
   box-shadow: 0;
-  transition: height 300ms;
+  transition: height var(--short-transition-duration);
 
   &::after {
     content: '';
@@ -50,7 +50,7 @@ const Outer = styled.nav`
     z-index: -1;
 
     box-shadow: var(--box-shadow);
-    transition: box-shadow 300ms ease;
+    transition: box-shadow var(--short-transition-duration);
   }
 `;
 

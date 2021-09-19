@@ -8,7 +8,7 @@ import { MainBanner } from 'Components/MainBanner';
 import { Newsletter } from 'Components/Newsletter';
 import { Wrapper } from 'Components/Wrapper';
 import { Button } from 'Components/Button';
-import { Intro } from 'Components/Intro';
+import { TextBlock } from 'Components/TextBlock';
 import { Head } from 'Components/Head';
 import { P } from 'Components/P';
 
@@ -40,7 +40,7 @@ const Home: FC<PostsContainer> = ({ posts }) => {
         }}
       />
       <Wrapper as="main">
-        <Intro>
+        <TextBlock>
           <P>
             Przez parę ostatnich lat pracowałem z WordPressem, aż do momentu, w którym okazało się,
             że niewiele może mnie w nim już zaskoczyć - dlatego niedawno przerzuciłem się w pełni na
@@ -50,7 +50,7 @@ const Home: FC<PostsContainer> = ({ posts }) => {
           <CenteredText as="footer">
             <Button href="/najpopularniejsze">Najpopularniejsze artykuły</Button>
           </CenteredText>
-        </Intro>
+        </TextBlock>
         <NewArticles {...{ posts }} />
         <Newsletter />
       </Wrapper>

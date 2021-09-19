@@ -1,14 +1,14 @@
 import { MainBanner } from 'Components/MainBanner';
+import { TextBlock } from 'Components/TextBlock';
 import { Wrapper } from 'Components/Wrapper';
-import { Intro } from 'Components/Intro';
+import { Button } from 'Components/Button';
 import { Head } from 'Components/Head';
+import { P } from 'Components/P';
 
 import { siteName } from 'SiteName';
 import { addressSeparator } from 'AddressSeparator';
 
 import bannerImage from 'Images/banners/me-at-louvre.jpg';
-import { P } from 'Components/P';
-import { Button } from 'Components/Button';
 
 const NewsletterConfirmation = () => {
   const meta = {
@@ -28,7 +28,7 @@ const NewsletterConfirmation = () => {
         }}
       />
       <Wrapper as="main">
-        <Intro>
+        <TextBlock>
           <P>Fajnie, że będziemy mieli tam kontakt!</P>
           <P>
             Jedna tylko sprawa - <strong>potwierdź swój adres.</strong> Po wejściu w link, który
@@ -37,7 +37,7 @@ const NewsletterConfirmation = () => {
           </P>
           <P>Do zobaczenia!</P>
           <Button href="/">Strona główna</Button>
-        </Intro>
+        </TextBlock>
       </Wrapper>
     </>
   );

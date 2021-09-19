@@ -1,6 +1,6 @@
 import { MainBanner } from 'Components/MainBanner';
 import { Wrapper } from 'Components/Wrapper';
-import { Intro } from 'Components/Intro';
+import { TextBlock } from 'Components/TextBlock';
 import { Head } from 'Components/Head';
 
 import { siteName } from 'SiteName';
@@ -26,7 +26,7 @@ const NewsletterSuccess = () => (
       }}
     />
     <Wrapper as="main">
-      <Intro>
+      <TextBlock>
         <P>
           Teraz już oficjalnie - mamy kontakt na mailu! Jeśli tylko Cię to interesuje, to e-booka z
           30 rzeczami, o które trzeba zadbać oddając stronę na WordPressie, znajdziesz poniżej:
@@ -36,7 +36,7 @@ const NewsletterSuccess = () => (
         </DistantButton>
         <P>Niech służy!</P>
         <P>Do zobaczenia na Twojej skrzynce odbiorczej ❤️</P>
-      </Intro>
+      </TextBlock>
     </Wrapper>
   </>
 );

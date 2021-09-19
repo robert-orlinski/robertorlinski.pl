@@ -45,7 +45,7 @@ const Field = styled.input<{ isErrorThrown: boolean }>`
   border: 0;
   border-bottom: 1px solid ${({ isErrorThrown }) => (isErrorThrown ? 'var(--error-red)' : '#000')};
 
-  transition: border-color 200ms;
+  transition: border-color var(--short-transition-duration);
 
   &::placeholder {
     opacity: 0;
@@ -66,7 +66,7 @@ const Label = styled.label`
   white-space: pre;
 
   transform: translateY(-50%);
-  transition: opacity 200ms;
+  transition: opacity var(--short-transition-duration);
 
   ${Field}:focus + &,
   ${Field}:not(:placeholder-shown) + & {

@@ -4,12 +4,7 @@ import styled from 'styled-components';
 
 import { Link } from 'components/Link';
 import { P } from 'components/P';
-import { H1 } from 'components/H1';
-import { H2 } from 'components/H2';
-import { H3 } from 'components/H3';
-import { H4 } from 'components/H4';
-import { H5 } from 'components/H5';
-import { H6 } from 'components/H6';
+import { H } from 'Components/H';
 
 import { to } from 'Devices';
 
@@ -41,3 +36,15 @@ const BiggerP = styled(P)`
     font-size: 1.1rem;
   }
 `;
+
+const H1: FC = (props) => <H level={1} {...props} />;
+
+const H2: FC = (props) => <H level={2} {...props} />;
+
+const H3: FC = (props) => <H level={3} {...props} />;
+
+const H4: FC = (props) => <H level={4} {...props} />;
+
+const H5: FC = (props) => <H level={5} {...props} />;
+
+const H6: FC = (props) => <H level={6} {...props} />;

@@ -4,7 +4,7 @@ import { Wrapper } from '../Wrapper';
 
 import { from } from 'Devices';
 
-export const Intro = styled(Wrapper).attrs({
+export const TextBlock = styled(Wrapper).attrs({
   size: 'small',
 })`
   padding-bottom: var(--section-space);

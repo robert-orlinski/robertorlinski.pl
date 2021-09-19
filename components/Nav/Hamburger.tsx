@@ -43,7 +43,7 @@ const Inner = styled.span`
     height: 2px;
 
     background-color: var(--dark-gray);
-    transition: transform 300ms ease;
+    transition: transform var(--short-transition-duration);
   }
 
   &::before,

@@ -6,6 +6,8 @@ import { Wrapper } from 'Components/Wrapper';
 import { Row } from 'Components/Row';
 import { P } from 'Components/P';
 
+import { to } from 'Devices';
+
 export const Newsletter = () => (
   <Wrapper withSpaceAbove>
     <SectionTitle>Chętnie zaproponuję Ci coś jeszcze</SectionTitle>
@@ -30,6 +32,10 @@ const Content = styled(Row).attrs({
   as: 'article',
 })`
   --columns: 1.5fr 1fr;
+
+  @media ${to.tabletL} {
+    grid-row-gap: var(--section-space);
+  }
 `;
 
 const Text = styled(P)`

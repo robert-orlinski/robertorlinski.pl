@@ -11,7 +11,7 @@ import { getPostFeaturedImage, getPostLink } from 'Helpers/components/posts';
 import { Post } from 'Types/content';
 import { between } from 'Devices';
 
-export const ListedPost: FC<Post> = ({ title, category, slug, readingTime }) => {
+export const ListedPost: FC<Post> = ({ title, topic, slug, readingTime }) => {
   const featuredImage = getPostFeaturedImage(slug);
   const link = getPostLink(slug);
 
@@ -23,7 +23,7 @@ export const ListedPost: FC<Post> = ({ title, category, slug, readingTime }) => 
       </ThumbnailContainer>
       <Content>
         <MetaContainer>
-          <PostMeta {...{ category, readingTime }} />
+          <PostMeta {...{ topic, readingTime }} />
         </MetaContainer>
         <Title>
           <Link href={link} withUnderlineInvisible>
