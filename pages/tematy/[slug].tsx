@@ -11,6 +11,7 @@ import { getPostsByTopic } from 'Helpers/content/posts';
 import { Posts } from 'Types/content';
 import { siteName } from 'SiteName';
 import { Topic } from 'Types/data';
+import { Error } from 'Components/Error';
 
 type Props = {
   currentTopic: Topic;
@@ -36,7 +37,20 @@ const Post: FC<Props> = ({ currentTopic, postsInTopic }) => {
         }}
       />
       <Wrapper as="main" withSpaceBelow>
-        <PostsList posts={postsInTopic} />
+        {postsInTopic.length ? (
+          <PostsList posts={postsInTopic} />
+        ) : (
+          <>
+            <Error
+              withButton={{
+                href: '/tematy',
+                title: 'Wszystkie tematy',
+              }}
+            >
+              Dziwne, ale w ramach tego tematu, nie ma żadnych postów. Może sprawdzisz inne?
+            </Error>
+          </>
+        )}
       </Wrapper>
     </>
   );

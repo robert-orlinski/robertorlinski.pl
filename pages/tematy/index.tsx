@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import { GetStaticProps } from 'next';
-import styled from 'styled-components';
 
 import { CenteredText } from 'Components/CenteredText';
+import { NarrowTitle } from 'Components/NarrowTitle';
 import { TopicsGroup } from 'Components/TopicsGroup';
 import { MainBanner } from 'Components/MainBanner';
 import { TextBlock } from 'Components/TextBlock';
 import { Button } from 'Components/Button';
+import { Error } from 'Components/Error';
 import { Head } from 'Components/Head';
-import { H } from 'Components/H';
 import { P } from 'Components/P';
 
 import { topicsGroups } from 'Data/taxonomies/topics';
@@ -39,41 +39,38 @@ const Home: FC<PostsContainer> = () => {
         }}
       />
       <main>
-        <TextBlock>
-          <P>
-            Wszystkie tematy, o których kiedykolwiek napisałem, znajdziedsz w tym oto miejscu.
-            Rozgość się i wybierz dokładnie to, co Cię interesuje ✨
-          </P>
-        </TextBlock>
         {topicsGroups ? (
-          topicsGroups
-            .filter(({ groupName }) => groupName !== 'Inne')
-            .map(({ groupName, topics }) => (
-              <TopicsGroup key={groupName} groupName={groupName} topics={topics} />
-            ))
+          <>
+            <TextBlock>
+              <P>
+                Wszystkie tematy, o których kiedykolwiek napisałem, znajdziedsz w tym oto miejscu.
+                Rozgość się i wybierz dokładnie to, co Cię interesuje ✨
+              </P>
+            </TextBlock>
+
+            {topicsGroups
+              .filter(({ groupName }) => groupName !== 'Inne')
+              .map(({ groupName, topics }) => (
+                <TopicsGroup key={groupName} groupName={groupName} topics={topics} />
+              ))}
+
+            <TextBlock>
+              <NarrowTitle level={2}>Wolisz nie ograniczać się do konkretnej tematyki?</NarrowTitle>
+              <CenteredText as="footer">
+                <Button href="/artykuly">Zobacz wszystkie artykuły</Button>
+              </CenteredText>
+            </TextBlock>
+          </>
         ) : (
-          <P as={CenteredText}>
+          <Error>
             Z jakiegoś powodu, tematy się nie wyświetliły. Ja czym prędzej to ogarnę, a tymczasem
-            Ty, możesz sprawdzić inne miejsca na blogu.
-          </P>
+            Ty, możesz sprawdzić inne miejsca na blogu 😌
+          </Error>
         )}
-        <TextBlock>
-          <NarrowTitle level={2}>Wolisz nie ograniczać się do konkretnej tematyki?</NarrowTitle>
-          <CenteredText as="footer">
-            <Button href="/artykuly">Zobacz wszystkie artykuły</Button>
-          </CenteredText>
-        </TextBlock>
       </main>
     </>
   );
 };
-
-const NarrowTitle = styled(H)`
-  max-width: 600px;
-
-  margin-left: auto;
-  margin-right: auto;
-`;
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getNewestPosts();
