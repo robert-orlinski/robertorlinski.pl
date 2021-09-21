@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-import { HiddenMainPageTitle } from '../HiddenMainPageTitle';
-import { Separator } from '../Separator';
-import { SocialMedia } from '../SocialMedia';
-import { Search } from '../Search';
+import { HiddenMainPageTitle } from 'Components/HiddenMainPageTitle';
+import { Separator } from 'Components/Separator';
+import { SocialMedia } from 'Components/SocialMedia';
+import { Search } from 'Components/Search';
 
 import { NavBar } from './Bar';
-import { Brand } from '../Brand';
+import { Brand } from 'Components/Brand';
 import { NavMenu } from './Menu';
 import { NavLinks } from './Links';
 import { Hamburger } from './Hamburger';

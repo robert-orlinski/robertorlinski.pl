@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { UnderlinedLink } from '../UnderlinedLink';
-import { LinkContainer } from '../LinkContainer';
+import { UnderlinedLink } from 'Components/UnderlinedLink';
+import { LinkContainer } from 'Components/LinkContainer';
 
 import { Link as LinkType } from 'Types/links';
 import { InlineStyle } from 'Types/styled-components';

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { Wrapper } from '../Wrapper';
+import { Wrapper } from 'Components/Wrapper';
 
 import { from } from 'Devices';
 

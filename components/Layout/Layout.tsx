@@ -4,7 +4,7 @@ import { CssVariables } from './CssVariables';
 import { GlobalStyle } from './GlobalStyle';
 import { FocusVisibleWhileUserIsTabbing } from './FocusVisibleWhileUserIsTabbing';
 
-import { Footer } from '../Footer';
+import { Footer } from 'Components/Footer';
 
 export const Layout: FC = ({ children }) => (
   <>

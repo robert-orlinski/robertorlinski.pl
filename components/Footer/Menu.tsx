@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { ElementWithOpacity } from '../ElementWithOpacity';
-import { LinkContainer } from '../LinkContainer';
-import { MenuItem } from '../MenuItem';
+import { ElementWithOpacity } from 'Components/ElementWithOpacity';
+import { LinkContainer } from 'Components/LinkContainer';
+import { MenuItem } from 'Components/MenuItem';
 
 import { CatalogedLinksArray } from 'Types/links';
 import { to } from 'Devices';

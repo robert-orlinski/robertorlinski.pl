@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-import { PostMeta } from '../PostMeta';
+import { PostMeta } from 'Components/PostMeta';
 
 import { getPostFeaturedImage } from 'Helpers/components/posts';
 

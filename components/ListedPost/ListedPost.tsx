@@ -2,9 +2,9 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-import { CoveringLink } from '../CoveringLink';
-import { Link } from '../Link';
-import { PostMeta } from '../PostMeta';
+import { CoveringLink } from 'Components/CoveringLink';
+import { Link } from 'Components/Link';
+import { PostMeta } from 'Components/PostMeta';
 
 import { getPostFeaturedImage, getPostLink } from 'Helpers/components/posts';
 

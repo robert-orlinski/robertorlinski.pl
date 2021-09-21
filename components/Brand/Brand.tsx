@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ElementWithOpacity } from '../ElementWithOpacity';
+import { ElementWithOpacity } from 'Components/ElementWithOpacity';
 import { Logo } from './Logo';
 
 export const Brand = () => (

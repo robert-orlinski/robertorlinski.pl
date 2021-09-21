@@ -1,7 +1,7 @@
 import { FC, Fragment } from 'react';
 
-import { Link } from '../Link';
-import { P } from '../P';
+import { Link } from 'Components/Link';
+import { P } from 'Components/P';
 
 import { Text } from 'Types/data';
 

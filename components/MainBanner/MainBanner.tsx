@@ -2,9 +2,9 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-import { Wrapper } from '../Wrapper';
-import { Nav } from '../Nav';
-import { SectionTitle } from '../SectionTitle';
+import { Wrapper } from 'Components/Wrapper';
+import { Nav } from 'Components/Nav';
+import { SectionTitle } from 'Components/SectionTitle';
 
 import { from, to } from 'Devices';
 

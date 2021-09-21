@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ElementWithOpacity } from '../ElementWithOpacity';
+import { ElementWithOpacity } from 'Components/ElementWithOpacity';
 import { SearchForm } from './Form';
 import { MagnifierIcon } from './MagnifierIcon';
 

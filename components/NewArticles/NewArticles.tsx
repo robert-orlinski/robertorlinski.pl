@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { CenteredText } from '../CenteredText';
-import { SectionTitle } from '../SectionTitle';
-import { PostsList } from '../PostsList';
-import { Button } from '../Button';
+import { CenteredText } from 'Components/CenteredText';
+import { SectionTitle } from 'Components/SectionTitle';
+import { PostsList } from 'Components/PostsList';
+import { Button } from 'Components/Button';
 
 import { PostsContainer } from 'Types/content';
 

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { ElementWithOpacity } from '../ElementWithOpacity';
+import { ElementWithOpacity } from 'Components/ElementWithOpacity';
 import { ElementWithInlineStyle } from 'Types/styled-components';
 
 import { from } from 'Devices';

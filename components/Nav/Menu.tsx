@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import { UnderlinedLink } from '../UnderlinedLink';
-import { LinkContainer } from '../LinkContainer';
+import { UnderlinedLink } from 'Components/UnderlinedLink';
+import { LinkContainer } from 'Components/LinkContainer';
 import { mainMenu } from 'Data/header/mainMenu';
-import { MenuItem } from '../MenuItem';
+import { MenuItem } from 'Components/MenuItem';
 
 import { from, to } from 'Devices';
 

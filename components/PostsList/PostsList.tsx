@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { ListedPost } from '../ListedPost';
+import { ListedPost } from 'Components/ListedPost';
 
 import { from } from 'Devices';
 
@@ -9,11 +9,15 @@ import { PostsContainer } from 'Types/content';
 
 export const PostsList: FC<PostsContainer> = ({ posts }) => (
   <List>
-    {posts.map((post) => {
-      const { slug } = post;
+    {posts ? (
+      posts.map((post) => {
+        const { slug } = post;
 
-      return <ListedPost key={slug} {...post} />;
-    })}
+        return <ListedPost key={slug} {...post} />;
+      })
+    ) : (
+      <NarrowTitle level={2}>Wolisz nie ograniczać się do konkretnej tematyki?</NarrowTitle>
+    )}
   </List>
 );
 

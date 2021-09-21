@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { Wrapper } from '../Wrapper';
+import { Wrapper } from 'Components/Wrapper';
 
 import { InlineStyle } from 'Types/styled-components';
 

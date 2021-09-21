@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import { Wrapper } from '../Wrapper';
+import { Wrapper } from 'Components/Wrapper';
 import { FooterMenu } from './Menu';
-import { Brand } from '../Brand';
-import { TextWithLinks } from '../TextWithLinks';
+import { Brand } from 'Components/Brand';
+import { TextWithLinks } from 'Components/TextWithLinks';
 
 import { contentMenu } from 'Data/footer/contentMenu';
 import { formalitiesMenu } from 'Data/footer/formalitiesMenu';

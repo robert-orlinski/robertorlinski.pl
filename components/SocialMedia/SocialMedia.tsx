@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { LinkContainer } from '../LinkContainer';
-import { ElementWithOpacity } from '../ElementWithOpacity';
+import { LinkContainer } from 'Components/LinkContainer';
+import { ElementWithOpacity } from 'Components/ElementWithOpacity';
 
 import { FacebookIcon } from './Icons/Facebook';
 import { YouTubeIcon } from './Icons/YouTube';
