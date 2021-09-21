@@ -2,14 +2,14 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-import { getTopicLink } from 'DataHelpers/topics';
+import { getTopicLink } from 'Helpers/data/topics';
 
 import { Topic as TopicType } from 'Types/data';
 import { Overlay } from 'Components/Overlay';
 import { LinkContainer } from 'Components/LinkContainer';
 
-export const Topic: FC<TopicType> = ({ name, featuredImage }) => {
-  const link = getTopicLink(name);
+export const Topic: FC<TopicType> = ({ name, slug, featuredImage }) => {
+  const link = getTopicLink(slug);
 
   return (
     <Container>

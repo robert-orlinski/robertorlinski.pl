@@ -24,7 +24,6 @@
       "Types/*": ["./types/*"],
       "Data/*": ["./data/*"],
       "Images/*": ["./public/images/*"],
-      "DataHelpers/*": ["./helpers/data/*"],
       "Helpers/*": ["./helpers/*"],
       "Hooks/*": ["./hooks/*"]
     }

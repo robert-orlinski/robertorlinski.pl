@@ -10,10 +10,15 @@ export type ArrayOfTexts = Array<Text>;
 
 export type Topic = {
   name: string;
+  slug: string;
   featuredImage: StaticImageData;
 };
 
+export type Topics = Array<Topic>;
+
 export type TopicsGroup = {
   groupName: string;
-  topics: Array<Topic>;
+  topics: Topics;
 };
+
+export type TopicsGroups = Array<TopicsGroup>;

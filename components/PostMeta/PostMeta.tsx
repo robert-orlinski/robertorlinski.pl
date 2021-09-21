@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { ElementWithOpacity } from '../ElementWithOpacity';
 import { Separator } from 'components/Separator';
 
-import { getTopicLink } from 'DataHelpers/topics';
+import { getTopic, getTopicLink } from 'Helpers/data/topics';
 
 type Props = {
   topic: string;
@@ -13,7 +13,8 @@ type Props = {
 };
 
 export const PostMeta: FC<Props> = ({ topic, readingTime, date }) => {
-  const topicLink = getTopicLink(topic);
+  const { slug } = getTopic(topic);
+  const topicLink = getTopicLink(slug);
 
   return (
     <Meta>

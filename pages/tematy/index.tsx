@@ -11,7 +11,7 @@ import { Head } from 'Components/Head';
 import { H } from 'Components/H';
 import { P } from 'Components/P';
 
-import { topicGroups } from 'Data/taxonomies/topics';
+import { topicsGroups } from 'Data/taxonomies/topics';
 
 import { getNewestPosts } from 'Helpers/content/posts';
 import { addressSeparator } from 'AddressSeparator';
@@ -45,8 +45,8 @@ const Home: FC<PostsContainer> = () => {
             Rozgość się i wybierz dokładnie to, co Cię interesuje ✨
           </P>
         </TextBlock>
-        {topicGroups ? (
-          topicGroups
+        {topicsGroups ? (
+          topicsGroups
             .filter(({ groupName }) => groupName !== 'Inne')
             .map(({ groupName, topics }) => (
               <TopicsGroup key={groupName} groupName={groupName} topics={topics} />

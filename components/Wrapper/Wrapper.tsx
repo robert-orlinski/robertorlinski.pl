@@ -23,7 +23,7 @@ const sizes = {
 };
 
 export const Wrapper = styled.section<Props>`
-  max-width: ${({ size }) =>
+  width: ${({ size }) =>
     size === 'tiny'
       ? sizes.desktop.tiny
       : size === 'small'

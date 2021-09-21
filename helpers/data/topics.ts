@@ -1,15 +1,33 @@
-import slugify from 'slugify';
+import { topicsGroups } from 'Data/taxonomies/topics';
 
-export const getTopicSlug = (topic: string) => {
-  const slug = slugify(topic, {
-    lower: true,
-  });
+import { Topic, Topics } from 'Types/data';
 
-  return slug;
+export const getTopics = () => {
+  const topicsGrouped: Array<Topics> = topicsGroups.map(({ topics }) =>
+    topics.map((topic) => topic),
+  );
+
+  const topics: Topics = topicsGrouped.flat();
+
+  return topics;
 };
 
-export const getTopicLink = (topic: string) => {
-  const topicSlug = getTopicSlug(topic);
+export const getTopic = (nameOrSlug: string) => {
+  const allTopics = getTopics();
 
-  return `/tematy/${topicSlug}`;
+  const wantedTopic = allTopics.find(
+    (topic) => nameOrSlug === topic.slug || nameOrSlug === topic.name,
+  );
+
+  return wantedTopic as Topic;
+};
+
+export const getTopicLink = (slug: string) => `/tematy/${slug}`;
+
+export const getTopicsPaths = () => {
+  const topics = getTopics();
+
+  const topicsPaths = topics.map(({ slug }) => ({ params: { slug } }));
+
+  return topicsPaths;
 };

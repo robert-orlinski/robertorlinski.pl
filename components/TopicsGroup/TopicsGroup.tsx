@@ -13,8 +13,8 @@ export const TopicsGroup: FC<GroupType> = ({ groupName, topics }) => (
     </div>
     <Topics>
       {topics &&
-        topics.map(({ name, featuredImage }) => (
-          <Topic key={name} name={name} featuredImage={featuredImage} />
+        topics.map(({ name, slug, featuredImage }) => (
+          <Topic key={name} name={name} slug={slug} featuredImage={featuredImage} />
         ))}
     </Topics>
   </Group>

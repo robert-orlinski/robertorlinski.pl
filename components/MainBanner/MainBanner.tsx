@@ -22,7 +22,7 @@ export const MainBanner: FC<Props> = ({ title, image: { src, alt } }) => (
     <Banner>
       <MainTitle>{title}</MainTitle>
       <ImageContainer>
-        <Image {...{ src, alt }} />
+        <ImageWithLimitedHeight {...{ src, alt }} layout="fill" objectFit="cover" />
       </ImageContainer>
     </Banner>
   </header>
@@ -63,6 +63,9 @@ const MainTitle = styled(SectionTitle)`
 `;
 
 const ImageContainer = styled.figure`
+  position: relative;
+  height: clamp(400px, 40vw, 590px);
+
   @media ${from.phoneL} {
     width: 88%;
   }
@@ -70,4 +73,12 @@ const ImageContainer = styled.figure`
   @media ${from.tabletL} {
     width: 65%;
   }
+
+  @media ${to.phoneL} {
+    height: 60vw;
+  }
+`;
+
+const ImageWithLimitedHeight = styled(Image)`
+  max-height: 590px;
 `;

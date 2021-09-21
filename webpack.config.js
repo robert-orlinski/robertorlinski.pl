@@ -12,7 +12,6 @@ module.exports = {
       Types: path.resolve(__dirname, 'types/'),
       Data: path.resolve(__dirname, 'data/'),
       Images: path.resolve(__dirname, 'public/images/'),
-      DataHelpers: path.resolve(__dirname, 'helpers/data/'),
       Helpers: path.resolve(__dirname, 'helpers/'),
       Hooks: path.resolve(__dirname, 'hooks/'),
     },

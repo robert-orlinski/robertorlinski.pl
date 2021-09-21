@@ -28,8 +28,6 @@ const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
       },
     );
 
-    console.log(response);
-
     if (response.status >= 400) {
       return res.status(400).json({
         error: `Coś poszło nie tak :c Możesz zawsze napisać na kontakt@robertorlinski.pl, a dodam Cię do newslettera i sprawdzę, co się stało.`,
