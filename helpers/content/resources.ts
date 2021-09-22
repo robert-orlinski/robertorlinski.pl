@@ -1,11 +1,16 @@
 import fs from 'fs';
 import path from 'path';
 import readingTime from 'reading-time';
+
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
 import { polishPlurals } from 'polish-plurals';
 import { prepareMDX } from './mdx';
 
 import { Resource, ResourceWithContent } from 'Types/content';
-import dayjs from 'dayjs';
+
+dayjs.extend(customParseFormat);
 
 const { readFile, readdir } = fs.promises;
 
@@ -35,8 +40,8 @@ export const getResourcesByDateDescending = async <T>(resourcesDirectory: string
   const resources = await getResources<T>(resourcesDirectory);
 
   const sortedResources = resources.sort((a, b) => {
-    const firstDate = dayjs(a.date);
-    const secondDate = dayjs(b.date);
+    const firstDate = dayjs(a.date, 'DD.MM.YYYY');
+    const secondDate = dayjs(b.date, 'DD.MM.YYYY');
 
     return firstDate.isBefore(secondDate) ? 1 : -1;
   });
