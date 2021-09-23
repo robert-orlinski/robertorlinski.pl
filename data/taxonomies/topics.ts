@@ -3,6 +3,7 @@ import { TopicsGroups } from 'Types/data';
 import frontEnd from 'Images/taxonomies/topics/front-end.jpg';
 import wordpress from 'Images/taxonomies/topics/wordpress.jpg';
 import gutenberg from 'Images/taxonomies/topics/gutenberg.jpg';
+import wordpressTheme from 'Images/taxonomies/topics/wordpressTheme.jpg';
 import accesibility from 'Images/taxonomies/topics/accesibility.jpg';
 import design from 'Images/taxonomies/topics/design.jpg';
 import tools from 'Images/taxonomies/topics/tools.jpg';
@@ -16,6 +17,7 @@ export const images = {
   frontEnd,
   wordpress,
   gutenberg,
+  wordpressTheme,
   accesibility,
   design,
   tools,
@@ -59,6 +61,11 @@ export const topicsGroups: TopicsGroups = [
         name: 'Własne bloki w WordPress Gutenberg',
         slug: 'wlasne-bloki-w-wordpress-gutenberg',
         featuredImage: images.gutenberg,
+      },
+      {
+        name: 'Jak stworzyć motyw WordPress',
+        slug: 'jak-stworzyc-motyw-wordpress',
+        featuredImage: images.wordpressTheme,
       },
     ],
   },
