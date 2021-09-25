@@ -3,7 +3,7 @@ import { FieldValues } from 'react-hook-form';
 
 import { TextInput } from 'Components/TextInput';
 
-import { DATE_PATTERN } from 'Patterns';
+import { DATE_PATTERN } from 'Helpers/constants';
 
 export const EmailInput: FC<FieldValues> = ({ register, errors }) => (
   <TextInput

@@ -4,7 +4,6 @@ module.exports = {
   resolve: {
     alias: {
       Devices$: path.resolve(__dirname, 'helpers/devices.ts'),
-      Patterns$: path.resolve(__dirname, 'helpers/patterns.ts'),
       SiteName$: path.resolve(__dirname, 'helpers/metaData/siteName.ts'),
       AddressSeparator$: path.resolve(__dirname, 'helpers/metaData/addressSeparator.ts'),
       Slogan$: path.resolve(__dirname, 'helpers/metaData/slogan.ts'),

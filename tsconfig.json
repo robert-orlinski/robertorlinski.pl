@@ -16,7 +16,6 @@
     "jsx": "preserve",
     "paths": {
       "Devices": ["./helpers/devices.ts"],
-      "Patterns": ["./helpers/patterns.ts"],
       "SiteName": ["./helpers/metaData/siteName.ts"],
       "AddressSeparator": ["./helpers/metaData/addressSeparator.ts"],
       "Slogan": ["./helpers/metaData/slogan.ts"],
