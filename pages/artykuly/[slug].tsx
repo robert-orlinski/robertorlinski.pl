@@ -50,9 +50,9 @@ type Props = { params: { slug: string } };
 export const getStaticProps = async ({ params: { slug } }: Props) => {
   const { content, metaData } = await getPostBySlug(slug);
 
-  const currentPostTopic = metaData.topic;
+  const currentPostMainTopic = metaData.topics[0];
 
-  const relatedPosts = await getRelatedPosts(currentPostTopic);
+  const relatedPosts = await getRelatedPosts(currentPostMainTopic);
 
   return {
     props: { metaData, content, relatedPosts },

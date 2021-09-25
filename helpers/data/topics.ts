@@ -22,6 +22,12 @@ export const getTopic = (nameOrSlug: string) => {
   return wantedTopic as Topic;
 };
 
+export const getPrimaryTopic = (topics: Array<string>) => {
+  const primaryTopicNameOrSlug = topics[0];
+
+  return getTopic(primaryTopicNameOrSlug);
+};
+
 export const getTopicLink = (slug: string) => `/tematy/${slug}`;
 
 export const getTopicsPaths = () => {

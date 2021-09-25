@@ -4,21 +4,21 @@ import styled from 'styled-components';
 import { ElementWithOpacity } from 'Components/ElementWithOpacity';
 import { Separator } from 'components/Separator';
 
-import { getTopic, getTopicLink } from 'Helpers/data/topics';
+import { getPrimaryTopic, getTopicLink } from 'Helpers/data/topics';
 
 type Props = {
-  topic: string;
+  topics: Array<string>;
   readingTime?: string;
   date?: string;
 };
 
-export const PostMeta: FC<Props> = ({ topic, readingTime, date }) => {
-  const { slug } = getTopic(topic);
+export const PostMeta: FC<Props> = ({ topics, readingTime, date }) => {
+  const { name: topicName, slug } = getPrimaryTopic(topics);
   const topicLink = getTopicLink(slug);
 
   return (
     <Meta>
-      <Topic href={topicLink}>{topic}</Topic>
+      <Topic href={topicLink}>{topicName}</Topic>
       {date && (
         <>
           <Separator />

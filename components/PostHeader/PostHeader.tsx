@@ -9,12 +9,12 @@ import { getPostFeaturedImage } from 'Helpers/components/posts';
 import { Post } from 'Types/content';
 import { to } from 'Devices';
 
-export const PostHeader: FC<Post> = ({ title, topic, date, slug }) => {
+export const PostHeader: FC<Post> = ({ title, topics, date, slug }) => {
   const featuredImage = getPostFeaturedImage(slug);
 
   return (
     <Container>
-      <PostMeta {...{ topic, date }} />
+      <PostMeta {...{ topics, date }} />
       <Title>{title}</Title>
       <Image src={featuredImage} alt="" width="850" height="500" />
     </Container>

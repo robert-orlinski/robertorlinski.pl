@@ -5,7 +5,6 @@ export type Resource = {
   abstract: string;
   isPublished: boolean;
   date: string;
-  featuredImage: string;
 };
 
 export type Resources = Array<Resource>;
@@ -17,7 +16,7 @@ export type ResourceWithContent<T> = {
 
 export type Post = {
   readingTime: string;
-  topic: string;
+  topics: Array<string>;
   isPopular: string;
 } & Resource;
 
