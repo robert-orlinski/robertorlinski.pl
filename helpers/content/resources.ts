@@ -9,10 +9,11 @@ import { polishPlurals } from 'polish-plurals';
 import { prepareMDX } from './mdx';
 
 import { Resource, ResourceWithContent } from 'Types/content';
+import { FEATURED_IMAGE_NAME } from 'Helpers/constants';
 
 dayjs.extend(customParseFormat);
 
-const { readFile, readdir } = fs.promises;
+const { readFile, readdir, copyFile } = fs.promises;
 
 export const getResourcePaths = async (resourcesDirectory: string) => {
   const resources = await readdir(resourcesDirectory);
@@ -22,11 +23,15 @@ export const getResourcePaths = async (resourcesDirectory: string) => {
   return resourcePaths;
 };
 
-export const getResources = async <T>(resourcesDirectory: string) => {
+export const getResources = async <T>(resourcesDirectory: string, imagesFolderName: string) => {
   const resourceSlugs = await readdir(resourcesDirectory);
 
   const resourcesToResolve = resourceSlugs.map(async (resourceSlug: string) => {
-    const { metaData } = await getResourceBySlug<T & Resource>(resourcesDirectory, resourceSlug);
+    const { metaData } = await getResourceBySlug<T & Resource>(
+      resourcesDirectory,
+      resourceSlug,
+      imagesFolderName,
+    );
 
     return metaData;
   });
@@ -36,8 +41,11 @@ export const getResources = async <T>(resourcesDirectory: string) => {
   return resources;
 };
 
-export const getResourcesByDateDescending = async <T>(resourcesDirectory: string) => {
-  const resources = await getResources<T>(resourcesDirectory);
+export const getResourcesByDateDescending = async <T>(
+  resourcesDirectory: string,
+  imagesFolderName: string,
+) => {
+  const resources = await getResources<T>(resourcesDirectory, imagesFolderName);
 
   const sortedResources = resources.sort((a, b) => {
     const firstDate = dayjs(a.date, 'DD.MM.YYYY');
@@ -71,13 +79,17 @@ const getResourceReadingTime = (content: string) => {
   return formattedReadingTime;
 };
 
-export const getResourceBySlug = async <T>(resourcesDirectory: string, resourceSlug: string) => {
+export const getResourceBySlug = async <T>(
+  resourcesDirectory: string,
+  resourceSlug: string,
+  imagesFolderName: string,
+) => {
   const resourcePath = path.join(resourcesDirectory, resourceSlug);
   const resourceMainFile = path.join(resourcePath, 'index.mdx');
 
   const source = await getResourceSourceBySlug(resourceMainFile);
 
-  const imagesDirectory = `/images/posts/${resourceSlug}/`;
+  const imagesDirectory = `/images/${imagesFolderName}/${resourceSlug}/`;
 
   const { content, metaData } = await prepareMDX(source, {
     resourcePath,
@@ -85,6 +97,16 @@ export const getResourceBySlug = async <T>(resourcesDirectory: string, resourceS
   });
 
   const readingTime = getResourceReadingTime(content);
+
+  const featuredImageToCopy = path.join(resourcePath, FEATURED_IMAGE_NAME);
+  const copiedFeaturedImage = path.join(
+    process.cwd(),
+    'public',
+    imagesDirectory,
+    FEATURED_IMAGE_NAME,
+  );
+
+  await copyFile(featuredImageToCopy, copiedFeaturedImage);
 
   const resource: unknown = {
     content,

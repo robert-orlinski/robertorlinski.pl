@@ -37,5 +37,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-# goodies
-/public/bonusy
+# public
+/public/images/posts
