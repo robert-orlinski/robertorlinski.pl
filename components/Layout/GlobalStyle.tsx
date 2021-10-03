@@ -128,4 +128,10 @@ export const GlobalStyle = createGlobalStyle`
   figure {
     position: relative;
   }
+
+  img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+  }
 `;
