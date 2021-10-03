@@ -14,16 +14,23 @@ type Props = {
     src: StaticImageData;
     alt: string;
   };
+  withFixedImage?: boolean;
 };
 
-export const MainBanner: FC<Props> = ({ title, image: { src, alt } }) => (
+export const MainBanner: FC<Props> = ({ title, image: { src, alt }, withFixedImage }) => (
   <header>
     <Nav />
     <Banner>
       <MainTitle>{title}</MainTitle>
-      <ImageContainer>
-        <Image {...{ src, alt }} layout="fill" objectFit="cover" />
-      </ImageContainer>
+      {withFixedImage ? (
+        <FixedImageContainer>
+          <Image {...{ src, alt }} layout="fill" objectFit="cover" />
+        </FixedImageContainer>
+      ) : (
+        <ImageContainer>
+          <Image {...{ src, alt }} />
+        </ImageContainer>
+      )}
     </Banner>
   </header>
 );
@@ -63,9 +70,6 @@ const MainTitle = styled(SectionTitle)`
 `;
 
 const ImageContainer = styled.figure`
-  position: relative;
-  height: clamp(400px, 40vw, 560px);
-
   @media ${from.phoneL} {
     width: 88%;
   }
@@ -73,6 +77,10 @@ const ImageContainer = styled.figure`
   @media ${from.tabletL} {
     width: 65%;
   }
+`;
+
+const FixedImageContainer = styled(ImageContainer)`
+  height: clamp(400px, 40vw, 560px);
 
   @media ${to.phoneL} {
     height: 60vw;

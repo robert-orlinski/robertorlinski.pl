@@ -30,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
     scroll-behavior: smooth;
 
     @media ${to.phoneL} {
-      font-size: 16px;
+      font-size: 16.5px;
     }
   }
 

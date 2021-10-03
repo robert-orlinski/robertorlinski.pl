@@ -2,6 +2,8 @@ import path from 'path';
 
 import { bundleMDX } from 'mdx-bundler';
 import { remarkMdxImages } from 'remark-mdx-images';
+import remarkCodeTitles from 'remark-code-titles';
+import rehypePrism from '@mapbox/rehype-prism';
 
 export const prepareMDX = async (
   source: string,
@@ -33,7 +35,8 @@ export const prepareMDX = async (
     cwd: resourcePath,
     xdmOptions: (options) => ({
       ...options,
-      remarkPlugins: [...(options.remarkPlugins ?? []), remarkMdxImages],
+      remarkPlugins: [...(options.remarkPlugins ?? []), remarkMdxImages, remarkCodeTitles],
+      rehypePlugins: [...(options.rehypePlugins ?? []), rehypePrism],
     }),
     esbuildOptions: (options) => ({
       ...options,

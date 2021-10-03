@@ -1,12 +1,16 @@
 import { FC, useMemo } from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
-import styled from 'styled-components';
 
-import { Link } from 'components/Link';
-import { P } from 'components/P';
-import { H } from 'Components/H';
+import { Link } from 'Components/Link';
 
-import { to } from 'Devices';
+import { BiggerP } from './MDXComponents/BiggerP';
+import { Code } from './MDXComponents/Code';
+import { H1 } from './MDXComponents/H1';
+import { H2 } from './MDXComponents/H2';
+import { H3 } from './MDXComponents/H3';
+import { H4 } from './MDXComponents/H4';
+import { H5 } from './MDXComponents/H5';
+import { H6 } from './MDXComponents/H6';
 
 type Props = { source: string };
 
@@ -18,6 +22,7 @@ export const MDXArticle: FC<Props> = ({ source }) => {
       components={{
         a: Link as any,
         p: BiggerP,
+        pre: Code,
         h1: H1,
         h2: H2,
         h3: H3,
@@ -28,23 +33,3 @@ export const MDXArticle: FC<Props> = ({ source }) => {
     />
   );
 };
-
-const BiggerP = styled(P)`
-  font-size: 1.2rem;
-
-  @media ${to.phoneL} {
-    font-size: 1.1rem;
-  }
-`;
-
-const H1: FC = (props) => <H level={1} {...props} />;
-
-const H2: FC = (props) => <H level={2} {...props} />;
-
-const H3: FC = (props) => <H level={3} {...props} />;
-
-const H4: FC = (props) => <H level={4} {...props} />;
-
-const H5: FC = (props) => <H level={5} {...props} />;
-
-const H6: FC = (props) => <H level={6} {...props} />;

@@ -35,6 +35,7 @@ const Post: FC<Props> = ({ currentTopic, postsInTopic }) => {
           src: featuredImage,
           alt: '',
         }}
+        withFixedImage
       />
       <Wrapper as="main" withSpaceBelow>
         {postsInTopic.length ? (
