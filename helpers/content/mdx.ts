@@ -41,6 +41,8 @@ export const prepareMDX = async (
     esbuildOptions: (options) => ({
       ...options,
       outdir: path.join(process.cwd(), 'public', imagesDirectory),
+      platform: 'node',
+      target: 'esnext',
       loader: {
         ...options.loader,
         '.png': 'file',

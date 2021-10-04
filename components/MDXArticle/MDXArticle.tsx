@@ -3,6 +3,7 @@ import { getMDXComponent } from 'mdx-bundler/client';
 
 import { Link } from 'Components/Link';
 
+import { Highlight } from './MDXComponents/Highlight';
 import { BiggerP } from './MDXComponents/BiggerP';
 import { Code } from './MDXComponents/Code';
 import { H1 } from './MDXComponents/H1';
@@ -35,6 +36,9 @@ export const MDXArticle: FC<Props> = ({ source }) => {
         ul: Ul,
         ol: Ol,
         li: Li,
+
+        // Single <code> (``) elements were replaced with custom highlight elemenent for better editing experience.
+        code: Highlight,
       }}
     />
   );
