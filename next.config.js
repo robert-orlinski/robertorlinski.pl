@@ -17,6 +17,11 @@ const postRedirects = [
     destination: '/artykuly/jak-stworzyc-motyw-wordpress-002',
     permanent: true,
   },
+  {
+    source: '/pliki-motywu-wordpress',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-003',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
