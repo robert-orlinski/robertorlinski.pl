@@ -4,6 +4,9 @@ import { Ul } from './Ul';
 import { Ol } from './Ol';
 
 export const Li = styled.li`
+  --bullet-base-space: 1.3rem;
+  --bullet-size: 0.45rem;
+
   position: relative;
 
   &:not(:last-child) {
@@ -14,12 +17,12 @@ export const Li = styled.li`
     &:before {
       content: '';
 
-      width: 0.45rem;
-      height: 0.45rem;
+      width: var(--bullet-size);
+      height: var(--bullet-size);
 
       position: absolute;
-      top: 0.75rem;
-      left: -1.3rem;
+      top: 0.68em;
+      right: calc(100% + var(--bullet-base-space));
 
       background-color: #000;
       border-radius: 50%;
@@ -33,7 +36,7 @@ export const Li = styled.li`
 
       position: absolute;
       top: 0.32em;
-      right: calc(100% + 0.85rem);
+      right: calc(100% + var(--bullet-base-space) - var(--bullet-size));
 
       font-size: 0.8em;
 
