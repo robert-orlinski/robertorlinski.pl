@@ -22,7 +22,7 @@ export const Code = styled.pre`
 
   & > code {
     display: block;
-    padding: 1.2rem;
+    padding: 1.4rem;
   }
 
   @media ${to.phoneL} {
