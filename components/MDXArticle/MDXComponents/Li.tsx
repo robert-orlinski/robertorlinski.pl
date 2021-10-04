@@ -32,8 +32,10 @@ export const Li = styled.li`
       counter-increment: list;
 
       position: absolute;
-      top: 0rem;
+      top: 0.32em;
       right: calc(100% + 0.85rem);
+
+      font-size: 0.8em;
 
       font-weight: 600;
     }
