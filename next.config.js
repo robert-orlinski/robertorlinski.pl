@@ -12,6 +12,11 @@ const postRedirects = [
     destination: '/artykuly/jak-stworzyc-motyw-wordpress-001',
     permanent: true,
   },
+  {
+    source: '/instalacja-wordpressa-na-serwerze-lokalnym',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-002',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
