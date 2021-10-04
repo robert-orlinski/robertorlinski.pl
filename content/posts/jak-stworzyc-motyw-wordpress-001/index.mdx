@@ -56,3 +56,31 @@ Tu sprawa jest troszkę bardziej skomplikowana, ponieważ trzeba wchodzić w ter
 ```bash
 chmod -755 /sciezka-do-pliku/xampp-linux-*-installer.run
 ```
+
+Za jej pomocą zmieniamy uprawnienia do instalatora. Za pomocą drugiej uruchamiamy instalację. Wygląda ona tak:
+
+```bash
+sudo /sciezka-do-pliku/xampp-linux-*-installer.run
+```
+
+U mnie wygląda to w ten sposób:
+
+![](./xampp-linux-1.jpg)
+
+Po wpisaniu widzimy takie okno:
+
+![](./xampp-linux-2.jpg)
+
+Wszędzie klikamy "next", a na końcu naciskamy "finish".
+
+Xamppa uruchamiamy ponownie wchodząc w terminal i wpisując:
+
+```bash
+sudo /opt/lampp/lampp start
+```
+
+Po czym widzimy coś takiego:
+
+![](./xampp-linux-3.jpg)
+
+I to tyle! Od teraz możemy cieszyć się działającym localhostem! Tak jak już wspominałem, w następnym wpisie z tej serii zajmiemy się już właściwą instalacją WordPressa.
