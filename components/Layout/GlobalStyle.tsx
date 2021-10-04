@@ -121,7 +121,8 @@ export const GlobalStyle = createGlobalStyle`
     font-size: 1.25rem;
   }
 
-  ul {
+  ul,
+  ol {
     list-style: none;
   }
 

@@ -11,6 +11,9 @@ import { H3 } from './MDXComponents/H3';
 import { H4 } from './MDXComponents/H4';
 import { H5 } from './MDXComponents/H5';
 import { H6 } from './MDXComponents/H6';
+import { Ul } from './MDXComponents/Ul';
+import { Ol } from './MDXComponents/Ol';
+import { Li } from './MDXComponents/Li';
 
 type Props = { source: string };
 
@@ -29,6 +32,9 @@ export const MDXArticle: FC<Props> = ({ source }) => {
         h4: H4,
         h5: H5,
         h6: H6,
+        ul: Ul,
+        ol: Ol,
+        li: Li,
       }}
     />
   );
