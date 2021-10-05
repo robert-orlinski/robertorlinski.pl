@@ -47,6 +47,16 @@ const postRedirects = [
     destination: '/artykuly/jak-przyspieszyc-strone-na-wordpressie',
     permanent: true,
   },
+  {
+    source: '/jak-dodac-certyfikat-ssl',
+    destination: '/artykuly/jak-dodac-certyfikat-ssl',
+    permanent: true,
+  },
+  {
+    source: '/pierwszy-kod-i-uruchomienie-motywu',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-004',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
