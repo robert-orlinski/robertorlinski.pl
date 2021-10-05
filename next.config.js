@@ -62,6 +62,11 @@ const postRedirects = [
     destination: '/artykuly/dostepne-strony-internetowe',
     permanent: true,
   },
+  {
+    source: '/jak-wyswietlic-wpisy-na-blogu',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-005',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
