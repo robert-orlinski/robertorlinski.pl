@@ -22,6 +22,11 @@ const postRedirects = [
     destination: '/artykuly/jak-stworzyc-motyw-wordpress-003',
     permanent: true,
   },
+  {
+    source: '/przyspieszamy-strone-na-wordpressie',
+    destination: '/artykuly/jak-przyspieszyc-strone-na-wordpressie',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
