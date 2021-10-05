@@ -12,6 +12,7 @@ export type CatalogedLinksArray = Array<CatalogedLink>;
 
 export type Link = {
   withUnderlineInvisible?: boolean;
+  isExternal?: boolean;
 } & ObligatoryChildren &
   LinkContainer;
 
@@ -25,9 +26,7 @@ type ButtonWithType = {
 
 export type Button = {
   [P in keyof LinkContainer]?: LinkContainer[P];
-} &
-  {
-    [P in keyof ClickableElement]?: ClickableElement[P];
-  } &
-  ButtonWithType &
+} & {
+  [P in keyof ClickableElement]?: ClickableElement[P];
+} & ButtonWithType &
   ObligatoryChildren;

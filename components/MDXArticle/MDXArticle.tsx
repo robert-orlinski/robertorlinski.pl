@@ -1,11 +1,10 @@
 import { FC, useMemo } from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
 
-import { Link } from 'Components/Link';
-
 import { Highlight } from './MDXComponents/Highlight';
 import { BiggerP } from './MDXComponents/BiggerP';
 import { Code } from './MDXComponents/Code';
+import { Anchor } from './MDXComponents/Anchor';
 import { H1 } from './MDXComponents/H1';
 import { H2 } from './MDXComponents/H2';
 import { H3 } from './MDXComponents/H3';
@@ -24,9 +23,9 @@ export const MDXArticle: FC<Props> = ({ source }) => {
   return (
     <MDXContainer
       components={{
-        a: Link as any,
         p: BiggerP,
         pre: Code,
+        a: Anchor,
         h1: H1,
         h2: H2,
         h3: H3,

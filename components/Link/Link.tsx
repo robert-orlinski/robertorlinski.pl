@@ -6,7 +6,7 @@ import { LinkContainer } from 'Components/LinkContainer';
 import { Link as LinkType } from 'Types/links';
 import { InlineStyle } from 'Types/styled-components';
 
-export const Link: FC<LinkType> = ({ children, href, withUnderlineInvisible }) => {
+export const Link: FC<LinkType> = ({ children, href, withUnderlineInvisible, isExternal }) => {
   const lineVisibility = (
     withUnderlineInvisible
       ? undefined
@@ -18,7 +18,7 @@ export const Link: FC<LinkType> = ({ children, href, withUnderlineInvisible }) =
         }
   ) as InlineStyle;
 
-  const isExternal = href.includes('http');
+  isExternal ||= href.includes('http');
 
   return isExternal ? (
     <UnderlinedLink href={href} target="_blank" rel="noreferrer" style={lineVisibility}>
