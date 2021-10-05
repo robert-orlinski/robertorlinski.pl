@@ -8,6 +8,26 @@ const transferRedirects = [
 
 const postRedirects = [
   {
+    source: '/witaj-swiecie-programajstrow',
+    destination: '/artykuly/witaj-swiecie-programajstrow',
+    permanent: true,
+  },
+  {
+    source: '/daje-sie-poznac',
+    destination: '/artykuly/daje-sie-poznac',
+    permanent: true,
+  },
+  {
+    source: '/narzedzia-do-organizacji',
+    destination: '/artykuly/narzedzia-do-organizacji',
+    permanent: true,
+  },
+  {
+    source: '/podstawowe-wtyczki-wordpressa',
+    destination: '/artykuly/10-niezbednych-wtyczek-do-wordpressa',
+    permanent: true,
+  },
+  {
     source: '/stworzyc-motyw-wordpress-001-instalacja-serwera-lokalnego',
     destination: '/artykuly/jak-stworzyc-motyw-wordpress-001',
     permanent: true,
