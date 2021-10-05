@@ -1,0 +1,70 @@
+---
+title: Wszystko co trzeba wiedzieć, aby zacząć tworzyć dostępne strony internetowe
+abstract: Czym jest dokument WCAG 2.0? Jak jest zbudowany? Czym jest dostępność? Jak tworzyć dostępne strony internetowe? Wszystkiego dowiesz się z tego wpisu!
+isPublished: true
+topics:
+  - Dostępność
+date: 23.04.2017
+isPopular: true
+---
+
+Dostępność stron internetowych wydaje się odległym i trochę niepotrzebnym tematem. Zdaję sobie z tego sprawę ponieważ przez dość długi czas sam nie zwracałem na to uwagi. A przecież ten temat powinien być jednym z pierwszorzędnych, bo w końcu po co nam idealnie zakodowane i zoptymalizowane strony, jeśli nie będą dostępne, a tym samym część użytkowników nie będzie mogła z nich korzystać?
+
+Chciałbym dziś opowiedzieć trochę o dokumencie WCAG 2.0, jego budowie oraz przedstawić najważniejsze techniki służące do budowania dostępnych witryn. Zapraszam!
+
+## Dokument WCAG 2.0
+
+Jak podaje Wikipedia, jest to skrót od angielskich słów "Web Content Accessibility Guidelines". Został opublikowany przez Web Accessibility Initiative (inicjatywa W3C) i zawiera wszystkie informacje, pozwalające tworzyć dostępne strony internetowe. W 2012 roku stał się światową normą, wymaganą na przykład w serwisach polskich instytucji publicznych.
+
+## Budowa dokumentu
+
+Sam WCAG 2.0 nie jest bardzo duży, dlatego też zachęcam, aby osoby zainteresowane zapoznały się z nim w wolnej chwili. Został podzielony na 4 poziomy:
+
+1. 4 Zasady - zupełny fundament dostępności witryn internetowych. Składają się na nie postrzegalność, funkcjonalność, zrozumiałość oraz solidność. Zostały dokładniej opisane na tej [stronie](https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html).
+2. 12 wytycznych - mówią o podstawowych celach, które muszą obrać sobie osoby, chcące tworzyć dostępne witryny internetowe.
+3. Kryteria sukcesu - poziom dostępności serwisu. Każdy z wymogów, które musi spełniać taka strona został oznaczony przez odpowiednią liczbę liter A (A - w miarę dostępna, AA - wystarczająco dostępna, AAA - bardzo dostępna).
+4. Techniki wystarczające i doradcze - najważniejsza sprawa. Konkretne sposoby na poprawę dostępności stron internetowych.
+
+## Najważniejsze zasady, pozwalające budować dostępne witryny
+
+Wyszło ich relatywnie dużo, dlatego postanowiłem podzielić je na 5 kategorii (multimedia, tekst, wygląd, kod oraz obsługa).
+
+### Multimedia:
+
+- Wszystkie zdjęcia muszą mieć atrybut **alt**! Jeśli z całego wpisu chciałbyś wynieść jedną zasadę, to właśnie ta. Nigdy o tym nie zapominaj. Każde zdjęcie, które przedstawia jakąś treść, musi mieć opis tej zawartości w alcie, a jeśli grafika jest czysto dekoracyjna, alt zostaje pusty.
+- Wszystkie pliki multimedialne, takie jak filmy i nagrania muszą zostać uzupełnione o napisy.
+- Pliki tekstowe, takie jak DOC lub PDF muszą zostać sporządzone w dostępny sposób, np. plik PDF musi być możliwy do odczytania przez czytnik ekranowy.
+
+### Tekst:
+
+- Każdy tekst znajdujący się na stronie musi być odpowiednio ułożony. Należy używać nagłówków, paragrafów oraz list. Nie powinno się justować tekstu, a już na pewno wyrównywać do prawej strony. To wszystko pozwala na łatwiejsze korzystanie ze strony nie tylko przez osoby korzystające z czytników ekranowych, ale też przez każdego użytkownika internetu.
+- Odnośniki muszą zawierać tekst mówiący o tym co znajduje się pod danym linkiem. Dla przykładu przycisk prowadzący do Facebooka będzie wyglądać w ten sposób: Facebook, a nie tak: Więcej. Ten zabieg ułatwia znacznie poruszanie się po stronie, szczególnie za pomocą wspomnianych czytników.
+- Tytuły muszą być unikalne dla każdej ze stron, tworzone na zasadzie Tytuł konkretnej strony - Nazwa całego serwisu. Również wszelkie ramki oraz tabele muszą posiadać swoje tytuły.
+- Wszystkie cytaty muszą być odpowiednio oznaczone, przynajmniej zamknięte w cudzysłowie.
+- Teksty powinny być napisane w sposób zrozumiały dla jak największej ilości ludzi.
+
+### Wygląd:
+
+- Rzecz najważniejsza w tej części - kontrast. Wszystkie elementy powinny posiadać go na poziomie 4,5-1 (wspaniale, gdy jest to 7-1). Ale w jaki sposób mam wiedzieć jaki kontrast mają elementy mojej witryny? Wystarczy użyć w tym celu tego oto [programu](https://www.paciellogroup.com/resources/contrastanalyser/).
+- Treść strony musi być widoczna po nawet podwójnym powiększeniu.
+- Nie należy stosować bardzo mocnych i częstych animacji, ponieważ mogą one doprowadzić do epilepsji.
+
+### Kod:
+
+- Naturalnym jest, że ma on być semantyczny oraz wysokiej jakości, a cała strona nie może być oparta na tabelach.
+- Pod żadnym pozorem działanie strony nie może być zależne od skryptów JS oraz stylów CSS. Musi być tak zbudowana, aby po ich wyłączeniu można było z niej korzystać.
+- Strona musi posiadać ustalony język, a jeśli dana sekcja jest w innym, to również musi być znaczona za pomocą atrybutu `lang= .`
+- Wszystkie inputy powinny zostać opisane za pomocą atrybutu `label.`
+
+### Obsługa:
+
+- Cała strona internetowa musi pozwalać na obsługę z poziomu klawiatury oraz być dostępna dla czytników ekranowych.
+- Nawigacja musi być niezmienna w całym serwisie.
+- Bardzo dobrze jest zwiększyć widoczność focusu na elementach aktywnych.
+- Na początku strony powinien znajdować się odnośnik do treści, dostępny z poziomu klawiatury (przy pierwszym naciśnięciu tabulatora). W jaki sposób zrobić coś takiego? Na przykład można użyć kodu z wielokrotnie linkowanej strony wśród polskiej społeczności web developerskiej: "[Semantyczny blog w HTML5](http://tutorials.comandeer.pl/html5-blog.html#dostepnosc)".
+
+## Podsumowanie
+
+To już wszystkie najważniejsze zasady, które pozwolą nam tworzyć dostępne strony. Oczywiście nie wymieniłem tu wszystkich zasad ogólnie, więc jeśli jesteś zainteresowany całością, to możesz sprawdzić wszystkie zasady [po angielsku](https://www.w3.org/TR/WCAG20/) lub [po polsku](http://fdc.org.pl/wcag2/). W tych dwóch miejscach dokument WCAG 2.0 został przedstawiony w całości.
+
+Życzę Ci powodzenia w tworzeniu jak najlepszych witryn dla jak najszerszej grupy odbiorców!

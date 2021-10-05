@@ -57,6 +57,11 @@ const postRedirects = [
     destination: '/artykuly/jak-stworzyc-motyw-wordpress-004',
     permanent: true,
   },
+  {
+    source: '/dostepne-strony-internetowe',
+    destination: '/artykuly/dostepne-strony-internetowe',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
