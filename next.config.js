@@ -112,6 +112,11 @@ const postRedirects = [
     destination: '/artykuly/efekt-parallax-w-czystym-css',
     permanent: true,
   },
+  {
+    source: '/swietne-czcionki',
+    destination: '/artykuly/swietne-fonty',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
