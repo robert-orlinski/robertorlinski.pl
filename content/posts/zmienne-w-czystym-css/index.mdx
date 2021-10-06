@@ -1,0 +1,106 @@
+---
+title: Zmienne znane z programowania. Teraz w czystym CSS!
+abstract: Czy wiedziałeś, że w CSS znajdują się zmienne? Dokładnie! A to wszystko bez używania preprocesorów! Z tego wpisu dowiesz się o nich więcej!
+isPublished: true
+topics:
+  - Front-end
+date: 31.05.2017
+isPopular: true
+---
+
+Czy wiedziałeś o tym, że w CSS można deklarować oraz później wykorzystywać zmienne? Dokładnie! A to wszystko bez używania jakichkolwiek preprocesorów, takich jak Sass czy Less!
+
+Mogą się świetnie sprawdzić podczas chociażby kodowania kolorów, gdzie nie musimy kopiować każdego kodu szesnastkowego w celu jego użycia!
+
+## Wsparcie poszczególnych przeglądarek
+
+Oczywiście zmienne w CSS to stosunkowo świeża funkcja, dlatego nie jest wspierana przez wszystkie przeglądarki. Jeśli jesteś ciekawy, na czym zadziała, to zapraszam Cię na tę [stronę](http://caniuse.com/#search=css%20variables). Tam wszystko zostało wyszczególnione :)
+
+## No dobrze, ale jak właściwie tego używać?
+
+Tak jak w językach programowania, tak i tu inaczej wygląda zadeklarowanie zmiennej oraz jej użycie. W ten sposób prezentuje się deklaracja:
+
+```css
+body {
+  --gray: #303030;
+}
+```
+
+Tak oto powstaje nasz przykład o nazwie `gray` oraz wartości `#303030`. Oczywiście nie zapominajmy, że nazwy zmiennych w CSS są poprzedzone dwoma myślnikami. Z kolei kod, który powinniśmy wpisać, aby jej użyć prezentuje się w ten sposób:
+
+```css
+div {
+  background-color: var(--gray);
+}
+```
+
+W miejscu, w którym chcemy użyć naszej zmiennej, wpisujemy charakterystyczne słówko kluczowe `var`, po czym całość umieszczamy w nawiasie.
+
+## Kaskadowość zmiennych w CSS
+
+Kaskadowe arkusze stylów - tak rozwija się skrót CSS. Dlatego nie bez przyczyny wszystko co się w nich znajduje podlega wymienionej zasadzie kaskadowości, również to o czym mówimy dzisiaj.
+
+W poprzednim akapicie zadeklarowaliśmy naszą zmienną w konkretnym znaczniku, jakim jest `body`. Co to oznacza w praktyce? Każda zmienna działa w obrębie znacznika, w którym została umieszczona oraz jego potomkach.
+
+Może ponownie posłużę się przykładem. Zadeklarujemy naszą zmienną w znaczniku `header`:
+
+```css
+header {
+  --gray: #303030;
+}
+```
+
+Teraz umieśćmy ją w dwóch miejscach na stronie. Tutaj:
+
+```css
+header div {
+  background-color: var(--gray); /* kod zadziała */
+}
+```
+
+...oraz tu:
+
+```css
+footer {
+  background-color: var(--gray); /* kod nie zadziała */
+}
+```
+
+Jak widać tylko w przypadku pierwszego użycia nasza zmienna będzie uznana, ponieważ została zadeklarowana w `nagłówku`, a tym samym `footer` nie wie, że coś takiego istnieje. Z kolei `div`, który jest potomkiem `nagłówka` zna tę zmienną.
+
+## Media queries
+
+Kaskadowość działa również podczas stosowania `media queries`. Możemy utworzyć naszą zmienną w kodze ogólnym, a później podmienić ją dla konkretnych rozdzielczości. Wygląda to na przykład w ten oto sposób:
+
+```css
+body {
+  --gray: #303030;
+}
+
+div {
+  background-color: var(--gray);
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    --gray: #444444;
+  }
+}
+```
+
+W tym miejscu deklarujemy zmienną `gray`, której domyślna wartość będzie równa `#303030.` Z kolei gdy wejdziemy na daną stronę mając ekran mniejszy od 500px, to element, w którym jej użyliśmy zmieni swój kolor na `#444444`.
+
+## A co jeśli zmienne nie są obsługiwane przez przeglądarkę?
+
+Tu niestety nie jest tak przyjemnie, bo w praktyce jedyną możliwością jest zapisanie 2 takich samych linii kodu CSS, pierwszej bez, a drugiej z naszą zmienną. Dla przykładu może to przybrać taką postać:
+
+```css
+div {
+  background-color: #303030;
+  background-color: var(--gray);
+}
+```
+
+## Podsumowanie
+
+Ciekawi mnie na ile CSS stanie się podobny do standardowych języków programowania, dostając takie funkcje jak omówione dziś zmienne. Mam nadzieję, że dzięki temu poradnikowi mogłeś/aś poznać je lepiej!

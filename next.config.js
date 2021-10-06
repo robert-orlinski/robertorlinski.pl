@@ -97,6 +97,11 @@ const postRedirects = [
     destination: '/artykuly/wtyczki-do-sublime-text-3',
     permanent: true,
   },
+  {
+    source: '/zmienne-w-czystym-css',
+    destination: '/artykuly/zmienne-w-czystym-css',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
