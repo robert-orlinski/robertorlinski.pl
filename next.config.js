@@ -87,6 +87,11 @@ const postRedirects = [
     destination: '/artykuly/jak-stworzyc-motyw-wordpress-007',
     permanent: true,
   },
+  {
+    source: '/nawigacja-w-motywie-wordpress',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-008',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
