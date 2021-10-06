@@ -122,6 +122,11 @@ const postRedirects = [
     destination: '/artykuly/dodatki-dla-tworcow-stron-internetowych',
     permanent: true,
   },
+  {
+    source: '/wyswietlanie-meta-danych',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-010',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
