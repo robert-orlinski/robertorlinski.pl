@@ -1,0 +1,105 @@
+---
+title: 'Jak stworzyć motyw WordPress #006 – Dołączanie plików CSS oraz JavaScript'
+abstract: W tym wpisie omawiamy dołączanie plików CSS oraz JavaScript do naszego motywu. Poznajemy potrzebne funkcje oraz przerabiamy konkretne przykłady.
+isPublished: true
+topics:
+  - WordPress
+  - Jak stworzyć motyw WordPress
+date: 05.05.2017
+isPopular: false
+---
+
+Dziś pochylimy się nad sprawą wczytywania plików CSS oraz JavaScript do naszego motywu WordPress. Poznamy ten proces bliżej i dokładnie przeanalizujemy funkcje odpowiedzialne za ich dołączanie.
+
+Importowanie plików CSS oraz JS nie odbywa się tak jak w przypadku standardowych,statycznych stron internetowych, czyli przez dodanie odnośnika w sekcji `head` lub na końcu `body`. Oczywiście możemy tak zrobić, ale jest to niezalecane i poprawnie wykonuje się to poprzez dodaniqe odpowiednich funkcji w pliku [`functions.php`](./jak-stworzyc-motyw-wordpress-003).
+
+## Dołączanie plików CSS do motywu
+
+Cała magia rozpoczyna się od funkcji `wp_enqueue_style()`. Parametry jakie może ona przyjmować przedstawiają się w ten sposób:
+
+```php
+wp_enqueue_style(
+  $handle,
+  $src,
+  $deps,
+  $ver,
+  $media
+);
+```
+
+Oczywiście już tłumaczę za co odpowiada każdy z nich:
+
+1. `$handle` - prosta nazwa, którą nadajemy dla naszego arkusza stylów. Wymagane jest, aby była unikalna.
+2. `$src` - tak jak w przypadku dołączania skryptów do standardowej strony, tak i tu parametr ten odpowiada za źródło naszego pliku. Ten oraz poprzedni, jako jedyne są obowiązkowe.
+3. `$deps` - w tym miejscu ustawione zostają zależności naszego pliku CSS. Określamy czy jest on powiązany z innym arkuszem stylów, a jeśli tak to z jakim. Jeśli ustawimy, że jest on uzależniony przykładowo od `style.css`, to zawsze zostanie wczytany po nim. Domyślna wartość tego paramentu to false (brak zależności).
+4. `$ver` - numer wersji konkretnego arkusza. Jeśli w tym miejscu zostawimy wartość domyślną (false), to wersja będzie równa wydaniu WordPressa. Z kolei jeśli jako wartość zostanie ustawione null, to żadna wersja nie zostanie dodana.
+5. `$media` - nośnik, na którym dany plik ma zostać załadowany. Możliwe wartości, to `all`, `print`, `screen` lub ustawione przez nas media queries. Z kolei wartość domyślna, to `all.`
+
+To wszystko składa się na skrypt, służący nam do ładowania stylów motywu.
+
+W tym miejscu warto również wspomnieć o dwóch funkcjach interpretowanych przez WordPressa:
+
+1. `get_stylesheet_uri()` - dedykowane polecenie, pobierające plik `style.css`.
+2. `get_template_directory_uri()` - funkcja służąca do pobierania ścieżki do folderu z naszym motywem.
+
+Korzystając z nabytej wiedzy możemy stworzyć przykładowy skrypt, importujący style CSS prosto do motywu:
+
+```php
+function loadingStyles(){
+  wp_enqueue_style(
+    'header',
+    get_template_directory_uri() . '/css/header.css',
+    false,
+    '1.1',
+    'all'
+  );
+}
+
+add_action('wp_enqueue_scripts', 'loadingStyles');
+```
+
+Skrypt ten odpowiada za dodanie pliku `header.css` do naszego motywu. Każda z linii to jeden parametr opisany powyżej 🙂 Po wykonaniu funkcji, całość zostaje załadowana do motywu, poprzez polecenie `add_action`.
+
+## Dołączanie plików JavaScript do motywu
+
+Tu proces wygląda bardzo podobnie, jak w poprzedniej części wpisu, posiada tylko kilka różnic. Pierwszą z nich jest oczywiście nazwa funkcji odpowiedzialnej za dodawanie skryptów JS do motywu, czyli `wp_enqueue_script()`. Może standardowo pokażę kod całej funkcji i przejdę dalej:
+
+```php
+wp_enqueue_script(
+  $handle,
+  $src,
+  $deps,
+  $ver,
+  $in_footer
+);
+```
+
+Już tłumaczę, za co odpowiada każdy z parametrów:
+
+1. `$handle` – indywidualna nazwa skryptu.
+2. `$src` – analogicznie, jak w przypadku stylów jest to ścieżka do naszego pliku JavaScript.
+3. `$deps` – ponownie w tym miejscu znajdują się zależności.
+4. `$ver` – wersja naszego skryptu. Działa tak samo jak wersja arkusza stylów.
+5. `$in_footer` – jedyna istotna różnica między parametrami funkcji dołączającej pliki CSS, a skrypty JS. Wartość ta określa, w którym miejscu mają znaleźć się nasze pliki. Jeśli wpiszemy tu wartość true, to skrypt zostanie umieszczony na końcu znacznika `body`, a jeśli wpiszemy false lub nie podamy żadnej wartości, to odnośniki do plików znajdą się w sekcji `head`.
+
+To wszystko pozwala na dodanie skryptu JS do naszej witryny. Standardowo, aby podsumować tę wiedzę, posłużę się przykładem:
+
+```php
+function loadingScripts(){
+  wp_enqueue_script(
+    'scripts',
+    get_template_directory_uri() . '/js/scripts.js',
+    array ('jquery'),
+    '1.1',
+    'true'
+  );
+}
+
+add_action('wp_enqueue_scripts', 'loadingScripts');
+```
+
+Na powyższej wersji widzimy dołączanie pliku `script.js`, zależnego od biblioteki jQuery (załaduje się po niej), o wersji 1.1, ładowanego do stopki naszego motywu.
+
+## Podsumowanie
+
+Jak widać w stosunkowo prosty sposób możemy dołączyć pliki CSS oraz JavaScript. Standardowo wszystko, co związane z moim motywem, możesz znaleźć na [GitHubie](https://github.com/robert-orlinski/modern-blog).

@@ -72,6 +72,11 @@ const postRedirects = [
     destination: '/artykuly/dobre-praktyki-css',
     permanent: true,
   },
+  {
+    source: '/dolaczanie-plikow-css-oraz-javascript',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-006',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
