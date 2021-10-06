@@ -117,6 +117,11 @@ const postRedirects = [
     destination: '/artykuly/swietne-fonty',
     permanent: true,
   },
+  {
+    source: '/dodatki-dla-tworcow-stron-internetowych',
+    destination: '/artykuly/dodatki-dla-tworcow-stron-internetowych',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
