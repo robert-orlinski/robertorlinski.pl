@@ -92,6 +92,11 @@ const postRedirects = [
     destination: '/artykuly/jak-stworzyc-motyw-wordpress-008',
     permanent: true,
   },
+  {
+    source: '/wtyczki-sublime-text-3',
+    destination: '/artykuly/wtyczki-do-sublime-text-3',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
