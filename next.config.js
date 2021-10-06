@@ -102,6 +102,11 @@ const postRedirects = [
     destination: '/artykuly/zmienne-w-czystym-css',
     permanent: true,
   },
+  {
+    source: '/tworzenie-edytowanych-podstron',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-009',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
