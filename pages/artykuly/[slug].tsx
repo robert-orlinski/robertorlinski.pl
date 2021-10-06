@@ -48,11 +48,12 @@ const ArticleInner = styled.article`
 type Props = { params: { slug: string } };
 
 export const getStaticProps = async ({ params: { slug } }: Props) => {
-  const { content, metaData } = await getPostBySlug(slug);
+  const currentPost = await getPostBySlug(slug);
+  const { content, metaData } = currentPost;
 
   const currentPostMainTopic = metaData.topics[0];
 
-  const relatedPosts = await getRelatedPosts(currentPostMainTopic);
+  const relatedPosts = await getRelatedPosts(currentPost, currentPostMainTopic);
 
   return {
     props: { metaData, content, relatedPosts },

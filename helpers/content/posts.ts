@@ -2,7 +2,7 @@ import { getResourcesByDateDescending, getResourceBySlug, getResourcePaths } fro
 import { getTopic } from '../data/topics';
 import { POSTS_PATH } from '../constants';
 
-import { Post } from 'Types/content';
+import { Post, ResourceWithContent } from 'Types/content';
 
 export const getPostsPaths = () => getResourcePaths(POSTS_PATH);
 
@@ -15,19 +15,31 @@ export const getNewestPosts = async () => {
   return lastSixPosts;
 };
 
-export const getRelatedPosts = async (givenTopicName: string) => {
+export const getRelatedPosts = async (
+  currentPostWithContent: ResourceWithContent<Post>,
+  givenTopicName: string,
+) => {
   const posts = await getResourcesByDateDescending<Post>(POSTS_PATH, 'posts');
-  const postsInGivenTopic = posts.filter(({ topics }) => topics.includes(givenTopicName));
+  const postsWithoutTheCurrentOne = posts.filter((post) => {
+    const iteratedPostToCompare = JSON.stringify(post);
+    const currentPostToCompare = JSON.stringify(currentPostWithContent.metaData);
 
-  if (postsInGivenTopic.length >= 3) {
-    const threePostsInGivenTopic = postsInGivenTopic.slice(0, 3);
+    return iteratedPostToCompare !== currentPostToCompare;
+  });
+
+  const theRestOfPostsInGivenTopic = postsWithoutTheCurrentOne.filter(({ topics }) =>
+    topics.includes(givenTopicName),
+  );
+
+  if (theRestOfPostsInGivenTopic.length >= 3) {
+    const threePostsInGivenTopic = theRestOfPostsInGivenTopic.slice(0, 3);
 
     return threePostsInGivenTopic;
   } else {
-    const numberOfPostsNeeded = 3 - postsInGivenTopic.length;
-    const theRestFromOtherTopics = posts.slice(0, numberOfPostsNeeded);
+    const numberOfPostsNeeded = 3 - theRestOfPostsInGivenTopic.length;
+    const theRestFromOtherTopics = postsWithoutTheCurrentOne.slice(0, numberOfPostsNeeded);
 
-    return postsInGivenTopic.concat(theRestFromOtherTopics);
+    return theRestOfPostsInGivenTopic.concat(theRestFromOtherTopics);
   }
 };
 
