@@ -82,6 +82,11 @@ const postRedirects = [
     destination: '/artykuly/motywy-do-sublime-text-3',
     permanent: true,
   },
+  {
+    source: '/naglowek-oraz-stopka-motywu-wordpress',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-007',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
