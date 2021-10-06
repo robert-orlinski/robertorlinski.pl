@@ -1,0 +1,203 @@
+---
+title: Efekt parallax wykonany w czystym CSS
+abstract: Pewnie wielu z Was zna efekt, działający w ten sposób, że część witryny przesuwa się inaczej niż reszta - parallax. Dzisiaj stworzymy go w samym CSS!
+isPublished: true
+topics:
+  - Front-end
+date: 27.06.2017
+isPopular: true
+---
+
+Pewnie wielu z Was zna efekt, działający w ten sposób, że konkretna część strony internetowej przesuwa się w innej szybkości niż reszta. Niestety zwykle bazuje on na skryptach JavaScript, które często spowalniają naszą witrynę.
+
+Tymczasem da się tego dokonać szybciej oraz znacznie przyjemniej, tylko stylizując nasz element w CSS. Już pokazuję jak to zrobić (tu jest działający przykład:
+
+<!-- playground -->
+
+Jest tylko jeden problem - technologia ta nie działa na IE oraz narazie w Firefoxie i Edge\'u. Mam nadzieję, że jak najszybciej się to zmieni.
+
+## Trochę kodu HTML
+
+Na początku nie mogło go zabraknąć. Ja stworzę prostą stronę, z pięcioma sekcjami (w tym dwie będą miały zastosowany efekt parallax, a jedna będzie je oddzielać). Oto nasz kod HTML:
+
+```html
+<main class="container">
+  <section class="row static-background"></section>
+
+  <section class="row">
+    <div class="parallax first-background"></div>
+  </section>
+
+  <section class="row static-background"></section>
+
+  <section class="row">
+    <div class="parallax second-background"></div>
+  </section>
+
+  <section class="row static-background"></section>
+</main>
+```
+
+Oczywiście nie musi go być tak dużo. Ja dałem 3 sekcje ze statycznym tłem tylko po to aby efekt naszej pracy był bardziej przejrzysty.
+
+Nie przedłużając przejdźmy do części głównej, czyli naszego kodu CSS!
+
+## Kod CSS niezbędny, aby efekt parallax zadziałał
+
+Jak w każdym poradniku, tak i w tym na początku pokażę jak wygląda cały kod CSS:
+
+```css
+body {
+  margin: 0;
+}
+
+.container {
+  height: 100vh;
+  perspective: 2px;
+  overflow-x: hidden;
+}
+
+.row {
+  position: relative;
+  height: 100vh;
+}
+
+.parallax {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  transform: translateZ(-1px) scale(1.55);
+}
+
+.static-background {
+  height: 55vh;
+  background-color: #303030;
+}
+
+.first-background {
+  background-image: url('img/forest.jpg');
+  background-position: center;
+}
+
+.second-background {
+  background-image: url('img/back.jpg');
+  background-position: center;
+}
+```
+
+Przeanalizujmy go kolei:
+
+```css
+body {
+  margin: 0;
+}
+```
+
+Tu nie ma zbyt dużo do tłumaczenia, eliminujemy domyślny margines. Tak naprawdę dodałem to tylko po to, aby strona z przykładem wyglądała lepiej :)
+
+```css
+.container {
+  height: 100vh;
+  perspective: 2px;
+  overflow-x: hidden;
+}
+```
+
+Na początku ustawiamy wysokość kontenera. 100vh oznacza, że jest ona równa wysokości obszaru roboczego naszej witryny.
+
+Teraz używamy właściwości [`perspective`](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective#Browser_compatibility)z wartością `2px`, która to odpowiada za ułożenie całej strony w stosunku do użytkownika oraz symuluje odległość obszaru roboczego (viewportu) od transformowanych obiektów.
+
+`overflow-x: hidden` odpowiada za ukrycie przepełnienia strony w poziomie. Niestety, aby nasz efekt zadziałał, musimy powiększać późniejsze elementy, a gdy tak uczynimy, to wyjdą poza widok przeglądarki, a tym samym utworzą poziomy scroll bar.
+
+```css
+.container {
+  position: relative;
+  height: 100vh;
+}
+```
+
+W tym miejscu zajmujemy się każdą z sekcji na stronie. Mówimy im, że mają się ustawiać relatywnie oraz nadajemy wysokość, równą naszemu viewportowi.
+
+```css
+.parallax {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  transform: translateZ(-1px) scale(1.5);
+}
+```
+
+Oto główny kod CSS naszych elementów z zastosowanym efektem paralaksy. Może przejrzyjmy go linia po linii:
+
+```css
+.parallax {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  /* ... */
+}
+```
+
+Ta część odpowiada za wypozycjonowanie naszych elementów absolutnie.
+
+```css
+.parallax {
+  /* ... */
+
+  z-index: -1;
+
+  /* ... */
+}
+```
+
+Za pomocą tego zmieniamy `z-index` tej części strony, dzięki czemu znajduje się ona pod elementami, dla których ta właściwość nie została wpisnana.
+
+```css
+.parallax {
+  /* ... */
+
+  transform: translateZ(-1px) scale(1.55);
+}
+```
+
+Tu z kolei widzimy ostatnią właściwość elementu parallax, odpowiedzialną za jego pozorne animowanie, a dokładnie za wolniejsze poruszanie się względem reszty witryny.
+
+Na początku oddalamy element względem viewportu za pomocą wartości _translateZ_ (staje się on optycznie mniejszy tak jak w prawdziwym życiu ?), po czym go powiększamy.
+
+Dzięki temu to co jest dalej, porusza się wolniej. Może przyrównam to do świata realnego: gdy np. jedziemy samochodem, to obiekty poruszają się z różną szybkością w zależności od tego jak daleko się znajdują.
+
+```css
+.static-background {
+  height: 55vh;
+  background-color: #303030;
+}
+
+.first-background {
+  background-image: url('img/forest.jpg');
+  background-position: center;
+}
+
+.second-background {
+  background-image: url('img/back.jpg');
+  background-position: center;
+}
+```
+
+Tu z kolei mamy prosty kod CSS. W znaczniku `static-background` nadajemy wysokość oraz kolor tła elementów nieposiadających na sobie efektu parallax.
+
+Z kolei w kolejnych dwóch stylizujemy poszczególne sekcje posiadające na sobie efekt paralaksy (ustawiamy zdjęcia, stanowiące wypełnienie konkretnego elementu, oraz wyśrodkowujemy te grafiki).
+
+## Podsumowanies
+
+Jak widać dzięki nowym opcjom w kodzie CSS, możemy stworzyć bardzo prosty oraz funkcjonalny efekt paralaksy na każdej stronie internetowej!
+
+Oczywiście demo możesz znaleźć pod tym [likiem](https://robertorlinski.pl/parallax-demo/)!

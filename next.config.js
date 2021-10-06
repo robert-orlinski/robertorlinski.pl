@@ -107,6 +107,11 @@ const postRedirects = [
     destination: '/artykuly/jak-stworzyc-motyw-wordpress-009',
     permanent: true,
   },
+  {
+    source: '/efekt-parallax-w-czystym-css',
+    destination: '/artykuly/efekt-parallax-w-czystym-css',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
