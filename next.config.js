@@ -127,6 +127,11 @@ const postRedirects = [
     destination: '/artykuly/jak-stworzyc-motyw-wordpress-010',
     permanent: true,
   },
+  {
+    source: '/10-darmowych-szablonow-psd',
+    destination: '/artykuly/10-darmowych-szablonow-psd',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
