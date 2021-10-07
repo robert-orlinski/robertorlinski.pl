@@ -132,6 +132,11 @@ const postRedirects = [
     destination: '/artykuly/10-darmowych-szablonow-psd',
     permanent: true,
   },
+  {
+    source: '/pojawianie-sie-elementow',
+    destination: '/artykuly/efekt-pojawiania-sie-elementow',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

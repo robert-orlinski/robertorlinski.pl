@@ -1,0 +1,122 @@
+---
+title: Jak dodać efekt pojawiania się elementów podczas przewijania strony internetowej?
+abstract: Prezentuję w jaki sposób zrobić to za pomocą biblioteki AOS. Dowiesz się, jak dołączyć ją do strony internetowej, a później używać!
+isPublished: true
+topics:
+  - Front-end
+date: 05.09.2017
+isPopular: true
+---
+
+Każda osoba, która przegląda Internet musiała spotkać się z efektem tzw. pojawiającej się treści. Niektórzy z nas mogli wtedy pomyśleć: Jak stworzyć coś takiego?!
+
+Otóż sposobów jest wiele. Ja przez długi czas korzystałem z połączenia [Animate.css](https://daneden.github.io/animate.css/) oraz [Viewport Checker](https://github.com/dirkgroenen/jQuery-viewport-checker), biblioteki opierającej się na jQuery. Niektórzy zamiast tego drugiego używają tzw. [Waypoints](http://imakewebthings.com/waypoints/), z kolei jeszcze inni zastępują wszystko znaną, ale od dłuższego czasu płatną biblioteką [WOW.js](http://mynameismatthieu.com/WOW/).
+
+Te sposoby są dobre, ale dziś chciałbym Ci pokazać inną, bardzo prostą i dodatkowo stworzoną przez polskiego dewelopera bibliotekę o nazwie [Animate On Scroll](https://michalsnik.github.io/aos/).
+
+Jeśli jesteś zainteresowany jakie animacje oferuje ta biblioteka, to zapraszam Cię na [stronę twórcy](https://michalsnik.github.io/aos/)!
+
+## Tymczasem - jak zainstalować AOS?
+
+Jesteśmy w stanie zrobić to np. za pomocą [Bowera](https://bower.io), [npma](https://www.npmjs.com) lub [Yarna](https://yarnpkg.com/en/). Jeśli używamy Bowera, to wpiszemy taką oto komendę:
+
+```bash
+bower install aos --save
+```
+
+…w przypadku npma:
+
+```bash
+bower install aos --save
+```
+
+…a jeśli chodzi o Yarna:
+
+```bash
+yarn add aos
+```
+
+Oczywiście poza tym możemy ręczenie pobrać paczkę z plikami naszej biblioteki lub dołączyć je z linku (przykład znajduje się poniżej).
+
+## Dołączanie biblioteki do strony internetowej
+
+W moim przypadku wszystko zostanie dodane z odnośnika do strony biblioteki (oczywiście możemy to zastąpić ścieżką do plików). Zacznijmy od stylów CSS:
+
+```html
+<link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet" />
+```
+
+Gdy już je mamy, pozostaje tylko kod JavaScript. Na początku importujemy plik JS:
+
+```html
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+```
+
+…po czym dodajemy taki oto krótką linijkę JavaScriptu, zamkniętą w tagach `script` do naszej witryny:
+
+```js
+AOS.init();
+```
+
+I to wszystko, nasza biblioteka zaczyna działać. Sprawdźmy teraz w jaki sposób jej używać!
+
+## Jak używać AOS?
+
+Wszystko opiera się na prostym atrybucie HTML:
+
+```html
+<div data-aos="nazwa-animacji"></div>
+```
+
+Na [stronie autora](https://michalsnik.github.io/aos/) można znaleźć wszystkie możliwe animacje oraz ich nazwy, które umieszczamy w cudzysłowie. Oczywiście cała funkcjonalność biblioteki nie kończy się na zadeklarowaniu nazwy animacji. Do użytku mamy jeszcze sporo atrybutów:
+
+- `data-aos-once` - w zależności od tego czy wpiszemy true lub false, to animacja będzie się odtwarzać podczas przewijania w górę, jednocześnie chowając element (wartość domyślna - `true`).
+- `data-aos-offset` - ustawia miejsce, w którym wykona się animacja. Im większą wartość wpiszemy w cudzysłowie, tym później się to stanie (wartość domyślna - `120`).
+- `data-aos-duration` - długość animacji mierzona w milisekundach (wartość domyślna - `400`).
+- `data-aos-delay` - opóźnienie zapisane w milisekundach (wartość domyślna - `0`).
+- `data-aos-easing` - wybrana zostaje tzw. [`timing function`](https://developer.mozilla.org/en/docs/Web/CSS/transition-timing-function) w CSS, po to aby element został zaanimowany w innym tempie (wartość domyślna - `ease`).
+- `data-aos-anchor` - za pomocą tego parametru wybieramy element, który spowoduje zaanimowanie innej części strony, gdy offset znajdzie się na obiekcie wywołującym (wartość domyślna - `null`).
+- `data-aos-anchor-placement` - rozszerzenie do poprzedniego parametru. Za jego pomocą określamy miejsce na ekranie w, którym element ma się zaanimować. Dla przykładu wartość bottom-center oznacza, że animacja zajdzie gdy środek elementu (drugi człon wartości atrybutu odpowiada za miejsce na elemencie) znajdzie się na dole okna przeglądarki (pierwszy zarządza viewportem).
+
+## Tworzenie własnych animacji
+
+Poza ustalonym zbiorem efektów, do dyspozycji mamy prosty sposób, z którego pomocą możemy tworzyć nowe. Kod CSS takiej nowoutworzonej animacji może wyglądać w ten sposób:
+
+```css
+[data-aos='rotate'] {
+  transform: rotate(360deg);
+  transition-property: transform;
+}
+
+[data-aos='rotate'].aos-animate {
+  transform: rotate(0deg);
+}
+```
+
+Natomiast w kodzie HTML po prostu umieszczamy znany nam atrybut `data-aos`, a jako jego wartość przyjmujemy `rotate` wpisane w cudzysłowie:
+
+```html
+<div data-aos="rotate"></div>
+```
+
+## Zmiana ustawień wszystkich animacji
+
+A co jeśli chcemy, żeby wszystkie animacje odtwarzały się na przykład sekundę, zamiast domyślnych 400 milisekund? Jest na to dużo prostszy sposób niż dodawanie do każdego elementu HTML nowego atrybutu! Wystarczy zajrzeć do naszej dodatkowej lini JavaScriptu:
+
+```js
+AOS.init();
+```
+
+Dla omawianej już zmiany długości animacji będzie ona wyglądać w ten sposób:
+
+```js
+AOS.init({
+  duration: 1000,
+});
+```
+
+I tak ze wszystkim co jesteśmy w stanie określić za pomocą dodatkowych atrybutów omówionych na końcu podtytułu “Jak używać AOS?”.
+
+## Podsumowanie
+
+Tak oto dotrwaliśmy do końca. Mam nadzieję, że dzięki temu artykułowi poznałeś coś co pozwoli usprawnić Twoją pracę!
