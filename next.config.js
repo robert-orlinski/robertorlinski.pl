@@ -137,6 +137,11 @@ const postRedirects = [
     destination: '/artykuly/efekt-pojawiania-sie-elementow',
     permanent: true,
   },
+  {
+    source: '/wycinanie-elementow-dzieki-clip-path',
+    destination: '/artykuly/wycinanie-elementow-dzieki-clip-path',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

@@ -1,0 +1,107 @@
+---
+title: Wycinanie elementów w CSS dzięki właściwości clip-path
+abstract: Eksperymentalna właściwość clip-path pozwala na bardzo proste wycinanie elementów strony internetowej w CSS za pomocą czterech prostych wartości.
+isPublished: true
+topics:
+  - Front-end
+date: 28.09.2017
+isPopular: false
+---
+
+CSS jest rozwijany z każdym dniem, otrzymując coraz to nowe funkcjonalności, które ułatwiają nam tworzenie stron internetowych. Właśnie o jednej z nich chciałbym pomówić w tym artykule, a dokładnie o właściwości `clip-path`, która to pozwala nam na wycinanie elementów, a tym samym tworzenie mniej prostokątnych stron internetowych!
+
+## Trochę ogólnych informacji
+
+Eksperymentalna właściwość `clip-path`, pozwala na schowanie części elementu na stronie internetowej, co sprawia, że ten wygląda jakby został przycięty. W pewnym momencie zastąpiła bardziej ubogą w opcje właściwość `clip`, która w tym momencie posiada status zdeprecjonowanej.
+
+## Wsparcie przeglądarek
+
+Smutne jest to, że wszystko co nowe przez długi czas nie jest zdatne do użytku przez brak wsparcia od niektórych przeglądarek. Nie inaczej jest w tym przypadku, bo omawiana dzisiaj właściwość nie jest zupełnie wspierana przez IE i jest wspierana tylko częściowo przez większośc innych przeglądarek.
+
+Jeśli jesteś zainteresowany dokładnym wsparciem dla poszczególnych przeglądarek, to możesz sprawdzić tę oto [stronę](http://caniuse.com/#search=clip-path).
+
+## No dobrze, ale jak w ogóle używać tej właściwości?
+
+Wszystko co jesteśmy w stanie wykonać zamyka się w czterech wartościach (w sumie to pięciu, bo jeszcze domyślne `none`) Opowiedzmy sobie o każdej z nich:
+
+### Wartość `inset()`
+
+Określa ona margines, który zostaje wycięty z każdej ze stron naszego elementu tworząc prostokąt (który swoją drogą może posiadać zaokrąglone rogi, ale o tym później).
+
+Na całą wartość składają się 2 parametry: `margin` oraz `radius`. Jak działają? Już tłumaczę:
+
+#### Parametr margin
+
+Standardowo rozpocznijmy od przykładu:
+
+import { CodePenIframe } from 'CodePenIframe';
+
+<CodePenIframe id="XedMQL" title="inset() #1" />
+
+Kod ten działa podobnie jak padding w CSSie. Pierwsza wartość reguluje jego wielkość u góry i reszta idzie wg. wskazówek zegara.
+
+#### Parametr radius
+
+Znów stwórzmy prosty przykład:
+
+<CodePenIframe id="JrXNyR" title="inset() #2" />
+
+Używając słowa kluczowego “round” możemy zaokrąglić rogi wspólnie lub z osobna. Mało tego, każdy z nich może zostać zedytowany inaczej z każdej ze stron, tak jak na tym przykładzie:
+
+<CodePenIframe id="QqNvqo" title="inset() #3" />
+
+Wszystkie wartości zostały opisane w komentarzu do kodu :)
+
+Dobrze, wiemy już jak tworzyć prostokąty, więc nie przedłużając przejdźmy do kolejnych elementów!
+
+### Wartość `circle()`
+
+Wartość ta pozwala nam na wycinanie kół wypełnionych konkretnym elementem na stronie. Już tłumaczę jak możemy ich używać, standardowo spójrzmy na konkretny przykład:
+
+<CodePenIframe id="boBXJE" title="circle()" />
+
+Za pomocą tego zapisu przycinamy nasz element do formy koła o promieniu 50px (pierwszy parametr) oraz pozycji w 150px od lewej oraz 80px od góry (parametr po słowie kluczowym `at`).
+
+Oczywiście nie musimy wszystkiego pisać w pikselach. Pierwszy parametr może zawierać wszystkie jednostki, używane do ustalania wielkości elementów, z kolei po słowie `at` możemy używać tego samego oraz słów kluczowych znanych z np. ustawiania pozycji tła w CSSie, to znaczy `center`, `bottom`, `top-center` i innych.
+
+### Wartość `ellipse()`
+
+Działa ona dokładnie w ten sam sposób, co wartość `circle();`, z jedną małą różnicą. Na początku nie określamy jednej wielkości, a dwie dla każdej ze stron naszej elipsy. Tak oto prezentuje się działający przykład:
+
+<CodePenIframe id="VMaxBv" title="ellipse()" />
+
+Jak widać pierwsza wartość (100px) odpowiada za promień elipsy w poziomie, z kolei druga (50px) reguluje tę wielkość w poziomie.
+
+### Wartość `polygon()`
+
+Chyba najczęściej używana podczas przycinania elementów za pomocą omawianej dzisiaj właściwości. Może jak zwykle sprawdźmy działanie przykładu:
+
+<CodePenIframe id="eGZRZg" title="polygon()" />
+
+Jak widać za pomocą `polygon()` możemy tworzyć nieograniczoną liczbę punków, które stają się wierzchołkami przyciętego wielokąta. Pierwsza wartość wyrażona w jakiejkolwiek jednostce (w tym przypadku procentach) określa odległość pierwszego punktu od górnej krawędzi elementu, z kolei druga wartość oznacza taką samą odległość od lewej strony.
+
+## Wycinanie elementów SVG
+
+Jeśli chcemy wycinać pojedyncze elementy w celu ozdobienia naszej strony, to świetnym pomysłem będzie użycie `clipPath` w elemencie SVG.
+
+Aby tego dokonać musimy zamknąć znacznik `<defs>` w tagu `<svg>`, po czym możemy korzystać ze wszystkiego co zostało nam udostępnione dla elementów SVG (można to znaleźć np. na [stronie MDN](https://developer.mozilla.org/en-US/docs/Web/SVG/Element). Również w tym samym serwisie [można przeczytać poradnik](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/clipPath) dotyczący tworzenia tego typu elementów.
+
+## Tworzenie animacji za pomocą właściwości clip-path
+
+Tu sprawa jest prosta, a jednocześnie pozwala na tworzenie naprawdę świetnych animacji. Wszystko opiera się na ogólnie znanych [keyframe\'sach](https://developer.mozilla.org/en-US/docs/Web/CSS/%40keyframes).
+
+Na początku stosujemy właściwość clip-path na elemencie tak jak robiliśmy to we wcześniejszych częściach artykułu. Później stosujemy znacznik @keyframes do stworzenia animacji np. w ten sposób:
+
+<CodePenIframe id="LjwjGB" title="Animacja właściwości clip-path" />
+
+Używając tego kodu stworzyliśmy obiekt przycięty do figury prostokąta (tak wiem, `clip-path` był do tego niezwykle potrzebny ?). Po 2 sekundach zmienia się ona w znak “X”.
+
+## Generator
+
+Pod koniec warto wspomnieć o istnieniu świetnego generatora elementów przyciętych za pomocą omawianej dziś właściwości.
+
+Nazywa się [Clippy](https://bennettfeely.com/clippy/) i pozwala kopiować kod gotowych kształtów oraz tworzyć zupełne nowe tylko z użyciem myszki!
+
+## Podsumowanie
+
+Tak oto prezentuje się eksperymentalna właściwość clip-path. Jak widać posiada ona naprawdę sporo funkcji i osobiście czekam, aż otrzyma ona pełne wsparcie przeglądarek (może tylko poza IE, bo tutaj nie możemy i powoli nie musimy, liczyć na wiele).

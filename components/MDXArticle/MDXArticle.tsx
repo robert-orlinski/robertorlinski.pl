@@ -1,6 +1,8 @@
 import { FC, useMemo } from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
 
+import { CodePenIframe } from 'Components/CodePenIframe';
+
 import { Highlight } from './MDXComponents/Highlight';
 import { BiggerP } from './MDXComponents/BiggerP';
 import { Code } from './MDXComponents/Code';
@@ -18,7 +20,10 @@ import { Li } from './MDXComponents/Li';
 type Props = { source: string };
 
 export const MDXArticle: FC<Props> = ({ source }) => {
-  const MDXContainer = useMemo(() => getMDXComponent(source), [source]);
+  const MDXContainer = useMemo(
+    () => getMDXComponent(source, { codePenIframe: { CodePenIframe } }),
+    [source],
+  );
 
   return (
     <MDXContainer

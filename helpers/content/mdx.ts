@@ -52,6 +52,13 @@ export const prepareMDX = async (
       publicPath: imagesDirectory,
       write: true,
     }),
+    globals: {
+      CodePenIframe: {
+        varName: 'codePenIframe',
+        namedExports: ['CodePenIframe'],
+        defaultExport: false,
+      },
+    },
   });
 
   return {
