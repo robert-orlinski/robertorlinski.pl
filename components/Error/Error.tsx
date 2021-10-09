@@ -11,7 +11,7 @@ type Props = {
   };
 };
 
-export const Error: FC<Props> = ({ children, withButton: { href, title } }) => (
+export const Error: FC<Props> = ({ children, withButton: { href, title } = {} }) => (
   <TextBlock>
     <NarrowTitle level={2}>{children}</NarrowTitle>
     {href && title && <Button href={href}>{title}</Button>}
