@@ -17,7 +17,7 @@ export const CodePenIframe: FC<Props> = ({ id, title, defaultTab = 'html' }) => 
     <P>
       <Pen
         title={title}
-        src={`${srcBase}?default-tab=${defaultTab}%2Cresult`}
+        src={`${srcBase}?default-tab=${defaultTab}%2Cresult&editable=true`}
         loading="lazy"
         allowFullScreen={true}
       >
