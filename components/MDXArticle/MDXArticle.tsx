@@ -3,6 +3,7 @@ import { getMDXComponent } from 'mdx-bundler/client';
 
 import { CodePenIframe } from 'Components/CodePenIframe';
 
+import { Blockquote } from './MDXComponents/Blockquote';
 import { Highlight } from './MDXComponents/Highlight';
 import { BiggerP } from './MDXComponents/BiggerP';
 import { Code } from './MDXComponents/Code';
@@ -28,6 +29,7 @@ export const MDXArticle: FC<Props> = ({ source }) => {
   return (
     <MDXContainer
       components={{
+        blockquote: Blockquote,
         p: BiggerP,
         pre: Code,
         a: Anchor,
