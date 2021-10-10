@@ -4,7 +4,6 @@ import { to } from 'Devices';
 
 export const Code = styled.pre`
   width: 100%;
-  max-height: 75vh;
 
   margin: 0.3rem 0 1.8rem;
   border-radius: 6px;
