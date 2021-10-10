@@ -25,7 +25,7 @@ export const Code = styled.pre`
   }
 
   @media ${to.phoneL} {
-    white-space: normal;
+    white-space: pre-wrap;
   }
 
   .comment,
