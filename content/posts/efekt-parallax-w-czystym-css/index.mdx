@@ -4,200 +4,177 @@ abstract: Pewnie wielu z Was zna efekt, działający w ten sposób, że część
 isPublished: true
 topics:
   - Front-end
-date: 27.06.2017
+date: 09.10.2021
 isPopular: true
 ---
 
-Pewnie wielu z Was zna efekt, działający w ten sposób, że konkretna część strony internetowej przesuwa się w innej szybkości niż reszta. Niestety zwykle bazuje on na skryptach JavaScript, które często spowalniają naszą witrynę.
+Pewnie kojarzysz efekt, w którym konkretna część strony internetowej przesuwa się w innej szybkości niż reszta. Niestety zwykle bazuje on na dodatkowych skryptach JavaScript, które w tym przypadku są zbędne i mogą tylko niepotrzebnie spowalniać naszą stronę.
 
-Tymczasem da się tego dokonać szybciej oraz znacznie przyjemniej, tylko stylizując nasz element w CSS. Już pokazuję jak to zrobić (tu jest działający przykład:
+Zbędne, bo właśnie - ten efekt możemy wdrożyć znacznie przyjemniej, tylko stylizując nasz element w CSS. Szczególnie w obecnych czasach, gdy właściwości CSSa, o których opowiem, są w pełni dostępne w aktualnych przeglądarkach!
 
----playground---
+> Pierwsza wersja tego artykułu powstała w roku 2017, gdzie o rzeczach, które pokażę, mówiłem bardziej jako o ciekawostce. Cudnie jest widzieć, że obecnie mogę mówić o tym, jako o czymś, co po prostu można wdrożyć 🥳
 
-Jest tylko jeden problem - technologia ta nie działa na IE oraz narazie w Firefoxie i Edge\'u. Mam nadzieję, że jak najszybciej się to zmieni.
+Dobra, już pokazuję jak to zrobić!
+
+Aaaaaalbo, zanim jeszcze zaczniemy, tutaj znajdziesz działający przykład, który prezentuje ten efekt:
+
+import { CodePenIframe } from 'CodePenIframe';
+
+<CodePenIframe id="YzxzzJN" title="Efekt parallax w samym CSS" />
+
+Jeśli tylko chcesz, to podrzucony wyżej snippet możesz swobodnie edytować ✨ Lećmy!
 
 ## Trochę kodu HTML
 
-Na początku nie mogło go zabraknąć. Ja stworzę prostą stronę, z pięcioma sekcjami (w tym dwie będą miały zastosowany efekt parallax, a jedna będzie je oddzielać). Oto nasz kod HTML:
+Na początku nie mogło go zabraknąć. Stworzę prostą stronę, z trzema sekcjami (w tym jedna będzie miała zastosowany efekt parallax).
+
+Oto nasz kod HTML:
 
 ```html
-<main class="container">
-  <section class="row static-background"></section>
+<main class="wrapper">
+  <section class="row row--static"></section>
 
-  <section class="row">
-    <div class="parallax first-background"></div>
-  </section>
+  <section class="row row--with-parallax"></section>
 
-  <section class="row static-background"></section>
-
-  <section class="row">
-    <div class="parallax second-background"></div>
-  </section>
-
-  <section class="row static-background"></section>
+  <section class="row row--static"></section>
 </main>
 ```
 
-Oczywiście nie musi go być tak dużo. Ja dałem 3 sekcje ze statycznym tłem tylko po to aby efekt naszej pracy był bardziej przejrzysty.
+Jeśli nie do końca wiesz, dlaczego klasy zapisałem w taki sposób, jak tu widać, możesz sprawdzić mój [artykuł na temat metodologii BEM](/metodologia-bem), który przybliży Ci ten temat (którego swoją drogą zapewne w przyszłości i tak przyjdzie Ci się nauczyć, bo metodologii tej używa się baaardzo często).
 
-Nie przedłużając przejdźmy do części głównej, czyli naszego kodu CSS!
+## Kod (S)CSS, składający się na nasz efekt parallax
 
-## Kod CSS niezbędny, aby efekt parallax zadziałał
+Może na początku pokażę, jak wygląda on w pełnej pełnej okazałości:
 
-Jak w każdym poradniku, tak i w tym na początku pokażę jak wygląda cały kod CSS:
-
-```css
+```scss
 body {
   margin: 0;
 }
 
-.container {
+.wrapper {
   height: 100vh;
-  perspective: 2px;
   overflow-x: hidden;
+
+  perspective: 2px;
 }
 
 .row {
   position: relative;
-  height: 100vh;
-}
+  height: 70vh;
 
-.parallax {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  transform: translateZ(-1px) scale(1.55);
-}
+  &::after {
+    content: '';
 
-.static-background {
-  height: 55vh;
-  background-color: #303030;
-}
+    position: absolute;
+    inset: 0;
+  }
 
-.first-background {
-  background-image: url('img/forest.jpg');
-  background-position: center;
-}
+  &--static {
+    z-index: 1;
+    background-color: #303030;
+  }
 
-.second-background {
-  background-image: url('img/back.jpg');
-  background-position: center;
+  &--with-parallax {
+    transform-style: preserve-3d;
+
+    &::after {
+      background: url('https://robertorlinski.pl/images/forest.jpg') center;
+
+      transform: translateZ(-1px) scale(2);
+    }
+  }
 }
 ```
 
-Przeanalizujmy go kolei:
+Całość jest napisana w SCSSie, ponieważ:
 
-```css
+1. SCSS jest ekstremalnie przyjemny i chyba nikt z nas, kto tworzy już trochę strony i aplikacje internetowe, nie może powiedzieć, że nie zna jego składni.
+2. Bardzo przyjaźnie można w nim pisać w ramch [metodologii BEM](../metodologia-bem), o której już wspominałem przy okazji HTMLa.
+
+Okej, przeanalizujmy go krok po kroku:
+
+```scss
 body {
   margin: 0;
 }
 ```
 
-Tu nie ma zbyt dużo do tłumaczenia, eliminujemy domyślny margines. Tak naprawdę dodałem to tylko po to, aby strona z przykładem wyglądała lepiej :)
+Tu nie ma zbyt dużo do tłumaczenia, eliminujemy domyślny margines. Tak naprawdę dodałem to tylko po to, aby strona z przykładem wyglądała lepiej 😌
 
-```css
-.container {
+```scss
+.wrapper {
   height: 100vh;
-  perspective: 2px;
   overflow-x: hidden;
+
+  perspective: 2px;
 }
 ```
 
-Na początku ustawiamy wysokość kontenera. 100vh oznacza, że jest ona równa wysokości obszaru roboczego naszej witryny.
+Na początku wysokość kontenera. 100vh oznacza, że jest ona równa wysokości okna przeglądarki, co jest potrzebne, aby perspektywa zadziałała (więcej o niej za chwilkę), a tym samym cały efekt.
 
-Teraz używamy właściwości [`perspective`](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective#Browser_compatibility)z wartością `2px`, która to odpowiada za ułożenie całej strony w stosunku do użytkownika oraz symuluje odległość obszaru roboczego (viewportu) od transformowanych obiektów.
+`Overflow-x: hidden` odpowiada za ukrycie przepełnienia strony w poziomie. Aby nasz efekt zadziałał, musimy powiększać późniejsze elementy, a gdy tak zrobimy, to wyjdą poza widok przeglądarki, a tym samym utworzą poziomy scroll-bar.
 
-`overflow-x: hidden` odpowiada za ukrycie przepełnienia strony w poziomie. Niestety, aby nasz efekt zadziałał, musimy powiększać późniejsze elementy, a gdy tak uczynimy, to wyjdą poza widok przeglądarki, a tym samym utworzą poziomy scroll bar.
+Na końcu używamy właściwości [`perspective`](https://developer.mozilla.org/en-US/docs/Web/CSS/perspective#Browser_compatibility) z wartością `2px`, która to odpowiada za ułożenie perspektywy, z której patrzy użytkownik, względem powierzchni naszej strony internetowej oraz symuluje trójwymiarowość obszaru roboczego (viewportu).
 
-```css
-.container {
+Dzięki temu, możemy zasymulować sytuację, w której jedne elementy są bliżej użytkownika, a inne dalej i to w sposób, który jest widoczny na pierwszy rzut oka (nie tak jak to działa w przypadku `z-indexów`, gdzie dane elementy przykrywają inne, nie zmieniając swojego zachowania).
+
+```scss
+.row {
   position: relative;
-  height: 100vh;
-}
-```
+  height: 70vh;
 
-W tym miejscu zajmujemy się każdą z sekcji na stronie. Mówimy im, że mają się ustawiać relatywnie oraz nadajemy wysokość, równą naszemu viewportowi.
+  &::after {
+    content: '';
 
-```css
-.parallax {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  transform: translateZ(-1px) scale(1.5);
-}
-```
+    position: absolute;
+    inset: 0;
+  }
 
-Oto główny kod CSS naszych elementów z zastosowanym efektem paralaksy. Może przejrzyjmy go linia po linii:
-
-```css
-.parallax {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  &--static {
+    z-index: 1;
+    background-color: #303030;
+  }
 
   /* ... */
 }
 ```
 
-Ta część odpowiada za wypozycjonowanie naszych elementów absolutnie.
+Celowo pominąłem ostatni blok kodu, bo o nim powiemy sobie później najwięcej. Powyżej z kolei, ustawiamy tylko położenie szarych sekcji, ich kolor, rozmiary każdej sekcji i rozmiary pseudoelementów.
 
-```css
-.parallax {
+Tym ostatnim nadajemy wielkość elementu `.row` za sprawą właściwości [`inset`](https://developer.mozilla.org/en-US/docs/Web/CSS/inset).
+
+```scss
+.row {
   /* ... */
 
-  z-index: -1;
+  &--with-parallax {
+    transform-style: preserve-3d;
 
-  /* ... */
+    &::after {
+      background: url('https://robertorlinski.pl/images/forest.jpg') center;
+
+      transform: translateZ(-1px) scale(2);
+    }
+  }
 }
 ```
 
-Za pomocą tego zmieniamy `z-index` tej części strony, dzięki czemu znajduje się ona pod elementami, dla których ta właściwość nie została wpisnana.
+I ostatnia część naszego kodu. Skupmy się na pierwszej i ostatniej właściwości.
 
-```css
-.parallax {
-  /* ... */
+Dzięki zastosowaniu `transform-style: preserve-3d`, nasze rzędy stają się de facto trójwymiarowe, dzięki czemu ich elementy możemy przesuwać, obracać itp., nie tylko na jednej płaszczyźnie (płaszczyźnie samej strony internetowej), ale również na płaszczyźnie przecinającą ją.
 
-  transform: translateZ(-1px) scale(1.55);
-}
-```
+Świetnie o tej właściwości opowiada [dokumentacja MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-style), gdzie również możesz zobaczyć przyjemne demo, prezentujące różnicę między elementami, których ta właściwość została zastosowana, a tymi bez niej.
 
-Tu z kolei widzimy ostatnią właściwość elementu parallax, odpowiedzialną za jego pozorne animowanie, a dokładnie za wolniejsze poruszanie się względem reszty witryny.
+Z kolei za pomocą ostatniej linijki (właściwości `transform`) na początku oddalamy element względem viewportu za pomocą wartości `translateZ` (staje się on optycznie mniejszy, przez pozorne jego oddalenie), po czym go powiększamy dzięki wartości `scale`.
 
-Na początku oddalamy element względem viewportu za pomocą wartości _translateZ_ (staje się on optycznie mniejszy tak jak w prawdziwym życiu ?), po czym go powiększamy.
+Dzięki temu to co jest dalej, porusza się pozornie wolniej - tak jak w prawdziwym życiu.
 
-Dzięki temu to co jest dalej, porusza się wolniej. Może przyrównam to do świata realnego: gdy np. jedziemy samochodem, to obiekty poruszają się z różną szybkością w zależności od tego jak daleko się znajdują.
+## Podsumowanie
 
-```css
-.static-background {
-  height: 55vh;
-  background-color: #303030;
-}
+Jak widać dzięki paru właściwościom w kodzie CSS, możemy stworzyć bardzo prosty oraz funkcjonalny efekt paralaksy na każdej stronie internetowej!
 
-.first-background {
-  background-image: url('img/forest.jpg');
-  background-position: center;
-}
+Jeszcze raz podrzucam działające demo, które możesz swobodnie edytować:
 
-.second-background {
-  background-image: url('img/back.jpg');
-  background-position: center;
-}
-```
+<CodePenIframe id="YzxzzJN" title="Efekt parallax w samym CSS" />
 
-Tu z kolei mamy prosty kod CSS. W znaczniku `static-background` nadajemy wysokość oraz kolor tła elementów nieposiadających na sobie efektu parallax.
-
-Z kolei w kolejnych dwóch stylizujemy poszczególne sekcje posiadające na sobie efekt paralaksy (ustawiamy zdjęcia, stanowiące wypełnienie konkretnego elementu, oraz wyśrodkowujemy te grafiki).
-
-## Podsumowanies
-
-Jak widać dzięki nowym opcjom w kodzie CSS, możemy stworzyć bardzo prosty oraz funkcjonalny efekt paralaksy na każdej stronie internetowej!
-
-Oczywiście demo możesz znaleźć pod tym [likiem](https://robertorlinski.pl/parallax-demo/)!
+Do następnego razu 🎉
