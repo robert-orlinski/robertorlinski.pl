@@ -13,5 +13,5 @@ export const DistantButton: FC<ButtonType> = ({ children, href, type, onClick })
 );
 
 const DistantButtonContainer = styled(CenteredText)`
-  padding-bottom: calc(var(--section-space) * 0.6);
+  padding-bottom: calc(var(--section-gap) * 0.6);
 `;

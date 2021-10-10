@@ -34,7 +34,7 @@ const Content = styled(Row).attrs({
   --columns: 1.5fr 1fr;
 
   @media ${to.tabletL} {
-    grid-row-gap: var(--section-space);
+    grid-row-gap: var(--section-gap);
   }
 `;
 

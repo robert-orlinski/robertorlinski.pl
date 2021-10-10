@@ -7,7 +7,7 @@ import { from } from 'Devices';
 export const TextBlock = styled(Wrapper).attrs({
   size: 'small',
 })`
-  padding-bottom: var(--section-space);
+  padding-bottom: var(--section-gap);
   font-size: 1.1rem;
 
   @media ${from.phoneL} {

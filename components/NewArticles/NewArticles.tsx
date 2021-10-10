@@ -21,5 +21,5 @@ export const NewArticles: FC<PostsContainer> = ({ posts }) => (
 const MoreButtonContainer = styled(CenteredText).attrs({
   as: 'footer',
 })`
-  padding-top: calc(var(--section-space) * 0.6);
+  padding-top: calc(var(--section-gap) * 0.6);
 `;

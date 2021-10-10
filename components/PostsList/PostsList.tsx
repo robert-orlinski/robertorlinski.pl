@@ -19,7 +19,7 @@ export const PostsList: FC<PostsContainer> = ({ posts }) => (
 
 const List = styled.ul`
   display: grid;
-  gap: calc(var(--section-space) * 0.8) calc(var(--section-space) * 0.45);
+  gap: calc(var(--section-gap) * 0.8) calc(var(--section-gap) * 0.45);
 
   @media ${from.tabletL} {
     grid-template-columns: 1fr 1fr 1fr;

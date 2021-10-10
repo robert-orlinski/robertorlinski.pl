@@ -20,7 +20,8 @@ export const CssVariables = createGlobalStyle`
     --nav-height: 5.2rem;
     --logo-height: 1.9rem;
 
-    --section-space: 3.8rem;
+    --section-gap: 3.8rem;
+    --text-gap: 1.5rem;
 
     --short-transition-duration: 250ms;
     --medium-transition-duration: 500ms;
@@ -32,11 +33,15 @@ export const CssVariables = createGlobalStyle`
     --extreme-z-index: 10000;
 
     @media ${to.tabletL} {
-      --section-space: 2.5rem;
+      --section-gap: 2.5rem;
     }
 
     @media ${to.tablet} {
       --nav-height: 4.6rem;
+    }
+
+    @media ${to.phoneL} {
+      --text-gap: 1.2rem;
     }
   }
 `;

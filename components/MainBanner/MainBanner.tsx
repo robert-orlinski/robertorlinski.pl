@@ -41,12 +41,12 @@ const Banner = styled(Wrapper)`
 
   position: relative;
 
-  margin-bottom: var(--section-space);
+  margin-bottom: var(--section-gap);
 
   @media ${to.phoneL} {
     flex-direction: column-reverse;
 
-    margin-bottom: calc(var(--section-space) * 0.5);
+    margin-bottom: calc(var(--section-gap) * 0.5);
   }
 `;
 
