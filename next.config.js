@@ -142,6 +142,11 @@ const postRedirects = [
     destination: '/artykuly/wycinanie-elementow-dzieki-clip-path',
     permanent: true,
   },
+  {
+    source: '/obrazek-wyrozniajacy',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-011',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
