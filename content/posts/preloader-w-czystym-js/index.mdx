@@ -1,0 +1,187 @@
+---
+title: Jak wykonać preloader w czystym JavaScript’cie?
+abstract: W tym artykule dowiadujemy się w jaki sposób wykonać prosty preloader w czystym JavaScript'cie, który chowa się po załadowaniu teści strony internetowej.
+isPublished: true
+topics:
+  - Front-end
+date: 05.12.2017
+isPopular: true
+---
+
+Zapewne każdy z nas spotkał tzw. preloader, czyli element zasłaniający witrynę, dopóki ta nie zostanie w pełni załadowana. Jak stworzyć coś takiego? Tego dowiemy się w dzisiejszym artykule!
+
+## Efekt końcowy
+
+Zacznijmy od konkretów, bo nie chciałbym marnować Twojego czasu. Dokładnie tak wygląda demo naszego efektu:
+
+import { CodePenIframe } from 'CodePenIframe';
+
+<CodePenIframe id="qBXErEO" title="Preloader w czystym JS" />
+
+Chciałbym abyśmy skupili się na mechanice, która powoduje, że preloader znika dopiero po załadowaniu się treści strony internetowej, dlatego wygląd jest mniej istotny (w tym przykładzie inspirowałem się [jednym z innych projektów na CodePenie](https://codepen.io/yayteejay/pen/hmalA?page=5&)).
+
+## Kod HTML
+
+Prezentuje się w ten oto sposób:
+
+```html
+<figure class="preloader" id="preloader">
+  <div class="circles-group">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+</figure>
+```
+
+Jest dosyć prosty, a mógłby być jeszcze prostszy, bo w praktyce do pełnego działania wystarczy nam element o klasie `preload`, reszta odpowiada tylko i wyłącznie za estetykę.
+
+## Kod CSS
+
+Ten jak zwykle jest najdłuższy, a wygląda w ten oto sposób:
+
+```css
+.preloader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  z-index: 10000;
+  visibility: hidden;
+  opacity: 0;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  margin: 0;
+  background-color: #10131a;
+  transition: opacity 400ms ease-in-out, visibility 0s 400ms;
+}
+
+.show-preloader {
+  visibility: visible;
+  opacity: 1;
+}
+
+.circle {
+  background-color: #f9dc97;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  -webkit-animation: stretchdelay 0.7s infinite ease-in-out;
+  animation: stretchdelay 0.7s infinite ease-in-out;
+}
+
+.preloader .circle:nth-child(1) {
+  -webkit-animation-delay: -0.6s;
+  animation-delay: -0.6s;
+}
+
+.preloader .circle:nth-child(2) {
+  -webkit-animation-delay: -0.5s;
+  animation-delay: -0.5s;
+}
+
+.preloader .circle:nth-child(3) {
+  -webkit-animation-delay: -0.4s;
+  animation-delay: -0.4s;
+}
+
+.preloader .circle:nth-child(4) {
+  -webkit-animation-delay: -0.3s;
+  animation-delay: -0.3s;
+}
+
+@keyframes stretchdelay {
+  0%,
+  40%,
+  100% {
+    transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
+  }
+  20% {
+    transform: translateY(-20px);
+    -webkit-transform: translateY(-20px);
+  }
+}
+```
+
+Poza oczywistym stylowaniem naszych elementów warto zwrócić uwagę na kilka reguł, które są charakterystyczne dla preloaderów:
+
+```css
+.preloader {
+  position: fixed;
+  z-index: 10000;
+  width: 100vw;
+  height: 100vh;
+}
+```
+
+Za pomocą tych właściwości sprawiamy, że nasz element pozostanie widoczny na całym ekranie niezależnie od tego czy spróbujemy zjechać w dół witryny.
+
+```css
+.preloader {
+  visibility: hidden;
+  opacity: 0;
+}
+```
+
+Z kolei ten zestaw reguł sprawi, że preloader nie będzie widoczny, dopóki tego nie zmienimy, dzięki czemu w przypadku gdy użytkownik będzie miał domyślnie wyłączony JavaScript, strona nie zostanie zakryta.
+
+```css
+.show-preloader {
+  visibility: visible;
+  opacity: 1;
+}
+```
+
+Tę klasę dodamy przed ładowaniem treści witryny, dzięki czemu użytkownik po wejściu na stronę od razu zobaczy nasz preloader, a nie ładującą się zawartość. Gdy już serwis się już załaduje, to nasz element zostanie usunięty, dzięki czemu osoba przeglądająca witrynę ujrzy jej treść.
+
+To chyba wszystkie ważniejsze elementy tego kodu CSS. Reszta odpowiada za wygląd oraz animacje użyte w preloaderze, więc przejdźmy do części głównej, czyli kodu JavaScript!
+
+## Kod JavaScript
+
+Wszystko wykonuje się za sprawą kilku linii, może standardowo pokażę całość przed omówieniem konkretnych elementów:
+
+```js
+const preloader = document.querySelector('#preloader');
+
+preloader.classList.add('show-preloader');
+
+window.addEventListener('load', function () {
+  preloader.classList.remove('show-preloader');
+});
+```
+
+Zacznijmy od razu:
+
+```js
+const preloader = document.querySelector('#preloader');
+```
+
+Do zmiennej _preloader_ przypisujemy kontener o takiej samej klasie.
+
+```js
+preloader.classList.add('show-preloader');
+```
+
+W tym miejscu wykonuje się polecenie, dodające klasę, którą opisałem przy okazji omawiania kodu CSS. Dzięki tej linii od razu ujrzymy nasz preloader.
+
+```js
+window.addEventListener('load', () => {
+  preloader.classList.remove('show-preloader');
+});
+```
+
+Tu z kolei całość się kończy, usuwając wcześniej dodaną klasę od razu po załadowaniu się witryny. Dzięki temu ujrzymy w pełni funkcjonalną stronę internetową.
+
+## Podsumowanie
+
+Tak oto prezentuje się kod naszego preloadera. Warto jeszcze nadmienić, że jeśli wykonujemy całość na serwerze lokalnym, to nasz preloader zniknie praktycznie od razu po wejściu na stronę. Dlatego w przypadku demo tego projektu lekko zmodyfikowałem kod JavaScript, dodając opóźnienie:
+
+<CodePenIframe id="qBXErEO" title="Preloader w czystym JS" />
+
+Kod odpowiedzialny za usuwanie klasy `show-preloader` został zamknięty w funkcji `setTimeout`, która sprawia, że preloader znika po dwóch sekundach od załadowania się witryny.
+
+Do następnego!

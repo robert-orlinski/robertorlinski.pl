@@ -162,6 +162,11 @@ const postRedirects = [
     destination: '/artykuly/jak-stworzyc-motyw-wordpress-012',
     permanent: true,
   },
+  {
+    source: '/preloader',
+    destination: '/artykuly/preloader-w-czystym-js',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
