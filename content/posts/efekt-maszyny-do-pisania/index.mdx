@@ -1,0 +1,190 @@
+---
+title: Efekt maszyny do pisania wykonany w JavaScript za pomocą biblioteki Typed.js
+abstract: Z artykułu dowiesz się jak za pomocą biblioteki Typed.js stworzyć efekt, w którym tekst samoistnie się pojawia, sprawiając wrażenie pisanego automatycznie.
+isPublished: true
+topics:
+  - Front-end
+date: 06.11.2017
+isPopular: false
+---
+
+Czy kiedykolwiek spotkałeś efekt, w którym tekst samoistnie się pojawia, sprawiając wrażenie pisanego automatycznie? A jeśli tak, to czy myślałeś może jak zrobić coś takiego?
+
+W tym wpisie chciałbym pokazać jeden ze sposobów, jakim jest dość popularna biblioteka, o nazwie Typed.js. Zapraszam do lektury!
+
+## Czym jest biblioteka Typed.js?
+
+Nazwa ta określa chyba najbardziej rozbudowany zbiór kodu, napisany do tworzenia tego typu animacji. Niestety, aby działać potrzebuje biblioteki jQuery, ale za to posiada ogrom funkcji, które poznamy w dalszej części artykułu.
+
+## W takim razie nad czym dziś będziemy pracować?
+
+Postaramy się stworzyć prostą animację, która wyświetli trzy różne napisy w taki oto sposób:
+
+import { CodePenIframe } from 'CodePenIframe';
+
+<CodePenIframe id="YzxPpwv" title="Typed.js" />
+
+Aby tego dokonać i co najważniejsze całość zrozumieć, potrzebujemy wiedzy o kilku elementach, niezbędnych do działania animacji oraz powinniśmy poznać niektóre właściwości omawianej biblioteki. Może zacznijmy od tych pierwszych.
+
+## Czego potrzebujemy?
+
+Niezbędne będą nam trzy elementy. Już je wymieniam:
+
+### Biblioteka jQuery
+
+Niestety musiała tu się znaleźć, bo tak jak wspominałem cały skrypt na niej się opiera. Dodajmy ją do naszej strony za pomocą liku CDN:
+
+```html
+<script src="https://code.jquery.com/jquery-3.2.1.min.js">
+```
+
+...lub pobierzmy ze [strony twórców](https://jquery.com/download/).
+
+### Biblioteka Typed.js
+
+Główna część dzisiejszego projektu. Wystarczy, że [download-attachment id=1282 title=wejdziesz w ten oto link\], a plik ze skryptem pobierze się automatycznie.
+
+### Kod efektu
+
+Ostatnia część, niezbędna do działania naszej animacji prezentuje się w ten oto sposób:
+
+```js
+$(function () {
+  $('.typing').typed({
+    strings: ['Pierwsza linia', 'Druga linia', 'Trzecia linia'],
+  });
+});
+```
+
+Jest to kod omawianego efektu w najbardziej podstawowej formie. Całość zamyka się w funkcji, która do elementu o klasie `.typing` dołącza trzy różne ciągi tekstowe wpisane po jednej z właściwości udostępnianej przez [autora biblioteki](http://www.mattboldt.com/), czyli `strings`.
+
+## Dodatkowe opcje biblioteki Typed.js
+
+Jest ich dość sporo dlatego w tym artykule chciałbym wymienić tylko te, które najczęściej mogą nam się przydać. Pełną listę można znaleźć chociażby na tej [stronie.](http://www.mattboldt.com/typed.js/docs/)
+
+### Strings
+
+```js
+strings: ['Pierwsza linia', 'Druga linia', 'Trzecia linia'];
+```
+
+Tę opcję udało nam się poznać w poprzednim podtytule. Określa ona konkretny tekst, na którym zostanie wykonana animacja.
+
+### TypeSpeed
+
+```
+typeSpeed: 100
+```
+
+Ustawia szybkość pisania tekstu. Po dwukropku podajemy ilość milisekund, odpowiadającą pojawianiu się jednego znaku.
+
+### StartDelay
+
+```js
+startDelay: 500;
+```
+
+Za pomocą tej oto opcji ustawiamy opóźnienie naszej animacji. Dla przykładu po użyciu powyższej linii kodu całość odegra się po 500 milisekundach.
+
+### BackSpeed
+
+```js
+backSpeed: 300;
+```
+
+Bardzo podobna opcja, jak typeSpeed, ale posiada jedną zasadną różnicę. Zamiast definiować szybkość pojawiania się tekstu, ustawia prędkość jego kasowania.
+
+### SmartBackspace
+
+```js
+smartBackspace: true;
+```
+
+Bardzo ciekawa właściwość, która pozawala nam określić czy po wypisaniu linii tekstu skasowane ma zostać całe zdanie, czy tylko część która nie pokrywa się z następnym. Dla przykładu gdy mamy takie oto ciągi tekstowe:
+
+```js
+strings: [“Linia numer 1“, “Linia numer 2”]
+```
+
+…i użyjemy opcji `smartBackspace`, to skrypt będzie kasować tylko liczby, bo reszta zdań jest taka sama.
+
+### Shuffle
+
+```js
+shuffle: true;
+```
+
+Za pomocą tej właściwości możemy sprawić, że zdania będą pojawiać się losowo, a nie w takiej kolejności w jakiej zostały wpisane.
+
+### BackDelay
+
+```js
+backDelay: 100;
+```
+
+Jak sama nazwa wskazuje dzięki tej opcji możemy ustawić opóźnienie usuwania naszych zdań (oczywiście deklarujemy je w milisekundach).
+
+### Loop
+
+```js
+loop: true;
+```
+
+Dzięki tej oto właściwości możemy sprawić, że cały proces zostanie zapętlony, a tym samym zdania będą pojawiać się i kasować w nieskończoność.
+
+### LoopCount
+
+```js
+loopCount: 10;
+```
+
+Opcja ta wiąże się z poprzednią, ustawiając ilość zapętleń całej animacji.
+
+### ShowCursor.
+
+```js
+showCursor: true;
+```
+
+Jak sama nazwa wskazuje właściwość ta określa czy kursor ma się w ogóle wyświetlić. :)
+
+### CursorChar
+
+```js
+cursorChar: 'l';
+```
+
+Dzięki tej, już ostatniej opcji jesteśmy w stanie zastąpić domyślny znak kursora, na cokolwiek innego.
+
+Tak oto prezentują się najcześciej używane właściwości, które udostępnia nam biblioteka `Typed.js.` Jak już wspominałem, jeśli chciałbyś poznać je wszystkie, to zapraszam Cię [do dokumentacji.](http://www.mattboldt.com/typed.js/docs/)!
+
+## Kod ukończonego projektu
+
+Wiemy już, że podstawowy kod potrzebny do wyświetlenia animacji maszyny do pisania wygląda tak:
+
+```js
+$(function () {
+  $('.typing').typed({
+    strings: ['Pierwsza linia', 'Druga linia', 'Trzecia linia'],
+  });
+});
+```
+
+...ale teraz znamy już większość właściwości, oferowanych przez bibliotekę `Typed.js`, więc możemy poznać kod projektu, ukazanego na początku. Wygląda w ten oto sposób:
+
+```js
+$(function () {
+  $('.typing').typed({
+    strings: ['Pierwsza linia', 'Druga linia', 'Trzecia linia'],
+    typeSpeed: 100,
+    loop: true,
+    cursorChar: 'l',
+  });
+});
+```
+
+Dzięki trzem dodatkowym opcjom nasz efekt zostaje zapętlony, każda z liter pojawia się po stu milisekundach oraz kursor ze znaku | zostaje zmieniony na literę l.
+
+## Podsumowanie
+
+Jak widać biblioteka `Typed.js` pozwala nam na dosyć dużo. Dzięki niej dysponujemy pokaźną ilością opcji, które dodatkowo możemy połączyć ze stylami CSS, chociażby animując nasz kursor za pomocą reguły `keyframes`.

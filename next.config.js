@@ -147,6 +147,11 @@ const postRedirects = [
     destination: '/artykuly/jak-stworzyc-motyw-wordpress-011',
     permanent: true,
   },
+  {
+    source: '/efekt-maszyny-do-pisania',
+    destination: '/artykuly/efekt-maszyny-do-pisania',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
