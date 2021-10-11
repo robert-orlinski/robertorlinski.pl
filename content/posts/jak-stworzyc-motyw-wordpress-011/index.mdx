@@ -1,0 +1,96 @@
+---
+title: 'Jak stworzyć motyw WordPress #011 – Obrazek wyróżniający'
+abstract: W tym artykule dowiemy się jak w prosty sposób dodać obrazek wyróżniający do naszego motywu oraz manipulować jego rozmiarem.
+isPublished: true
+topics:
+  - WordPress
+  - Jak stworzyć motyw WordPress
+date: 30.10.2017
+isPopular: false
+---
+
+Po dłuższej przerwie od WordPressa warto wrócić do korzeni, a tym samym znów poruszyć temat tworzenia motywu do tegoż CMSa. Tym razem wyświetlimy obrazek wyróżniający przy artykułach. Zaczynajmy!
+
+## Czym jest obrazek wyróżniający?
+
+W ten sposób nazywamy zdjęcie, które znajduje się przy wpisie oraz sprawia, że konkretny artykuł staje się lepiej widoczny. Całość sprowadza się do funkcji bardzo przyjemnego ozdobnika :)
+
+## Dodawanie funkcjonalności do motywu
+
+Kod potrzebny do tej czynności jest bardzo prosty i w praktyce ogranicza się do takiej oto linii wpisanej do pliku `functions.php`:
+
+```php
+<?php add_theme_support('post-thumbnails'); ?>
+```
+
+Za jej pomocą dodajemy opcję ustawienia obrazka wyróżniającego w WordPressie, chodzi o dokładnie ten element:
+
+![](./zdjecie-wyrozniajace-w-panelu.jpg)
+
+Oczywiście całą funkcję, w której znajduje się wcześniej opisany kod ładujemy za pomocą już nam znanego polecenia [`add_action`](https://developer.wordpress.org/reference/functions/add_action/).
+
+## Dodawanie obrazka wyróżniającego do pętli WordPressa
+
+Tu sprawa jest równie prosta, bo wystarczy nam taka linia kodu, wklejona w miejsce, w którym ma znaleźć się nasz obrazek:
+
+```php
+<?php the_post_thumbnail(); ?>
+```
+
+Dodatkowo warto wspomnieć, że dość powszechną praktyką jest opatrywanie obrazka wyróżniającego w odnośnik, prowadzący do przypisanego artykułu. W takim wypadku cały kod potrzebny do wyświetlenia naszego zdjęcia będzie się prezentować w ten sposób:
+
+```php
+<a href="<?php the_permalink(); ?>">
+ <?php the_post_thumbnail(); ?>
+</a>
+```
+
+## Deklarowanie rozmiarów
+
+W przypadku deklaracji domyślnego rozmiaru obrazków wyróżniających możemy skorzystać z takiej oto linii kodu wpisanej do pliku `functions.php`:
+
+```php
+<?php set_post_thumbnail_size(720, 370, true); ?>
+```
+
+Dzięki niej szerokość zdjęcia wynosi 720 pikseli (pierwszy parametr), a wysokość 370 pikseli (drugi parametr).
+
+Poza tym w trzecim parametrze za pomocą wartości boolowskiej `true` sprawiamy, że WordPress będzie przycinać zdjęcie, a nie je skalować (co wydarzyłoby się gdybyśmy wpisali `false` lub nie ustawili żadnej wartości). Dodatkowo zamiast tego możemy określić w jaki sposób nasz obrazek ma zostać przycięty. Wystarczy użyć takiego przykładowego kodu:
+
+```php
+array(‘left’, ‘top’)
+```
+
+Dzięki temu nasze zdjęcie zostanie przycięte do obszaru w lewym-górnym rogu, dokładnie w ten sam sposób, jak za pomocą właściwości `background-positio` w CSS.
+
+Z kolei jeśli chcemy zadeklarować zupełnie nowy rozmiar, możemy skorzystać takiej oto linii kodu:
+
+```php
+<?php add_image_size('standard-image', 720, 370, true); ?>
+```
+
+Działa ona w dokładnie ten sam sposób, jak poprzednia, z tą różnicą, że jako pierwszy parametr podajemy nazwę, dzięki której będziemy w stanie umieścić konkretną wielkość obrazka w pętli WordPressa.
+
+Na przykład po zadeklarowaniu rozmiaru o nazwie “standard-image”, możemy użyć go wpisując kod znany z trzeciego podtytułu w takiej wersji:
+
+```php
+<?php the_post_thumbnail(’standard-image’); ?>
+```
+
+Tym oto sposobem w konkretnym miejscu na stronie pojawi się nasz indywidoalnie zdefiniowany obrazek wyróżniający. :)
+
+## Instrukcja warunkowa sprawdzająca, czy wpis posiada obrazek wyróżniający
+
+Dość przydatna funkcja, która pozwala na manipulowanie wyświetlaniem wpisów w zależności od tego czy posiadają one tytułowy obrazek wyróżniający. Wszystko co w praktyce jest nam potrzebne zamyka się w takiej oto prostej linii kodu:
+
+```php
+<?php if ( has_post_thumbnail() ) {} else {} ?>
+```
+
+Po `if` możemy wpisać kod, który wyświetli się w przypadku, gdy nasz wpis będzie posiadać obrazek wyróżniający, jeśli się to nie stanie wykona się kod podany w klamrach po `else`. Całość może okazać się bardzo przydatna gdy na przykład chcemy znacznie zmienić wygląd naszego artykułu w zależności od tego czy będzie miał przypisany obrazek wyróżniający.
+
+## Podsumowanie
+
+Jak widać dodawanie obrazków wyróżniających do artykułów okazuje się prostsze niż początkowo mogłoby się wydawać. Według mnie największym plusem WordPressa, jest właśnie to, że duże, gotowe funkcjonalności możemy umieszczać na stronie internetowej tylko za pomocą kilku linii kodu :)
+
+Standardowo kod tego projektu możesz znaleźć na [GitHubie](https://github.com/robert-orlinski/modern-blog)!
