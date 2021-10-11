@@ -152,6 +152,11 @@ const postRedirects = [
     destination: '/artykuly/efekt-maszyny-do-pisania',
     permanent: true,
   },
+  {
+    source: '/biblioteki-animacjami',
+    destination: '/artykuly/biblioteki-z-animacjami',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
