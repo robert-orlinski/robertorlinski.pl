@@ -157,6 +157,11 @@ const postRedirects = [
     destination: '/artykuly/biblioteki-z-animacjami',
     permanent: true,
   },
+  {
+    source: '/archiwa',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-012',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
