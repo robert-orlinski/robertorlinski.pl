@@ -5,8 +5,8 @@ import { CodePenIframe } from 'Components/CodePenIframe';
 
 import { Blockquote } from './MDXComponents/Blockquote';
 import { Highlight } from './MDXComponents/Highlight';
+import { CodeBlock } from './MDXComponents/CodeBlock';
 import { BiggerP } from './MDXComponents/BiggerP';
-import { Code } from './MDXComponents/Code';
 import { Anchor } from './MDXComponents/Anchor';
 import { H1 } from './MDXComponents/H1';
 import { H2 } from './MDXComponents/H2';
@@ -30,8 +30,9 @@ export const MDXArticle: FC<Props> = ({ source }) => {
     <MDXContainer
       components={{
         blockquote: Blockquote,
+        code: Highlight,
+        pre: CodeBlock,
         p: BiggerP,
-        pre: Code,
         a: Anchor,
         h1: H1,
         h2: H2,
@@ -42,9 +43,6 @@ export const MDXArticle: FC<Props> = ({ source }) => {
         ul: Ul,
         ol: Ol,
         li: Li,
-
-        // Single <code> (``) elements were replaced with custom highlight elemenent for better editing experience.
-        code: Highlight,
       }}
     />
   );

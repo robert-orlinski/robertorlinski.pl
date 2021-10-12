@@ -7,12 +7,15 @@ type Props = {
 
 export const Highlight: FC<Props> = (props) => {
   if (props.className) {
-    return <code>{props.children}</code>;
+    return <code {...props} />;
   }
 
   return <Mark {...props} />;
 };
 
-const Mark = styled.span`
+const Mark = styled.code`
   background-color: var(--highlight);
+
+  font-family: var(--monospace);
+  font-size: 0.85em;
 `;

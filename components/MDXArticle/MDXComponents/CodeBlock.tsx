@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { to } from 'Devices';
 
-export const Code = styled.pre`
+export const CodeBlock = styled.pre`
   width: 100%;
 
   margin: 0.3rem 0 1.8rem;
@@ -12,12 +12,8 @@ export const Code = styled.pre`
   color: #f8f8f2;
   background: #2e3440;
 
-  font-family: 'Inconsolata', monospace;
-  font-weight: 300;
   font-size: 0.9rem;
-
   line-height: 1.5;
-  tab-size: 4;
 
   & > code {
     display: block;

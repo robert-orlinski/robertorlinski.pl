@@ -6,6 +6,7 @@ export const CssVariables = createGlobalStyle`
   html {
     --sans-serif: 'Darker Grotesque', -apple-system, sans-serif;
     --serif: 'Playfair Display', serif;
+    --monospace: 'Inconsolata', monospace;
 
     --dark-gray: #222;
     --line-gray: #ecf0f3;

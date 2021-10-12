@@ -135,4 +135,8 @@ export const GlobalStyle = createGlobalStyle`
     margin: auto;
     max-width: 100%;
   }
+
+  code {
+    font-family: var(--monospace);
+  }
 `;
