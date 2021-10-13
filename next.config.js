@@ -172,6 +172,11 @@ const postRedirects = [
     destination: '/artykuly/pasek-postepu-ktory-zwieksza-sie-przewijania-strony-internetowej',
     permanent: true,
   },
+  {
+    source: '/biblioteka-do-tworzenia-karuzeli',
+    destination: '/artykuly/siema-js',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

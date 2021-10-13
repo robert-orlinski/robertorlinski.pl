@@ -1,0 +1,114 @@
+---
+title: Prosta i lekka biblioteka, która pozwoli Ci dodać karuzelę do swojej strony WWW
+abstract: Z tego artykułu poznasz prostą bibliotekę dla języka JavaScript, która pozwala tworzyć wydajne i łatwe we wdrożeniu karuzele i slidery.
+isPublished: true
+topics:
+  - Front-end
+date: 15.01.2018
+isPopular: false
+---
+
+Bardzo popularnym elementem dzisiejszych stron internetowych są tak zwane karuzele, czyli elementy, których zawartość możemy zmieniać przez pociągnięcie za slajd lub za pomocą guzików widocznych w przeglądanym serwisie.
+
+Szczególnie ciekawy jest ten pierwszy sposób, bo jeśli obsługa naszej karuzeli będzie możliwa z poziomu myszki (lub palca w przypadku urządzeń mobilnych), to cała witryna stanie się bardziej interaktywna.
+
+Właśnie w tym artykule chciałbym pokazać Ci prosty sposób na stworzenie karuzeli możliwej do obsługi właśnie w ten sposób! Zapraszam!
+
+## Jak stworzyć coś takiego?
+
+Sporo osób zajmie się tym samodzielnie, inni natomiast sięgną po gotowe biblioteki dostępne w internecie. Bardzo popularnym przykładem jest polska [OwlCarousel](https://owlcarousel2.github.io/OwlCarousel2/), która posiada sporo opcji personalizacji i świetnie spełnia swoje zadanie. A co jeśli tak rozbudowane narzędzie nie jest nam potrzebne?
+
+Sam kiedyś stanąłem przed tym dylematem i znalazłem bibliotekę o nazwie [Siema.js](https://github.com/pawelgrzybek/siema). Podobnie jak OwlCarousel jest polskiego autorstwa i na tle innych tego typu rozwiązań wyróżnia się przede wszystkim lekkością, bo wykonana została w czystym JavaScript’cie i w niezminifikowanej wersji zajmuje niecałe 300 linii kodu.
+
+## Jak używać tej biblioteki?
+
+Oczywiście, aby cokolwiek zrobić, całość musimy dodać do naszej strony. Możemy tego dokonać na 2 sposoby. Standardowo:
+
+```html
+<script src="siema.min.js"></script>
+```
+
+…lub przez instalator modułów. Autor na swojej stronie podaje takie polecenie dla Webpacka oraz Browserify:
+
+```bash
+yarn add siema
+```
+
+...ale na przykład przez npm, bibliotekę zainstalujemy za pomocą takiej linii:
+
+```bash
+npm install siema
+```
+
+Później wszystko opiera się na prostym kodzie HTML (w sumie jednej klasie CSS) oraz JavaScript. Zacznijmy od tego pierwszego:
+
+### Kod HTML
+
+Ten prezentuje się w taki oto sposób:
+
+```html
+<div class="siema">
+  <div>Slajd 1</div>
+  <div>Slajd 2</div>
+  <div>Slajd 3</div>
+</div>
+```
+
+Kontener, który stanie się naszą karuzelą posiada klasę _siema_ (oczywiście możemy ją zmienić w konfiguracji biblioteki, o czym później) i zawiera pojedyncze slajdy.
+
+### Kod JavaScript
+
+W przypadku gdy bibliotekę dodaliśmy z pliku, wygląda on w ten sposób:
+
+```js
+new Siema();
+```
+
+…a jeśli pobraliśmy ją jako moduł do naszej witryny, to całość prezentuje się tak:
+
+```js
+import Siema from 'siema';
+new Siema();
+```
+
+I to wszystko, już możemy cieszyć się działającą karuzelą! :)
+
+## Dodatkowe ustawienia
+
+Oczywiście w przypadku gdy standardowa funkcjonalność nam nie wystarczy, możemy zedytować obiekt naszego slidera za pomocą sporej ilości opcji:
+
+```js
+new Siema({
+  selector: '.siema',
+  duration: 200,
+  easing: 'ease-out',
+  perPage: 1,
+  startIndex: 0,
+  draggable: true,
+  multipleDrag: true,
+  threshold: 20,
+  loop: false,
+  onInit: () => {},
+  onChange: () => {},
+});
+```
+
+W przypadku widocznego kodu, dla każdej z właściwości została przydzielona domyślna wartość. Oczywiście już wyjaśniam za co odpowiadają:
+
+- `selector` - nazwa klasy, którą nadamy dla kontenera, w której znajdzie się nasza karuzela.
+- `duration` - długość wykonywania się animacji zmiany slajdu wyrażona w milisekundach.
+- `easing` - określa tzw. [krzywą przyspieszenia](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function), czyli to jak zachowuje się nasza animacja.
+- `perPage` - Ilość slajdów widocznych w jednej chwili na stronie WWW.
+- `startIndex` - numer slajdu, który zostanie wyświetlony domyślnie.
+- `draggable` - ta opcja określa czy nasza karuzela ma być sterowana za pomocą myszki.
+- `multipleDrag` - sprawia, że jesteśmy w stanie przewinąć większą ilość slajdów za pomocą pojedynczego pociągnięcia.
+- `threshold` - określa ilość pikseli, o którą musimy przeciągnąć konkretny slajd, aby wyświetlić kolejny.
+- `loop` - określa czy karuzela ma zostać zapętlona.
+- `onInit` - dzięki tej właściwości możemy utworzyć funkcję, która wykona się po załadowaniu karuzeli.
+- `onChange` - tak jak w przypadku poprzedniej opcji deklarujemy funkcję, ale ta wykona się za każdym razem, gdy slajd zostanie zmieniony.
+
+## Podsumowanie.
+
+Tak oto prezentuje się biblioteka Siema.js! Jak widać za pomocą stosunkowo małego nakładu prac jesteśmy w stanie stworzyć ładną i funkcjonalną karuzelę na naszej stronie.
+
+Oczywiście wszystkie dokładne informacje możesz znaleźć na [GitHubie twórcy](https://github.com/pawelgrzybek/siema).
