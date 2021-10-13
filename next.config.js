@@ -167,6 +167,11 @@ const postRedirects = [
     destination: '/artykuly/preloader-w-czystym-js',
     permanent: true,
   },
+  {
+    source: '/pasek-postepu-ktory-zwieksza-sie-przewijania-strony-internetowej',
+    destination: '/artykuly/pasek-postepu-ktory-zwieksza-sie-przewijania-strony-internetowej',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

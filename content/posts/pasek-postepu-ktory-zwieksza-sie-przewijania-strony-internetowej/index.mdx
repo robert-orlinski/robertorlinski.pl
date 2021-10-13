@@ -1,0 +1,102 @@
+---
+title: Pasek postępu, który rozszerza się podczas przewijania strony internetowej
+abstract: W tym artykule, pokazuję jak użyć języka JavaScript do wykonania efektu paska, który rozwija się podczas przewijania strony.
+isPublished: true
+topics:
+  - Front-end
+date: 09.01.2018
+isPopular: false
+---
+
+Skoro przeglądasz tego bloga, to jest spore prawdopodobieństwo, że śledzisz również inne, na których można spotkać się z dość ciekawym efektem. Chodzi o pasek postępu, zapełniający się wraz z przewijaniem konkretnej witryny.
+
+Właśnie w tym wpisie chciałbym pokazać Ci jak w nieskomplikowany sposób można stworzyć coś podobnego. Wszystko wykonamy w czystym JavaScript’cie, bo wg mnie nie ma potrzeby ładować całej biblioteki tylko po to, aby nasz kod stał się nieznacznie prostszy.
+
+Demo możesz znaleźć w tym oto miejscu:
+
+## Szkielet HTML
+
+Jak zawsze wszystko zaczyna się od struktury HTML. W tym przypadku jest dość prosta, a wygląda dokładnie w ten sposób:
+
+```html
+<div class="progress-bar">
+  <div class="progress-bar__filling"></div>
+</div>
+```
+
+Blok o klasie progress-bar\_\_filling jest w praktyce naszym paskiem, który będzie się zwiększać wraz z przewijaniem witryny. Jego granice zakreśla kontener o klasie progress-bar.
+
+## Kod CSS.
+
+Zawiera się w tych oto kilku liniach:
+
+```scss
+.progress-bar {
+  position: fixed;
+  width: 100%;
+  height: 6px;
+  top: 0;
+
+  &__filling {
+    width: 0;
+    height: 100%;
+    background-color: #0091ea;
+  }
+}
+```
+
+Na początku stylujemy kontener, w którym zawiera się nasz progress bar, pozycjonujemy go w taki sposób, aby cały czas znajdował się na samej górze okna przeglądarki oraz nadajemy wymiary (szerokość na całą witrynę oraz wysokość równą 6 pikseli).
+
+Gdy już tego dokonamy, możemy zabrać się za tworzenie naszego dynamicznego paska postępu. Domyślnie przyjęta przez niego szerokość wyniesie 0, dopiero później będzie aktualizowana przez kod JavaScript. Poza tym ustalamy wysokość równą kontenerowi, oraz kolor, który nam odpowiada.
+
+## Część najważniejsza - kod JavaScript
+
+Posiadamy już kod HTML oraz CSS, teraz pora sprawić, aby nasz pasek zaczął działać w pożądany sposób. Jak zawsze pokażę Ci cały kod, a później omówimy go sobie krok po kroku:
+
+```js
+function progressBar() {
+  const windowTop = window.scrollY,
+    documentHeight = document.documentElement.scrollHeight,
+    windowHeight = window.innerHeight;
+
+  const totalScroll = (windowTop / (documentHeight - windowHeight)) * 100;
+
+  document.querySelector('.progress-bar__filling').style.width = totalScroll + '%';
+}
+
+window.addEventListener('scroll', progressBar);
+```
+
+Na początku tworzymy funkcję o nazwie progressBar (któż mógłby się spodziewać ?), w niej znajdzie się kod, przypisany później do zdarzenia scroll.
+
+Zadeklarujmy kilka zmiennych:
+
+- windowTop - ta zwróci nam ilość pikseli, w których strona została przewinięta.
+- documentHeight - tutaj otrzymamy wysokość całej witryny.
+- windowHeight - podobnie jak w przypadku poprzedniej zmiennej, otrzymujemy wysokość, ale tym razem okna przeglądarki.
+
+Kolejna zmienna o nazwie totalScroll zawiera wynik tego oto obliczenia:
+
+```js
+const totalScroll = (windowTop / (documentHeight - windowHeight)) * 100;
+```
+
+Ilość pikseli zawartą w zmiennej windowTop dzielimy przez wynik odejmowania wysokości okna przeglądarki od wysokości całego dokumentu. Całość zamykamy w nawiasie i mnożymy razy 100. Dzięki temu otrzymujemy wartość wyrażoną w procentach, w której nasza strona została przewinięta od górnej krawędzi.
+
+Jedyne co pozostaje do zrobienia, to aktualizacja stylów omawianego dziś paska postępu:
+
+```js
+const totalScroll = (windowTop/(docudocument.querySelector('.progress-bar__filling').style.width = totalScroll+'%';mentHeight-windowHeight))*100;
+```
+
+Dzięki właściwości querySelector pobieramy element o klasie `.progress-bar\_\_filling` i jako styl CSS ustawiamy wartość z poprzednich obliczeń. Na końcu dodajemy znak procentu, bo to właśnie w nich wartość ma zostać ustawiona.
+
+Na końcu ustawiamy nasłuchiwanie zdarzenia scroll, do którego przypisujemy utworzoną funkcję:
+
+```js
+window.addEventListener('scroll', progressBar);
+```
+
+## Podsumowanie
+
+Tak oto powstał nasz pasek postępu. Mam nadzieję, że okaże się przydatny dla Ciebie i urozmaici tworzone w przyszłości strony internetowe!
