@@ -10,10 +10,10 @@ export const Highlight: FC<Props> = (props) => {
     return <code {...props} />;
   }
 
-  return <Mark {...props} />;
+  return <HighlightedCode {...props} />;
 };
 
-const Mark = styled.code`
+const HighlightedCode = styled.code`
   background-color: var(--highlight);
 
   font-family: var(--monospace);
