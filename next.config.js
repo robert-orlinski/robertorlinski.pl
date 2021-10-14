@@ -187,6 +187,11 @@ const postRedirects = [
     destination: '/artykuly/10-gier-pomagajacych-w-nauce-jsa-i-cssa',
     permanent: true,
   },
+  {
+    source: '/formularz-wyszukiwania',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-013',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

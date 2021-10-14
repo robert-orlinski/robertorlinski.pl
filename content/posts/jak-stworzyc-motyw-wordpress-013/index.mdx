@@ -1,0 +1,74 @@
+---
+title: 'Jak stworzyć motyw WordPress #013 – Formularz wyszukiwania'
+abstract: Poznajmy gotowe funkcje WordPressa, które pozwalają dodać mechanizm wyszukiwania na naszej stronie internetowej!
+isPublished: true
+topics:
+  - WordPress
+  - Jak stworzyć motyw WordPress
+date: 27.02.2018
+isPopular: false
+---
+
+Dodawanie funkcji wyszukiwania do standardowych stron internetowych wymaga sporej ilości kodu oraz przede wszystkim czasu. A jak to wygląda w przypadku WordPressa? Tam jest znacznie łatwiej za sprawą kilku gotowych funkcji. Poznajmy je!
+
+## Podstawowy formularz wyszukiwania
+
+Na początku nawiążmy może do kodu motywu rozwijanego w serii, na którą składa się również ten wpis. Dodajmy do niego nowy plik o nazwie `sidebar.php` i pobierzmy go do naszego indexu:
+
+```php
+<?php get_sidebar(); ?>
+```
+
+Teraz możemy stworzyć nasz formularz. W pliku `sidebar.php` dodajmy sekcję `aside`, a w niej funkcję odpowiedzialną za umieszczenie wyszukiwarki na stronie opartej o WordPressa:
+
+```php
+<?php get_search_form(); ?>
+```
+
+W podstawowym zakresie to wszystko! Widoczny kod PHP wyświetli nam podstawowy formularz wyszukiwania prezentujący się w ten oto sposób:
+
+![](./formularz-podstawowy.jpg)
+
+Niestety jak możemy zauważyć nasz element ma 2 istotne problemy. Po pierwsze nie jest idealny pod względem wizualnym, a po drugie w ogóle nie wiemy jak edytować jego zawartość. Rozwiążmy te problemy!
+
+## Edycja naszej wyszukiwarki
+
+W tym celu potrzebujemy kolejnego pliku. Nazwa jaką musi nosić to `searchform.php`. Właśnie tam możemy umieścić kod, który zostanie wyświetlony po użyciu wyżej wymienionej komendy.
+
+Ale jak to? Mieliśmy edytować już istniejący formularz, a tu nagle tworzymy zupełnie nowy od podstaw?
+
+Dokładnie, aby zmienić nasz formularz musimy wziąć kod standardowej wyszukiwarki, który prezentuje się w taki sposób:
+
+```php
+<form method="get" id="searchform" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+  <label for="s" class="assistive-text"><?php _e( 'Search', 'twentyeleven' ); ?></label>
+  <input type="text" class="field" name="s" id="s" placeholder="<?php esc_attr_e( 'Search', 'twentyeleven' ); ?>" >
+  <input type="submit" class="submit" name="submit" id="searchsubmit" value="<?php esc_attr_e( 'Search', 'twentyeleven' ); ?>" >
+</form>
+```
+
+...i zwyczajnie go wkleić, a później zedytować. Wg mnie ten kod jest już jest dobry, jedyne co chciałbym zmienić, to dodać `placeholder` do pola, w którym wpisujemy słowo kluczowe, tak, że cały `input` będzie prezentować się w taki sposób:
+
+```php
+<input type="text" class="field" name="s" id="s" placeholder="<?php get_search_query(); ?>" >
+```
+
+Dzięki temu po wpisaniu konkretnej frazy kluczowej i przejściu na stronę z wynikami wyszukiwania w polu dalej będzie znajdować się wyrażenie, które nas interesuje.
+
+Tak oto prezentuje się edycja naszej wyszukiwarki. Może zakończę wszystko małymi zmianami w stylach formularza, tak że całość będzie wyglądać w ten oto sposób:
+
+![](./formularz-zmodyfikowany.jpg)
+
+## Strona z wynikami wyszukiwania
+
+Ostatnim elementem, który nam pozostał jest strona, która wyświetli się po wyszukaniu czegoś przez nasz formularz. W tym celu ponownie stwórzmy nowy plik, tym razem o nazwie `search.php`.
+
+Od tej chwili możemy skonfigurować go jak tylko chcemy. Ja skopiuję cały kod z pliku `index.php` i dodam podtytuł podobny do tego, co w pliku [`archive.php`](https://robertorlinski.pl/2017/11/27/archiwa/), tak że całość będzie prezentować się w ten oto sposób:
+
+![](./rezultat.jpg)
+
+## Podsumowanie
+
+Z każdym artykułem dowiadujemy się jak dużym ułatwieniem potrafi być WordPress.
+
+Standardowo jeśli interesuje Cię cały kod tworzonego motywu, zapraszam Cię na [GitHuba](https://github.com/robert-orlinski/modern-blog)!
