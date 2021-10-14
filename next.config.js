@@ -192,6 +192,11 @@ const postRedirects = [
     destination: '/artykuly/jak-stworzyc-motyw-wordpress-013',
     permanent: true,
   },
+  {
+    source: '/5-dobrych-praktyk-wordpress',
+    destination: '/artykuly/5-dobrych-praktyk-wordpress',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

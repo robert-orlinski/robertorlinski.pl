@@ -1,0 +1,75 @@
+---
+title: 5 dobrych praktyk, które pozwolą Ci tworzyć lepsze witryny oparte o WordPress
+abstract: W tym artykule wymieniam kilka praktyk, które pomogą nam tworzyć lepsze witryny oparte o system WordPress!
+isPublished: true
+topics:
+  - Dostępność
+date: 12.03.2018
+isPopular: false
+---
+
+Od początku blog ten jest związany z WordPressem, został nawet założony przy okazji tworzenia motywu do tegoż CMSa. Dlatego dziś chciałbym nawiązać do tematu i wymienić kilka praktyk, które pomogą nam tworzyć lepsze witryny oparte o omawiany system!
+
+## Numer 1: Trzymanie się narzuconej struktury plików
+
+W [trzeciej części serii “Jak stworzyć motyw WordPress”](./jak-stworzyc-motyw-wordpress-003) opowiadałem o plikach motywu. Tak jak tam zostało wspomniane, poszczególne elementy naszej witryny powinny być zawarte w przeznaczonych do tego plikach o odpowiedniej hierarchii.
+
+> Dane, z których składa się nasz motyw, takie jak header, foooter lub sidebar powinny znaleźć się w katalogu głównym. Z kolei style, skrypty, obrazki oraz inne tego typu powinny posiadać własny folder.
+
+Oczywiście tych zasad jest więcej, o hierarchii poszczególnych plików możemy dowiedzieć się chociażby z [codexa WordPressa](https://developer.wordpress.org/themes/basics/template-hierarchy/).
+
+## Numer 2: Dodawanie prefiksów do swoich funkcji
+
+Gdy tworzymy własną funkcję, to warto dodać do niej własny prefiks, aby uniknąć kolizji z kodem wbudowanym w WordPressa. W przypadku zadeklarowania czegoś takiego:
+
+```php
+get_header();
+```
+
+...nasz WordPress błędnie pomyślałby, że chodzi o pobranie kodu z pliku `header.php`, więc wszystkie funkcje lepiej jest deklarować z ustalonym przez nas prefiksem,
+
+przykładu:
+
+```php
+pre_get_header();
+```
+
+## Numer 3: Uznawanie standardów WordPressa
+
+Na stronie twórców możemy poczytać trochę o standardach, do których warto się stosować podczas tworzenia strony opartej o WordPress. Na przykład dla obiektów w JavaScript'cie powinniśmy stosować taki zapis:
+
+```js
+const map = {
+  ready: 9,
+  when: 4,
+  'you are': 15,
+};
+```
+
+…zamiast na przykład takiego:
+
+```js
+const map = { ready: 9, 
+  when: 4, 'you are': 15 };
+```
+
+Jeśli chcesz dowiedzieć się więcej o poszczególnych standardach, to wszystko zostało wyszczególnione na tych stronach:
+
+- [Dla HTMLa;](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/html/)
+- [Dla CSSa;](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/css/)
+- [Dla JavaScriptu;](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/)
+- [Dla PHP.](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/)
+
+## Numer 4: Internacjonalizowanie oraz lokalizowanie motywu
+
+Gdy wiemy, że nasz produkt będzie używany przez większą ilość osób, niż np. jednego klienta, to warto pozwolić WordPressowi na przetłumaczenie go. Na szczęście twórcy przekazują nam sporo wiedzy dotyczącej tego procesu, dla [internacjonalizacji](https://developer.wordpress.org/themes/functionality/internationalization/) oraz [lokalizacji](https://developer.wordpress.org/themes/functionality/localization/) witryny.
+
+## Numer 5: Testowanie kodu witryny
+
+Ten punkt zawsze wydaje się oczywisty, ale nie mogę go pominąć. Miło, że WordPress udostępnia [nam funkcje](https://codex.wordpress.org/Debugging_in_WordPress), które znacznie ułatwiają proces dla kodu PHP na naszej stronie internetowej.Warto również sprawdzić tę oto [checklistę](https://codex.wordpress.org/Theme_Development_Checklist).
+
+Nie zapominajmy oczywiście o standardowych procesach znanych ze statycznych stron internetowych, takich jak walidacja, testowanie między przeglądarkami oraz sprawdzanie błędów JavaScript oraz testach automatycznych (jednostkowych, czy end-to-end).
+
+## Podsumowanie.
+
+Jak widać warto stosować się do tych kilku zasad oraz procesów, aby nasze motywy oraz strony na WordPressie stały się lepsze!
