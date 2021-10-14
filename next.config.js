@@ -177,6 +177,11 @@ const postRedirects = [
     destination: '/artykuly/siema-js',
     permanent: true,
   },
+  {
+    source: '/10-efektow-uzytych-na-zdjeciach',
+    destination: '/artykuly/10-efektow-uzytych-na-zdjeciach',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
