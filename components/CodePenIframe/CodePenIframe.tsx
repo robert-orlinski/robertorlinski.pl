@@ -6,11 +6,17 @@ import { P } from 'Components/P';
 type Props = {
   id: string;
   title: string;
+  author?: string;
   defaultTab?: string;
 };
 
-export const CodePenIframe: FC<Props> = ({ id, title, defaultTab = 'html' }) => {
-  const href = `https://codepen.io/ROrlilnski/pen/${id}`;
+export const CodePenIframe: FC<Props> = ({
+  id,
+  title,
+  author = 'ROrlilnski',
+  defaultTab = 'html',
+}) => {
+  const href = `https://codepen.io/${author}/pen/${id}`;
   const srcBase = href.replace('/pen/', '/embed/');
 
   return (
