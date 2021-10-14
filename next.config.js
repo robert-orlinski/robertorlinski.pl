@@ -182,6 +182,11 @@ const postRedirects = [
     destination: '/artykuly/10-efektow-uzytych-na-zdjeciach',
     permanent: true,
   },
+  {
+    source: '/10-gier-ktore-ucza-tworzenia-stron',
+    destination: '/artykuly/10-gier-pomagajacych-w-nauce-jsa-i-cssa',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
