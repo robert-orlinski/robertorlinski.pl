@@ -197,6 +197,11 @@ const postRedirects = [
     destination: '/artykuly/5-dobrych-praktyk-wordpress',
     permanent: true,
   },
+  {
+    source: '/nawigacja-podczas-przewijania',
+    destination: '/artykuly/nawigacja-chowajaca-sie-podczas-przewijania-w-dol',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

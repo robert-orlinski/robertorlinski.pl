@@ -1,0 +1,165 @@
+---
+title: Nawigacja, która chowa się podczas przewijania w dół i ukazuje, gdy scrollujemy w górę
+abstract: Czy znasz efekt, w którym menu główne na stronie, chowa się przy scrollowaniu w dół i pokazuje, gdy jedziemy w górę? Ten efekt wykonamy!
+isPublished: true
+topics:
+  - Front-end
+date: 26.03.2018
+isPopular: true
+---
+
+W tym wpisie chciałbym pokazać Ci w jaki sposób stworzyć efekt, który został streszczony w tytule artykułu. Jak można się domyślić do tego celu przydadzą nam się trzy podstawowe technologie front-endowe, takie jak HTML, CSS oraz JavaScript.
+
+Także przejdźmy dalej i poznajmy bliżej ten efekt oraz sposób na jego wykonanie. Zapraszam!
+
+## Co jest naszym celem?
+
+Dokładnie coś takiego:
+
+import { CodePenIframe } from 'CodePenIframe';
+
+<CodePenIframe
+  id="BrwGRd"
+  title="Nawigacja, która chowa się podczas przewijania w dół i ukazuje, gdy scrollujemy w górę"
+/>
+
+Jak widać wszystko polega na tym, że podczas przewijania strony w dół nawigacja płynie się chowa, a gdy podjedziemy choć trochę w górę, to znów się pojawia.
+
+## Kod HTML
+
+Oto on:
+
+```html
+<nav></nav>
+```
+
+Chyba prostszy nie może być 😌
+
+## Kod CSS
+
+Tego również nie jest bardzo dużo:
+
+```css
+body {
+  height: 3000px;
+}
+
+.nav {
+  position: fixed;
+  width: 100vw;
+  height: 3rem;
+  top: 0;
+  left: 0;
+  background-color: #10131a;
+  transition: top 200ms ease-in-out;
+}
+
+.nav--up {
+  top: -3rem;
+}
+```
+
+Wydaje mi się, że nie ma potrzeby, abym tłumaczył kod HTML oraz CSS, bo ten wpis mógłby się dość mocno, niepotrzebnie powiększyć.
+
+## Kod JavaScript
+
+W tym miejscu zaczyna się główna część, bo to w kodzie JSa kryje się cała moc naszego efektu. Zawsze pokazuję całość na początku jego omawiania i tym razem nie mogłoby być inaczej:
+
+```js
+const nav = document.querySelector('nav');
+
+let previousScrollTop;
+let isScrolling;
+
+const hasScrolled = () => {
+  const scrollTop = window.scrollY;
+
+  if (scrollTop > previousScrollTop) {
+    nav.classList.add('nav--up');
+  } else {
+    nav.classList.remove('nav--up');
+  }
+
+  previousScrollTop = scrollTop;
+};
+
+document.addEventListener('scroll', () => (isScrolling = true));
+
+setInterval(() => {
+  if (isScrolling) {
+    hasScrolled();
+    isScrolling = false;
+  }
+}, 100);
+```
+
+Zacznijmy od początku, czyli jak zwykle deklaracji zmiennych:
+
+```js
+const nav = document.querySelector('nav');
+
+let previousScrollTop;
+let isScrolling;
+```
+
+Dwóm pierwszym wartości przypiszemy później, natomiast zmienna nav zawiera element DOM naszej nawigacji. Stwórzmy najdłuższą funkcję w kodzie o nazwie `hasScrolled()`:
+
+```js
+
+const hasScrolled = () => {
+
+```
+
+Tu zadeklarujmy tylko jedną zmienną:
+
+```js
+const scrollTop = window.scrollY;
+```
+
+Ta zawiera ilość pikseli od góry dokumentu do miejsca, w którym znajduje się ekran przeglądarki.
+
+W późniejszym etapie widzimy taką instrukcję warunkową:
+
+```js
+if (scrollTop > previousScrollTop) {
+  nav.classList.add('nav--up');
+} else {
+  nav.classList.remove('nav--up');
+}
+```
+
+Jeśli wartość ze zmiennej scrollTop będzie większa od liczby siedzącej w `previousScrollTop` (czyli w praktyce będziemy przewijać w dół), to do naszej nawigacji zostanie dodana klasa nav—up, która to chowa naszą nawigację. W przeciwnym razie zmienna zostanie usunięta.
+
+Pozostał nam tylko ten prosty kod:
+
+```js
+  previousScrollTop = scrollTop;
+}
+```
+
+...który przypisuje do zmiennej previousScrollTop obecną liczbę pikseli od góry dokumentu, do miejsca, w którym znajduje się nasze okno.
+
+Do zrobienia zostały nam tylko 2 funkcje, pierwsza prezentuje się w ten sposób:
+
+```js
+document.addEventListener('scroll', () => (isScrolling = true));
+```
+
+…i po prostu sprawdza, czy przewijamy witrynę (jeśli zdarzenie scroll zostanie wykryte, to zmienna isScrolling otrzymuje wartość true).
+
+I na koniec następuje taki oto kod:
+
+```js
+setInterval(() => {
+  if (isScrolling) {
+    hasScrolled();
+    isScrolling = false;
+  }
+}, 100);
+```
+
+…który co 100 milisekund sprawdza, czy zmienna `isScrolling` ma wartość `true`, czyli czy użytkownik przewija naszą witrynę. Jeśli tak się dzieje, to wywołuje wcześniej zadeklarowaną funkcję `hasScrolled()` i przywraca wartość false dla zmiennej `isScrolling`.
+
+## Podsumowanie
+
+I tak oto prezentuje się nasz efekt wykonany w całości. Mam nadzieję, że ten artykuł mógł ułatwić Ci zrozumienie działania przedstawionego skryptu!
