@@ -169,7 +169,7 @@ const postRedirects = [
   },
   {
     source: '/pasek-postepu-ktory-zwieksza-sie-przewijania-strony-internetowej',
-    destination: '/artykuly/pasek-postepu-ktory-zwieksza-sie-przewijania-strony-internetowej',
+    destination: '/artykuly/progress-bar',
     permanent: true,
   },
   {

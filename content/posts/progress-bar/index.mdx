@@ -1,0 +1,145 @@
+---
+title: Pasek postępu, który rozszerza się podczas przewijania strony internetowej
+abstract: W tym artykule, pokazuję jak użyć języka JavaScript do wykonania efektu paska, który rozwija się podczas przewijania strony.
+isPublished: true
+topics:
+  - Front-end
+date: 13.10.2021
+isPopular: false
+---
+
+Skoro przeglądasz tego bloga, to jest spore prawdopodobieństwo, że śledzisz również inne, na których można spotkać się z dość ciekawym efektem. Chodzi o pasek postępu, zapełniający się wraz z przewijaniem konkretnej witryny.
+
+Właśnie w tym wpisie chciałbym pokazać Ci jak w nieskomplikowany sposób można stworzyć coś podobnego. Wszystko wykonamy w czystym JavaScript’cie!
+
+Demo możesz podejrzeć już od razu, w tym oto miejscu:
+
+import { CodePenIframe } from 'CodePenIframe';
+
+<CodePenIframe id="WNEbpKP" title="Progress Bar" />
+
+## Szkielet HTML
+
+Wszystko zaczyna się od struktury HTML. W tym przypadku jest dość prosta, a wygląda dokładnie w ten sposób:
+
+```html
+<progress class="progress-bar" id="progress-bar" max="100" value="0">
+  Strona przewinięta w 0 %
+</progress>
+```
+
+Używamy tutaj semantycznego znacznika [`<progress />`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress), który zaraz ostylujemy, a później ożywimy za pomocą JavaScriptu. Ustawiamy mu klasę, po której będziemy stylować, id, po którym złapiemy go w JSie oraz maksymalną wartość, która równa będzie przewinięciu strony w 100%.
+
+Dodatkowo ustawiamy wartość początkową zapełnienia naszego paska na 0 i tekst, który pokaże się, gdy ktoś wejdzie na naszą stronę z przeglądarki, która nie obsługuje elementu `<progress />`.
+
+## Kod CSS
+
+Zawiera się w tych oto liniach:
+
+```scss
+.progress-bar {
+  position: fixed;
+  width: 100%;
+  height: 6px;
+  top: 0;
+  border: none;
+
+  background-color: transparent;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  &::-webkit-progress-bar {
+    background-color: transparent;
+  }
+
+  &::-webkit-progress-value {
+    background-color: #0091ea;
+  }
+
+  &::-moz-progress-bar {
+    background-color: #0091ea;
+  }
+}
+```
+
+Na początku stylujemy kontener, w którym zawiera się nasz progress bar - pozycjonujemy go w taki sposób, aby cały czas znajdował się na samej górze okna przeglądarki.
+
+Reszta to usunięcie domyślnych styli przeglądarek oraz ustawienie przezroczystego koloru dla niewypełnionej części paska, jak i niebieskiego dla wypełnionej.
+
+## Część najważniejsza - kod JavaScript
+
+Posiadamy już kod HTML oraz CSS, więc teraz pora sprawić, aby nasz pasek zaczął działać w pożądany sposób. Pokażę Ci cały kod, a później omówimy go sobie krok po kroku:
+
+```js
+const progressBar = document.querySelector('#progress-bar');
+
+const documentHeight = document.documentElement.offsetHeight;
+const windowHeight = window.innerHeight;
+
+const updateProgressBar = () => {
+  const windowTopEdge = window.scrollY;
+  const totalScroll = (windowTopEdge / (documentHeight - windowHeight)) * 100;
+  const totalScrollRounded = totalScroll.toFixed(2);
+
+  progressBar.setAttribute('value', totalScrollRounded);
+  progressBar.textContent = `Strona przewinięta w ${totalScrollRounded} %`;
+};
+
+window.addEventListener('scroll', updateProgressBar);
+updateProgressBar();
+```
+
+Pozwolę sobie pominąć pierwsze 7 linii, bo nazwy zmiennych wydają się mówić same za siebie 😌
+
+Ale za to możemy pochylić się nad tym oto krótkim wzorem:
+
+```js
+const totalScroll = (windowTopEdge / (documentHeight - windowHeight)) * 100;
+```
+
+Prześledźmy go po kolei.
+
+W najgłębszej jego części, znaleźć możemy proste odejmowanie wysokości okna przeglądarki, od wysokości dokumentu. Dzięki temu, gdy dojedziemy do końca naszej strony, nasz progress bar nie pokaże wartości poniżej 100% (w końcu górna krawędź przeglądarki nie znajduje się na samej dole strony), a równiutkie 100%.
+
+Oczywiście przy założeniu, że zapiszemy resztę obliczeń, czyli gdy przez otrzymaną z odejmowania wartość podzielimy odległość górnej krawędzi naszego okna od początku dokumentu.
+
+W ten sposób otrzymamy wartość mniejszą od 1, którą w tej chwili wystarczy pomnożyć razy 100, aby otrzymać dokładny postęp scrollowania, wyrażony już w procentach.
+
+Natomiast! Procenty te są bardzo dokładne i podczas scrollowania otrzymujemy wartości ze sporą ilością liczb po przecinku, stąd przyda nam się kolejna linia, która zaokrągli je tylko do dwóch cyfr:
+
+```js
+const totalScrollRounded = totalScroll.toFixed(2);
+```
+
+Reszta jest już prostym kodem, który aktualizuje nasz progress bar, o aktualny stopień przescrollowania witryny:
+
+```js
+progressBar.setAttribute('value', totalScrollRounded);
+progressBar.textContent = `Strona przewinięta w ${totalScrollRounded} %`;
+```
+
+A na koniec podpinamy naszą funkcję pod event scroll oraz dodatkowo wykonujemy, aby zapewnić właściwą wartość scrolla dla osoby, która trafia na stronę w na przykład jej połowie, a nie od samego początku:
+
+```js
+window.addEventListener('scroll', updateProgressBar);
+updateProgressBar();
+```
+
+I to będzie z mojej strony na tyle, bo nasz progress bar działa 🎉
+
+Ale! Jeśli tylko chcesz, to zawsze możesz ulepszyć zaproponowany przeze mnie skrypt. Mianowicie:
+
+- Zastosować [throttling](https://developer.mozilla.org/en-US/docs/Web/API/Document/scroll_event#scroll_event_throttling) dla naszej funkcji, aby ograniczać moc obliczeniową przeglądarki, potrzebną do obsłużenia naszego efektu. Natomiast z małym pogorszeniem tego, jak płynnie wypełnia się nasz pasek.
+- Obsłużyć sytuację, w której osoba korzystająca z Twojej strony, zmieni wielkość przeglądarki, już po załadowaniu witryny (z racji, że w moim przykładzie wielkości okna przeglądarki, jak i dokumentu deklaruję tylko raz - podczas ładowania strony).
+
+## Podsumowanie
+
+Tak oto powstał nasz pasek postępu!
+
+Na koniec podrzucam jeszcze raz demo z początku i powolutku będę Cię już żegnać:
+
+<CodePenIframe id="WNEbpKP" title="Progress Bar" />
+
+Także mam nadzieję, że ten poradnik, jak i sam efekt, okaże się dla Ciebie przydatny i urozmaici tworzone przez Ciebie strony internetowe 🌸
