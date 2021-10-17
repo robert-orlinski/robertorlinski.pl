@@ -212,6 +212,11 @@ const postRedirects = [
     destination: '/artykuly/wtyczki-do-visual-studio-code',
     permanent: true,
   },
+  {
+    source: '/7-mixin-scss',
+    destination: '/artykuly/7-mixin-scss',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

@@ -1,0 +1,237 @@
+---
+title: 7 świetnych mixinów dla SCSSa, które zauważalnie usprawnią Twoją pracę
+abstract: W tym artykule poznasz 7 mixinów SCSS, które usprawnią Twoją codzienną pracę ze stylowaniem stron internetowych! 🚀
+isPublished: true
+topics:
+  - Front-end
+date: 02.07.2018
+isPopular: true
+---
+
+Czy korzystacie z preprocesorów CSSa? W przypadku gdy chcecie pisać swój kod szybciej, to zapewne mieliście chociaż okazję się z nimi zapoznać, a jeśli z jakiegoś powodu tak się nie stało, to zapewniam - warto.
+
+Dlatego tym razem przychodzę do Was z artykułem prezentującym 7 bardzo przydatnych mixin, czyli bloków kodu, które można porównać do funkcji znanych z klasycznych języków programowania, mających szansę zyskać Wasze serca, tak jak moje.
+
+Także tak, nie przedłużając zapraszam do lektury!
+
+## 1. Media queries
+
+W swoim czasie udało mi się natrafić na taki oto świetny kawałek kodu:
+
+```scss
+$breakpoints: (
+  'phone': 400px,
+  'phablet': 560px,
+  'tablet': 768px,
+  'tablet-wide': 1024px,
+  'desktop': 1248px,
+  'desktop-wide': 1440px,
+);
+@mixin mq($width, $type: min) {
+  @if map_has_key($breakpoints, $width) {
+    $width: map_get($breakpoints, $width);
+    @if $type == max {
+      $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+      @content;
+    }
+  }
+}
+```
+
+Jak widać na początku deklarujemy wszystkie rozdzielczości z jakich chcemy korzystać, aby użyć je w mixinie, który od razu sprawdza czy zadeklarowana wartość ma być największą w konkretnej media query, czy też najmniejszą.
+
+Domyślnie jest to ta druga, ale jeśli jako parametr wpiszemy max, to stanie się największą i jednocześnie mniejszą o jeden piksel.
+
+Jak w ogóle z tego korzystać? Dla przykładu jeśli chcemy dla bardzo małych telefonów zmniejszyć padding w elemencie `div`, to możemy użyć takiego oto zapisu:
+
+```scss
+div {
+  padding: 2rem;
+  @include mq(phone, max) {
+    padding: 1.2rem;
+  }
+}
+```
+
+`Padding: 1.2rem` będzie funkcjonować do szerokości ekranu wynoszącej 399 pikseli.
+
+## 2. Z-index
+
+Na stronie istnieje blok z ustawionym z-indexem na daną wartość, a my chcemy nałożyć na niego inny element. Oczywiście nie pamiętamy jaką wartość naszego atrybutu posiadał tamten element.
+
+Rozsądną opcją byłoby sprawdzić jaki z-index występował w jego przypadku lub po prostu to sprawdzić i przypisać o jeden większy dla naszej nakładki, ale my oczywiście tak nie postępujemy, tylko ustawiamy jej z-index jako na przykład 12365652234. Nie bez powodu mówię tu w liczbie mnogiej, bo nie wierzę, że tylko ja tak mam.
+
+Na szczęście można bardzo łatwo rozwiązać ten problem jednym prostym mixinem:
+
+```scss
+$z-index: (
+  nav: 100,
+  overlay: 200,
+  popup: 300,
+);
+
+@function z-index($key) {
+  @return map-get($z-index, $key);
+}
+
+@mixin z($key) {
+  z-index: z-index($key);
+}
+```
+
+W obiekcie z-index deklarujemy wartości dla konkretnych elementów, później możemy używać ich na przykład za pomocą takiego kodu:
+
+```scss
+.navigation {
+  @include z(nav);
+}
+```
+
+Dzięki temu zawsze będziemy pamiętać jaki `z-index` mają konkretne elementy.
+
+## 3. Pseudoelementy
+
+Bardzo prosty mixin, który prezentuje się w ten oto sposób:
+
+```scss
+@mixin ps($display: block, $pos: absolute, $content: '') {
+  display: $display;
+  position: $pos;
+  content: $content;
+}
+```
+
+Na początku przyjmuje on 3 parametry z przypisanymi domyślnymi wartościami, które to są używane już w samym mixinie, jako wartości dla poszczególnych właściwości CSSa. Przykładowe użycie może wyglądać w następujący sposób:
+
+```scss
+section:after {
+  @include ps;
+}
+```
+
+W ten sposób utworzymy pseudoelement bez zawartości i z pozycją absolutną, czyli atrybutami, które posiada większość tego typu bloków.
+
+## 4. Fonty
+
+Bardzo przyjemny mixin, który zajmuje się sprawą fontów na naszej stronie:
+
+```scss
+@mixin font($size: false, $colour: false, $weight: false, $line: false) {
+  font-family: 'Roboto', Arial, sans-serif;
+  @if $size {
+    font-size: $size;
+  }
+  @if $colour {
+    color: $colour;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $line {
+    line-height: $line;
+  }
+}
+```
+
+Dzięki niemu po wpisaniu jednej bardzo krótkiej linijki:
+
+```scss
+p {
+  @include font(1rem, white, 700);
+}
+```
+
+...ostylujemy nasz paragraf nadając mu font z rodziny Roboto, wielkość, kolor, oraz grubość.
+
+## 5. Gradient
+
+Zawsze do tworzenia gradientów wykorzystywałem generatory dostępne w Internecie. Do czasu, gdy nie natrafiłem na ten oto mixin:
+
+```scss
+@mixin gradient($start-color, $end-color, $orientation) {
+  background: $start-color;
+  @if $orientation == 'ver' {
+    background: -webkit-linear-gradient(top, $start-color, $end-color);
+    background: linear-gradient(to bottom, $start-color, $end-color);
+  } @else if $orientation == 'hor' {
+    background: -webkit-linear-gradient(left, $start-color, $end-color);
+    background: linear-gradient(to right, $start-color, $end-color);
+  } @else {
+    background: -webkit-radial-gradient(center, ellipse cover, $start-color, $end-color);
+    background: radial-gradient(ellipse at center, $start-color, $end-color);
+  }
+}
+```
+
+W bardzo prosty sposób pozwala nam wybrać kolor początkowy, końcowy oraz kierunek. Wystarczy nam taki przykładowy kawałek kodu:
+
+```scss
+div {
+  @include gradient(#000, #303030, hor);
+}
+```
+
+## 6. Wyśrodkowywanie w pionie oraz poziomie
+
+Tak wiem, flexbox bardzo łatwo się tym zajmuje, ale na pewno są sytuacje gdy wolelibyśmy użyć starszego triku na wyśrodkowywanie elementów w pionie oraz poziomie. Te zadnie może zrealizować ten oto mixin:
+
+```scss
+@mixin vert {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+```
+
+Po zadeklarowaniu wystarczy użyć bardzo krótkiego kodu. Na przykład takiego dla elementu div:
+
+```scss
+div {
+  @include vert;
+}
+```
+
+## 7. Strzałeczka w CSSie
+
+W naszym arkuszu możemy utworzyć strzałkę i to w dość łatwy sposób, ale wymagający od nas zapamiętania dokładnego kodu. Na szczęście z poniższym mixinem możemy o tym zapomnieć:
+
+```scss
+@mixin arrow($direction, $size, $color) {
+  width: 0;
+  height: 0;
+  @if ($direction == left) {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+  } @else if ($direction == right) {
+    border-top: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-left: $size solid $color;
+  } @else if ($direction == down) {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-top: $size solid $color;
+  } @else {
+    border-left: $size solid transparent;
+    border-right: $size solid transparent;
+    border-bottom: $size solid $color;
+  }
+}
+```
+
+Za pomocą tego kodu utworzymy czarną strzałkę o wielkości trzydziestu pikseli oraz zwróconą w lewo:
+
+```scss
+div {
+  @include arrow(left, 30px, #000);
+}
+```
+
+## Podsumowanie
+
+I tak oto dotrwaliśmy do końca naszego zestawienia. Zdaję sobie sprawę, że przedstawione tu mixiny nie są niczym odkrywczym, ale i tak mam nadzieję, że udało Ci się znaleźć coś przydatnego!
