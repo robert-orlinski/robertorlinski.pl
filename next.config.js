@@ -207,6 +207,11 @@ const postRedirects = [
     destination: '/artykuly/pozyskiwanie-zlecen-jako-freelancer',
     permanent: true,
   },
+  {
+    source: '/wtyczki-do-visual-studio-code',
+    destination: '/artykuly/wtyczki-do-visual-studio-code',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
