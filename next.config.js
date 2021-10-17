@@ -202,6 +202,11 @@ const postRedirects = [
     destination: '/artykuly/nawigacja-chowajaca-sie-podczas-przewijania-w-dol',
     permanent: true,
   },
+  {
+    source: '/pozyskiwanie-zlecen-jako-freelancer',
+    destination: '/artykuly/pozyskiwanie-zlecen-jako-freelancer',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
