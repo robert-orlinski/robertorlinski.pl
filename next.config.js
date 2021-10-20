@@ -232,6 +232,11 @@ const postRedirects = [
     destination: '/artykuly/tworzenie-edytowalnych-stron-w-wordpress',
     permanent: true,
   },
+  {
+    source: '/hamburger-menu',
+    destination: '/artykuly/hamburger-menu',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

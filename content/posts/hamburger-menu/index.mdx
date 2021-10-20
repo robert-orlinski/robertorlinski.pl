@@ -1,0 +1,204 @@
+---
+title: Jak stworzyć animowane hamburger menu - poradnik krok po kroku
+seoTitle: Jak stworzyć animowane hamburger menu?
+abstract: Jak stworzyć pięknie animowane i funkcjonalne hamburger menu? Z tego tekstu dowiesz się, jak zrobić to na własnej stronie internetowej! 🚀
+isPublished: true
+topics:
+  - Front-end
+date: 20.10.2021
+isPopular: true
+---
+
+Chyba większość z nas zgodzi się, że tak zwane hamburger menu to często najsensowniejszy sposób na stworzenie nawigacji, która dobrze wygląda na urządzeniach mobilnych. Swoją drogą często spotykane jest też na wersjach desktopowych!
+
+Dlatego w tym artykule pokażę Ci w jaki sposób można utworzyć taki element jednocześnie dbając o jego wygląd, dostępność i UX!
+
+## Może zacznijmy od końca
+
+Zanim zaczniemy tworzyć sam element, sprawdźmy jak to w ogóle ma wyglądać w efekcie końcowym:
+
+import { CodePenIframe } from 'CodePenIframe';
+
+<CodePenIframe id="xaZRjd" title="Hamburger menu" />
+
+Fajnie, fajnie, wiadomo już jak całość działa, ale przejdźmy przez najważniejsze - proces tworzenie tych
+trzech kresek.
+
+## Kod HTML
+
+Ten przedstawia się prosto, chociaż na pierwszy rzut oka może wydawać się lekko nadmiarowy:
+
+```html
+<button class="hamburger" aria-label="Menu">
+  <span class="hamburger__container" tabindex="-1">
+    <span class="hamburger__bars"></span>
+  </span>
+</button>
+```
+
+Na zewnątrz mamy button i w nim `spana` w `spanie`. Ale po co w ogóle taki zabieg? Może od razu odeślę Cię do tego [pytania na Stack Overflow](https://stackoverflow.com/questions/31402576/enable-focus-only-on-keyboard-use-or-tab-press). W skrócie chodzi o `outline` po ustawieniu `focusu` na nasz przycisk.
+
+Nie chcemy widzieć go po kliknięciu w nasze menu, ale nie możemy go przecież zupełnie go wyzerować. Jeśli to zrobimy, to skąd chociażby osoba używająca klawiatury do nawigacji na stronie będzie wiedziała w jakim miejscu się znajduje? Ja też tego nie wiem.
+
+HTML mamy w miarę omówiony - skupmy się na CSSie!
+
+## Kod CSS
+
+Nasz CSS (a w sumie to SCSS) jest trooooszeczkę dłuższy:
+
+```scss
+.hamburger {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:focus {
+    & > .hamburger__container {
+      box-shadow: 0 0 2px 2px #51a7e8;
+    }
+  }
+
+  &,
+  &__container {
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 35px;
+    height: 30px;
+  }
+
+  &__bars {
+    position: absolute;
+    width: 35px;
+    height: 2px;
+    background-color: #000;
+    transition: transform 220ms ease-in-out;
+
+    &::before,
+    &::after {
+      display: block;
+      position: absolute;
+      width: 35px;
+      height: 2px;
+      background-color: #000;
+      content: '';
+    }
+
+    &::before {
+      top: -12px;
+      transition: top 100ms 250ms ease-in, transform 220ms ease-in-out;
+    }
+
+    &::after {
+      bottom: -12px;
+      transition: bottom 100ms 250ms ease-in, transform 220ms ease-in-out;
+    }
+  }
+
+  &--active {
+    .hamburger__bars {
+      transform: rotate(225deg);
+      transition: transform 220ms 120ms ease-in-out;
+
+      &:before {
+        top: 0;
+        transition: top 100ms ease-out;
+      }
+
+      &:after {
+        bottom: 0;
+        transform: rotate(-90deg);
+        transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out;
+      }
+    }
+  }
+}
+```
+
+Tak naprawdę najbardziej interesującym dla nas elementem jest `.hamburger__bars`, ponieważ to właśnie on odpowiada za wyświetlanie każdej z kresek.
+
+Jeśli chodzi o pozostałe reguły, zastosowane dla `.hamburger` oraz `.hamburger__container`, to one tak naprawdę sprowadzają się do wyzerowania domyślnych styli tych elementów, wypozycjonowania środkowej kreski oraz zadbania o efekt opisany podtytuł wyżej.
+
+Z kolei `.hamburger__bars` odpowiada za trzymanie dwóch stanów. Domyślnego oraz będącego potomkiem klasy `.hamburger—active`, którą to dodajemy do naszego przycisku za pomocą kodu JS (oczywiście poruszymy jego kwestię troszkę później) po kliknięciu w nasze hamburger menu.
+
+W domyślnej wersji nasza kreska ma pseudoelement `::before` oraz `::after`, które to zostały wypozycjonowane relatywnie do niej. Na wszystko oczywiście nałożyliśmy odpowiednie właściwości `transition`, aby wszystko ładnie się animowało:
+
+```scss
+&__bars {
+  position: absolute;
+  width: 35px;
+  height: 2px;
+  background-color: #000;
+  transition: transform 220ms ease-in-out;
+
+  &::before,
+  &::after {
+    display: block;
+    position: absolute;
+    width: 35px;
+    height: 2px;
+    background-color: #000;
+    content: '';
+  }
+
+  &::before {
+    top: -12px;
+    transition: top 100ms 250ms ease-in, transform 220ms ease-in-out;
+  }
+
+  &::after {
+    bottom: -12px;
+    transition: bottom 100ms 250ms ease-in, transform 220ms ease-in-out;
+  }
+}
+```
+
+Gdy nasze hamburger menu stanie się już aktywne, to właściwości sprawią, że `::after` i `::before` zostają przesunięte do poziomu jednej kreski na środku, wszystko zostaje obrócone o 225 stopni, po czym sam `::after` zostanie jeszcze lekko przesunięty w przeciwną stronę, aby powstał ładny krzyżyk:
+
+```scss
+&--active {
+  .hamburger__bars {
+    transform: rotate(225deg);
+    transition: transform 220ms 120ms ease-in-out;
+
+    &:before {
+      top: 0;
+      transition: top 100ms ease-out;
+    }
+
+    &:after {
+      bottom: 0;
+      transform: rotate(-90deg);
+      transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out;
+    }
+  }
+}
+```
+
+I tak oto wygląda nasz cały element! Oczywiście poszczególne wartości właściwości transition, mogłyby być trochę prostsze, ale dzięki zastosowaniu konkretnych czasów i sposobów wykonywania animacji, efekt pięknie się animuje.
+
+## I jak zawsze ostatni, ale równie istotny - kod JavaScript
+
+Tu mamy już bardzo prosty skrypt:
+
+```js
+const menu = document.querySelector('.hamburger');
+
+menu.addEventListener('click', () => {
+  menu.classList.toggle('hamburger--active');
+});
+```
+
+Pobieramy element .hamburger, a później przełączamy klasę, która sprawia, że nasz element staje się aktywny (czyli ładnie zamienia się w krzyżyk).
+
+## Kilka słów na koniec
+
+I tak oto dotrwaliśmy do końca. Mam nadzieję, że mogłaś lub mogłeś wynieść wartość z tego artykułu i pokazane tu hamburger menu będzie mogło przydać Ci się w przyszłości!
