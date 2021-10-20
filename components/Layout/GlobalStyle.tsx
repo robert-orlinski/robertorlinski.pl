@@ -139,4 +139,8 @@ export const GlobalStyle = createGlobalStyle`
   code {
     font-family: var(--monospace);
   }
+
+  strong {
+    font-weight: 600;
+  }
 `;
