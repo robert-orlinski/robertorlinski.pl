@@ -237,6 +237,11 @@ const postRedirects = [
     destination: '/artykuly/hamburger-menu',
     permanent: true,
   },
+  {
+    source: '/reset-hasla-do-panelu-wordpress',
+    destination: '/artykuly/reset-hasla-do-panelu-wordpress',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
