@@ -12,7 +12,7 @@ export const CssVariables = createGlobalStyle`
     --line-gray: #ecf0f3;
     --error-red: #d32f2f;
     --highlight: #e3f2fd;
-    --brand-color: #2879ff;
+    --brand-color: #2979ff;
 
     --dark-gray-transparent-min: rgba(34, 34, 34, 0.3);
     --dark-gray-transparent-med: rgba(34, 34, 34, 0.6);
