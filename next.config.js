@@ -222,6 +222,11 @@ const postRedirects = [
     destination: '/artykuly/metodologia-bem',
     permanent: true,
   },
+  {
+    source: '/freelance-dlaczego-warto',
+    destination: '/artykuly/freelance-dlaczego-warto',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
