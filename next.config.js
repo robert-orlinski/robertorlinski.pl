@@ -217,6 +217,11 @@ const postRedirects = [
     destination: '/artykuly/7-mixin-scss',
     permanent: true,
   },
+  {
+    source: '/metodologia-bem',
+    destination: '/artykuly/metodologia-bem',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
