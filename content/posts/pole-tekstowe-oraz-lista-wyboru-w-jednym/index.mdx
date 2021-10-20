@@ -1,0 +1,50 @@
+---
+title: Pole tekstowe oraz lista wyboru w jednym – jak umieścić coś takiego na stronie internetowej?
+seoTitle: Pole tekstowe oraz lista wyboru w jednym (combobox)
+abstract: Dowiesz się o bibliotece, która pozawala na tworzenie tzw. comboboxów w dwóch formach - standardowej listy oraz "pola wyboru tagów".
+isPublished: true
+topics:
+  - Front-end
+date: 12.11.2018
+isPopular: false
+---
+
+Czasami na stronach internetowych możemy zobaczyć całkiem ciekawy element, często nazywany comboboxem. Czym on tak naprawdę jest? W skrócie jesteśmy w stanie określić coś takiego jako pole tekstowe, do którego wpisujemy własną wartość, ale też mamy opcję wybrania jej z listy, która od razu się pojawia. Czasami też możemy dodawać nowe pozycje oraz filtrować na bierząco przez wpisywanie liter, które zawierają konkretne elementy.
+
+Ostatnio dostałem za zadanie stworzenie czegoś podobnego i przy okazji trafiłem na bardzo przyjemną bibliotekę realizującą te zadanie. Właśnie nią chciałbym się dziś z Tobą podzielić. :)
+
+## O czym tak naprawdę mówię?
+
+Dokładnie chodzi o [Selectize.js](https://selectize.github.io/selectize.js/). Oczywiście tego typu bibliotek jest całkiem sporo, dlatego polecam Ci, aby samemu znaleźć coś dla siebie, ale ja najprawdopodobniej zostanę przy tej, bo używałem i działa naprawdę przyjemnie.
+
+## Na co nam to pozwala?
+
+W skrócie sprowadza się do 2 typów coboboxów. Pierwszy jest [klasycznym polem tekstowym z listą wyboru poniżej.](http://selectize.github.io/selectize.js/#demo-single-item-select) Drugi z kolei to coś co jest bardzo często używane chociażby w wybieraniu tagów artykułów, filmów itp. W praktyce chodzi o to, że możemy wybrać kilka opcji i wszystkie znajdą się w tym samym polu tekstowym po przecinku. Chodzi o dokładnie [ten przykład](http://selectize.github.io/selectize.js/#demo-tagging).
+
+## W takim razie jak możemy tego używać?
+
+Przygotowałem 2 przykłady, z których najprawdopodobniej najczęściej wszyscy będziemy korzystać:
+
+### Lista wyboru:
+
+import { CodePenIframe } from 'CodePenIframe';
+
+<CodePenIframe id="PxzaJN" title="Selectize.js - pole wyboru" />
+
+Jak widać od strony HTMLa mamy do czynienia ze standardową listą wyboru, która stała się comboboxem po tym jak użyliśmy na niej omawianego pluginu.
+
+Warto jeszcze zatrzymać się przy parametrach wpisanych w JavaScript. Pierwszy oczywiście pozawala nam na tworzenie kolejnych pozycji listy, drugi z kolei odpowiada za zmianę napisu w polu dodawania (gdy wpisujemy słowo, które nie zostaje znalezione na liście, to pod polem tekstowym domyślnie widzimy `Add: [wpisana fraza]...`). Dzięki temu parametrowi `Add` zostaje zamienione na `Dodaj`.
+
+Więcej o opcjach dostępnych dla każdego z comboboxów możecie poczytać oczywiście w [dokumentacji udostępnionej przez twórcę dodatku.](https://github.com/selectize/selectize.js/blob/master/docs/usage.md)
+
+### Pole z tagami do wyboru:
+
+<CodePenIframe id="QJGEOm" title="Selectize.js - tagi" />
+
+Widzimy, że HTML tego przykładu oraz poprzedniego są inne. Tutaj mamy do czynienia z polem tekstowym, a elementów listy wyboru tym razem nie możemy umieścić w tagach _<option></option>_, a robimy to w kodzie JavaScript. Poza tym w parametrze _delimiter_ oczywiście znajduje się znak, który rozdziela nasze tagi (w tym przypadku przecinek).
+
+Tak jak już wspomniałem przy okazji zwykłej listy te parametry są tylko przykładowe i dość podstawowe, ale wydaje mi się, że dobrze oddają naturę działania tego dodatku. Poza gamą opcji, którą już linkowałem polecam sprawdzić przykłady przygotowane przez twórcę dodatku i [dostępne jako demo](https://selectize.github.io/selectize.js/) lub na [GitHubie](https://github.com/selectize/selectize.js/tree/master/examples), bo dopiero one są w stanie prawdziwie zarysować możliwości tego narzędzia.
+
+## Podsumowanie
+
+Tak oto prezentuje się nasza biblioteka, jak widać posiada trochę opcji i mam nadzieję, że przyda Ci się przy okazji kolejnych projektów oraz ułatwi użytkownikom korzystanie z Twoich formularzy!

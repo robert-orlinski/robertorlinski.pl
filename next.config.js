@@ -242,6 +242,11 @@ const postRedirects = [
     destination: '/artykuly/reset-hasla-do-panelu-wordpress',
     permanent: true,
   },
+  {
+    source: '/pole-tekstowe-oraz-lista-wyboru-w-jednym',
+    destination: '/artykuly/pole-tekstowe-oraz-lista-wyboru-w-jednym',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
