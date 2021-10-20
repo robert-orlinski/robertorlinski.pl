@@ -227,6 +227,11 @@ const postRedirects = [
     destination: '/artykuly/freelance-dlaczego-warto',
     permanent: true,
   },
+  {
+    source: '/tworzenie-stron-do-edycji-bez-kodu',
+    destination: '/artykuly/tworzenie-edytowalnych-stron-w-wordpress',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
