@@ -1,0 +1,170 @@
+---
+title: Responsywny kwadrat w CSS, mierzony w procentach? Jak najbardziej!
+seoTitle: Responsywny kwadrat w CSS
+abstract: Jak sposób stworzyć responsywny kwadrat w CSS? W tym artykule pokazuję bardzo łatwy sposób na dodanie go na stronie internetowej!
+isPublished: true
+topics:
+  - Front-end
+date: 24.11.2019
+isPopular: false
+---
+
+Znasz to lekkie rozczarowanie?
+
+Chcesz stworzyć kwadrat w CSS, który będzie dobrze zachowywał się na urządzeniach mobilnych.
+
+Może w tamtym momencie nie znasz jeszcze jednostek `vw`, `vh` i CSS grida, które mogłyby się okazać pomocne w tej sytuacji.
+
+Więc nadajesz mu szerokość, na przykład równą 30% i dokładnie taką samą wysokość - również 30%, z nadzieją, że element, który powstanie z takiego połączenia, będzie bardzo ładnym kwadratem, dostosowującym się do naszego ekranu.
+
+Zajmującym 30% jego szerokości, bez względu na to, jak duże jest okno naszej przeglądarki.
+
+## Ale okazuje się, że zupełnie nie jest to kwadrat
+
+Sprawdzasz efekt i cóż, stworzony element, nijak się ma do kwadratu. Wygląda mniej więcej w ten sposób:
+
+import { CodePenIframe } from 'CodePenIframe';
+
+<CodePenIframe id="ExxzVKM" title="Kwadrat w procentach - próba" />
+
+Chyba coś tu jest nie tak, nie uważasz? W końcu zupełnie nie widać naszego kwadratu!
+
+## A dlaczego tak się dzieje?
+
+Wysokość zapisana w procentach, odnosi się do elementu bezpośrednio nadrzędnego, w tym przypadku elementu _body_.
+
+Tylko, że wysokość konkretnego elementu, zależy od tego, czy zostanie na sztywno zdefiniowana lub od jego zawartości, na przykład tekstu, puddingu, marginesów przypisanych jego potomkom.
+
+Dlatego, w tym przypadku, nic nie może rozszerzyć naszego _body_, bo jedyny element, który w nim jest, to _div_ o wysokości względnej do elementu _body_! I pętla się zamyka.
+
+Oczywiście nie zawsze nasza próba stworzenia kwadratu będzie wyglądać dokładnie w ten sposób, ale w takich warunkach, koniec końców nie obyłoby się od zdefiniowania naszej wysokości w inny sposób, na sztywno, lub dostosowania samego contentu. A chyba nie o to nam chodzi.
+
+![](./kitalke.jpg)
+
+## W takim razie jak możemy ten problem rozwiązać?
+
+Wystarczy, że dodamy do naszego diva taki, cudowny pseudoelement:
+
+```css
+.square::after {
+  display: block;
+  content: '';
+
+  padding-bottom: 100%;
+}
+```
+
+Celowo umieściłem tam odstęp, bo interesuje nas tak naprawdę ostatnia linia, ten jeden `padding`.
+
+Czy wobec tego, teraz dostaniemy nasz kwadrat? Jak najbardziej!
+
+<CodePenIframe id="wvvbKRm" title="Kwadrat w procentach - trik" />
+
+Swoją drogą, jeśli chcesz zobaczyć, że kwadrat rzeczywiście dostosowuje się do zmiany wielkości ekranu, to zawsze możesz przejść do CodePena i zmienić wielkość okna przeglądarki!
+
+## Tylko w sumie, dlaczego ten sposób działa?
+
+W skrócie - padding elementu, wyrażony w procentach, bez względu na to, od której strony zostanie dodany, zawsze odnosi się do szerokości właśnie tego elementu.
+
+Co może być sporym zaskoczeniem, bo umysł sugeruje nam, że jego wartości powinny się one odnosić do wysokości, w końcu są od góry i dołu.
+
+A jednak.
+
+Dlatego w momencie, gdy dla pseudoelementu, który w praktyce jest dzieckiem naszego `diva`, dodamy:
+
+```css
+padding-top: 100%;
+```
+
+lub:
+
+```css
+padding-bottom: 100%;
+```
+
+to ten właśnie padding wyniesie 100% szerokości elementu nadrzędnego!
+
+A tym samym rozszerzy naszego rodzica (w tym przypadku `div.square`) od początkowego zera, do 100% szerokości.
+
+I tak oto powstanie nasz kwadrat! ❤️
+
+---
+
+## Ale oczywiście - nie może być idealnie i jakaś wada musi się znaleźć
+
+A tą wadą jest fakt, że jak już wspomniałem - w praktyce całą wysokością elementu, w takiej sytuacji jest `padding`.
+
+Dlatego, w momencie, gdy dodamy zawartość, to sama wysokość elementu, rozszerzy się:
+
+![Element z rozszerzoną wysokością o dodatkowe 100% szerokości](./problem.jpg)
+
+Jak widać powyżej, nasz `padding` siedzi teraz pod zawartością, a cały element zupełnie nie przypomina kwadratu. Swoją drogą, tak wygląda to na żywym organizmie:
+
+<CodePenIframe id="RwwmWVR" title="Kwadrat w procentach - trik (problem z zawartością)" />
+
+Ale oczywiście, możemy jakoś temu zaradzić! Najprostszym rozwiązaniem będzie tu nadanie, elementowi w środku kwadratu, absolutnej pozycji i po prostu rozszerzenie go na cały kwadrat!
+
+```css
+.square {
+  position: relative;
+}
+
+.square__content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+```
+
+Dzięki temu zmiana jego wielkości nie będzie miała wpływu na rozmiary rodzica:
+
+<CodePenIframe
+  id="gOOJaqG"
+  title="Kwadrat w procentach - trik (problem z zawartością - rozwiązany)"
+/>
+
+Ponownie - możesz otworzyć ramkę powyżej, na cały ekran, aby zobaczyć, że nasz kwadrat jest idealnie równy! Bez względu na to, co się w nim znajduje c:
+
+![](./radosc.jpg)
+
+## Hmmm, a czy nie łatwiej byłoby użyć jednostki `vw`, do tego celu?
+
+Wspomniałem o niej na początku, przy okazji innych możliwości i część z Was na pewno czyta ten artykuł, jednocześnie zastanawiając się, czy nie łatwiej byłoby zrobić właśnie czegoś takiego:
+
+```css
+.square {
+  width: 30vw;
+  height: 30vw;
+}
+```
+
+Byłoby prościej, problem z zawartością by zupełnie nie wystąpił, w skrócie mamy piękny kwadrat za pomocą dwóch linii.
+
+Tyyylko, że nie nie do końca.
+
+Przeważnie, nasz główny content strony ma stałą szerokość, na przykład dla ekranów komputerów może być to około 1170px, bez względu na to, czy przeglądamy witrynę na rozdzielczości HD, Full HD, czymś większym lub czymś pomiędzy.
+
+I mniejsze ekrany działają bardzo podobnie, na przykład:
+
+- dla rozdzielczości od 992px do 1199px, szerokość zawartości wyniesie 900px;
+- dla rozdzielczości od 767px do 992px, szerokość zawartości wyniesie 690px;
+
+...i tak dalej, aż do najmniejszych ekranów.
+
+W takiej sytuacji nie możemy ustawić naszego kwadratu na przykład jako `45vw`, aby na danej rozdzielczości miał akurat połowę głównego kontenera, bo wystarczy, że zmniejszymy lub zwiększymy okno przeglądarki o jeden piksel i już nie będzie to dokładnie połowa naszej stałej szerokości!
+
+Dlatego idealnym wyjściem jest właśnie - użycie omawianego sposobu z procentami.
+
+Pięknie zobrazuje to ten przykład:
+
+<CodePenIframe id="ExxzPVP" title="Kwadrat w procentach - przykład z breakpointami" />
+
+Jak widać, bez względu na szerokość naszego contentu, wyrażoną w pikselach, kwadrat zajmuje zawsze jego połowę! Oczywiście to również możesz zobaczyć, manipulując wielkością okna przeglądarki.
+
+## Kilka słów na koniec
+
+Nie mogę ukryć, bardzo cieszę się, że kiedyś usłyszałem o tym sposobie, bo naprawdę mało rzeczy usprawniło moje pisanie CSSa równie mocno, co właśnie to.
+
+I tak samo mam nadzieję, że jeśli słyszysz o tym akurat pierwszy raz, to również znacznie usprawni Twoją pracę!

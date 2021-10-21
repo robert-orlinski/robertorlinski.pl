@@ -257,6 +257,11 @@ const postRedirects = [
     destination: '/artykuly/10-motywow-wordpress',
     permanent: true,
   },
+  {
+    source: '/responsywny-kwadrat-w-css',
+    destination: '/artykuly/responsywny-kwadrat-w-css',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
