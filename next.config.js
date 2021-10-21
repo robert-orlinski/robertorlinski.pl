@@ -252,6 +252,11 @@ const postRedirects = [
     destination: '/artykuly/ograniczanie-wyswietlanego-tekstu',
     permanent: true,
   },
+  {
+    source: '/10-motywow-wordpress',
+    destination: '/artykuly/10-motywow-wordpress',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
