@@ -247,6 +247,11 @@ const postRedirects = [
     destination: '/artykuly/pole-tekstowe-oraz-lista-wyboru-w-jednym',
     permanent: true,
   },
+  {
+    source: '/ograniczanie-wyswietlanego-tekstu',
+    destination: '/artykuly/ograniczanie-wyswietlanego-tekstu',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
