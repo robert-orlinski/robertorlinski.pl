@@ -1,5 +1,7 @@
-import { useState } from 'react';
 import styled from 'styled-components';
+
+import { useToggle } from 'Hooks/useToggle';
+import { useStickyElement } from 'Hooks/useStickyElement';
 
 import { HiddenMainPageTitle } from 'Components/HiddenMainPageTitle';
 import { Separator } from 'Components/Separator';
@@ -14,16 +16,13 @@ import { Hamburger } from './Hamburger';
 
 import { to } from 'Devices';
 
-import { useStickyElement } from 'Hooks/useStickyElement';
-
 import { InlineStyle } from 'Types/styled-components';
 
 export const Nav = () => {
-  const [isNavVisibleOnMobile, setNavVisibilityOnMobile] = useState(false);
-
+  const [isNavVisibleOnMobile, toggleNavVisibility] = useToggle(false);
   const [isSticky] = useStickyElement();
 
-  const navOnMobileVisibility = (
+  const navMobileVisibility = (
     isNavVisibleOnMobile
       ? {
           '--translation': '0',
@@ -47,17 +46,14 @@ export const Nav = () => {
       <HiddenMainPageTitle />
       <Brand />
       <Container>
-        <NavLinks style={navOnMobileVisibility}>
+        <NavLinks style={navMobileVisibility}>
           <NavMenu />
           <SocialMedia />
         </NavLinks>
         <SeparatorHiddenOnMobile />
         <Container>
           <Search />
-          <Hamburger
-            style={hamburgerTransformation}
-            onClick={() => setNavVisibilityOnMobile(!isNavVisibleOnMobile)}
-          />
+          <Hamburger style={hamburgerTransformation} onClick={toggleNavVisibility} />
         </Container>
       </Container>
     </NavBar>
