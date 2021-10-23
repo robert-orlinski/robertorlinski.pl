@@ -66,7 +66,7 @@ const Form = styled.form`
   margin-top: -0.7rem;
 `;
 
-const Inputs = styled.article`
+const Inputs = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 1.6rem;
