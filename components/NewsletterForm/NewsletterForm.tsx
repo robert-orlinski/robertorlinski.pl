@@ -1,9 +1,8 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 import styled from 'styled-components';
 import router from 'next/router';
 
-import { CenteredText } from 'Components/CenteredText';
 import { SubmitButton } from './SubmitButton';
 import { EmailInput } from './EmailInput';
 import { NameInput } from './NameInput';
@@ -13,11 +12,7 @@ import { subscribeToTheNewsletter } from 'Helpers/requests/subscribeToTheNewslet
 
 import { ErrorMessage, NewsletterData } from 'Types/newsletter';
 
-type Props = {
-  centered?: boolean;
-};
-
-export const NewsletterForm: FC<Props> = ({ centered }) => {
+export const NewsletterForm = () => {
   const {
     register,
     handleSubmit,
@@ -37,21 +32,6 @@ export const NewsletterForm: FC<Props> = ({ centered }) => {
     }
   };
 
-  if (centered) {
-    return (
-      <Form onSubmit={handleSubmit(signUp)}>
-        <Inputs>
-          <NameInput {...{ register, errors }} />
-          <EmailInput {...{ register, errors }} />
-        </Inputs>
-        <CenteredText as="footer">
-          <SubmitButton />
-        </CenteredText>
-        <Error {...{ errorMessage }} />
-      </Form>
-    );
-  }
-
   return (
     <Form onSubmit={handleSubmit(signUp)}>
       <NameInput {...{ register, errors }} />
@@ -64,10 +44,4 @@ export const NewsletterForm: FC<Props> = ({ centered }) => {
 
 const Form = styled.form`
   margin-top: -0.7rem;
-`;
-
-const Inputs = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-column-gap: 1.6rem;
 `;
