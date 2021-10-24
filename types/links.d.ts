@@ -1,3 +1,4 @@
+import { MouseEventHandler } from 'react';
 import { ObligatoryChildren } from './global';
 
 export type LinkContainer = {
@@ -16,17 +17,9 @@ export type Link = {
 } & ObligatoryChildren &
   LinkContainer;
 
-export type ClickableElement = {
-  onClick: () => void;
-};
-
-type ButtonWithType = {
-  type?: 'submit' | 'button';
-};
-
 export type Button = {
-  [P in keyof LinkContainer]?: LinkContainer[P];
+  type?: 'submit' | 'button';
+  onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement> | undefined;
 } & {
-  [P in keyof ClickableElement]?: ClickableElement[P];
-} & ButtonWithType &
-  ObligatoryChildren;
+  [P in keyof LinkContainer]?: LinkContainer[P];
+} & ObligatoryChildren;

@@ -57,9 +57,12 @@ export const GlobalStyle = createGlobalStyle`
   button {
     display: block;
     appearance: none;
+    
     padding: 0;
-    font-size: 1rem;
+    border: 0;
     background-color: transparent;
+
+    font-size: 1rem;
 
     &:hover {
       cursor: pointer;

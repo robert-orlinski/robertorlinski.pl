@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, forwardRef, Ref } from 'react';
 import styled from 'styled-components';
 import { DeepMap, FieldError, FieldValues, UseFormRegister } from 'react-hook-form';
 
@@ -14,24 +14,26 @@ type Props = {
   errors: DeepMap<FieldValues, FieldError>;
 };
 
-export const TextInput: FC<Props> = ({ label, name, required, pattern, register, errors }) => {
-  const isErrorThrown = errors[name] ? true : false;
+export const TextInput: FC<Props> = forwardRef(
+  ({ label, name, required, pattern, register, errors }, ref: Ref<HTMLInputElement>) => {
+    const isErrorThrown = errors[name] ? true : false;
 
-  return (
-    <Container>
-      <Field
-        {...register(name, { required, pattern })}
-        id={name}
-        aria-invalid={isErrorThrown}
-        placeholder={label}
-        type="text"
-        {...{ isErrorThrown }}
-      />
-      <Label htmlFor={name}>{label}</Label>
-      {isErrorThrown && <ErrorIcon />}
-    </Container>
-  );
-};
+    return (
+      <Container>
+        <Field
+          {...register(name, { required, pattern })}
+          id={name}
+          aria-invalid={isErrorThrown}
+          placeholder={label}
+          type="text"
+          {...{ isErrorThrown, ref }}
+        />
+        <Label htmlFor={name}>{label}</Label>
+        {isErrorThrown && <ErrorIcon />}
+      </Container>
+    );
+  },
+);
 
 const Container = styled.p`
   position: relative;

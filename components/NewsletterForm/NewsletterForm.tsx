@@ -21,7 +21,7 @@ export const NewsletterForm = () => {
 
   const [errorMessage, setErrorMessage] = useState<ErrorMessage>(false);
 
-  const signUp: SubmitHandler<NewsletterData> = async (data) => {
+  const handleSignUp: SubmitHandler<NewsletterData> = async (data) => {
     const response = await subscribeToTheNewsletter(data);
     const { error } = await response.json();
 
@@ -33,7 +33,7 @@ export const NewsletterForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(signUp)}>
+    <Form onSubmit={handleSubmit(handleSignUp)}>
       <NameInput {...{ register, errors }} />
       <EmailInput {...{ register, errors }} />
       <SubmitButton />

@@ -31,7 +31,7 @@ const Outer = styled.nav`
   width: 100vw;
   height: var(--height, var(--nav-height));
 
-  z-index: 9999;
+  z-index: calc(var(--extreme-z-index) - 1);
   top: 0;
 
   background-color: #fff;
