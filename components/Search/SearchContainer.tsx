@@ -9,9 +9,9 @@ type Props = {
   closeHandler?: () => void;
 };
 
-export const FormContainer: FC<Props> = ({ isVisible, children, closeHandler }) => (
+export const SearchContainer: FC<Props> = ({ isVisible, children, closeHandler }) => (
   <Container {...{ isVisible }}>
-    <Content>{children}</Content>
+    <Content as="div">{children}</Content>
     <CloseButton onClick={closeHandler} />
   </Container>
 );

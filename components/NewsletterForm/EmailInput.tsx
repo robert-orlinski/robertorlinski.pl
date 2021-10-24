@@ -11,7 +11,7 @@ export const EmailInput: FC<FieldValues> = ({ register, errors }) => (
     name="email"
     required={true}
     pattern={DATE_PATTERN}
-    autocomplete="email"
+    autoComplete="email"
     {...{ register, errors }}
   />
 );

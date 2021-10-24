@@ -8,7 +8,7 @@ export const NameInput: FC<FieldValues> = ({ register, errors }) => (
     label="Twoje imię (opcjonalne)"
     name="name"
     required={false}
-    autocomplete="given-name"
+    autoComplete="given-name"
     {...{ register, errors }}
   />
 );

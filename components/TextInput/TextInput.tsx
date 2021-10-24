@@ -1,4 +1,4 @@
-import { FC, forwardRef, Ref } from 'react';
+import { FC, forwardRef, Ref, InputHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { DeepMap, FieldError, FieldValues, UseFormRegister } from 'react-hook-form';
 
@@ -7,15 +7,14 @@ import { ErrorIcon } from './ErrorIcon';
 type Props = {
   label: string;
   name: string;
-  autocomplete: string;
   required: boolean;
   pattern?: RegExp;
   register: UseFormRegister<FieldValues>;
   errors: DeepMap<FieldValues, FieldError>;
-};
+} & InputHTMLAttributes<HTMLInputElement>;
 
 export const TextInput: FC<Props> = forwardRef(
-  ({ label, name, required, pattern, register, errors }, ref: Ref<HTMLInputElement>) => {
+  ({ label, name, required, pattern, register, errors, ...props }, ref: Ref<HTMLInputElement>) => {
     const isErrorThrown = errors[name] ? true : false;
 
     return (
@@ -26,7 +25,7 @@ export const TextInput: FC<Props> = forwardRef(
           aria-invalid={isErrorThrown}
           placeholder={label}
           type="text"
-          {...{ isErrorThrown, ref }}
+          {...{ isErrorThrown, ref, ...props }}
         />
         <Label htmlFor={name}>{label}</Label>
         {isErrorThrown && <ErrorIcon />}

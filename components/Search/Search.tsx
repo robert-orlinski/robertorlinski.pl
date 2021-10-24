@@ -4,13 +4,12 @@ import styled from 'styled-components';
 import { useToggle } from 'Hooks/useToggle';
 
 import { ElementWithOpacity } from 'Components/ElementWithOpacity';
-import { FormContainer } from './FormContainer';
-import { SearchForm } from './SearchForm';
+import { SearchContainer } from './SearchContainer';
 import { MagnifierIcon } from './MagnifierIcon';
+import { SearchInner } from './SearchInner';
 
 export const Search = () => {
   const [isSearchVisible, toggleSearchVisibility] = useToggle(false);
-
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const showSearchForm = () => {
@@ -26,9 +25,9 @@ export const Search = () => {
       <Button onClick={showSearchForm}>
         <MagnifierIcon />
       </Button>
-      <FormContainer isVisible={isSearchVisible} closeHandler={toggleSearchVisibility}>
-        <SearchForm ref={searchInputRef} />
-      </FormContainer>
+      <SearchContainer isVisible={isSearchVisible} closeHandler={toggleSearchVisibility}>
+        <SearchInner />
+      </SearchContainer>
     </>
   );
 };
