@@ -12,5 +12,5 @@ export const Logo = () => (
 );
 
 const Icon = styled.svg`
-  height: var(--logo-height);
+  height: var(--brand-height);
 `;

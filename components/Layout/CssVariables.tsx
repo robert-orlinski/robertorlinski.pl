@@ -19,7 +19,9 @@ export const CssVariables = createGlobalStyle`
     --dark-gray-transparent-max: rgba(34, 34, 34, 0.8);
 
     --nav-height: 5.2rem;
-    --logo-height: 1.9rem;
+    --input-height: 2.5rem;
+    --brand-height: 1.9rem;
+    --hamburger-size: 1.66rem;
 
     --section-gap: 3.8rem;
     --text-gap: 1.5rem;

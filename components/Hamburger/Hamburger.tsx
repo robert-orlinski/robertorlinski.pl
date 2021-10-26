@@ -31,12 +31,9 @@ export const Hamburger: FC<Props & HTMLAttributes<HTMLAnchorElement>> = ({
 const Button = styled(ElementWithOpacity).attrs({
   as: 'button',
 })<Props>`
-  --hamburger-size: 1.66rem;
-
   width: var(--hamburger-size);
   height: var(--hamburger-size);
 
-  margin-left: 1.1rem;
   border: none;
 
   ${({ isCrossed }) =>

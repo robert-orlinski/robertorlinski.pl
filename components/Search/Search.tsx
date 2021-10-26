@@ -6,7 +6,9 @@ import { useToggle } from 'Hooks/useToggle';
 import { ElementWithOpacity } from 'Components/ElementWithOpacity';
 import { SearchContainer } from './SearchContainer';
 import { MagnifierIcon } from './MagnifierIcon';
-import { SearchInner } from './SearchInner';
+import { SearchBox } from './SearchBox';
+
+import { to } from 'Devices';
 
 export const Search = () => {
   const [isSearchVisible, toggleSearchVisibility] = useToggle(false);
@@ -14,8 +16,6 @@ export const Search = () => {
 
   const showSearchForm = () => {
     toggleSearchVisibility();
-
-    // rewrite to setState isFocused
 
     setTimeout(() => searchInputRef.current && searchInputRef.current.focus(), 250);
   };
@@ -26,7 +26,7 @@ export const Search = () => {
         <MagnifierIcon />
       </Button>
       <SearchContainer isVisible={isSearchVisible} closeHandler={toggleSearchVisibility}>
-        <SearchInner />
+        <SearchBox ref={searchInputRef} />
       </SearchContainer>
     </>
   );
@@ -36,4 +36,8 @@ const Button = styled(ElementWithOpacity).attrs({
   as: 'button',
 })`
   display: flex;
+
+  @media ${to.tabletL} {
+    margin-right: 1.1rem;
+  }
 `;

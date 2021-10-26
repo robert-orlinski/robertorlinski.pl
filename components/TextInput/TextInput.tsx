@@ -1,6 +1,6 @@
 import { FC, forwardRef, Ref, InputHTMLAttributes } from 'react';
-import styled from 'styled-components';
 import { DeepMap, FieldError, FieldValues, UseFormRegister } from 'react-hook-form';
+import styled from 'styled-components';
 
 import { ErrorIcon } from './ErrorIcon';
 
@@ -9,26 +9,36 @@ type Props = {
   name: string;
   required: boolean;
   pattern?: RegExp;
-  register: UseFormRegister<FieldValues>;
-  errors: DeepMap<FieldValues, FieldError>;
-} & InputHTMLAttributes<HTMLInputElement>;
+  register?: UseFormRegister<FieldValues>;
+  errors?: DeepMap<FieldValues, FieldError>;
+} & Omit<InputHTMLAttributes<HTMLInputElement>, 'pattern'>;
 
 export const TextInput: FC<Props> = forwardRef(
   ({ label, name, required, pattern, register, errors, ...props }, ref: Ref<HTMLInputElement>) => {
-    const isErrorThrown = errors[name] ? true : false;
+    const isValidableInput = register && errors;
+
+    if (isValidableInput) {
+      const isErrorThrown = errors[name] ? true : false;
+
+      return (
+        <Container>
+          <Field
+            id={name}
+            aria-invalid={isErrorThrown}
+            placeholder={label}
+            {...{ isErrorThrown, ...props }}
+            {...register(name, { required, pattern })}
+          />
+          <Label htmlFor={name}>{label}</Label>
+          {isErrorThrown && <ErrorIcon />}
+        </Container>
+      );
+    }
 
     return (
       <Container>
-        <Field
-          {...register(name, { required, pattern })}
-          id={name}
-          aria-invalid={isErrorThrown}
-          placeholder={label}
-          type="text"
-          {...{ isErrorThrown, ref, ...props }}
-        />
+        <Field id={name} placeholder={label} {...{ ref, ...props }} />
         <Label htmlFor={name}>{label}</Label>
-        {isErrorThrown && <ErrorIcon />}
       </Container>
     );
   },
@@ -36,12 +46,15 @@ export const TextInput: FC<Props> = forwardRef(
 
 const Container = styled.p`
   position: relative;
-  margin-bottom: 0.8rem;
+
+  &:not(:last-child) {
+    margin-bottom: 0.8rem;
+  }
 `;
 
-const Field = styled.input<{ isErrorThrown: boolean }>`
+const Field = styled.input<{ isErrorThrown?: boolean }>`
   width: 100%;
-  height: 2.5rem;
+  height: var(--input-height);
 
   border: 0;
   border-bottom: 1px solid ${({ isErrorThrown }) => (isErrorThrown ? 'var(--error-red)' : '#000')};

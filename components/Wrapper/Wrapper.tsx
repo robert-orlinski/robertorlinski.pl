@@ -23,7 +23,7 @@ const sizes = {
 };
 
 export const Wrapper = styled.section<Props>`
-  width: ${({ size }) =>
+  --wrapper-width: ${({ size }) =>
     size === 'tiny'
       ? sizes.desktop.tiny
       : size === 'small'
@@ -33,6 +33,8 @@ export const Wrapper = styled.section<Props>`
       : size === 'big'
       ? sizes.desktop.big
       : sizes.desktop.default};
+
+  --wrapper-gap: calc((100vw - var(--wrapper-width)) / 2);
 
   ${({ withSpaceAbove }) =>
     withSpaceAbove &&
@@ -46,22 +48,23 @@ export const Wrapper = styled.section<Props>`
       padding-bottom: var(--section-gap);
     `}
 
+  width: var(--wrapper-width);
   margin-right: auto;
   margin-left: auto;
 
   @media ${to.laptop} {
-    max-width: 900px;
+    --wrapper-width: 900px;
   }
 
   @media ${to.tabletL} {
-    max-width: 690px;
+    --wrapper-width: 690px;
   }
 
   @media ${to.tablet} {
-    max-width: ${({ size }) => (size === 'tiny' ? sizes.tablet.tiny : sizes.tablet.default)};
+    --wrapper-width: ${({ size }) => (size === 'tiny' ? sizes.tablet.tiny : sizes.tablet.default)};
   }
 
   @media ${to.phoneL} {
-    max-width: calc(100vw - 60px);
+    --wrapper-width: calc(100vw - 60px);
   }
 `;

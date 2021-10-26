@@ -7,12 +7,12 @@ import { HiddenMainPageTitle } from 'Components/HiddenMainPageTitle';
 import { Separator } from 'Components/Separator';
 import { SocialMedia } from 'Components/SocialMedia';
 import { Search } from 'Components/Search';
+import { Hamburger } from 'Components/Hamburger';
 
 import { NavBar } from './Bar';
 import { Brand } from 'Components/Brand';
 import { NavMenu } from './Menu';
 import { NavLinks } from './Links';
-import { Hamburger } from './Hamburger';
 
 import { to } from 'Devices';
 

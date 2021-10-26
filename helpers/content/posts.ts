@@ -43,8 +43,6 @@ export const getRelatedPosts = async (
   }
 };
 
-export const getPostBySlug = (slug: string) => getResourceBySlug<Post>(POSTS_PATH, slug, 'posts');
-
 export const getPostsByTopic = async (topicSlug: string) => {
   const posts = await getPosts();
   const { name: givenTopicName } = getTopic(topicSlug);
@@ -52,4 +50,14 @@ export const getPostsByTopic = async (topicSlug: string) => {
   const postsInGivenTopic = posts.filter(({ topics }) => topics.includes(givenTopicName));
 
   return postsInGivenTopic;
+};
+
+export const getPostBySlug = (slug: string) => getResourceBySlug<Post>(POSTS_PATH, slug, 'posts');
+
+export const getPostsBySearchQuery = async (query: string) => {
+  const posts = await getPosts();
+
+  const postsInGivenQuery = posts.filter(({ title }) => title.includes(query));
+
+  return postsInGivenQuery;
 };

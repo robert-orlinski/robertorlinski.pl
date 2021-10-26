@@ -1,7 +1,7 @@
 import { FC, HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-import { Hamburger } from 'Components/Nav/Hamburger';
+import { Hamburger } from 'Components/Hamburger';
 import { to } from 'Devices';
 
 export const CloseButton: FC<HTMLAttributes<HTMLAnchorElement>> = ({ onClick }) => (
@@ -9,13 +9,10 @@ export const CloseButton: FC<HTMLAttributes<HTMLAnchorElement>> = ({ onClick }) 
 );
 
 const Button = styled(Hamburger)`
-  position: absolute;
+  position: fixed;
 
-  width: var(--close-button-size);
-  height: var(--close-button-size);
-
-  right: calc(var(--close-button-size) + 0.5rem);
-  top: var(--close-button-size);
+  right: var(--wrapper-gap);
+  top: var(--hamburger-size);
 
   @media ${to.tablet} {
     right: 7vw;

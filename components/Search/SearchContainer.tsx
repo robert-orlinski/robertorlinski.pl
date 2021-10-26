@@ -1,8 +1,9 @@
 import { FC } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css, createGlobalStyle } from 'styled-components';
 
-import { Wrapper } from 'Components/Wrapper';
 import { CloseButton } from './CloseButton';
+import { Wrapper } from 'Components/Wrapper';
+import { to } from 'Devices';
 
 type Props = {
   isVisible: boolean;
@@ -10,15 +11,16 @@ type Props = {
 };
 
 export const SearchContainer: FC<Props> = ({ isVisible, children, closeHandler }) => (
-  <Container {...{ isVisible }}>
-    <Content as="div">{children}</Content>
-    <CloseButton onClick={closeHandler} />
-  </Container>
+  <>
+    {isVisible && <OverflowHidden />}
+    <Container {...{ isVisible }}>
+      <Content>{children}</Content>
+      <CloseButton onClick={closeHandler} />
+    </Container>
+  </>
 );
 
 const Container = styled.aside<Props>`
-  --close-button-size: 2rem;
-
   position: fixed;
   inset: 0;
   z-index: var(--extreme-z-index);
@@ -26,6 +28,7 @@ const Container = styled.aside<Props>`
   width: 100%;
   height: 100%;
 
+  overflow-y: auto;
   background-color: #fff;
 
   ${({ isVisible }) =>
@@ -44,5 +47,17 @@ const Container = styled.aside<Props>`
 `;
 
 const Content = styled(Wrapper)`
-  padding-top: calc(var(--close-button-size) * 3);
+  height: 100%;
+  padding: calc(var(--hamburger-size) * 3) calc(var(--hamburger-size) * 2)
+    calc(var(--hamburger-size) * 3) 0;
+
+  @media ${to.mobileL} {
+    padding-right: calc(var(--hamburger-size) * 1.5);
+  }
+`;
+
+const OverflowHidden = createGlobalStyle`
+  html {
+    overflow: hidden;
+  }
 `;

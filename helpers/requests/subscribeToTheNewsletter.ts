@@ -12,7 +12,7 @@ export const subscribeToTheNewsletter = async (data: NewsletterData): Promise<st
   if (error) {
     return error;
   } else {
-    router.push('/newsletter/potwierdzenie');
+    router.push('/praktycznie-to-mamy');
   }
 
   return null;
