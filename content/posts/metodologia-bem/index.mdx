@@ -1,6 +1,6 @@
 ---
 title: Metodologia BEM – wszystko, co trzeba o niej wiedzieć
-abstract: Jak stosuje się metodologię BEM i jakie błędy można popełnić szczególnie na początku jej nauki? O tym jest ten artykuł!
+abstract: Metodologia BEM 🤔 O co w niej chodzi? Dlaczego jest taka popularna? Jak z niej korzystać? Jakich błędów nie popełniać? O tym jest ten wpis!
 isPublished: true
 topics:
   - Front-end
@@ -27,13 +27,12 @@ One wszystkie zwykle będą się powtarzać w obrębie witryny (w końcu słabym
 W przypadku bloków (lub inaczej komponentów) jest najprościej:
 
 ```css
-.blok
-.blok-skladajacy-sie-z-kilku-wyrazow
+.blok .blok-skladajacy-sie-z-kilku-wyrazow;
 ```
 
 Jak widać zapisujemy je tak jak zwykle deklaruje się klasy bez narzuconej metodologi - konkretnym wyrazem lub kilkoma, oddzielonymi pojedynczymi myślnikami.
 
-Z kolei element zapisujemy jako blok oraz nazwa elementu rozdzielone dwoma znakami podkreślenia (__). W ten oto sposób:
+Z kolei element zapisujemy jako blok oraz nazwa elementu rozdzielone dwoma znakami podkreślenia (\_\_). W ten oto sposób:
 
 ```css
 .blok__element
@@ -46,8 +45,7 @@ Dzięki temu znacznie łatwiej dzieli się poszczególne elementy na stronie na 
 I jak wspomniałem - są jeszcze modyfikatory. Zapisujemy je podobnie jak elementy, tylko że zamiast znaków podkreślenia, używamy myślników, w ten oto sposób:
 
 ```css
-.blok--modyfikator 
-.blok__element--modyfikator
+.blok--modyfikator .blok__element--modyfikator;
 ```
 
 Jak widać możemy modyfikować całe bloki jak i pojedyncze elementy. Co jeszcze ważne to modyfikator musi zawsze iść w parze z oryginalnym elementem:
@@ -57,7 +55,7 @@ Jak widać możemy modyfikować całe bloki jak i pojedyncze elementy. Co jeszcz
 .blog__element .blok__element--modyfikator
 
 // Tak niekoniecznie
-.blok__element--modyfikator
+.blok__element--modyfikator;
 ```
 
 Może spójrzmy na konkretny przykład, w którym stworzymy prosty element banera na stronie:
