@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -19,46 +15,19 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
-      "Devices": [
-        "./helpers/devices.ts"
-      ],
-      "SiteName": [
-        "./helpers/metaData/siteName.ts"
-      ],
-      "AddressSeparator": [
-        "./helpers/metaData/addressSeparator.ts"
-      ],
-      "Slogan": [
-        "./helpers/metaData/slogan.ts"
-      ],
-      "Components/*": [
-        "./components/*"
-      ],
-      "Types/*": [
-        "./types/*"
-      ],
-      "Data/*": [
-        "./data/*"
-      ],
-      "Images/*": [
-        "./public/images/*"
-      ],
-      "Helpers/*": [
-        "./helpers/*"
-      ],
-      "Hooks/*": [
-        "./hooks/*"
-      ]
+      "Devices": ["./helpers/devices.ts"],
+      "SiteName": ["./helpers/metaData/siteName.ts"],
+      "AddressSeparator": ["./helpers/metaData/addressSeparator.ts"],
+      "Slogan": ["./helpers/metaData/slogan.ts"],
+      "Components/*": ["./components/*"],
+      "Types/*": ["./types/*"],
+      "Data/*": ["./data/*"],
+      "Images/*": ["./public/images/*"],
+      "Helpers/*": ["./helpers/*"],
+      "Hooks/*": ["./hooks/*"]
     },
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "pages/_document.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.tsx"],
+  "exclude": ["node_modules"]
 }
