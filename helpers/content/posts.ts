@@ -57,7 +57,12 @@ export const getPostBySlug = (slug: string) => getResourceBySlug<Post>(POSTS_PAT
 export const getPostsBySearchQuery = async (query: string) => {
   const posts = await getPosts();
 
-  const postsInGivenQuery = posts.filter(({ title }) => title.includes(query));
+  const postsInGivenQuery = posts.filter(({ title }) => {
+    const titleToCompare = title.toLowerCase();
+    const queryToCompare = query.toLowerCase();
+
+    return titleToCompare.includes(queryToCompare);
+  });
 
   return postsInGivenQuery;
 };
