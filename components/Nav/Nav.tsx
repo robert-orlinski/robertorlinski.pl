@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { useToggle } from 'Hooks/useToggle';
-import { useStickyElement } from 'Hooks/useStickyElement';
+import useToggle from 'Hooks/useToggle';
+import useStickyElement from 'Hooks/useStickyElement';
 
 import { HiddenMainPageTitle } from 'Components/HiddenMainPageTitle';
 import { Separator } from 'Components/Separator';

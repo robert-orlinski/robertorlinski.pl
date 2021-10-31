@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import styled from 'styled-components';
 
-import { useToggle } from 'Hooks/useToggle';
+import useToggle from 'Hooks/useToggle';
 
 import { ElementWithOpacity } from 'Components/ElementWithOpacity';
 import { SearchContainer } from './SearchContainer';
