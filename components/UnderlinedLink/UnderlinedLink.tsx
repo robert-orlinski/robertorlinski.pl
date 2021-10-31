@@ -16,7 +16,7 @@ export const UnderlinedLink = styled.a<UnderlinedLinkStyle>`
   transition: background-size var(--short-transition-duration);
 
   ${({ withUnderlineInvisible }) =>
-    withUnderlineInvisible &&
+    !withUnderlineInvisible &&
     css`
       --line-size-initial: 100% 1px;
       --line-size-hovered: 0 1px;
