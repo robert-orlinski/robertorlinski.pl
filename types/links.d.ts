@@ -11,10 +11,14 @@ export type CatalogedLink = {
 
 export type CatalogedLinksArray = Array<CatalogedLink>;
 
-export type Link = {
+export type UnderlinedLinkStyle = {
   withUnderlineInvisible?: boolean;
+};
+
+export type Link = {
   isExternal?: boolean;
-} & ObligatoryChildren &
+} & UnderlinedLinkStyle &
+  ObligatoryChildren &
   LinkContainer;
 
 export type Button = {
