@@ -6,7 +6,7 @@ const search = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const results = await getPostsBySearchQuery(q as string);
 
-  return res.status(201).json(JSON.stringify(results));
+  return res.status(200).json(JSON.stringify(results));
 };
 
 export default search;

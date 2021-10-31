@@ -5,6 +5,7 @@ import useDebounce from 'Hooks/useDebounce';
 
 import { TextInput } from 'Components/TextInput';
 import { PostsList } from 'Components/PostsList';
+import { Error } from 'Components/Error';
 
 import { Posts } from 'Types/content';
 import { searchForPosts } from 'Helpers/requests/searchForPosts';
@@ -38,7 +39,11 @@ export const SearchBox = forwardRef((props, ref) => {
         />
       </Form>
       <section aria-live="polite" aria-atomic="true" id="search-results">
-        <PostsList {...{ posts }} />
+        {posts.length ? (
+          <PostsList {...{ posts }} />
+        ) : (
+          <Error>Nie znalazłem nic, co pasuje do tej frazy. Może spróbujesz wpisać inną?</Error>
+        )}
       </section>
     </>
   );
