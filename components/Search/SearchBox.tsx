@@ -12,7 +12,7 @@ import { searchForPosts } from 'Helpers/requests/searchForPosts';
 
 export const SearchBox = forwardRef((props, ref) => {
   const [query, setQuery] = useState('');
-  const [posts, setPosts] = useState<Posts>([]);
+  const [posts, setPosts] = useState<Posts | null>(null);
 
   useDebounce(
     async () => {
@@ -39,11 +39,12 @@ export const SearchBox = forwardRef((props, ref) => {
         />
       </Form>
       <section aria-live="polite" aria-atomic="true" id="search-results">
-        {posts.length ? (
-          <PostsList {...{ posts }} />
-        ) : (
-          <Error>Nie znalazłem nic, co pasuje do tej frazy. Może spróbujesz wpisać inną?</Error>
-        )}
+        {posts &&
+          (posts.length ? (
+            <PostsList {...{ posts }} />
+          ) : (
+            <Error>Nie znalazłem nic, co pasuje do tej frazy. Może spróbujesz wpisać inną?</Error>
+          ))}
       </section>
     </>
   );
