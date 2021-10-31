@@ -51,7 +51,7 @@ const Content = styled(Wrapper)`
   padding: calc(var(--hamburger-size) * 3) calc(var(--hamburger-size) * 2)
     calc(var(--hamburger-size) * 3) 0;
 
-  @media ${to.mobileL} {
+  @media ${to.phoneL} {
     padding-right: calc(var(--hamburger-size) * 1.5);
   }
 `;
