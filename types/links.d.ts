@@ -12,7 +12,7 @@ export type CatalogedLink = {
 export type CatalogedLinksArray = Array<CatalogedLink>;
 
 export type UnderlinedLinkStyle = {
-  withUnderlineInvisible?: boolean;
+  isUnderlineVisible?: boolean;
 };
 
 export type Link = {
