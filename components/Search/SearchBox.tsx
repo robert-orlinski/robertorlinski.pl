@@ -1,6 +1,8 @@
 import { ChangeEvent, forwardRef, useState } from 'react';
 import styled from 'styled-components';
 
+import useDebounce from 'Hooks/useDebounce';
+
 import { TextInput } from 'Components/TextInput';
 import { PostsList } from 'Components/PostsList';
 
@@ -8,14 +10,20 @@ import { Posts } from 'Types/content';
 import { searchForPosts } from 'Helpers/requests/searchForPosts';
 
 export const SearchBox = forwardRef((props, ref) => {
+  const [query, setQuery] = useState('');
   const [posts, setPosts] = useState<Posts>([]);
 
-  const handleSearch = async (event: ChangeEvent<HTMLInputElement>) => {
-    const query = event.target.value;
-    const results = await searchForPosts(query);
+  useDebounce(
+    async () => {
+      const results = await searchForPosts(query);
 
-    setPosts(results);
-  };
+      setPosts(results);
+    },
+    1000,
+    [query],
+  );
+
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => setQuery(event.target.value);
 
   return (
     <>
@@ -25,7 +33,7 @@ export const SearchBox = forwardRef((props, ref) => {
           name="query"
           required={false}
           autoComplete="off"
-          onChange={handleSearch}
+          onChange={handleInputChange}
           {...{ ref }}
         />
       </Form>
