@@ -9,6 +9,7 @@ import { Error } from 'Components/Error';
 
 import { Posts } from 'Types/content';
 import { searchForPosts } from 'Helpers/requests/searchForPosts';
+import { to } from 'Devices';
 
 export const SearchBox = forwardRef((props, ref) => {
   const [query, setQuery] = useState('');
@@ -38,14 +39,14 @@ export const SearchBox = forwardRef((props, ref) => {
           {...{ ref }}
         />
       </Form>
-      <section aria-live="polite" aria-atomic="true" id="search-results">
+      <Results aria-live="polite" aria-atomic="true" id="search-results">
         {posts &&
           (posts.length ? (
             <PostsList {...{ posts }} />
           ) : (
             <Error>Nie znalazłem nic, co pasuje do tej frazy. Może spróbujesz wpisać inną?</Error>
           ))}
-      </section>
+      </Results>
     </>
   );
 });
@@ -53,4 +54,12 @@ export const SearchBox = forwardRef((props, ref) => {
 const Form = styled.form`
   width: min(100%, 570px);
   margin: 0 auto 3rem;
+`;
+
+const Results = styled.section`
+  padding: calc(var(--hamburger-size) * 0.8) 0 calc(var(--hamburger-size) * 3);
+
+  @media ${to.phoneL} {
+    padding: calc(var(--hamburger-size) * 0) 0 calc(var(--hamburger-size) * 3);
+  }
 `;

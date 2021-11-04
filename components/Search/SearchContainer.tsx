@@ -48,8 +48,7 @@ const Container = styled.aside<Props>`
 
 const Content = styled(Wrapper)`
   height: 100%;
-  padding: calc(var(--hamburger-size) * 3) calc(var(--hamburger-size) * 2)
-    calc(var(--hamburger-size) * 3) 0;
+  padding: calc(var(--hamburger-size) * 3) calc(var(--hamburger-size) * 2) 0 0;
 
   @media ${to.phoneL} {
     padding-right: calc(var(--hamburger-size) * 1.5);
