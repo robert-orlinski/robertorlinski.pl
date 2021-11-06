@@ -18,7 +18,7 @@ I skoro jest taka popularna i przydatna, to powiedzmy o niej kilka zdań!
 
 ## W takim razie o co chodzi w tej technice?
 
-W skrócie mamy 3 rzeczy. Konkretny **blok** (na przykład sekcję na stronie), składa się on z **elementów** - może mieć w sobie rzeczy takie jak nagłówek, zdjęcia, przyciski, teksty i wiele wiele innych - to wszystko może być elementami konkretnego bloku.
+W skrócie mamy 3 rzeczy. Konkretny **blok** (na przykład konkretną sekcję lub komponent na stronie), składa się on z **elementów** - może mieć w sobie rzeczy takie jak nagłówek, zdjęcia, przyciski, teksty i wiele wiele innych - to wszystko może być elementami konkretnego bloku.
 
 One wszystkie zwykle będą się powtarzać w obrębie witryny (w końcu słabym pomysłem jest, aby np. każdy przycisk na stronie był zupełnie inny. Gdy jednak chcemy wyróżnić dany element, to posłużymy się trzecią składową naszej metodologi, jaką jest **modyfikator**, który służy do zmodyfikowania tego powtarzalnego elementu (na przykład gdy jeden przycisk ma nie być biały, a zielony).
 
@@ -28,7 +28,7 @@ W przypadku bloków (lub inaczej komponentów) jest najprościej:
 
 ```css
 .blok 
-.blok-skladajacy-sie-z-kilku-wyrazow;
+.blok-skladajacy-sie-z-kilku-wyrazow
 ```
 
 Jak widać zapisujemy je tak jak zwykle deklaruje się klasy bez narzuconej metodologi - konkretnym wyrazem lub kilkoma, oddzielonymi pojedynczymi myślnikami.
@@ -47,7 +47,7 @@ I jak wspomniałem - są jeszcze modyfikatory. Zapisujemy je podobnie jak elemen
 
 ```css
 .blok--modyfikator
-.blok__element--modyfikator;
+.blok__element--modyfikator
 ```
 
 Jak widać możemy modyfikować całe bloki jak i pojedyncze elementy. Co jeszcze ważne to modyfikator musi zawsze iść w parze z oryginalnym elementem:
