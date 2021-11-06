@@ -18,7 +18,6 @@ package-lock.json
 
 # production
 /build
-/.cache
 
 # misc
 .DS_Store
