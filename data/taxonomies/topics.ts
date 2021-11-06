@@ -19,7 +19,7 @@ export const topicsGroups: TopicsGroups = [
       {
         name: 'Dostępność',
         slug: 'dostepnosc',
-        featuredImage: `${topicsImagesDir}/accesibility.jpg`,
+        featuredImage: `${topicsImagesDir}/accessibility.jpg`,
       },
       {
         name: 'Narzędzia',
