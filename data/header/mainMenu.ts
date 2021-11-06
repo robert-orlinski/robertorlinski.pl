@@ -3,7 +3,7 @@ import { CatalogedLinksArray } from 'Types/links';
 export const mainMenu: CatalogedLinksArray = [
   {
     href: '/newsletter',
-    title: 'Darmowy e-book',
+    title: 'Newsletter',
   },
   {
     href: '/artykuly',
