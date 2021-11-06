@@ -11,7 +11,7 @@ import { from, to } from 'Devices';
 type Props = {
   title: string;
   image: {
-    src: StaticImageData;
+    src: StaticImageData | string;
     alt: string;
   };
   withFixedImage?: boolean;
@@ -22,9 +22,9 @@ export const MainBanner: FC<Props> = ({ title, image: { src, alt }, withFixedIma
     <Nav />
     <Banner>
       <MainTitle>{title}</MainTitle>
-      {withFixedImage ? (
+      {withFixedImage || typeof src === 'string' ? (
         <FixedImageContainer>
-          <Image {...{ src, alt }} layout="fill" objectFit="cover" />
+          <Image {...{ src, alt }} width="880" height="560" objectFit="cover" />
         </FixedImageContainer>
       ) : (
         <ImageContainer>

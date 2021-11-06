@@ -21,7 +21,7 @@ export const SearchBox = forwardRef((props, ref) => {
 
       setPosts(results);
     },
-    1000,
+    100,
     [query],
   );
 

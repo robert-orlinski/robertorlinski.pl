@@ -4,9 +4,19 @@ import { POSTS_PATH } from '../constants';
 
 import { Post, ResourceWithContent } from 'Types/content';
 
+import postsCache from 'Cache/posts.json';
+
+const env = process.env.NODE_ENV || 'development';
+
 export const getPostsPaths = () => getResourcePaths(POSTS_PATH);
 
-export const getPosts = async () => await getResourcesByDateDescending<Post>(POSTS_PATH, 'posts');
+export const getPosts = async () => {
+  if (env === 'production') {
+    return postsCache;
+  }
+
+  return await getResourcesByDateDescending<Post>(POSTS_PATH, 'posts');
+};
 
 export const getNewestPosts = async () => {
   const posts = await getPosts();

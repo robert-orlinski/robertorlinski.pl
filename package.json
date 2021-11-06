@@ -6,13 +6,29 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ts-node-esm": "node --no-warnings --loader ts-node/esm --experimental-specifier-resolution=node",
+    "cache": "npm run ts-node-esm ./scripts/cache/index.ts"
+  },
+  "_moduleAliases": {
+    "Devices": "helpers/devices.ts",
+    "SiteName": "helpers/metaData/siteName.ts",
+    "AddressSeparator": "helpers/metaData/addressSeparator.ts",
+    "Slogan": "helpers/metaData/slogan.ts",
+    "Components": "components",
+    "Types": "types",
+    "Data": "data",
+    "Images": "public/images",
+    "Helpers": "helpers",
+    "Hooks": "hooks",
+    "Cache": ".cache"
   },
   "dependencies": {
     "@mapbox/rehype-prism": "^0.7.0",
     "dayjs": "^1.10.7",
     "esbuild": "^0.12.24",
     "mdx-bundler": "^6.0.1",
+    "module-alias": "^2.2.2",
     "next": "12.0.1",
     "polish-plurals": "^1.1.0",
     "react": "17.0.2",
@@ -21,7 +37,6 @@
     "reading-time": "^1.4.0",
     "remark-code-titles": "^0.1.2",
     "remark-mdx-images": "^1.0.3",
-    "remark-slug": "^7.0.0",
     "slugify": "^1.6.0",
     "styled-components": "^5.2.1"
   },
@@ -36,6 +51,8 @@
     "husky": "^7.0.4",
     "install": "^0.13.0",
     "npm": "^7.24.2",
+    "run-node": "^2.0.0",
+    "ts-node": "^10.4.0",
     "typescript": "4.4.2"
   }
 }
