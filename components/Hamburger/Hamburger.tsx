@@ -1,33 +1,56 @@
-import { FC } from 'react';
-import styled from 'styled-components';
+import { FC, HTMLAttributes } from 'react';
+import styled, { css } from 'styled-components';
 
 import { ElementWithOpacity } from 'Components/ElementWithOpacity';
-import { ElementWithInlineStyle } from 'Types/styled-components';
 
 import { from } from 'Devices';
 
-import { ClickableElement } from 'Types/links';
+type Props = {
+  isCrossed: boolean;
+  isHiddenOnDesktop?: boolean;
+};
 
-export const Hamburger: FC<ClickableElement & ElementWithInlineStyle> = ({ onClick, style }) => (
-  <Button onClick={onClick} style={style}>
+export const Hamburger: FC<Props & HTMLAttributes<HTMLAnchorElement>> = ({
+  onClick,
+  isCrossed,
+  isHiddenOnDesktop = false,
+  className,
+}) => (
+  <Button
+    onClick={onClick}
+    {...{
+      isCrossed,
+      isHiddenOnDesktop,
+      className,
+    }}
+  >
     <Inner />
   </Button>
 );
 
 const Button = styled(ElementWithOpacity).attrs({
   as: 'button',
-})`
-  --hamburger-size: 1.66rem;
-
+})<Props>`
   width: var(--hamburger-size);
   height: var(--hamburger-size);
 
-  margin-left: 1.1rem;
   border: none;
 
-  @media ${from.tabletL} {
-    display: none;
-  }
+  ${({ isCrossed }) =>
+    isCrossed &&
+    css`
+      --top-bar-transform: rotate(90deg) translateY(calc(var(--hamburger-size) / -3.8));
+      --middle-bar-transform: rotate(-45deg);
+      --bottom-bar-transform: rotate(90deg) translateY(calc((var(--hamburger-size) / 3.8) - 1px));
+    `}
+
+  ${({ isHiddenOnDesktop }) =>
+    isHiddenOnDesktop &&
+    css`
+      @media ${from.tabletL} {
+        display: none;
+      }
+    `}
 `;
 
 const Inner = styled.span`

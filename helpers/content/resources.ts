@@ -7,9 +7,9 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import { polishPlurals } from 'polish-plurals';
 import { prepareMDX } from './mdx';
+import { FEATURED_IMAGE_NAME } from '../constants';
 
 import { Resource, ResourceWithContent } from 'Types/content';
-import { FEATURED_IMAGE_NAME } from 'Helpers/constants';
 
 dayjs.extend(customParseFormat);
 

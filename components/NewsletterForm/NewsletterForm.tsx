@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 import styled from 'styled-components';
-import router from 'next/router';
 
 import { SubmitButton } from './SubmitButton';
 import { EmailInput } from './EmailInput';
@@ -21,19 +20,16 @@ export const NewsletterForm = () => {
 
   const [errorMessage, setErrorMessage] = useState<ErrorMessage>(false);
 
-  const signUp: SubmitHandler<NewsletterData> = async (data) => {
-    const response = await subscribeToTheNewsletter(data);
-    const { error } = await response.json();
+  const handleSignUp: SubmitHandler<NewsletterData> = async (data) => {
+    const error = await subscribeToTheNewsletter(data);
 
-    if (!error) {
-      router.push('/newsletter/potwierdzenie');
-    } else {
+    if (error) {
       setErrorMessage(error);
     }
   };
 
   return (
-    <Form onSubmit={handleSubmit(signUp)}>
+    <Form onSubmit={handleSubmit(handleSignUp)}>
       <NameInput {...{ register, errors }} />
       <EmailInput {...{ register, errors }} />
       <SubmitButton />

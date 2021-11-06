@@ -1,42 +1,36 @@
 import { FC } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { Wrapper } from 'Components/Wrapper';
-
-import { InlineStyle } from 'Types/styled-components';
 
 type Props = {
   isSticky: boolean;
 };
 
-export const NavBar: FC<Props> = ({ children, isSticky }) => {
-  const stickyNavStyle = (
-    isSticky
-      ? {
-          '--height': 'calc(var(--nav-height) * 0.9)',
-          '--box-shadow': 'rgba(34,34,34,0.1) 0 5px 10px',
-        }
-      : undefined
-  ) as InlineStyle;
+export const NavBar: FC<Props> = ({ children, isSticky }) => (
+  <Outer {...{ isSticky }}>
+    <Inner>{children}</Inner>
+  </Outer>
+);
 
-  return (
-    <Outer style={stickyNavStyle}>
-      <Inner>{children}</Inner>
-    </Outer>
-  );
-};
-
-const Outer = styled.nav`
+const Outer = styled.nav<Props>`
   position: fixed;
   width: 100vw;
-  height: var(--height, var(--nav-height));
+  height: var(--nav-height);
 
-  z-index: 9999;
+  z-index: calc(var(--extreme-z-index) - 1);
   top: 0;
 
   background-color: #fff;
   box-shadow: 0;
-  transition: height var(--short-transition-duration);
+  transition: height var(--short-transition-duration) var(--fancy-cubic-bezier);
+
+  ${({ isSticky }) =>
+    isSticky &&
+    css`
+      --nav-height: calc(var(--default-nav-height) * 0.9);
+      --box-shadow: rgba(34, 34, 34, 0.1) 0 5px 10px;
+    `};
 
   &::after {
     content: '';

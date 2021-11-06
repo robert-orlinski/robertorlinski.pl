@@ -2,7 +2,9 @@ import styled from 'styled-components';
 
 import { to } from 'Devices';
 
-export const NavLinks = styled.div`
+import { LinksVisibilityProps } from './Nav';
+
+export const NavLinks = styled.div<LinksVisibilityProps>`
   display: flex;
   justify-content: flex-end;
 
@@ -17,14 +19,15 @@ export const NavLinks = styled.div`
     height: calc(100vh - var(--nav-height));
 
     padding: 2.4rem;
-    top: var(--nav-height);
+    top: 0;
     right: 0;
 
     background-color: var(--dark-gray);
 
-    transform: translateX(var(--translation, var(--width)));
+    transform: translateY(var(--nav-height))
+      translateX(${({ areVisible }) => (areVisible ? '0' : 'var(--width)')});
     transition: height var(--short-transition-duration),
-      transform 650ms cubic-bezier(0.77, 0, 0.175, 1);
+      transform var(--short-transition-duration) var(--fancy-cubic-bezier);
   }
 
   @media ${to.phoneS} {

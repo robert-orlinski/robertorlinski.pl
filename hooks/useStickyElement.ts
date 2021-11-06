@@ -1,6 +1,6 @@
 import { useEffect, useCallback, useRef, useState, RefObject } from 'react';
 
-export const useStickyElement = (customOffset?: number): [boolean, RefObject<HTMLElement>] => {
+const useStickyElement = (customOffset?: number): [boolean, RefObject<HTMLElement>] => {
   const [isSticky, setStickiness] = useState(false);
   const [positionOnWhichStickinessIsApplied, setPosition] = useState(10);
 
@@ -32,3 +32,5 @@ export const useStickyElement = (customOffset?: number): [boolean, RefObject<HTM
 
   return [isSticky, elementToApplyStickiness];
 };
+
+export default useStickyElement;

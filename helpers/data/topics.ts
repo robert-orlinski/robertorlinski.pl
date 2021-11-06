@@ -1,4 +1,4 @@
-import { topicsGroups } from 'Data/taxonomies/topics';
+import { topicsGroups } from '../../data/taxonomies/topics';
 
 import { Topic, Topics } from 'Types/data';
 

@@ -13,7 +13,7 @@ export const Topic: FC<TopicType> = ({ name, slug, featuredImage }) => {
 
   return (
     <Container>
-      <Image src={featuredImage} alt="" objectFit="cover" />
+      <Image src={featuredImage} alt="" objectFit="cover" width="550" height="330" />
       <LinkContainer href={link}>
         <Name as="a">{name}</Name>
       </LinkContainer>

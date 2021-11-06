@@ -1,8 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { ListedPostContainer } from 'Components/ListedPost';
 
-export const UnderlinedLink = styled.a`
+import { UnderlinedLinkStyle } from 'Types/links';
+
+export const UnderlinedLink = styled.a<UnderlinedLinkStyle>`
   position: relative;
 
   padding-bottom: 2px;
@@ -12,6 +14,15 @@ export const UnderlinedLink = styled.a`
   background-position: var(--line-position-initial, 100% 100%);
 
   transition: background-size var(--short-transition-duration);
+
+  ${({ isUnderlineVisible }) =>
+    isUnderlineVisible &&
+    css`
+      --line-size-initial: 100% 1px;
+      --line-size-hovered: 0 1px;
+      --line-position-initial: 0 100%;
+      --line-position-hovered: 100% 100%;
+    `}
 
   &:hover,
   &:focus,

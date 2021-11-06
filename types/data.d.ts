@@ -11,7 +11,7 @@ export type ArrayOfTexts = Array<Text>;
 export type Topic = {
   name: string;
   slug: string;
-  featuredImage: StaticImageData;
+  featuredImage: string;
 };
 
 export type Topics = Array<Topic>;

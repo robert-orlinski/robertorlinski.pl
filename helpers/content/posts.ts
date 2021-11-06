@@ -4,9 +4,19 @@ import { POSTS_PATH } from '../constants';
 
 import { Post, ResourceWithContent } from 'Types/content';
 
+import postsCache from 'Cache/posts.json';
+
+const env = process.env.NODE_ENV || 'development';
+
 export const getPostsPaths = () => getResourcePaths(POSTS_PATH);
 
-export const getPosts = async () => await getResourcesByDateDescending<Post>(POSTS_PATH, 'posts');
+export const getPosts = async () => {
+  if (env === 'production') {
+    return postsCache;
+  }
+
+  return await getResourcesByDateDescending<Post>(POSTS_PATH, 'posts');
+};
 
 export const getNewestPosts = async () => {
   const posts = await getPosts();
@@ -43,8 +53,6 @@ export const getRelatedPosts = async (
   }
 };
 
-export const getPostBySlug = (slug: string) => getResourceBySlug<Post>(POSTS_PATH, slug, 'posts');
-
 export const getPostsByTopic = async (topicSlug: string) => {
   const posts = await getPosts();
   const { name: givenTopicName } = getTopic(topicSlug);
@@ -52,4 +60,19 @@ export const getPostsByTopic = async (topicSlug: string) => {
   const postsInGivenTopic = posts.filter(({ topics }) => topics.includes(givenTopicName));
 
   return postsInGivenTopic;
+};
+
+export const getPostBySlug = (slug: string) => getResourceBySlug<Post>(POSTS_PATH, slug, 'posts');
+
+export const getPostsBySearchQuery = async (query: string) => {
+  const posts = await getPosts();
+
+  const postsInGivenQuery = posts.filter(({ title }) => {
+    const titleToCompare = title.toLowerCase();
+    const queryToCompare = query.toLowerCase();
+
+    return titleToCompare.includes(queryToCompare);
+  });
+
+  return postsInGivenQuery;
 };
