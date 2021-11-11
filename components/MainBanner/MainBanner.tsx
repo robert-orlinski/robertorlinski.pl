@@ -14,26 +14,37 @@ type Props = {
     src: StaticImageData | string;
     alt: string;
   };
-  withFixedImage?: boolean;
+  isImageFluid?: boolean;
 };
 
-const MainBanner: FC<Props> = ({ title, image: { src, alt }, withFixedImage }) => (
-  <header>
-    <Nav />
-    <Banner>
-      <MainTitle>{title}</MainTitle>
-      {withFixedImage || typeof src === 'string' ? (
-        <FixedImageContainer>
-          <Image {...{ src, alt }} width="880" height="560" objectFit="cover" />
-        </FixedImageContainer>
-      ) : (
-        <ImageContainer>
-          <Image {...{ src, alt }} />
-        </ImageContainer>
-      )}
-    </Banner>
-  </header>
-);
+const MainBanner: FC<Props> = ({ title, image: { src, alt }, isImageFluid }) => {
+  const isImageFromPath = typeof src === 'string';
+  const isImageFixed = !isImageFluid || isImageFromPath;
+
+  return (
+    <header>
+      <Nav />
+      <Banner>
+        <MainTitle>{title}</MainTitle>
+        {isImageFixed ? (
+          <FixedImageContainer>
+            <Image
+              {...{ src, alt }}
+              width="880"
+              height="560"
+              objectFit="cover"
+              placeholder={isImageFromPath ? 'empty' : 'blur'}
+            />
+          </FixedImageContainer>
+        ) : (
+          <ImageContainer>
+            <Image {...{ src, alt }} placeholder="blur" />
+          </ImageContainer>
+        )}
+      </Banner>
+    </header>
+  );
+};
 
 const Banner = styled(Wrapper)`
   display: flex;

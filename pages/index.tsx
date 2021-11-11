@@ -38,6 +38,7 @@ const Home: FC<PostsContainer> = ({ posts }) => {
           src: bannerImage,
           alt: 'Robert zamierzający uderzyć ogromny, pluszowy przycisk "enter", który jednocześnie można podłączyć na USB i tym samym zatwierdzać rzeczy z potężnym impetem.',
         }}
+        isImageFluid
       />
       <Wrapper as="main">
         <TextBlock>

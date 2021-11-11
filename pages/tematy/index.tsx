@@ -37,7 +37,6 @@ const Home: FC<PostsContainer> = () => {
           src: bannerImage,
           alt: '',
         }}
-        withFixedImage
       />
       <main>
         {topicsGroups ? (
