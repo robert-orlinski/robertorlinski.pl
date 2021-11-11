@@ -1,1 +1,0 @@
-export { ElementWithOpacity } from './ElementWithOpacity';

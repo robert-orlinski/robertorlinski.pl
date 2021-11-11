@@ -2,7 +2,7 @@ import { createGlobalStyle } from 'styled-components';
 
 import { to } from 'Devices';
 
-export const GlobalStyle = createGlobalStyle`
+const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
@@ -25,7 +25,7 @@ export const GlobalStyle = createGlobalStyle`
 
   html {
     overflow-x: hidden;
-    font-size: 18px;
+    font-size: 20px;
 
     scroll-behavior: smooth;
 
@@ -129,6 +129,10 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
+  ol {
+    counter-reset: list;
+  }
+
   figure {
     position: relative;
   }
@@ -147,3 +151,5 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 600;
   }
 `;
+
+export default GlobalStyle;

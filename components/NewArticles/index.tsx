@@ -1,1 +1,0 @@
-export { NewArticles } from './NewArticles';

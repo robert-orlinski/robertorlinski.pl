@@ -4,7 +4,7 @@ import { ListedPostContainer } from 'Components/ListedPost';
 
 import { UnderlinedLinkStyle } from 'Types/links';
 
-export const UnderlinedLink = styled.a<UnderlinedLinkStyle>`
+const UnderlinedLink = styled.a<UnderlinedLinkStyle>`
   position: relative;
 
   padding-bottom: 2px;
@@ -32,3 +32,5 @@ export const UnderlinedLink = styled.a<UnderlinedLinkStyle>`
     background-position: var(--line-position-hovered, 0 100%);
   }
 `;
+
+export default UnderlinedLink;

@@ -22,43 +22,41 @@ const sizes = {
   },
 };
 
-export const Wrapper = styled.section<Props>`
-  --wrapper-width: ${({ size }) =>
-    size === 'tiny'
-      ? sizes.desktop.tiny
-      : size === 'small'
-      ? sizes.desktop.small
-      : size === 'medium'
-      ? sizes.desktop.medium
-      : size === 'big'
-      ? sizes.desktop.big
-      : sizes.desktop.default};
+const Wrapper = styled.section<Props>`
+  width: var(--wrapper-width);
+  margin-right: auto;
+  margin-left: auto;
 
-  --wrapper-gap: calc((100vw - var(--wrapper-width)) / 2);
+  --wrapper-width: ${({ size }) => (size ? sizes.desktop[size] : sizes.desktop.default)};
+  --wrapper-gap: var(--section-gap);
 
   ${({ withSpaceAbove }) =>
     withSpaceAbove &&
     css`
-      padding-top: var(--section-gap);
+      padding-top: var(--wrapper-gap);
     `}
 
   ${({ withSpaceBelow }) =>
     withSpaceBelow &&
     css`
-      padding-bottom: var(--section-gap);
+      padding-bottom: var(--wrapper-gap);
     `}
 
-  width: var(--wrapper-width);
-  margin-right: auto;
-  margin-left: auto;
+  ${({ size }) =>
+    (size === 'big' || size === 'default') &&
+    css`
+      @media ${to.laptop} {
+        --wrapper-width: 900px;
+      }
+    `}
 
-  @media ${to.laptop} {
-    --wrapper-width: 900px;
-  }
-
-  @media ${to.tabletL} {
-    --wrapper-width: 690px;
-  }
+  ${({ size }) =>
+    size !== 'tiny' &&
+    css`
+      @media ${to.tabletL} {
+        --wrapper-width: 690px;
+      }
+    `}
 
   @media ${to.tablet} {
     --wrapper-width: ${({ size }) => (size === 'tiny' ? sizes.tablet.tiny : sizes.tablet.default)};
@@ -68,3 +66,5 @@ export const Wrapper = styled.section<Props>`
     --wrapper-width: calc(100vw - 60px);
   }
 `;
+
+export default Wrapper;

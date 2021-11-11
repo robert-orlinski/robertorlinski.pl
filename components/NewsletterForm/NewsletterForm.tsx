@@ -7,11 +7,11 @@ import { EmailInput } from './EmailInput';
 import { NameInput } from './NameInput';
 import { Error } from './Error';
 
-import { subscribeToTheNewsletter } from 'Helpers/requests/subscribeToTheNewsletter';
+import subscribeToTheNewsletter from 'Helpers/requests/subscribeToTheNewsletter';
 
 import { ErrorMessage, NewsletterData } from 'Types/newsletter';
 
-export const NewsletterForm = () => {
+const NewsletterForm = () => {
   const {
     register,
     handleSubmit,
@@ -41,3 +41,5 @@ export const NewsletterForm = () => {
 const Form = styled.form`
   margin-top: -0.7rem;
 `;
+
+export default NewsletterForm;

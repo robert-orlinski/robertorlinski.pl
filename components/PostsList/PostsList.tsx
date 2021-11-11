@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { ListedPost } from '../ListedPost';
+import ListedPost from '../ListedPost';
 
 import { from } from 'Devices';
 
 import { PostsContainer } from 'Types/content';
 
-export const PostsList: FC<PostsContainer> = ({ posts }) => (
+const PostsList: FC<PostsContainer> = ({ posts }) => (
   <List>
     {posts.map((post) => {
       const { slug } = post;
@@ -25,3 +25,5 @@ const List = styled.ul`
     grid-template-columns: 1fr 1fr 1fr;
   }
 `;
+
+export default PostsList;

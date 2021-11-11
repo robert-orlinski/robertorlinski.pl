@@ -1,1 +1,3 @@
-export const slogan = 'Programuję i dzielę się wiedzą o programowaniu 🚀';
+const slogan = 'Programuję i dzielę się wiedzą o programowaniu 🚀';
+
+export default slogan;

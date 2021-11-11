@@ -1,10 +1,11 @@
 import { FC, HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-import { Hamburger } from 'Components/Hamburger';
+import Hamburger from 'Components/Hamburger';
+
 import { to } from 'Devices';
 
-export const CloseButton: FC<HTMLAttributes<HTMLAnchorElement>> = ({ onClick }) => (
+const CloseButton: FC<HTMLAttributes<HTMLAnchorElement>> = ({ onClick }) => (
   <Button isCrossed={true} {...{ onClick }} />
 );
 
@@ -18,3 +19,5 @@ const Button = styled(Hamburger)`
     right: 7vw;
   }
 `;
+
+export default CloseButton;

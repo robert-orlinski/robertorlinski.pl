@@ -3,15 +3,16 @@ import styled from 'styled-components';
 
 import useDebounce from 'Hooks/useDebounce';
 
-import { TextInput } from 'Components/TextInput';
-import { PostsList } from 'Components/PostsList';
-import { Error } from 'Components/Error';
+import TextInput from 'Components/TextInput';
+import PostsList from 'Components/PostsList';
+import Error from 'Components/Error';
+
+import searchForPosts from 'Helpers/requests/searchForPosts';
 
 import { Posts } from 'Types/content';
-import { searchForPosts } from 'Helpers/requests/searchForPosts';
 import { to } from 'Devices';
 
-export const SearchBox = forwardRef((props, ref) => {
+const SearchBox = forwardRef((props, ref) => {
   const [query, setQuery] = useState('');
   const [posts, setPosts] = useState<Posts | null>(null);
 
@@ -63,3 +64,5 @@ const Results = styled.section`
     padding: calc(var(--hamburger-size) * 0) 0 calc(var(--hamburger-size) * 3);
   }
 `;
+
+export default SearchBox;

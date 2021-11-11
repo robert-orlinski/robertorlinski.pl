@@ -2,13 +2,14 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
+import Overlay from 'Components/Overlay';
+import LinkContainer from 'Components/LinkContainer';
+
 import { getTopicLink } from 'Helpers/data/topics';
 
 import { Topic as TopicType } from 'Types/data';
-import { Overlay } from 'Components/Overlay';
-import { LinkContainer } from 'Components/LinkContainer';
 
-export const Topic: FC<TopicType> = ({ name, slug, featuredImage }) => {
+const Topic: FC<TopicType> = ({ name, slug, featuredImage }) => {
   const link = getTopicLink(slug);
 
   return (
@@ -45,3 +46,5 @@ const Name = styled(Overlay)`
     background-color: var(--dark-gray);
   }
 `;
+
+export default Topic;

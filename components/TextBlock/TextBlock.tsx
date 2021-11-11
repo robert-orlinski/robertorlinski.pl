@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 
-import { Wrapper } from 'Components/Wrapper';
+import Wrapper from 'Components/Wrapper';
 
 import { from } from 'Devices';
 
-export const TextBlock = styled(Wrapper).attrs({
+const TextBlock = styled(Wrapper).attrs({
   size: 'small',
+  withSpaceBelow: true,
 })`
-  padding-bottom: var(--section-gap);
   font-size: 1.1rem;
 
   @media ${from.phoneL} {
     text-align: center;
   }
 `;
+
+export default TextBlock;

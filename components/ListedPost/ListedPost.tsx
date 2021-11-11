@@ -2,16 +2,16 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-import { CoveringLink } from 'Components/CoveringLink';
-import { Link } from 'Components/Link';
-import { PostMeta } from 'Components/PostMeta';
+import CoveringLink from 'Components/CoveringLink';
+import Link from 'Components/Link';
+import PostMeta from 'Components/PostMeta';
 
 import { getPostFeaturedImage, getPostLink } from 'Helpers/components/posts';
 
 import { Post } from 'Types/content';
 import { between } from 'Devices';
 
-export const ListedPost: FC<Post> = ({ title, topics, slug, readingTime }) => {
+const ListedPost: FC<Post> = ({ title, topics, slug, readingTime }) => {
   const featuredImage = getPostFeaturedImage(slug);
   const link = getPostLink(slug);
 
@@ -72,3 +72,5 @@ const MetaContainer = styled.p`
 const Title = styled.h2`
   font-size: 1.1rem;
 `;
+
+export default ListedPost;

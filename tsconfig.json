@@ -26,7 +26,7 @@
       "Images/*": ["public/images/*"],
       "Helpers/*": ["helpers/*"],
       "Hooks/*": ["hooks/*"],
-      "Cache/*": [".cache/*"]
+      "Cache/*": ["cache/*"]
     },
     "typeRoots": ["node_modules/@types", "typings"],
     "incremental": true

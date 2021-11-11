@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Separator = styled.span`
+const Separator = styled.span`
   display: block;
 
   width: 2.2rem;
@@ -10,3 +10,5 @@ export const Separator = styled.span`
 
   background-color: var(--dark-gray);
 `;
+
+export default Separator;

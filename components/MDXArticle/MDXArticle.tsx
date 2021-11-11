@@ -1,28 +1,28 @@
 import { FC, useMemo } from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
 
-import { CodePenIframe } from 'Components/CodePenIframe';
+import CodePenIframe from 'Components/CodePenIframe';
+import Blockquote from 'Components/Blockquote';
+import CodeBlock from 'Components/CodeBlock';
+import Highlight from 'Components/Highlight';
+import Li from 'Components/Li';
+import H1 from 'Components/H1';
+import H2 from 'Components/H2';
+import H3 from 'Components/H3';
+import H4 from 'Components/H4';
+import H5 from 'Components/H5';
+import H6 from 'Components/H6';
+import P from 'Components/P';
 
-import { Blockquote } from './MDXComponents/Blockquote';
-import { Highlight } from './MDXComponents/Highlight';
-import { CodeBlock } from './MDXComponents/CodeBlock';
-import { BiggerP } from './MDXComponents/BiggerP';
-import { Anchor } from './MDXComponents/Anchor';
-import { H1 } from './MDXComponents/H1';
-import { H2 } from './MDXComponents/H2';
-import { H3 } from './MDXComponents/H3';
-import { H4 } from './MDXComponents/H4';
-import { H5 } from './MDXComponents/H5';
-import { H6 } from './MDXComponents/H6';
-import { Ul } from './MDXComponents/Ul';
-import { Ol } from './MDXComponents/Ol';
-import { Li } from './MDXComponents/Li';
+import Anchor from './MDXComponents/Anchor';
+import Ul from './MDXComponents/Ul';
+import Ol from './MDXComponents/Ol';
 
 type Props = { source: string };
 
-export const MDXArticle: FC<Props> = ({ source }) => {
+const MDXArticle: FC<Props> = ({ source }) => {
   const MDXContainer = useMemo(
-    () => getMDXComponent(source, { codePenIframe: { CodePenIframe } }),
+    () => getMDXComponent(source, { codePenIframe: CodePenIframe }),
     [source],
   );
 
@@ -32,7 +32,6 @@ export const MDXArticle: FC<Props> = ({ source }) => {
         blockquote: Blockquote,
         code: Highlight,
         pre: CodeBlock,
-        p: BiggerP,
         a: Anchor,
         h1: H1,
         h2: H2,
@@ -43,7 +42,10 @@ export const MDXArticle: FC<Props> = ({ source }) => {
         ul: Ul,
         ol: Ol,
         li: Li,
+        p: P,
       }}
     />
   );
 };
+
+export default MDXArticle;

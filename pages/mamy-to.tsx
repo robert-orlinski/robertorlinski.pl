@@ -1,14 +1,14 @@
-import { MainBanner } from 'Components/MainBanner';
-import { Wrapper } from 'Components/Wrapper';
-import { TextBlock } from 'Components/TextBlock';
-import { Head } from 'Components/Head';
+import MainBanner from 'Components/MainBanner';
+import Wrapper from 'Components/Wrapper';
+import TextBlock from 'Components/TextBlock';
+import Head from 'Components/Head';
 
-import { siteName } from 'SiteName';
-import { addressSeparator } from 'AddressSeparator';
+import siteName from 'SiteName';
+import addressSeparator from 'AddressSeparator';
 
 import bannerImage from 'Images/banners/me-in-austria.jpg';
-import { P } from 'Components/P';
-import { DistantButton } from 'Components/DistantButton';
+import P from 'Components/P';
+import DistantButton from 'Components/DistantButton';
 
 const meta = {
   title: `Mamy to! ${addressSeparator} ${siteName}`,

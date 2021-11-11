@@ -1,7 +1,7 @@
 import { NewsletterData } from 'Types/newsletter';
 import router from 'next/router';
 
-export const subscribeToTheNewsletter = async (data: NewsletterData): Promise<string | null> => {
+const subscribeToTheNewsletter = async (data: NewsletterData): Promise<string | null> => {
   const response = await fetch('/api/newsletter/subscribe', {
     method: 'POST',
     body: JSON.stringify(data),
@@ -17,3 +17,5 @@ export const subscribeToTheNewsletter = async (data: NewsletterData): Promise<st
 
   return null;
 };
+
+export default subscribeToTheNewsletter;

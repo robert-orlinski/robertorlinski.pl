@@ -1,9 +1,7 @@
-import { FC } from 'react';
+import Link from 'Components/Link';
 
-import { Link } from 'Components/Link';
-
-export const Anchor: FC<any> = ({ children, href }) => {
-  if (children.type === 'img' && !href) {
+const Anchor = ({ children, href }: any) => {
+  if (children && children.type === 'img' && !href) {
     return (
       <Link href={children.props.src} isExternal isUnderlineVisible>
         {children}
@@ -13,3 +11,5 @@ export const Anchor: FC<any> = ({ children, href }) => {
 
   return <Link {...{ children, href }} isUnderlineVisible />;
 };
+
+export default Anchor;

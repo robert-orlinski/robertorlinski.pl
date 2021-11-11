@@ -3,8 +3,10 @@ import Link from 'next/link';
 
 import { LinkContainer as LinkContainerType } from 'Types/links';
 
-export const LinkContainer: FC<LinkContainerType> = ({ children, href }) => (
+const LinkContainer: FC<LinkContainerType> = ({ children, href }) => (
   <Link href={href} passHref>
     {children}
   </Link>
 );
+
+export default LinkContainer;

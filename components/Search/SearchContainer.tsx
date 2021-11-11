@@ -1,8 +1,10 @@
 import { FC } from 'react';
 import styled, { css, createGlobalStyle } from 'styled-components';
 
-import { CloseButton } from './CloseButton';
-import { Wrapper } from 'Components/Wrapper';
+import Wrapper from 'Components/Wrapper';
+
+import CloseButton from './CloseButton';
+
 import { to } from 'Devices';
 
 type Props = {
@@ -10,7 +12,7 @@ type Props = {
   closeHandler?: () => void;
 };
 
-export const SearchContainer: FC<Props> = ({ isVisible, children, closeHandler }) => (
+const SearchContainer: FC<Props> = ({ isVisible, children, closeHandler }) => (
   <>
     {isVisible && <OverflowHidden />}
     <Container {...{ isVisible }}>
@@ -60,3 +62,5 @@ const OverflowHidden = createGlobalStyle`
     overflow: hidden;
   }
 `;
+
+export default SearchContainer;

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { P } from 'Components/P';
+import P from 'Components/P';
 
 type Props = {
   id: string;
@@ -10,12 +10,7 @@ type Props = {
   defaultTab?: string;
 };
 
-export const CodePenIframe: FC<Props> = ({
-  id,
-  title,
-  author = 'ROrlilnski',
-  defaultTab = 'html',
-}) => {
+const CodePenIframe: FC<Props> = ({ id, title, author = 'ROrlilnski', defaultTab = 'html' }) => {
   const href = `https://codepen.io/${author}/pen/${id}`;
   const srcBase = href.replace('/pen/', '/embed/');
 
@@ -39,3 +34,5 @@ const Pen = styled.iframe`
 
   border: none;
 `;
+
+export default CodePenIframe;

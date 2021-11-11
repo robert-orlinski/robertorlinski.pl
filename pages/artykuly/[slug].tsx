@@ -1,18 +1,18 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { Head } from 'Components/Head';
-import { Wrapper } from 'Components/Wrapper';
-import { MDXArticle } from 'Components/MDXArticle';
+import Head from 'Components/Head';
+import Wrapper from 'Components/Wrapper';
+import MDXArticle from 'Components/MDXArticle';
 
-import { RawHeader } from 'Components/RawHeader';
-import { PostHeader } from 'Components/PostHeader';
-import { RelatedPosts } from 'Components/RelatedPosts';
+import RawHeader from 'Components/RawHeader';
+import PostHeader from 'Components/PostHeader';
+import RelatedPosts from 'Components/RelatedPosts';
 
 import { getPostBySlug, getPostsPaths, getRelatedPosts } from 'Helpers/content/posts';
 
+import siteName from 'SiteName';
 import { PostWithContent } from 'Types/content';
-import { siteName } from 'SiteName';
 import { from } from 'Devices';
 
 const Post: FC<PostWithContent> = ({ metaData, content, relatedPosts }) => {

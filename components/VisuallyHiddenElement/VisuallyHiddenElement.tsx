@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const VisuallyHiddenElement = styled.div`
+const VisuallyHiddenElement = styled.div`
   position: absolute;
   overflow: hidden;
 
@@ -14,3 +14,5 @@ export const VisuallyHiddenElement = styled.div`
   clip: rect(0 0 0 0);
   white-space: nowrap;
 `;
+
+export default VisuallyHiddenElement;

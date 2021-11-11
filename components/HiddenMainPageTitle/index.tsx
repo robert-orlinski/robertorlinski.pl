@@ -1,1 +1,0 @@
-export { HiddenMainPageTitle } from './HiddenMainPageTitle';

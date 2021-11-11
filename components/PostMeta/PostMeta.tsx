@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { ElementWithOpacity } from 'Components/ElementWithOpacity';
-import { Separator } from 'components/Separator';
+import ElementWithOpacity from 'Components/ElementWithOpacity';
+import Separator from 'Components/Separator';
 
 import { getPrimaryTopic, getTopicLink } from 'Helpers/data/topics';
 
@@ -12,7 +12,7 @@ type Props = {
   date?: string;
 };
 
-export const PostMeta: FC<Props> = ({ topics, readingTime, date }) => {
+const PostMeta: FC<Props> = ({ topics, readingTime, date }) => {
   const { name: topicName, slug } = getPrimaryTopic(topics);
   const topicLink = getTopicLink(slug);
 
@@ -45,3 +45,5 @@ const Meta = styled.span`
 const Topic = styled(ElementWithOpacity)`
   z-index: var(--max-z-index);
 `;
+
+export default PostMeta;

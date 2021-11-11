@@ -1,6 +1,6 @@
 import { Text } from 'Types/data';
 
-export const copyright: Array<Text> = [
+const copyright: Array<Text> = [
   {
     type: 'text',
     text: 'Zaprojektowane i zakodowane przeze mnie. Napisałem też ',
@@ -27,3 +27,5 @@ export const copyright: Array<Text> = [
     href: '',
   },
 ];
+
+export default copyright;

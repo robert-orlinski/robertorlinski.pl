@@ -1,6 +1,6 @@
 import { CatalogedLinksArray } from 'Types/links';
 
-export const mainMenu: CatalogedLinksArray = [
+const mainMenu: CatalogedLinksArray = [
   {
     href: '/newsletter',
     title: 'Newsletter',
@@ -18,3 +18,5 @@ export const mainMenu: CatalogedLinksArray = [
     title: 'Kontakt',
   },
 ];
+
+export default mainMenu;

@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import { ElementWithOpacity } from 'Components/ElementWithOpacity';
-import { Logo } from './Logo';
+import ElementWithOpacity from 'Components/ElementWithOpacity';
+import Logo from './Logo';
 
-export const Brand = () => (
+const Brand = () => (
   <BrandLink href="/">
     <Logo />
   </BrandLink>
@@ -12,3 +12,5 @@ export const Brand = () => (
 const BrandLink = styled(ElementWithOpacity)`
   line-height: 0;
 `;
+
+export default Brand;

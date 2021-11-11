@@ -53,11 +53,7 @@ export const prepareMDX = async (
       write: true,
     }),
     globals: {
-      CodePenIframe: {
-        varName: 'codePenIframe',
-        namedExports: ['CodePenIframe'],
-        defaultExport: false,
-      },
+      CodePenIframe: 'codePenIframe',
     },
   });
 

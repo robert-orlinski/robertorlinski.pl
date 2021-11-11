@@ -2,7 +2,7 @@ import { FC, forwardRef, Ref, InputHTMLAttributes } from 'react';
 import { DeepMap, FieldError, FieldValues, UseFormRegister } from 'react-hook-form';
 import styled from 'styled-components';
 
-import { ErrorIcon } from './ErrorIcon';
+import ErrorIcon from './ErrorIcon';
 
 type Props = {
   label: string;
@@ -13,7 +13,7 @@ type Props = {
   errors?: DeepMap<FieldValues, FieldError>;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'pattern'>;
 
-export const TextInput: FC<Props> = forwardRef(
+const TextInput: FC<Props> = forwardRef(
   ({ label, name, required, pattern, register, errors, ...props }, ref: Ref<HTMLInputElement>) => {
     const isValidableInput = register && errors;
 
@@ -87,3 +87,5 @@ const Label = styled.label`
     opacity: 0;
   }
 `;
+
+export default TextInput;

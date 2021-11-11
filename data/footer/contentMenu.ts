@@ -1,6 +1,6 @@
 import { CatalogedLinksArray } from 'Types/links';
 
-export const contentMenu: CatalogedLinksArray = [
+const contentMenu: CatalogedLinksArray = [
   {
     href: '/tematy',
     title: 'Tematy',
@@ -10,3 +10,5 @@ export const contentMenu: CatalogedLinksArray = [
     title: 'Wszystkie artykuły',
   },
 ];
+
+export default contentMenu;

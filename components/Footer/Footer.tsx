@@ -1,17 +1,17 @@
 import styled from 'styled-components';
 
-import { Wrapper } from 'Components/Wrapper';
-import { FooterMenu } from './Menu';
-import { Brand } from 'Components/Brand';
-import { TextWithLinks } from 'Components/TextWithLinks';
+import TextWithLinks from 'Components/TextWithLinks';
+import Separator from 'Components/Separator';
+import Wrapper from 'Components/Wrapper';
+import FooterMenu from './FooterMenu';
+import Brand from 'Components/Brand';
 
-import { contentMenu } from 'Data/footer/contentMenu';
-import { formalitiesMenu } from 'Data/footer/formalitiesMenu';
-import { copyright } from 'Data/footer/copyright';
+import contentMenu from 'Data/footer/contentMenu';
+import formalitiesMenu from 'Data/footer/formalitiesMenu';
+import copyright from 'Data/footer/copyright';
 import { from, to } from 'Devices';
-import { Separator } from 'Components/Separator';
 
-export const Footer = () => {
+const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
@@ -88,3 +88,5 @@ const Bottom = styled(Wrapper)`
   font-size: 0.9rem;
   text-align: center;
 `;
+
+export default Footer;

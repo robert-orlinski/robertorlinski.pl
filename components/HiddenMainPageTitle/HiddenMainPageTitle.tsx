@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router';
 
-import { VisuallyHiddenElement } from 'Components/VisuallyHiddenElement';
+import VisuallyHiddenElement from 'Components/VisuallyHiddenElement';
 
-import { siteName } from 'SiteName';
+import siteName from 'SiteName';
 
-export const HiddenMainPageTitle = () => {
+const HiddenMainPageTitle = () => {
   const router = useRouter();
 
   if (router.pathname !== '/') {
@@ -13,3 +13,5 @@ export const HiddenMainPageTitle = () => {
 
   return <VisuallyHiddenElement as="h1">{siteName}</VisuallyHiddenElement>;
 };
+
+export default HiddenMainPageTitle;

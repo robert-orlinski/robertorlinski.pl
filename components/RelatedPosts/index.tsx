@@ -1,1 +1,0 @@
-export { RelatedPosts } from './RelatedPosts';

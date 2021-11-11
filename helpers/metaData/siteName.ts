@@ -1,1 +1,3 @@
-export const siteName = 'Robert Orliński';
+const siteName = 'Robert Orliński';
+
+export default siteName;

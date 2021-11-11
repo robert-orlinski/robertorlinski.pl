@@ -1,6 +1,6 @@
 import { CatalogedLinksArray } from 'Types/links';
 
-export const formalitiesMenu: CatalogedLinksArray = [
+const formalitiesMenu: CatalogedLinksArray = [
   {
     href: '/kontakt',
     title: 'Kontakt',
@@ -10,3 +10,5 @@ export const formalitiesMenu: CatalogedLinksArray = [
     title: 'Polityka prywatności',
   },
 ];
+
+export default formalitiesMenu;

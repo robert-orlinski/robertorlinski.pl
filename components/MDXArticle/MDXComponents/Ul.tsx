@@ -1,5 +1,5 @@
-import styled from 'styled-components';
+import List from 'Components/List';
 
-import { List } from './List';
+const Ul = ({ children }: JSX.IntrinsicElements['ul']) => <List as="ul" {...{ children }} />;
 
-export const Ul = styled(List).attrs({ as: 'ul' })``;
+export default Ul;

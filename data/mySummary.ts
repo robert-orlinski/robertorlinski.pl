@@ -1,6 +1,6 @@
 import { Text } from 'Types/data';
 
-export const mySummary: Array<Text> = [
+const mySummary: Array<Text> = [
   {
     type: 'text',
     text: 'Tworzę kod ',
@@ -67,3 +67,5 @@ export const mySummary: Array<Text> = [
     href: '',
   },
 ];
+
+export default mySummary;

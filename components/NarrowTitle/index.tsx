@@ -1,1 +1,0 @@
-export { NarrowTitle } from './NarrowTitle';

@@ -1,12 +1,12 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import { Row } from 'Components/Row';
-import { Topic } from 'Components/Topic';
+import Row from 'Components/Row';
+import Topic from 'Components/Topic';
 
 import { TopicsGroup as GroupType } from 'Types/data';
 
-export const TopicsGroup: FC<GroupType> = ({ groupName, topics }) => (
+const TopicsGroup: FC<GroupType> = ({ groupName, topics }) => (
   <Group size="medium">
     <div>
       <Name>{groupName}</Name>
@@ -35,3 +35,5 @@ const Name = styled.h2`
   top: calc(var(--nav-height) + 2rem);
   left: 0;
 `;
+
+export default TopicsGroup;

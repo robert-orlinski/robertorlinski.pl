@@ -2,7 +2,7 @@ import { TopicsGroups } from 'Types/data';
 
 const topicsImagesDir = '/images/taxonomies/topics';
 
-export const topicsGroups: TopicsGroups = [
+const topicsGroups: TopicsGroups = [
   {
     groupName: 'Programowanie',
     topics: [
@@ -84,3 +84,5 @@ export const topicsGroups: TopicsGroups = [
     ],
   },
 ];
+
+export default topicsGroups;

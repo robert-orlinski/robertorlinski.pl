@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
-import { CenteredText } from 'Components/CenteredText';
-import { SectionTitle } from 'Components/SectionTitle';
-import { PostsList } from 'Components/PostsList';
-import { Button } from 'Components/Button';
+import CenteredText from 'Components/CenteredText';
+import SectionTitle from 'Components/SectionTitle';
+import PostsList from 'Components/PostsList';
+import Button from 'Components/Button';
 
 import { PostsContainer } from 'Types/content';
 
-export const NewArticles: FC<PostsContainer> = ({ posts }) => (
+const NewArticles: FC<PostsContainer> = ({ posts }) => (
   <section>
     <SectionTitle>Najnowsze artykuły</SectionTitle>
     <PostsList {...{ posts }} />
@@ -23,3 +23,5 @@ const MoreButtonContainer = styled(CenteredText).attrs({
 })`
   padding-top: calc(var(--section-gap) * 0.6);
 `;
+
+export default NewArticles;

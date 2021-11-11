@@ -1,7 +1,9 @@
-import { Nav } from 'components/Nav';
+import Nav from 'components/Nav';
 
-export const RawHeader = () => (
+const RawHeader = () => (
   <header>
     <Nav />
   </header>
 );
+
+export default RawHeader;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { createGlobalStyle } from 'styled-components';
 
-export const FocusVisibleWhileUserIsTabbing = () => {
+const FocusVisibleWhileUserIsTabbing = () => {
   const [userIsTabbing, setUserTabbing] = useState(false);
 
   useEffect(() => {
@@ -46,3 +46,5 @@ const FocusVisible = createGlobalStyle`
     outline: 2px solid #7AACFE;
   }
 `;
+
+export default FocusVisibleWhileUserIsTabbing;

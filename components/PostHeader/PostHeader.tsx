@@ -2,14 +2,14 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-import { PostMeta } from 'Components/PostMeta';
+import PostMeta from 'Components/PostMeta';
 
 import { getPostFeaturedImage } from 'Helpers/components/posts';
 
 import { Post } from 'Types/content';
 import { to } from 'Devices';
 
-export const PostHeader: FC<Post> = ({ title, topics, date, slug }) => {
+const PostHeader: FC<Post> = ({ title, topics, date, slug }) => {
   const featuredImage = getPostFeaturedImage(slug);
 
   return (
@@ -34,3 +34,5 @@ const Title = styled.h1`
 
   font-size: clamp(1.6rem, 4vw, 2.6rem);
 `;
+
+export default PostHeader;

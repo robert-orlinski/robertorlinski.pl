@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
-import { FocusVisibleWhileUserIsTabbing } from './FocusVisibleWhileUserIsTabbing';
-import { CssVariables } from './CssVariables';
-import { GlobalStyle } from './GlobalStyle';
+import FocusVisibleWhileUserIsTabbing from './FocusVisibleWhileUserIsTabbing';
+import CssVariables from './CssVariables';
+import GlobalStyle from './GlobalStyle';
 
-import { Footer } from 'Components/Footer';
+import Footer from 'Components/Footer';
 
-export const Layout: FC = ({ children }) => (
+const Layout: FC = ({ children }) => (
   <>
     <CssVariables />
     <GlobalStyle />
@@ -15,3 +15,5 @@ export const Layout: FC = ({ children }) => (
     <Footer />
   </>
 );
+
+export default Layout;

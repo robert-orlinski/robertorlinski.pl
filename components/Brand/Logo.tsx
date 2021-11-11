@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Logo = () => (
+const Logo = () => (
   <Icon viewBox="0 0 1276 285" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path fillRule="evenodd" clipRule="evenodd" d="M200 0H0v200h100V100h100V0z" fill="#2979FF" />
     <path
@@ -14,3 +14,5 @@ export const Logo = () => (
 const Icon = styled.svg`
   height: var(--brand-height);
 `;
+
+export default Logo;

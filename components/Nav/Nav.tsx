@@ -3,24 +3,20 @@ import styled from 'styled-components';
 import useToggle from 'Hooks/useToggle';
 import useStickyElement from 'Hooks/useStickyElement';
 
-import { HiddenMainPageTitle } from 'Components/HiddenMainPageTitle';
-import { Separator } from 'Components/Separator';
-import { SocialMedia } from 'Components/SocialMedia';
-import { Search } from 'Components/Search';
-import { Hamburger } from 'Components/Hamburger';
+import HiddenMainPageTitle from 'Components/HiddenMainPageTitle';
+import Separator from 'Components/Separator';
+import SocialMedia from 'Components/SocialMedia';
+import Search from 'Components/Search';
+import Hamburger from 'Components/Hamburger';
+import Brand from 'Components/Brand';
 
-import { NavBar } from './Bar';
-import { Brand } from 'Components/Brand';
-import { NavMenu } from './Menu';
-import { NavLinks } from './Links';
+import NavBar from './NavBar';
+import NavMenu from './NavMenu';
+import NavLinks from './NavLinks';
 
 import { to } from 'Devices';
 
-export type LinksVisibilityProps = {
-  areVisible: boolean;
-};
-
-export const Nav = () => {
+const Nav = () => {
   const [isNavVisibleOnMobile, toggleNavVisibility] = useToggle(false);
   const [isSticky] = useStickyElement();
 
@@ -58,3 +54,5 @@ const SeparatorHiddenOnMobile = styled(Separator)`
     display: none;
   }
 `;
+
+export default Nav;

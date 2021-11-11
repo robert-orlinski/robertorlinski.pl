@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 import { from } from 'Devices';
 
-export const CenteredText = styled.div`
+const CenteredText = styled.div`
   @media ${from.phoneL} {
     text-align: center;
   }
 `;
+
+export default CenteredText;

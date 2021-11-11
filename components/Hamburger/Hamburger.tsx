@@ -1,7 +1,7 @@
 import { FC, HTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
 
-import { ElementWithOpacity } from 'Components/ElementWithOpacity';
+import ElementWithOpacity from 'Components/ElementWithOpacity';
 
 import { from } from 'Devices';
 
@@ -10,7 +10,7 @@ type Props = {
   isHiddenOnDesktop?: boolean;
 };
 
-export const Hamburger: FC<Props & HTMLAttributes<HTMLAnchorElement>> = ({
+const Hamburger: FC<Props & HTMLAttributes<HTMLAnchorElement>> = ({
   onClick,
   isCrossed,
   isHiddenOnDesktop = false,
@@ -90,3 +90,5 @@ const Inner = styled.span`
     transform: var(--bottom-bar-transform, none);
   }
 `;
+
+export default Hamburger;

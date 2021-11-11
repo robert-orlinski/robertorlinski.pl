@@ -2,9 +2,9 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-import { Wrapper } from 'Components/Wrapper';
-import { Nav } from 'Components/Nav';
-import { SectionTitle } from 'Components/SectionTitle';
+import Wrapper from 'Components/Wrapper';
+import Nav from 'Components/Nav';
+import SectionTitle from 'Components/SectionTitle';
 
 import { from, to } from 'Devices';
 
@@ -17,7 +17,7 @@ type Props = {
   withFixedImage?: boolean;
 };
 
-export const MainBanner: FC<Props> = ({ title, image: { src, alt }, withFixedImage }) => (
+const MainBanner: FC<Props> = ({ title, image: { src, alt }, withFixedImage }) => (
   <header>
     <Nav />
     <Banner>
@@ -61,7 +61,7 @@ const MainTitle = styled(SectionTitle)`
     left: 0;
     bottom: max(2.5rem, 1.2em);
 
-    padding: 0.5rem 2rem 0.5rem 0;
+    padding: 0.5rem 1.8rem 0.5rem 0;
 
     white-space: pre;
 
@@ -86,3 +86,5 @@ const FixedImageContainer = styled(ImageContainer)`
     height: 60vw;
   }
 `;
+
+export default MainBanner;

@@ -1,1 +1,3 @@
-export const addressSeparator = '|';
+const addressSeparator = '|';
+
+export default addressSeparator;

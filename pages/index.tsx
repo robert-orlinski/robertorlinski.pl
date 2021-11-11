@@ -1,22 +1,22 @@
 import { FC } from 'react';
 import { GetStaticProps } from 'next';
 
-import { CenteredText } from 'Components/CenteredText';
-import { TextWithLinks } from 'Components/TextWithLinks';
-import { NewArticles } from 'Components/NewArticles';
-import { MainBanner } from 'Components/MainBanner';
-import { Newsletter } from 'Components/Newsletter';
-import { Wrapper } from 'Components/Wrapper';
-import { Button } from 'Components/Button';
-import { TextBlock } from 'Components/TextBlock';
-import { Head } from 'Components/Head';
-import { P } from 'Components/P';
+import CenteredText from 'Components/CenteredText';
+import TextWithLinks from 'Components/TextWithLinks';
+import NewArticles from 'Components/NewArticles';
+import MainBanner from 'Components/MainBanner';
+import Newsletter from 'Components/Newsletter';
+import TextBlock from 'Components/TextBlock';
+import Wrapper from 'Components/Wrapper';
+import Button from 'Components/Button';
+import Head from 'Components/Head';
+import P from 'Components/P';
 
 import { getNewestPosts } from 'Helpers/content/posts';
-import { addressSeparator } from 'AddressSeparator';
-import { mySummary } from 'Data/mySummary';
-import { siteName } from 'SiteName';
-import { slogan } from 'Slogan';
+import addressSeparator from 'AddressSeparator';
+import mySummary from 'Data/mySummary';
+import siteName from 'SiteName';
+import slogan from 'Slogan';
 
 import { PostsContainer } from 'Types/content';
 
@@ -43,8 +43,8 @@ const Home: FC<PostsContainer> = ({ posts }) => {
         <TextBlock>
           <P>
             Przez parę ostatnich lat pracowałem z WordPressem, aż do momentu, w którym okazało się,
-            że niewiele może mnie w nim już zaskoczyć - dlatego niedawno przerzuciłem się w pełni na
-            front-end.
+            że nie tak wiele może mnie w nim już zaskoczyć - dlatego niedawno przerzuciłem się w
+            pełni na front-end.
           </P>
           <TextWithLinks text={mySummary} />
           <CenteredText as="footer">

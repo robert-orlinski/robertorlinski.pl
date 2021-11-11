@@ -1,1 +1,0 @@
-export { CenteredText } from './CenteredText';

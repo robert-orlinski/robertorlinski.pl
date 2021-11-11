@@ -6,9 +6,11 @@ type Props = {
   description: string;
 };
 
-export const Head: FC<Props> = ({ title, description }) => (
+const Head: FC<Props> = ({ title, description }) => (
   <HeadTag>
     <title>{title}</title>
     <meta name="description" content={description} />
   </HeadTag>
 );
+
+export default Head;

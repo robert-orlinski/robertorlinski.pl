@@ -1,21 +1,21 @@
 import { FC } from 'react';
 import { GetStaticProps } from 'next';
 
-import { CenteredText } from 'Components/CenteredText';
-import { NarrowTitle } from 'Components/NarrowTitle';
-import { TopicsGroup } from 'Components/TopicsGroup';
-import { MainBanner } from 'Components/MainBanner';
-import { TextBlock } from 'Components/TextBlock';
-import { Button } from 'Components/Button';
-import { Error } from 'Components/Error';
-import { Head } from 'Components/Head';
-import { P } from 'Components/P';
+import CenteredText from 'Components/CenteredText';
+import NarrowTitle from 'Components/NarrowTitle';
+import TopicsGroup from 'Components/TopicsGroup';
+import MainBanner from 'Components/MainBanner';
+import TextBlock from 'Components/TextBlock';
+import Button from 'Components/Button';
+import Error from 'Components/Error';
+import Head from 'Components/Head';
+import P from 'Components/P';
 
-import { topicsGroups } from 'Data/taxonomies/topics';
+import topicsGroups from 'Data/taxonomies/topics';
 
 import { getNewestPosts } from 'Helpers/content/posts';
-import { addressSeparator } from 'AddressSeparator';
-import { siteName } from 'SiteName';
+import addressSeparator from 'AddressSeparator';
+import siteName from 'SiteName';
 
 import { PostsContainer } from 'Types/content';
 

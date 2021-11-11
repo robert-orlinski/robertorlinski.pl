@@ -1,7 +1,5 @@
-import styled from 'styled-components';
+import List from 'Components/List';
 
-import { List } from './List';
+const Ol = ({ children }: JSX.IntrinsicElements['ol']) => <List as="ol" {...{ children }} />;
 
-export const Ol = styled(List).attrs({ as: 'ol' })`
-  counter-reset: list;
-`;
+export default Ol;

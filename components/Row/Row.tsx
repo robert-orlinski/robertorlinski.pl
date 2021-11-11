@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 import { from, to } from 'Devices';
 
-import { Wrapper } from 'Components/Wrapper';
+import Wrapper from 'Components/Wrapper';
 
-export const Row = styled(Wrapper)`
+const Row = styled(Wrapper)`
   display: grid;
 
   padding-bottom: var(--section-gap);
@@ -18,3 +18,5 @@ export const Row = styled(Wrapper)`
     grid-row-gap: calc(var(--section-gap) * 0.7);
   }
 `;
+
+export default Row;

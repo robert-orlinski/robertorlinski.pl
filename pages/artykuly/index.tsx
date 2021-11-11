@@ -1,13 +1,13 @@
 import { FC } from 'react';
 import { GetStaticProps } from 'next';
 
-import { Head } from 'Components/Head';
-import { MainBanner } from 'Components/MainBanner';
-import { Wrapper } from 'Components/Wrapper';
-import { PostsList } from 'Components/PostsList';
+import Head from 'Components/Head';
+import MainBanner from 'Components/MainBanner';
+import Wrapper from 'Components/Wrapper';
+import PostsList from 'Components/PostsList';
 
-import { siteName } from 'SiteName';
-import { addressSeparator } from 'Helpers/metaData/addressSeparator';
+import siteName from 'SiteName';
+import addressSeparator from 'Helpers/metaData/addressSeparator';
 import { getPosts } from 'Helpers/content/posts';
 
 import { PostsContainer } from 'Types/content';

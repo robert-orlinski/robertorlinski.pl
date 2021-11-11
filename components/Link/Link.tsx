@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import { UnderlinedLink } from 'Components/UnderlinedLink';
-import { LinkContainer } from 'Components/LinkContainer';
+import UnderlinedLink from 'Components/UnderlinedLink';
+import LinkContainer from 'Components/LinkContainer';
 
 import { Link as LinkType } from 'Types/links';
 
-export const Link: FC<LinkType> = ({ children, href, isUnderlineVisible, isExternal }) => {
+const Link: FC<LinkType> = ({ children, href, isUnderlineVisible, isExternal }) => {
   isExternal ||= href.includes('http');
 
   return isExternal ? (
@@ -18,3 +18,5 @@ export const Link: FC<LinkType> = ({ children, href, isUnderlineVisible, isExter
     </LinkContainer>
   );
 };
+
+export default Link;

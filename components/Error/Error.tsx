@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import { NarrowTitle } from 'Components/NarrowTitle';
-import { TextBlock } from 'Components/TextBlock';
-import { Button } from 'Components/Button';
+import NarrowTitle from 'Components/NarrowTitle';
+import TextBlock from 'Components/TextBlock';
+import Button from 'Components/Button';
 
 type Props = {
   withButton?: {
@@ -11,9 +11,11 @@ type Props = {
   };
 };
 
-export const Error: FC<Props> = ({ children, withButton: { href, title } = {} }) => (
+const Error: FC<Props> = ({ children, withButton: { href, title } = {} }) => (
   <TextBlock>
     <NarrowTitle level={2}>{children}</NarrowTitle>
     {href && title && <Button href={href}>{title}</Button>}
   </TextBlock>
 );
+
+export default Error;

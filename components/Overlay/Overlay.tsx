@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import { ElementWithCustomZIndex } from 'Types/styled-components';
+import { ElementWithCustomZIndex } from 'Types/styledComponents';
 
-export const Overlay = styled.div<ElementWithCustomZIndex>`
+const Overlay = styled.div<ElementWithCustomZIndex>`
   position: absolute;
 
   width: 100%;
@@ -13,3 +13,5 @@ export const Overlay = styled.div<ElementWithCustomZIndex>`
 
   z-index: ${({ zIndex }) => `var(--${zIndex}-z-index)` || 10};
 `;
+
+export default Overlay;
