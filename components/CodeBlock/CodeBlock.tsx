@@ -12,7 +12,7 @@ const CodeBlock = styled.pre`
   color: #f8f8f2;
   background: #2e3440;
 
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   line-height: 1.5;
 
   & > code {
