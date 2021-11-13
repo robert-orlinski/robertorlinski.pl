@@ -4,8 +4,8 @@ import router from 'next/router';
 const subscribeToTheNewsletter = async (data: NewsletterData): Promise<string | null> => {
   const response = await fetch('/api/newsletter/subscribe', {
     method: 'POST',
-    body: JSON.stringify(data),
     headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
   });
   const { error } = await response.json();
 

@@ -6,7 +6,7 @@ const subscribe = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
     const API_KEY = process.env.MAILCHIMP_API_KEY;
-    const SERVER_PREFIX = API_KEY!.split('-')[1];
+    const SERVER_PREFIX = API_KEY ? API_KEY.split('-')[1] : 'us15';
 
     const data = {
       email_address: email,

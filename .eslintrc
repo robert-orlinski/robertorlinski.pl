@@ -3,6 +3,7 @@
   "rules": {
     "no-unused-vars": "off",
     "react/display-name": "off",
+    "import/no-anonymous-default-export": "off",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [
       "warn",

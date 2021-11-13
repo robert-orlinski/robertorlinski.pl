@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 import styled from 'styled-components';
 
-import { SubmitButton } from './SubmitButton';
-import { EmailInput } from './EmailInput';
-import { NameInput } from './NameInput';
+import { SubmitButton } from './inputs/SubmitButton';
+import { EmailInput } from './inputs/EmailInput';
+import { NameInput } from './inputs/NameInput';
 import { Error } from './Error';
 
 import subscribeToTheNewsletter from 'Helpers/requests/subscribeToTheNewsletter';
