@@ -1,0 +1,249 @@
+---
+title: 13 dobrych praktyk, które sprawią, że Twój kod CSS stanie się lepszy!
+seoTitle: Dobre praktyki, które ulepszą Twój kod CSS
+abstract: Piszę o tym dlaczego warto dbać o poprawność naszego kodu CSS oraz przedstawiam dobre praktyki, związane z jego pisaniem.
+isPublished: true
+topics:
+  - Front-end
+date: 30.04.2017
+isPopular: true
+---
+
+Ostatnio Bartłomiej Mąkina z bloga [Devcorner.pl](http://devcorner.pl) stworzył artykuł, w którym wymienia 7 złych praktyk podczas pisania kodu CSS. Zainspirowało mnie to do stworzenia swojego wpisu, w którym przedstawiam przeciwieństwo, czyli dobre praktyki :)
+
+Dowiemy się dziś dlaczego w ogóle warto zwracać uwagę na poprawność naszego kodu CSS oraz poznamy dokładnie 13 sposobów na zwiększenie jego jakości.
+
+## Dlaczego warto stosować dobre praktyki w przypadku kodu CSS?
+
+Korzystanie z dobrych praktyk ma szereg zalet. Przede wszystkim nasza witryna działa szybciej i wydajniej. Zawartość nie ma problemów z ustawianiem się na stronie, a przejrzysty oraz ułożony kod jest łatwiejszy do odczytania przez nas, jak i inne osoby, na przykład współpracowników.
+
+## Dobre praktyki:
+
+### 1. Normalizacja stylów przeglądarki
+
+Zacznę od sposobu, o którym sam dowiedziałem się na późnym etapie nauki. Każda przeglądarka posiada własne, domyślne style, które potrafią przysporzyć sporej ilości problemów podczas tworzenia strony internetowej.
+
+Właśnie to często jest powodem sytuacji, w której tworzymy witrynę i przykładowo na Chromie wygląda dobrze, po czym sprawdzamy ją na Firefoxie, gdzie jest zupełnie inna. Na szczęście możemy tego bardzo prosto uniknąć. Wystarczy dodać do naszych stylów kod z tej oto strony: [Normalize.css](https://necolas.github.io/normalize.css/).
+
+Warto wspomnieć, że oprócz normalizacji istnieje coś takiego jak zupełny reset stylów przeglądarki. Aby go zastosować, wystarczy dodać kod z tej [strony](https://meyerweb.com/eric/tools/css/reset/) na początku naszego arkusza stylów.
+
+### 2. Używanie `box-sizing: border-box`
+
+Domyślną wartością dla `box-sizing` jest `content-box`, ale niestety ta opcja sprawia wiele problemów. Postaram się wytłumaczyć dlaczego, na przykładzie kodu:
+
+```css
+.div1 {
+  box-sizing: content-box;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: 5px;
+}
+```
+
+W tym przypadku `div` ma 100px, ale osobno zostaje do niego dodany `padding` i `border`, które w praktyce sprawiają, że całość ma 130px.
+
+```css
+.div2 {
+  box-sizing: border-box;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  border: 5px;
+}
+```
+
+Tu już jest zupełnie inaczej. Całość ma 100px, a `padding` oraz `border` odejmują się od wymiarów diva, przez co ten ma w praktyce 70px szerokości i wysokości.
+
+Warto zaznaczyć, że najczęściej `box-sizing: border-box` implementuje się w ten oto sposób:
+
+```css
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+```
+
+Jest to najlepsza praktyka, która rozwiązuje wszystkie problemy :)
+
+Zmiana tej wartości daje nam większą kontrolę nad układem strony i sprawia, że całość się nie rozjeżdża.
+
+### 3. Łączenie stylów dla wielu elementów
+
+Możemy nadać takie same style dla więcej niż jednego fragmentu naszej strony. Dla przykładu chcąc ustawić kolor czcionki na ciemnogranatowy, dla nagłówków `h1` do `h3` nie użyjemy takiego kodu:
+
+```css
+h1 {
+  color: #10131a;
+}
+
+h2 {
+  color: #10131a;
+}
+
+h3 {
+  color: #10131a;
+}
+```
+
+...a taki:
+
+```css
+h1,
+h2,
+h3 {
+  color: #10131a;
+}
+```
+
+Nasz kod stanie się bardziej przyjazny dla ludzi, jak i przeglądarek.
+
+### 4. Używanie zapisu szesnastkowego lub RGB
+
+Kolory dobrze jest pisać w jednej z tych dwóch postaci. Przykładowo nie używać takiego zapisu:
+
+```css
+h1 {
+  color: black;
+}
+```
+
+...a taki:
+
+```css
+h1 {
+  color: #000000;
+}
+```
+
+Dzięki temu nasz kod będzie trzymał się jednego standardu oraz stanie się przyjemniejszy w interpretacji.
+
+### 5. Łączenie kodu w jedną linię
+
+Co rozumiem przez to zdanie? Gdy mamy element, któremu trzeba nadać różny margines z każdej ze stron nie używajmy takiego kodu:
+
+```css
+div {
+  margin-top: 10px;
+  margin-right: 5px;
+  margin-bottom: 20px;
+  margin-left: 15px;
+}
+```
+
+...a taki:
+
+```css
+div {
+  margin: 10px 5px 20px 15px;
+}
+```
+
+Z kolei gdy ten margines jest taki sam od góry i dołu, a inny po bokach, to ponownie nie piszmy tego w ten sposób:
+
+```css
+div {
+  margin-top: 10px;
+  margin-right: 5px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+}
+```
+
+...a w ten:
+
+```css
+div {
+  margin: 10px 5px;
+}
+```
+
+Dzięki temu nasz kod będzie krótszy i szybciej ładowany przez przeglądarki.
+
+### 6. Organizacja kodu
+
+Ważne jest aby nasz kod był ułożony w taki sposób, jak wygląda budowa strony. Przykładowo nasze style mogą być zorganizowane wg. takiej oto hierarchii:
+
+```css
+/* Reset stylów przeglądarki */
+/* Style ogólne */
+/* Czcionki i ułożenie elementów na stronie */
+/* Nagłówek */
+/* Główna zawartość witryny */
+/* Stopka */
+/* Media Queries */
+```
+
+Dodatkowo cały kod powinien posiadać komentarze odgradzające poszczególne sekcje i elementy stron.
+
+Wszystkie te dobre praktyki sprawią, że kod będzie bardziej przejrzysty i prostszy do odczytania przez nas, jak i przeglądarki internetowe.
+
+### 7. Nieużywanie deklaracji `!important`
+
+Ta zła praktyka jest bardzo często poruszana, z racji tego, że jej działanie jest tragiczne w skutkach. Za jej pomocą zupełnie zaburza się hierarchię kodu CSS oraz znacznie utrudnia późniejszą edycję.
+
+### 8. Używanie `text-transform`, zamiast caps locka
+
+Jeśli dane zdanie w całości ma być napisane z wielkich liter, to dobrze jest nie robić tego w ten oto sposób:
+
+```html
+<p class="distinction">ZDANIE Z WIELKICH LITER</p>
+```
+
+...a w ten:
+
+```css
+.distinction {
+  text-transform: uppercase;
+}
+```
+
+Wszystko z powodu [dostępności](./dostepne-strony-internetowe). Gdy użytkownik, przeglądający naszą stronę, korzysta z czytnika ekranowego, zdanie zapisane wielkimi literami, będzie czytane na zasadzie "Z D A N I E" - z wyraźnymi przerwami między każdą literką.
+
+Taki sposób czytania, nie będzie przystępny dla użytkownika, a sam tekst stanie się przez to bardzo trudny w zrozumieniu.
+
+### 9. Dodawanie animacji na końcu
+
+Wszelkie animacje widoczne na stronie, szczególnie biblioteki, takie jak np. [Animate.css](https://daneden.github.io/animate.css/) powinny być dodane na końcu po to, aby właściwa treść mogła pojawiać się przed nimi.
+
+Dzięki temu witryna będzie ładować najpierw właściwą treść, a dopiero później wszelkie dodatki.
+
+### 10. Niepowtarzanie tego samego kodu
+
+Jeśli na przykład posiadamy ciemne tło i białą czcionkę dla wielu elementów na stronie, to nie przypisujmy tego dla każdego elementu. Lepiej zróbmy to na przykład w ten sposób:
+
+```css
+.html {
+  background-color: #333333;
+  color: #ffffff;
+}
+```
+
+Oczywiście nie wszystkie style są dziedziczone (np. margines). W tym [miejscu](https://stackoverflow.com/questions/5612302/which-css-properties-are-inherited) możecie znaleźć listę wszystkich elementów, które działają w ten sposób.
+
+### 11. Posiadanie jednego pliku CSS
+
+Gdy nie korzystamy z bundlera, ani żadnego innego narzędzia, które usprawnia naszą pracę z kodem, dobrze jest połączyć cały kod CSS w jeden plik w przypadku mniejszych stron, po to aby ograniczyć ilość zapytań, które znacznie spowalniają ładowanie się strony.
+
+### 12. Utrzymywanie kodu CSS poza plikiem HTML
+
+W sumie po to aby oddzielić treść strony od jej wyglądu, zostały stworzone kaskadowe arkusze stylów. ;) Całość szczególnie dotyczy stylowania in-line, które jest bardzo dużym błędem i wygląda w ten sposób:
+
+```html
+<h1 style="color: #10131a;"></h1>
+```
+
+### 13. Minifikacja kodu
+
+Zabieg ten polega na usuwaniu wszystkich znaków białych z naszego kodu. Często też rozwiązuje problem powtórzeń. W tym celu istnieje mnóstwo narzędzi, takich jak [CSS Minifer](https://cssminifier.com/) oraz [CSS Compressor](http://csscompressor.com/) i proces ten zapewniają wszelkie bundlery (np. [Webpack](https://webpack.js.org/), czy [RollUp](https://rollupjs.org/guide/en/)).
+
+Dzięki temu nasza strona waży mniej i ładuje się szybciej.
+
+## Słowo podsumowania
+
+W tym artykule wypisałem dobre praktyki, które warto stosować podczas pisania kodu CSS. Mam nadzieję, że niektóre okażą się dla Ciebie pomocne i pomogą w tworzeniu jak najlepszych stron internetowych :)

@@ -1,0 +1,99 @@
+---
+title: Metodologia BEM – wszystko, co trzeba o niej wiedzieć
+abstract: Metodologia BEM 🤔 O co w niej chodzi? Dlaczego jest taka popularna? Jak z niej korzystać? Jakich błędów nie popełniać? O tym jest ten wpis!
+isPublished: true
+topics:
+  - Front-end
+date: 18.10.2021
+isPopular: true
+---
+
+W programowaniu dobrze jest stosować się do przyjętych norm, aby nasz kod był łatwejszy w zrozumieniu przez innych deweloperów i znacznie bardziej przemyślany - w końcu jeśli dana metodologia powstała, to bardzo często oznacza, że ktoś wymyślił już i sprawdził w boju to koło i my nie musimy robić tego na nowo.
+
+I tak jak HTML ma znaczniki semantyczne, języki programowania - wzorce projektowe i frameworki, tak CSS posiada konkretne metodologie.
+
+I tak, najpopularniejszą i przez wiele osób uważaną za najbardziej intuicyjną z nich jest BEM (Block-Element-Modifier), która to skradła serca deweloperów przez swoją prostotę, łatwość w wykorzystywaniu szczególnie przy pisaniu w preprocesorach takich jak SCSS, Sass czy Less i przede wszystkim - bycie wybawieniem w przypadku projektów dużych i rozwijanych przez dłuższy czas.
+
+I skoro jest taka popularna i przydatna, to powiedzmy o niej kilka zdań!
+
+## W takim razie o co chodzi w tej technice?
+
+W skrócie mamy 3 elementy. Konkretny **blok** (na przykład konkretną sekcję lub komponent na stronie), składa się on z **elementów** - może mieć w sobie rzeczy takie jak nagłówek, zdjęcia, przyciski, teksty i wiele wiele innych - to wszystko może być elementami konkretnego bloku.
+
+One wszystkie zwykle będą się powtarzać w obrębie witryny (w końcu słabym pomysłem jest, aby np. każdy przycisk na stronie był zupełnie inny. Gdy jednak chcemy wyróżnić dany element, to posłużymy się trzecią składową naszej metodologi, jaką jest **modyfikator**, który służy do zmodyfikowania tego powtarzalnego elementu (na przykład gdy jeden przycisk ma nie być biały, a zielony).
+
+## W porządku. Jak w takim razie się zapisuje w ramach klas w CSSie?
+
+W przypadku bloków (lub inaczej komponentów) jest najprościej:
+
+```css
+.blok .blok-skladajacy-sie-z-kilku-wyrazow;
+```
+
+Jak widać zapisujemy je tak jak zwykle deklaruje się klasy bez narzuconej metodologi - konkretnym wyrazem lub kilkoma, oddzielonymi pojedynczymi myślnikami.
+
+Z kolei element zapisujemy jako blok oraz nazwa elementu rozdzielone dwoma znakami podkreślenia (\_\_). W ten oto sposób:
+
+```css
+.blok__element
+```
+
+Co warto od razu podkreślić i do czego wrócę mówiąc później o kilku błędach, których warto unikać podczas pisania w ramach tej metodologii, to to, że element nie powinien mieć swojego elementu, a zamiast tego być bezpośrednią składową konkretnego bloku.
+
+Dzięki temu znacznie łatwiej dzieli się poszczególne elementy na stronie na małe i łatwe w wielokrotnym wykorzystywaniu komponenty, co sprawia, że nasz kod staje się znacznie bardziej [ortagonalny](https://pl.wikipedia.org/wiki/Ortogonalno%C5%9B%C4%87) (jego niepowiązane bezpośrednio części, nie wpływają na siebie nawzajem) oraz eliminuje powtórzenia.
+
+I jak wspomniałem - są jeszcze modyfikatory. Zapisujemy je podobnie jak elementy, tylko że zamiast znaków podkreślenia, używamy myślników, w ten oto sposób:
+
+```css
+.blok--modyfikator .blok__element--modyfikator;
+```
+
+Jak widać możemy modyfikować całe bloki jak i pojedyncze elementy. Co jeszcze ważne to modyfikator musi zawsze iść w parze z oryginalnym elementem:
+
+```css
+// Tak jest dobrze
+.blog__element .blok__element--modyfikator
+
+// Tak niekoniecznie
+.blok__element--modyfikator;
+```
+
+Może spójrzmy na konkretny przykład, w którym stworzymy prosty element banera na stronie:
+
+import CodePenIframe from 'CodePenIframe';
+
+<CodePenIframe id="LBVdxe" title="BEM w praktyce" />
+
+Dobrze pokazuje on sposób użycia wszystkich trzech części, jakie zawiera w sobie metodologia BEM.
+
+## Jakich błędów unikać, pisząc kod wg. metodologii BEM?
+
+### 1. Nie zagnieżdżajmy elementów
+
+Element nie powinien mieć swojego elementu. Nawiązując do poprzedniego przykładu coś takiego nie jest sytuacją, którą chcemy widzieć w naszym kodzie:
+
+<CodePenIframe id="YjXagB" title="Nie zagnieżdżajmy elementów" />
+
+Tak jak wspominałem parę paragrafów temu - jeśli w pełni przestrzegamy tej zasady, to pisanie niewchodzącego sobie w drogę, łatwego w ponownym używaniu i lepiej podzielonego na komponenty kodu, jest o niebo łatwiejsze.
+
+### 2. Stylujmy po klasach - w przypadku wszystkich elementów
+
+Jedną z zasad tej metodologii mówi nam aby do każdego elementu na stronie odwoływać się po klasach, a nie po ID lub selektorach. Dlatego znów powołując się na ten sam przykład:
+
+<CodePenIframe id="ZjGxNy" title="Używajmy klasy dla wszystkich elementów" />
+
+...coś takiego nie jest efektem, który chcielibyśmy osiągnąć. Widać zresztą, że stylowanie w ten sposób jest lekko pokręcone już przy tak małym bloku.
+
+### 3. Modyfikatory mają modyfikować elementy, a nie je zastępować
+
+Ostatnią kwestią jaką chciałbym poruszyć to sprawa modyfikatorów. Chodzi dokładnie o taką sytuację wspomnianą przy okazji tłumaczenia tego konceptu wcześniej w artykule:
+
+<CodePenIframe id="xJGWvz" title="Modyfikatory modyfikują elementy, a nie je zastępują" />
+
+Jak widać niepotrzebnie stworzyliśmy kilka dodatkowych lini stylując od nowa przezroczysty przycisk zamiast tylko go zmodyfikować.
+
+## Podsumowanie
+
+I tak oto dotarliśmy do końca tego artykułu, w którym chciałem wytłumaczyć Ci czym jest metodologia BEM oraz jakie są jej ogólne zasady.
+
+Mam nadzieję, że się to w jak największym stopniu udało i cóż - życzę Ci cudownego pisania CSSów wg jej zasad!
