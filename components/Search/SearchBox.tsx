@@ -30,7 +30,7 @@ const SearchBox = forwardRef((props, ref) => {
 
   return (
     <>
-      <Form method="GET">
+      <Form method="GET" onSubmit={(e) => e.preventDefault()}>
         <TextInput
           label="Szukaj"
           name="query"
