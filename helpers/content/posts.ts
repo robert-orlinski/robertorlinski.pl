@@ -10,12 +10,15 @@ const env = process.env.NODE_ENV || 'development';
 
 export const getPostsPaths = () => getResourcePaths(POSTS_PATH);
 
+export const getPostsByDateDescending = async () =>
+  await getResourcesByDateDescending<Post>(POSTS_PATH, 'posts');
+
 export const getPosts = async () => {
   if (env === 'production') {
     return postsCache;
   }
 
-  return await getResourcesByDateDescending<Post>(POSTS_PATH, 'posts');
+  return await getPostsByDateDescending();
 };
 
 export const getNewestPosts = async () => {
@@ -29,7 +32,7 @@ export const getRelatedPosts = async (
   currentPostWithContent: ResourceWithContent<Post>,
   givenTopicName: string,
 ) => {
-  const posts = await getResourcesByDateDescending<Post>(POSTS_PATH, 'posts');
+  const posts = await getPostsByDateDescending();
   const postsWithoutTheCurrentOne = posts.filter((post) => {
     const iteratedPostToCompare = JSON.stringify(post);
     const currentPostToCompare = JSON.stringify(currentPostWithContent.metaData);
