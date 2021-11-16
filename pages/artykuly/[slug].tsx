@@ -30,16 +30,14 @@ const Post: FC<PostWithContent> = ({ metaData, content, relatedPosts }) => {
       <RawHeader />
       <Wrapper as="main" size="medium" withSpaceBelow>
         <PostHeader {...metaData} />
-        <ArticleInner>
-          <MDXArticle source={content} />
-        </ArticleInner>
+        <Article source={content} />
       </Wrapper>
       <RelatedPosts posts={relatedPosts} />
     </>
   );
 };
 
-const ArticleInner = styled.article`
+const Article = styled(MDXArticle)`
   @media ${from.tablet} {
     padding: 0 55px;
   }

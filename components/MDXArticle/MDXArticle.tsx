@@ -1,5 +1,6 @@
 import { FC, useMemo } from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
+import styled from 'styled-components';
 
 import CodePenIframe from 'Components/CodePenIframe';
 import Blockquote from 'Components/Blockquote';
@@ -18,34 +19,44 @@ import Anchor from './MDXComponents/Anchor';
 import Ul from './MDXComponents/Ul';
 import Ol from './MDXComponents/Ol';
 
-type Props = { source: string };
+type Props = { source: string } & JSX.IntrinsicElements['article'];
 
-const MDXArticle: FC<Props> = ({ source }) => {
+const MDXArticle: FC<Props> = ({ source, className }) => {
   const MDXContainer = useMemo(
     () => getMDXComponent(source, { codePenIframe: CodePenIframe }),
     [source],
   );
 
   return (
-    <MDXContainer
-      components={{
-        blockquote: Blockquote,
-        code: Highlight,
-        pre: CodeBlock,
-        a: Anchor,
-        h1: H1,
-        h2: H2,
-        h3: H3,
-        h4: H4,
-        h5: H5,
-        h6: H6,
-        ul: Ul,
-        ol: Ol,
-        li: Li,
-        p: P,
-      }}
-    />
+    <Article {...{ className }}>
+      <MDXContainer
+        components={{
+          blockquote: Blockquote,
+          code: Highlight,
+          pre: CodeBlock,
+          a: Anchor,
+          h1: H1,
+          h2: H2,
+          h3: H3,
+          h4: H4,
+          h5: H5,
+          h6: H6,
+          ul: Ul,
+          ol: Ol,
+          li: Li,
+          p: P,
+        }}
+      />
+    </Article>
   );
 };
+
+const Article = styled.article`
+  p,
+  ul,
+  ol {
+    font-size: 1.1rem;
+  }
+`;
 
 export default MDXArticle;
