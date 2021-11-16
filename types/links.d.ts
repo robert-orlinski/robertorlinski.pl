@@ -1,5 +1,4 @@
-import { MouseEventHandler } from 'react';
-import { ObligatoryChildren } from './global';
+import { ReactChild, MouseEventHandler } from 'react';
 
 export type LinkContainer = {
   href: string;
@@ -17,13 +16,14 @@ export type UnderlinedLinkStyle = {
 
 export type Link = {
   isExternal?: boolean;
+  children: ReactChild;
 } & UnderlinedLinkStyle &
-  ObligatoryChildren &
   LinkContainer;
 
 export type Button = {
   type?: 'submit' | 'button';
   onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement> | undefined;
+  children: ReactChild;
 } & {
   [P in keyof LinkContainer]?: LinkContainer[P];
-} & ObligatoryChildren;
+};
