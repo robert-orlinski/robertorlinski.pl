@@ -267,6 +267,11 @@ const postRedirects = [
     destination: '/artykuly/przyklejona-nawigacja-przykrywa-kotwice',
     permanent: true,
   },
+  {
+    source: '/progress-bar',
+    destination: '/artykuly/progress-bar',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
