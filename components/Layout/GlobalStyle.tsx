@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html,
-  body, 
+  body,  
   p,
   ol,
   ul,
@@ -82,11 +82,11 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: var(--dark-gray);
+    color: inherit;
   }
 
   *::selection {
-    background-color: var(--dark-gray);
+    background-color: var(--brand-color);
     color: #fff;
   }
 
