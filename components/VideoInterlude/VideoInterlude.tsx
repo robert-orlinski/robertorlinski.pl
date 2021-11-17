@@ -42,7 +42,7 @@ const VideoInterlude: FC<Props> = ({ id, title }) => (
 const DarkBox = styled.section`
   width: calc(100% + calc(var(--side-padding) * 2));
 
-  margin: calc(var(--text-gap) * 0.5) calc(var(--side-padding) * -1) calc(var(--text-gap) * 1.5);
+  margin: var(--text-gap) calc(var(--side-padding) * -1) calc(var(--text-gap) * 1.5);
   padding: 3rem 3.5rem;
 
   background-color: var(--dark-gray);
@@ -52,7 +52,7 @@ const DarkBox = styled.section`
   @media ${to.tablet} {
     width: 100%;
 
-    margin: calc(var(--text-gap) * 0.5) 0 calc(var(--text-gap) * 1.5);
+    margin: var(--text-gap) 0 calc(var(--text-gap) * 1.5);
     padding: 2rem 2.5rem;
   }
 
