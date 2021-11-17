@@ -6,7 +6,7 @@ import { remarkMdxImages } from 'remark-mdx-images';
 import remarkCodeTitles from 'remark-code-titles';
 import rehypePrism from '@mapbox/rehype-prism';
 
-export const prepareMDX = async (
+const prepareMDX = async (
   source: string,
   options: {
     resourcePath: string;
@@ -64,3 +64,5 @@ export const prepareMDX = async (
     metaData: frontmatter,
   };
 };
+
+export default prepareMDX;

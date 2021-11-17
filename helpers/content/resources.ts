@@ -5,8 +5,9 @@ import readingTime from 'reading-time';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 
+import prepareMDX from './mdx';
+
 import { polishPlurals } from 'polish-plurals';
-import { prepareMDX } from './mdx';
 import { FEATURED_IMAGE_NAME } from '../constants';
 
 import { Resource, ResourceWithContent } from 'Types/content';
