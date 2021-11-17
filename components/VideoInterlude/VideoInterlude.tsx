@@ -15,13 +15,13 @@ type Props = {
 const VideoInterlude: FC<Props> = ({ id, title }) => (
   <DarkBox>
     <header>
-      <Title>Swoją drogą, ten artykuł ma też wersję wideo!</Title>
+      <Title>Psst! Jeśli wolisz oglądać, niż czytać, to ten artykuł ma też wersję wideo!</Title>
     </header>
     <VideoStyles />
     <Video noCookie={true} poster="maxresdefault" {...{ id, title }} />
     <Footer>
       <P>
-        Możesz obejrzeć ją 
+        Możesz obejrzeć go też 
         <Link href={`https://www.youtube.com/watch?v=${id}`} isUnderlineVisible>
           bezpośrednio na YouTube
         </Link>
