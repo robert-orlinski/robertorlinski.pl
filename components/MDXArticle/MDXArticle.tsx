@@ -3,6 +3,7 @@ import { getMDXComponent } from 'mdx-bundler/client';
 import styled from 'styled-components';
 
 import CodePenIframe from 'Components/CodePenIframe';
+import VideoDivider from 'Components/VideoDivider';
 import Blockquote from 'Components/Blockquote';
 import CodeBlock from 'Components/CodeBlock';
 import Highlight from 'Components/Highlight';
@@ -23,7 +24,11 @@ type Props = { source: string } & JSX.IntrinsicElements['article'];
 
 const MDXArticle: FC<Props> = ({ source, className }) => {
   const MDXContainer = useMemo(
-    () => getMDXComponent(source, { codePenIframe: CodePenIframe }),
+    () =>
+      getMDXComponent(source, {
+        codePenIframe: CodePenIframe,
+        videoDivider: VideoDivider,
+      }),
     [source],
   );
 

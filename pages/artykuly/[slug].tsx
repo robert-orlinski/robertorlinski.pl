@@ -39,7 +39,9 @@ const Post: FC<PostWithContent> = ({ metaData, content, relatedPosts }) => {
 
 const Article = styled(MDXArticle)`
   @media ${from.tablet} {
-    padding: 0 55px;
+    --side-padding: 55px;
+
+    padding: 0 var(--side-padding);
   }
 `;
 

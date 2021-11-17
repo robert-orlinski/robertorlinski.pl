@@ -2,6 +2,7 @@ import path from 'path';
 
 import { bundleMDX } from 'mdx-bundler';
 import { remarkMdxImages } from 'remark-mdx-images';
+
 import remarkCodeTitles from 'remark-code-titles';
 import rehypePrism from '@mapbox/rehype-prism';
 
@@ -54,6 +55,7 @@ export const prepareMDX = async (
     }),
     globals: {
       CodePenIframe: 'codePenIframe',
+      VideoDivider: 'videoDivider',
     },
   });
 

@@ -9,11 +9,11 @@ const Link: FC<LinkType> = ({ children, href, isUnderlineVisible, isExternal }) 
   isExternal ||= href.includes('http');
 
   return isExternal ? (
-    <UnderlinedLink href={href} target="_blank" rel="noreferrer" {...{ isUnderlineVisible }}>
+    <UnderlinedLink target="_blank" rel="noreferrer" {...{ href, isUnderlineVisible }}>
       {children}
     </UnderlinedLink>
   ) : (
-    <LinkContainer href={href}>
+    <LinkContainer {...{ href }}>
       <UnderlinedLink {...{ isUnderlineVisible }}>{children}</UnderlinedLink>
     </LinkContainer>
   );

@@ -9,7 +9,11 @@ const UnderlinedLink = styled.a<UnderlinedLinkStyle>`
 
   padding-bottom: 2px;
 
-  background: linear-gradient(var(--dark-gray), var(--dark-gray)) no-repeat;
+  background: linear-gradient(
+      var(--underline-color, var(--dark-gray)),
+      var(--underline-color, var(--dark-gray))
+    )
+    no-repeat;
   background-size: var(--line-size-initial, 0 1px);
   background-position: var(--line-position-initial, 100% 100%);
 
