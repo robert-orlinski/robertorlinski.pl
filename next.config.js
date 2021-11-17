@@ -262,6 +262,11 @@ const postRedirects = [
     destination: '/artykuly/responsywny-kwadrat-w-css',
     permanent: true,
   },
+  {
+    source: '/przyklejona-nawigacja-przykrywa-kotwice',
+    destination: '/artykuly/przyklejona-nawigacja-przykrywa-kotwice',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

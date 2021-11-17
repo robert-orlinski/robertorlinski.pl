@@ -1,0 +1,108 @@
+---
+title: Przyklejona nawigacja przykrywa element, do którego prowadzi link – co zrobić?
+seoTitle: Przyklejona nawigacja przykrywa kotwicę - co robić?
+abstract: Co zrobić, gdy przyklejona do góry okna przeglądarki nawigacja (sticky nav), przykrywa kawałek sekcji - kotwicy? O tym w tym artykule!
+isPublished: true
+topics:
+  - Front-end
+date: 15.11.2021
+isPopular: false
+---
+
+Bardzo możliwe, że jeśli przyszło Ci kiedyś pracować z przyklejoną nawigacją oraz linkami, prowadzącymi nie do innego widoku lub podstrony, ale do konkretnego miejsca na stronie, to spotkał_ś się z tego rodzaju problemem:
+
+import CodePenIframe from 'CodePenIframe';
+
+<CodePenIframe id="XWaxEwa" title="Przyklejona nawigacja przykrywa element z kotwicą - problem" />
+
+Spróbuj kliknąć w którykolwiek z linków w nawigacji i zobacz co się stanie - odnośnik przeniesie Cię do odpowiedniego nagłówka artykułu, ale w taki sposób, że sam nagłówek, do którego link prowadzi, zostanie zakryty przez sticky menu na górze okna przeglądarki!
+
+import VideoInterlude from 'VideoInterlude';
+
+<VideoInterlude
+  id="bZ_NYAyyVPg"
+  title="Przyklejona nawigacja przykrywa element, do którego prowadzi link - co robić?"
+/>
+
+A takie zachowanie, na pewno nie jest czymś, czego oczekujesz - nagłówek powinien być widoczny, a widok artykułu powinien zatrzymać się nad samym nagłówkiem lub inną sekcją, do której prowadzi link.
+
+> W artykule tym, nie będę skupiać się na kodzie przykładu, bo zapewnia on głównie sensowny wygląd, a nie jest związany bezpośrednio z naszym problemem. Wspomnę natomiast tylko o jednej właściwości - `scroll-behavior: smooth`, która zapewnia płynne przechodzenie do konkretnej kotwicy.
+>
+> Jeśli spotykasz się z nią po raz pierwszy lub nie wiesz jak dokładnie działa, to więcej dowiesz się na pewno w moim artykule: [Płynne przewijanie strony, do wskazanego punktu – 3 świetne sposoby](/plynne-przewijanie-witryny/) 🚀
+
+## Jak rozwiązać ten problem?
+
+Wiele osób, radzi sobie z nim tak, że dane `id`, do którego prowadzi link, dodaje do elementu wypozycjonowanego relatywnie i przesuniętego do góry o wysokość nawigacji.
+
+Tak jak na tym przykładzie:
+
+<CodePenIframe
+  id="bGrmjNO"
+  title="Przyklejona nawigacja przykrywa element z kotwicą - rozwiązanie słabe"
+/>
+
+Ale jak łatwo się domyślić, nie jest to dobre rozwiązanie - szczególnie gdy spojrzymy z perspektywy dostępności oraz czytelności naszego kodu :c
+
+## Na szczęście jest lepsze rozwiązanie!
+
+A jest nim jedna właściwość w CSSie, którą dodajemy do elementu zawierającego w sobie `id`, będącego jednocześnie naszą kotwicą.
+
+Właściwość ta, to:
+
+```css
+scroll-margin-top: var(--nav-height);
+```
+
+Tak jak sugeruje nazwa zmiennej, jej wartością może być wysokość naszej nawigacji (lub jakakolwiek inna wartość), dzięki czemu górna krawędź okna przeglądarki, po przeniesieniu nas do kotwicy, znajdzie się o wysokość nawigacji wyżej niż normalnie.
+
+A tym samym początek zawartości, do której wspomniana kotwica prowadzi, zacznie się z końcem naszej przyklejonej nawigacji.
+
+I to tyle!
+
+Wystarczy dodać tę właściwość do wszystkich elementów, do których prowadzą kotwice na tworzonej przez nas stronie, na przykład:
+
+```css
+section,
+article,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  scroll-margin-top: var(--nav-height);
+}
+```
+
+...albo dodać ją do wszystkich elementów z atrybutem `id`:
+
+```css
+*[id] {
+  scroll-margin-top: var(--nav-height);
+}
+```
+
+...lub najlepiej - ustawić ją dla pseudo-klasy <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:target" noopener="" rel="noreferrer" target="_blank">`:target`</a>:
+
+```css
+*:target {
+  scroll-margin-top: var(--nav-height);
+}
+```
+
+> Przy okazji!
+>
+> Właściwość, której tutaj używam, nie tylko pozwala radzić sobie z opisanym problemem, ale również umożliwia przesunięcie tzw. [scroll snappingu](https://css-tricks.com/practical-css-scroll-snapping/) - punktu, w którym jesteśmy w stanie zatrzymać scroll użytkownika, gdy ten przestanie przewijać naszą witrynę.
+>
+> Więcej poczytać możesz o niej na przykład w [dokumentacji MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-margin-top).
+
+## I mamy to!
+
+Od tego momentu, nasza nawigacja nie przykrywa początku sekcji, do jakiej dany link prowadzi:
+
+<CodePenIframe
+  id="zYdmWQE"
+  title="Przyklejona nawigacja przykrywa element z kotwicą - rozwiązanie dobre"
+/>
+
+Mam nadzieję, że dzięki temu krótkiemu artykułowi, już nigdy nie będziesz zmagać się tym wyzwaniem! 🔥
