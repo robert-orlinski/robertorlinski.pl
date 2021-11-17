@@ -55,7 +55,7 @@ export const prepareMDX = async (
     }),
     globals: {
       CodePenIframe: 'codePenIframe',
-      VideoDivider: 'videoDivider',
+      VideoInterlude: 'videoInterlude',
     },
   });
 

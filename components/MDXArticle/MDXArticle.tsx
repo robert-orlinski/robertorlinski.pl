@@ -3,7 +3,7 @@ import { getMDXComponent } from 'mdx-bundler/client';
 import styled from 'styled-components';
 
 import CodePenIframe from 'Components/CodePenIframe';
-import VideoDivider from 'Components/VideoDivider';
+import VideoInterlude from 'Components/VideoInterlude';
 import Blockquote from 'Components/Blockquote';
 import CodeBlock from 'Components/CodeBlock';
 import Highlight from 'Components/Highlight';
@@ -27,7 +27,7 @@ const MDXArticle: FC<Props> = ({ source, className }) => {
     () =>
       getMDXComponent(source, {
         codePenIframe: CodePenIframe,
-        videoDivider: VideoDivider,
+        videoInterlude: VideoInterlude,
       }),
     [source],
   );

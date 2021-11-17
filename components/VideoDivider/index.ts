@@ -1,1 +1,1 @@
-export { default } from "./VideoDivider";
+export { default } from './VideoInterlude';

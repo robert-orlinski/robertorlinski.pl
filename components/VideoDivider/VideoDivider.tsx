@@ -12,7 +12,7 @@ type Props = {
   title: string;
 };
 
-const VideoDivider: FC<Props> = ({ id, title }) => (
+const VideoInterlude: FC<Props> = ({ id, title }) => (
   <DarkBox>
     <header>
       <Title>Swoją drogą, ten artykuł ma też wersję wideo!</Title>
@@ -57,7 +57,7 @@ const DarkBox = styled.section`
   }
 
   @media ${to.phoneL} {
-    width: calc(100% + 60px); /* == 100vw */
+    width: 100vw; /* 100% + 60px */
 
     margin: calc(var(--text-gap) * 0.7) -30px calc(var(--text-gap) * 1.7);
     padding: 2.5rem 30px;
@@ -159,4 +159,4 @@ const VideoStyles = createGlobalStyle`
   }
 `;
 
-export default VideoDivider;
+export default VideoInterlude;
