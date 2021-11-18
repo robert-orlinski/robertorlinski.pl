@@ -19,7 +19,7 @@ Jak sama nazwa wskazuje jest to powszechnie znana z innych języków programowan
 
 ## Podstawowa wersja pętli WordPressa
 
-Cały kod, zawarty w szkielecie tej pętli jest stosunkowo prosty i krótki. Jedyna wiedza, potrzebna do jego dokładnego zrozumienia to zasada działania konstrukcji warunkowej `IF` oraz pętli `While.` Całość przedstawia się w ten sposób:
+Cały kod, zawarty w szkielecie tej pętli jest stosunkowo prosty i krótki. Jedyna wiedza, potrzebna do jego dokładnego zrozumienia to zasada działania konstrukcji warunkowej `if` oraz pętli `while` Całość przedstawia się w ten sposób:
 
 ```php
 <?php
@@ -40,7 +40,7 @@ Postaram się w jak najprostszy sposób przedstawić całość po kolei. Zaczyna
   if ( have_posts() ) :
 ```
 
-Pierwsza linia oczywiście mówi o tym, że w danym miejscu rozpoczyna się kod PHP, druga z kolei rozpoczyna konstrukcję warunkową `IF`. W nawiasie znajduje się funkcja WordPressa `have_posts()`, która sprawdza czy na stronie dodano jakiekolwiek wpisy.
+Pierwsza linia oczywiście mówi o tym, że w danym miejscu rozpoczyna się kod PHP, druga z kolei rozpoczyna konstrukcję warunkową `if`. W nawiasie znajduje się funkcja WordPressa `have_posts()`, która sprawdza czy na stronie dodano jakiekolwiek wpisy.
 
 ```php
     while ( have_posts() ) :the_post();
