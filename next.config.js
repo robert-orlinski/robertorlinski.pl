@@ -272,6 +272,11 @@ const postRedirects = [
     destination: '/artykuly/progress-bar',
     permanent: true,
   },
+  {
+    source: '/wordpress-gutenberg-008',
+    destination: '/artykuly/wordpress-gutenberg-008',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
