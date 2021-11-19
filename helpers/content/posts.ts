@@ -2,7 +2,7 @@ import { getResourcesByDateDescending, getResourceBySlug, getResourcePaths } fro
 import { getTopic } from '../data/topics';
 import { POSTS_PATH } from '../constants';
 
-import { Post, ResourceWithContent } from 'Types/content';
+import { Post } from 'Types/content';
 
 import postsCache from 'Cache/posts.json';
 
@@ -28,17 +28,9 @@ export const getNewestPosts = async () => {
   return lastSixPosts;
 };
 
-export const getRelatedPosts = async (
-  currentPostWithContent: ResourceWithContent<Post>,
-  givenTopicName: string,
-) => {
+export const getRelatedPosts = async (currentPostSlug: string, givenTopicName: string) => {
   const posts = await getPostsByDateDescending();
-  const postsWithoutTheCurrentOne = posts.filter((post) => {
-    const iteratedPostToCompare = JSON.stringify(post);
-    const currentPostToCompare = JSON.stringify(currentPostWithContent.metaData);
-
-    return iteratedPostToCompare !== currentPostToCompare;
-  });
+  const postsWithoutTheCurrentOne = posts.filter(({ slug }) => slug !== currentPostSlug);
 
   const theRestOfPostsInGivenTopic = postsWithoutTheCurrentOne.filter(({ topics }) =>
     topics.includes(givenTopicName),

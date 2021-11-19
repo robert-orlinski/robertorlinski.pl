@@ -53,7 +53,7 @@ export const getStaticProps = async ({ params: { slug } }: Props) => {
 
   const currentPostMainTopic = metaData.topics[0];
 
-  const relatedPosts = await getRelatedPosts(currentPost, currentPostMainTopic);
+  const relatedPosts = await getRelatedPosts(slug, currentPostMainTopic);
 
   return {
     props: { metaData, content, relatedPosts },
