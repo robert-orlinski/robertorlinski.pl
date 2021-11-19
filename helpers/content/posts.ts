@@ -42,7 +42,9 @@ export const getRelatedPosts = async (currentPostSlug: string, givenTopicName: s
     return threePostsInGivenTopic;
   } else {
     const numberOfPostsNeeded = 3 - theRestOfPostsInGivenTopic.length;
-    const theRestFromOtherTopics = postsWithoutTheCurrentOne.slice(0, numberOfPostsNeeded);
+    const theRestFromOtherTopics = postsWithoutTheCurrentOne
+      .filter(({ topics }) => !topics.includes(givenTopicName))
+      .slice(0, numberOfPostsNeeded);
 
     return theRestOfPostsInGivenTopic.concat(theRestFromOtherTopics);
   }
