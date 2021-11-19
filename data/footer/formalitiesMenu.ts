@@ -1,6 +1,6 @@
-import { CatalogedLinksArray } from 'Types/links';
+import { CatalogedLink } from 'Types/links';
 
-const formalitiesMenu: CatalogedLinksArray = [
+const formalitiesMenu: CatalogedLink[] = [
   {
     href: '/kontakt',
     title: 'Kontakt',

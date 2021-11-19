@@ -7,8 +7,6 @@ export type Resource = {
   date: string;
 };
 
-export type Resources = Array<Resource>;
-
 export type ResourceWithContent<T> = {
   metaData: T;
   content: string;
@@ -20,9 +18,7 @@ export type Post = {
   isPopular: boolean;
 } & Resource;
 
-export type Posts = Array<Post>;
-
-export type PostWithContent = {
+export type PostWithContentAndRelatedPosts = {
   relatedPosts: Posts;
 } & ResourceWithContent<Post>;
 

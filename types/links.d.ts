@@ -8,8 +8,6 @@ export type CatalogedLink = {
   title: string;
 } & LinkContainer;
 
-export type CatalogedLinksArray = Array<CatalogedLink>;
-
 export type UnderlinedLinkStyle = {
   isUnderlineVisible?: boolean;
 };

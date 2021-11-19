@@ -5,11 +5,11 @@ import ElementWithOpacity from 'Components/ElementWithOpacity';
 import LinkContainer from 'Components/LinkContainer';
 import MenuItem from 'Components/MenuItem';
 
-import { CatalogedLinksArray } from 'Types/links';
+import { CatalogedLink } from 'Types/links';
 import { to } from 'Devices';
 
 type Props = {
-  source: CatalogedLinksArray;
+  source: CatalogedLink[];
 };
 
 const FooterMenu: FC<Props> = ({ source }) => (

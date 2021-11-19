@@ -1,6 +1,6 @@
-import { CatalogedLinksArray } from 'Types/links';
+import { CatalogedLink } from 'Types/links';
 
-const mainMenu: CatalogedLinksArray = [
+const mainMenu: CatalogedLink[] = [
   {
     href: '/newsletter',
     title: 'Newsletter',

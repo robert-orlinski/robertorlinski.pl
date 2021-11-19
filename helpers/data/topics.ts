@@ -1,13 +1,13 @@
 import topicsGroups from '../../data/taxonomies/topics';
 
-import { Topic, Topics } from 'Types/data';
+import { Topic } from 'Types/data';
 
 export const getTopics = () => {
-  const topicsGrouped: Array<Topics> = topicsGroups.map(({ topics }) =>
+  const topicsGrouped: Array<Topic[]> = topicsGroups.map(({ topics }) =>
     topics.map((topic) => topic),
   );
 
-  const topics: Topics = topicsGrouped.flat();
+  const topics: Topic[] = topicsGrouped.flat();
 
   return topics;
 };

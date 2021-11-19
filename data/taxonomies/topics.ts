@@ -1,8 +1,8 @@
-import { TopicsGroups } from 'Types/data';
+import { TopicsGroup } from 'Types/data';
 
 const topicsImagesDir = '/images/taxonomies/topics';
 
-const topicsGroups: TopicsGroups = [
+const topicsGroups: TopicsGroup[] = [
   {
     groupName: 'Programowanie',
     topics: [

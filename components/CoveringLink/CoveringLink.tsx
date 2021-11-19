@@ -4,7 +4,7 @@ import LinkContainer from 'Components/LinkContainer';
 import Overlay from 'Components/Overlay';
 
 import { LinkContainer as LinkContainerType } from 'Types/links';
-import { ElementWithCustomZIndex } from 'Types/styledComponents';
+import { ElementWithCustomZIndex } from 'Types/styles';
 
 type Props = LinkContainerType & ElementWithCustomZIndex;
 

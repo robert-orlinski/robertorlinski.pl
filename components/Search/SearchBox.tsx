@@ -9,12 +9,12 @@ import Error from 'Components/Error';
 
 import searchForPosts from 'Helpers/requests/searchForPosts';
 
-import { Posts } from 'Types/content';
+import { Post } from 'Types/content';
 import { to } from 'Devices';
 
 const SearchBox = forwardRef((props, ref) => {
   const [query, setQuery] = useState('');
-  const [posts, setPosts] = useState<Posts | null>(null);
+  const [posts, setPosts] = useState<Post[] | null>(null);
 
   useDebounce(
     async () => {

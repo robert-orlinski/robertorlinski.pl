@@ -12,10 +12,10 @@ import RelatedPosts from 'Components/RelatedPosts';
 import { getPostBySlug, getPostsPaths, getRelatedPosts } from 'Helpers/content/posts';
 
 import siteName from 'SiteName';
-import { PostWithContent } from 'Types/content';
+import { PostWithContentAndRelatedPosts } from 'Types/content';
 import { from } from 'Devices';
 
-const Post: FC<PostWithContent> = ({ metaData, content, relatedPosts }) => {
+const Post: FC<PostWithContentAndRelatedPosts> = ({ metaData, content, relatedPosts }) => {
   const seoTitle = metaData.seoTitle || metaData.title;
 
   const meta = {

@@ -49,7 +49,7 @@ const Home: FC<PostsContainer> = ({ posts }) => {
           </P>
           <TextWithLinks text={mySummary} />
           <CenteredText as="footer">
-            <Button href="/najpopularniejsze">Najpopularniejsze artykuły</Button>
+            <Button href="/popularne-artykuly">Popularne artykuły</Button>
           </CenteredText>
         </TextBlock>
         <NewArticles {...{ posts }} />

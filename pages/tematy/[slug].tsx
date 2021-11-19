@@ -8,14 +8,14 @@ import MainBanner from 'Components/MainBanner';
 import { getTopic, getTopicsPaths } from 'Helpers/data/topics';
 import { getPostsByTopic } from 'Helpers/content/posts';
 
-import { Posts } from 'Types/content';
+import { Post } from 'Types/content';
 import siteName from 'SiteName';
 import { Topic } from 'Types/data';
 import Error from 'Components/Error';
 
 type Props = {
   currentTopic: Topic;
-  postsInTopic: Posts;
+  postsInTopic: Post[];
 };
 
 const Post: FC<Props> = ({ currentTopic, postsInTopic }) => {

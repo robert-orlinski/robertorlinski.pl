@@ -56,6 +56,12 @@ export const getRelatedPosts = async (
   }
 };
 
+export const getPopularPosts = async () => {
+  const posts = await getPostsByDateDescending();
+
+  return posts.filter(({ isPopular }) => isPopular);
+};
+
 export const getPostsByTopic = async (topicSlug: string) => {
   const posts = await getPosts();
   const { name: givenTopicName } = getTopic(topicSlug);
@@ -64,8 +70,6 @@ export const getPostsByTopic = async (topicSlug: string) => {
 
   return postsInGivenTopic;
 };
-
-export const getPostBySlug = (slug: string) => getResourceBySlug<Post>(POSTS_PATH, slug, 'posts');
 
 export const getPostsBySearchQuery = async (query: string) => {
   const posts = await getPosts();
@@ -79,3 +83,5 @@ export const getPostsBySearchQuery = async (query: string) => {
 
   return postsInGivenQuery;
 };
+
+export const getPostBySlug = (slug: string) => getResourceBySlug<Post>(POSTS_PATH, slug, 'posts');
