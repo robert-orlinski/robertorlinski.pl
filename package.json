@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "test:changed": "jest --watch",
-    "test:all": "jest --watchAll",
+    "test": "jest --watchAll",
     "prepare": "husky install",
     "ts-node-esm": "node --no-warnings --loader ts-node/esm --experimental-specifier-resolution=node",
     "cache": "npm run ts-node-esm ./scripts/cache/index.ts"
@@ -25,11 +25,6 @@
     "Helpers": "helpers",
     "Hooks": "hooks",
     "Cache": "cache"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run cache && git add cache/posts.json"
-    }
   },
   "dependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
