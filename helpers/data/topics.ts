@@ -12,6 +12,14 @@ export const getTopics = () => {
   return topics;
 };
 
+export const getTopicsPaths = () => {
+  const topics = getTopics();
+
+  const topicsPaths = topics.map(({ slug }) => ({ params: { slug } }));
+
+  return topicsPaths;
+};
+
 export const getTopic = (nameOrSlug: string) => {
   const allTopics = getTopics();
 
@@ -29,11 +37,3 @@ export const getPrimaryTopic = (topics: Array<string>) => {
 };
 
 export const getTopicLink = (slug: string) => `/tematy/${slug}`;
-
-export const getTopicsPaths = () => {
-  const topics = getTopics();
-
-  const topicsPaths = topics.map(({ slug }) => ({ params: { slug } }));
-
-  return topicsPaths;
-};
