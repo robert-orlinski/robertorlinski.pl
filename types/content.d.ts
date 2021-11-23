@@ -23,5 +23,5 @@ export type PostWithContentAndRelatedPosts = {
 } & ResourceWithContent<Post>;
 
 export type PostsContainer = {
-  posts: Posts;
+  posts: Post[];
 };
