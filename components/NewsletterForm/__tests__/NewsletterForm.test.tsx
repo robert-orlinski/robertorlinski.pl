@@ -1,5 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { enableFetchMocks } from 'jest-fetch-mock';
+
 import userEvent from '@testing-library/user-event';
 import fetchMock from 'jest-fetch-mock';
 import mockRouter from 'next-router-mock';
@@ -25,9 +26,9 @@ beforeEach(() => {
 
 describe('render', () => {
   it('renders component', () => {
-    expect(name);
-    expect(email);
-    expect(button);
+    expect(name).toBeInTheDocument();
+    expect(email).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
   });
 });
 
