@@ -24,7 +24,6 @@ const TextInput: FC<Props> = forwardRef(
         <Container>
           <Field
             id={name}
-            data-testid={name}
             aria-invalid={isErrorThrown}
             placeholder={label}
             {...{ isErrorThrown, ...props }}

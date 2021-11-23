@@ -18,8 +18,8 @@ beforeEach(() => {
 
   render(<NewsletterForm />);
 
-  name = screen.getByTestId('name');
-  email = screen.getByTestId('email');
+  name = screen.getByLabelText('Twoje imię (opcjonalne)');
+  email = screen.getByLabelText('Twój e-mail');
   button = screen.getByRole('button');
 });
 
