@@ -15,9 +15,9 @@ type Props = {
 const SearchContainer: FC<Props> = ({ isVisible, children, closeHandler }) => (
   <>
     {isVisible && <OverflowHidden />}
-    <Container {...{ isVisible }}>
-      <Content>{children}</Content>
-      <CloseButton onClick={closeHandler} />
+    <Container {...{ isVisible }} role="search">
+      <Content as="div">{children}</Content>
+      <CloseButton onClick={closeHandler} aria-label="Zamknij wyszukiwarkę" />
     </Container>
   </>
 );

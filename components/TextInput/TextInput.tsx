@@ -7,7 +7,7 @@ import ErrorIcon from './ErrorIcon';
 type Props = {
   label: string;
   name: string;
-  required: boolean;
+  required?: boolean;
   pattern?: RegExp;
   register?: UseFormRegister<FieldValues>;
   errors?: DeepMap<FieldValues, FieldError>;
@@ -37,7 +37,7 @@ const TextInput: FC<Props> = forwardRef(
 
     return (
       <Container>
-        <Field id={name} data-testid={name} placeholder={label} {...{ ref, ...props }} />
+        <Field id={name} placeholder={label} {...{ ref, name, ...props }} />
         <Label htmlFor={name}>{label}</Label>
       </Container>
     );

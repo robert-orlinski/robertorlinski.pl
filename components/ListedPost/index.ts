@@ -1,1 +1,1 @@
-export { default, ListedPostContainer } from './ListedPost';
+export { default } from './ListedPost';

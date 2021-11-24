@@ -12,9 +12,9 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/helpers/tests/setup.ts'],
   moduleNameMapper: {
     Devices: '<rootDir>/helpers/devices.ts',
-    SiteName: '<rootDir>/metaData/siteName.ts',
-    AddressSeparator: '<rootDir>/metaData/addressSeparator.ts',
-    Slogan: '<rootDir>/metaData/slogan.ts',
+    SiteName: '<rootDir>/helpers/metaData/siteName.ts',
+    AddressSeparator: '<rootDir>/helpers/metaData/addressSeparator.ts',
+    Slogan: '<rootDir>/helpers/metaData/slogan.ts',
     '^Components/(.*)$': '<rootDir>/components/$1',
     '^Types/(.*)$': '<rootDir>/types/$1',
     '^Data/(.*)$': '<rootDir>/data/$1',

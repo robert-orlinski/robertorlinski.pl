@@ -22,7 +22,6 @@ const Outer = styled.nav<Props>`
   top: 0;
 
   background-color: #fff;
-  box-shadow: 0;
   transition: height var(--short-transition-duration) var(--fancy-cubic-bezier);
 
   ${({ isSticky }) =>

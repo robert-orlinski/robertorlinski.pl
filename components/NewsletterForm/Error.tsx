@@ -10,7 +10,7 @@ type Props = {
 export const Error: FC<Props> = ({ errorMessage }) => {
   if (!errorMessage) return null;
 
-  return <Text>{errorMessage}</Text>;
+  return <Text role="alert">{errorMessage}</Text>;
 };
 
 const Text = styled.p`

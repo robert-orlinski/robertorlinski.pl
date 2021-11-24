@@ -1,5 +1,6 @@
 {
-  "extends": "next",
+  "extends": ["next", "plugin:jest-dom/recommended", "plugin:testing-library/react"],
+  "plugins": ["unused-imports", "testing-library", "jest-dom"],
   "rules": {
     "no-unused-vars": "off",
     "react/display-name": "off",
@@ -20,6 +21,5 @@
         "forbid": [">", "}"]
       }
     ]
-  },
-  "plugins": ["unused-imports"]
+  }
 }

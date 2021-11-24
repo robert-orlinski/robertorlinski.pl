@@ -12,12 +12,13 @@ import searchForPosts from 'Helpers/requests/searchForPosts';
 import { Post } from 'Types/content';
 import { to } from 'Devices';
 
-const SearchBox = forwardRef((props, ref) => {
+const SearchInner = forwardRef((props, ref) => {
   const [query, setQuery] = useState('');
   const [posts, setPosts] = useState<Post[] | null>(null);
 
   useDebounce(
     async () => {
+      console.log('as');
       const results = await searchForPosts(query);
 
       setPosts(results);
@@ -26,7 +27,9 @@ const SearchBox = forwardRef((props, ref) => {
     [query],
   );
 
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => setQuery(event.target.value);
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+  };
 
   return (
     <>
@@ -34,7 +37,6 @@ const SearchBox = forwardRef((props, ref) => {
         <TextInput
           label="Szukaj"
           name="query"
-          required={false}
           autoComplete="off"
           onChange={handleInputChange}
           {...{ ref }}
@@ -57,7 +59,7 @@ const Form = styled.form`
   margin: 0 auto 3rem;
 `;
 
-const Results = styled.section`
+const Results = styled.div`
   padding: calc(var(--hamburger-size) * 0.8) 0 calc(var(--hamburger-size) * 3);
 
   @media ${to.phoneL} {
@@ -65,4 +67,4 @@ const Results = styled.section`
   }
 `;
 
-export default SearchBox;
+export default SearchInner;

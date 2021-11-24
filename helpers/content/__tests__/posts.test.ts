@@ -1,4 +1,3 @@
-import fs from 'fs';
 import dayjs from 'dayjs';
 
 import {
@@ -9,28 +8,18 @@ import {
   getRelatedPosts,
 } from '../posts';
 
-jest.mock('../../constants', () => {
-  const originalModule = jest.requireActual('../../constants') as any;
+import mockMdx from 'Helpers/tests/mockMdx';
+
+mockMdx();
+
+jest.mock('Helpers/constants', () => {
+  const originalModule = jest.requireActual('Helpers/constants') as any;
   const mockedPath = originalModule.POSTS_PATH.replace('content', '__mocks__');
 
   return {
     ...originalModule,
     POSTS_PATH: mockedPath,
   };
-});
-
-jest.spyOn(require('../mdx'), 'default').mockImplementation((source, { resourcePath }: any) => {
-  const dirForFeaturedImage = resourcePath.replace('__mocks__', 'public/images');
-
-  fs.access(dirForFeaturedImage, function (err) {
-    if (err && err.code === 'ENOENT') {
-      fs.mkdirSync(dirForFeaturedImage);
-    }
-  });
-
-  const mockedResourceContent = fs.readFileSync(`${resourcePath}/index.json`, 'utf8');
-
-  return JSON.parse(mockedResourceContent);
 });
 
 describe('sorting posts', () => {

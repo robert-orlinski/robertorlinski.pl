@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { ListedPostContainer } from 'Components/ListedPost';
+import ListedPostContainer from 'Components/ListedPost/parts/ListedPostContainer';
 
 import { UnderlinedLinkStyle } from 'Types/links';
 

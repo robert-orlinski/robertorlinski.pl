@@ -5,19 +5,23 @@ import ElementWithOpacity from 'Components/ElementWithOpacity';
 
 import { from } from 'Devices';
 
-type Props = {
+type ButtonProps = {
   isCrossed: boolean;
   isHiddenOnDesktop?: boolean;
 };
 
-const Hamburger: FC<Props & HTMLAttributes<HTMLAnchorElement>> = ({
+type Props = ButtonProps & HTMLAttributes<HTMLAnchorElement> & { ariaLabelConstantPart: string };
+
+const Hamburger: FC<Props> = ({
   onClick,
   isCrossed,
+  ariaLabelConstantPart,
   isHiddenOnDesktop = false,
   className,
 }) => (
   <Button
     onClick={onClick}
+    aria-label={`${isCrossed ? 'Zamknij' : 'Otwórz'} ${ariaLabelConstantPart}`}
     {...{
       isCrossed,
       isHiddenOnDesktop,
@@ -30,7 +34,7 @@ const Hamburger: FC<Props & HTMLAttributes<HTMLAnchorElement>> = ({
 
 const Button = styled(ElementWithOpacity).attrs({
   as: 'button',
-})<Props>`
+})<ButtonProps>`
   width: var(--hamburger-size);
   height: var(--hamburger-size);
 

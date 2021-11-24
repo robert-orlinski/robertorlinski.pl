@@ -6,6 +6,8 @@ import CoveringLink from 'Components/CoveringLink';
 import Link from 'Components/Link';
 import PostMeta from 'Components/PostMeta';
 
+import ListedPostContainer from './parts/ListedPostContainer';
+
 import { getPostFeaturedImage, getPostLink } from 'Helpers/components/posts';
 
 import { Post } from 'Types/content';
@@ -32,18 +34,6 @@ const ListedPost: FC<Post> = ({ title, topics, slug, readingTime }) => {
     </ListedPostContainer>
   );
 };
-
-export const ListedPostContainer = styled.li`
-  position: relative;
-
-  @media ${between.tabletAndTabletL} {
-    display: flex;
-
-    & > * {
-      flex: 1 1 0;
-    }
-  }
-`;
 
 const ThumbnailContainer = styled.figure`
   overflow: hidden;

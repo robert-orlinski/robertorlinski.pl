@@ -1,12 +1,13 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import useToggle from 'Hooks/useToggle';
 
+import SearchContainer from './parts/SearchContainer';
+import SearchInner from './parts/SearchInner';
+
 import ElementWithOpacity from 'Components/ElementWithOpacity';
-import SearchContainer from './SearchContainer';
 import SmallIcon from 'Components/SmallIcon';
-import SearchBox from './SearchBox';
 
 import { Magnifier } from 'Components/icons';
 
@@ -16,19 +17,28 @@ const Search = () => {
   const [isSearchVisible, toggleSearchVisibility] = useToggle(false);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  const handleEscapeKeyPress = ({ key }: KeyboardEvent) =>
+    isSearchVisible && key === 'Escape' && toggleSearchVisibility();
+
   const showSearchForm = () => {
     toggleSearchVisibility();
 
     setTimeout(() => searchInputRef.current && searchInputRef.current.focus(), 250);
   };
 
+  useEffect(() => {
+    window.addEventListener('keydown', handleEscapeKeyPress);
+
+    return () => window.removeEventListener('keydown', handleEscapeKeyPress);
+  });
+
   return (
     <>
-      <Button onClick={showSearchForm}>
+      <Button onClick={showSearchForm} aria-label="Otwórz wyszukiwarkę">
         <SmallIcon as={Magnifier} />
       </Button>
       <SearchContainer isVisible={isSearchVisible} closeHandler={toggleSearchVisibility}>
-        <SearchBox ref={searchInputRef} />
+        <SearchInner ref={searchInputRef} />
       </SearchContainer>
     </>
   );

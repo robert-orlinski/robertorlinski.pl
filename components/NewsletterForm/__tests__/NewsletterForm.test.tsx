@@ -10,22 +10,28 @@ import NewsletterForm from '..';
 enableFetchMocks();
 jest.mock('next/dist/client/router', () => require('next-router-mock'));
 
-let name: HTMLInputElement;
-let email: HTMLInputElement;
-let button: HTMLButtonElement;
-
-beforeEach(() => {
+const setup = () => {
   mockRouter.setCurrentUrl('/');
 
   render(<NewsletterForm />);
 
-  name = screen.getByLabelText('Twoje imię (opcjonalne)');
-  email = screen.getByLabelText('Twój e-mail');
-  button = screen.getByRole('button');
-});
+  const name = screen.getByRole('textbox', { name: 'Twoje imię (opcjonalne)' });
+  const email = screen.getByRole('textbox', { name: 'Twój e-mail' });
+  const button = screen.getByRole('button');
+
+  return {
+    name,
+    email,
+    button,
+  };
+};
+
+beforeEach(() => {});
 
 describe('render', () => {
   it('renders component', () => {
+    const { name, email, button } = setup();
+
     expect(name).toBeInTheDocument();
     expect(email).toBeInTheDocument();
     expect(button).toBeInTheDocument();
@@ -34,44 +40,40 @@ describe('render', () => {
 
 describe('validation', () => {
   it('throws an error if there is no email', async () => {
+    const { button } = setup();
+
     userEvent.click(button);
 
-    await waitFor(() => {
-      const errorIcon = screen.getByTestId('error-icon');
-
-      expect(errorIcon).toBeInTheDocument();
-    });
+    const errorIcon = await screen.findByRole('img', { name: 'Wystąpił błąd' });
+    expect(errorIcon).toBeInTheDocument();
   });
 
   it('throws an error if there is no email and name is provided', async () => {
-    userEvent.type(name, 'Name');
+    const { name, button } = setup();
 
+    userEvent.type(name, 'Name');
     userEvent.click(button);
 
-    await waitFor(() => {
-      const errorIcon = screen.getByTestId('error-icon');
-
-      expect(errorIcon).toBeInTheDocument();
-    });
+    const errorIcon = await screen.findByRole('img', { name: 'Wystąpił błąd' });
+    expect(errorIcon).toBeInTheDocument();
   });
 
   it('throws an error if email is invalid', async () => {
-    userEvent.type(email, 'test-email@');
+    const { email, button } = setup();
 
+    userEvent.type(email, 'test-email@');
     userEvent.click(button);
 
-    await waitFor(() => {
-      const errorIcon = screen.getByTestId('error-icon');
-
-      expect(errorIcon).toBeInTheDocument();
-    });
+    const errorIcon = await screen.findByRole('img', { name: 'Wystąpił błąd' });
+    expect(errorIcon).toBeInTheDocument();
   });
 
   it('sends a form if there is a proper email and no username', async () => {
+    const { email, button } = setup();
+
     fetchMock.mockResponse(JSON.stringify({ error: '' }));
 
     userEvent.type(email, 'test-email@test-domain.com');
-
     userEvent.click(button);
 
     await waitFor(() => {
@@ -82,11 +84,12 @@ describe('validation', () => {
   });
 
   it('sends a form if there is a proper email and username', async () => {
+    const { name, email, button } = setup();
+
     fetchMock.mockResponse(JSON.stringify({ error: '' }));
 
     userEvent.type(name, 'Name');
     userEvent.type(email, 'test-email@test-domain.com');
-
     userEvent.click(button);
 
     await waitFor(() => {
@@ -97,6 +100,8 @@ describe('validation', () => {
   });
 
   it('sends a form if there is a proper email and username but returns error if is present (comes from API)', async () => {
+    const { name, email, button } = setup();
+
     const errorMessage = 'Coś poszło nie tak :c';
 
     fetchMock.mockResponse(
@@ -110,10 +115,7 @@ describe('validation', () => {
 
     userEvent.click(button);
 
-    await waitFor(() => {
-      expect(screen.getByText(errorMessage)).toBeInTheDocument();
-    });
+    const error = await screen.findByText(errorMessage);
+    expect(error).toBeInTheDocument();
   });
 });
-
-export default () => null;
