@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test:changed": "jest --watch",
-    "test": "jest --watchAll",
+    "test:watch": "jest --watchAll",
+    "test": "jest",
     "prepare": "husky install",
     "ts-node-esm": "node --no-warnings --loader ts-node/esm --experimental-specifier-resolution=node",
     "cache": "npm run ts-node-esm ./scripts/cache/index.ts"
