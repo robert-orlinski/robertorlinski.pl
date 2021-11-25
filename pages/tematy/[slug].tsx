@@ -4,18 +4,18 @@ import Head from 'Components/Head';
 import Wrapper from 'Components/Wrapper';
 import PostsList from 'Components/PostsList';
 import MainBanner from 'Components/MainBanner';
+import Error from 'Components/Error';
 
 import { getTopic, getTopicsPaths } from 'Helpers/data/topics';
 import { getPostsByTopic } from 'Helpers/content/posts';
-
-import { Post } from 'Types/content';
 import siteName from 'SiteName';
+
+import { Post as PostType } from 'Types/content';
 import { Topic } from 'Types/data';
-import Error from 'Components/Error';
 
 type Props = {
   currentTopic: Topic;
-  postsInTopic: Post[];
+  postsInTopic: PostType[];
 };
 
 const Post: FC<Props> = ({ currentTopic, postsInTopic }) => {
