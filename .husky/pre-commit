@@ -1,4 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run cache && git add cache/posts.json
+npm run cache 
+git add cache/posts.json
+
+npm test
