@@ -19,7 +19,7 @@ export type Post = {
 } & Resource;
 
 export type PostWithContentAndRelatedPosts = {
-  relatedPosts: Posts;
+  relatedPosts: Post[];
 } & ResourceWithContent<Post>;
 
 export type PostsContainer = {
