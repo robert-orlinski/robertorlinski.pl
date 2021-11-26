@@ -4,7 +4,7 @@ import ElementWithOpacity from 'Components/ElementWithOpacity';
 import LinkContainer from 'Components/LinkContainer';
 import SmallIcon from 'Components/SmallIcon';
 
-import { Facebook, YouTube, Instagram, GitHub } from 'Components/icons';
+import { Facebook, LinkedIn, YouTube, Instagram, GitHub } from 'Components/icons';
 
 import { to } from 'Devices';
 
@@ -29,7 +29,7 @@ const SocialIcon = styled(SmallIcon)`
   margin: 0 0.22rem;
 
   @media ${to.tabletL} {
-    margin: 0 0.55rem 0 0;
+    margin: 0 0.8rem 0 0;
     fill: #fff;
   }
 `;
@@ -39,6 +39,11 @@ const icons = [
     name: 'Facebook',
     href: 'https://www.facebook.com/robertorlinski.blog',
     component: <SocialIcon as={Facebook} />,
+  },
+  {
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/robert-orlinski/',
+    component: <SocialIcon as={LinkedIn} />,
   },
   {
     name: 'YouTube',
