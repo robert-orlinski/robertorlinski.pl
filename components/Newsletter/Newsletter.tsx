@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import styled from 'styled-components';
 
 import NewsletterForm from 'Components/NewsletterForm';
@@ -8,9 +9,13 @@ import P from 'Components/P';
 
 import { to } from 'Devices';
 
-const Newsletter = () => (
+type Props = {
+  title?: string;
+};
+
+const Newsletter: FC<Props> = ({ title = 'Chętnie zaproponuję Ci coś jeszcze' }) => (
   <Wrapper withSpaceAbove>
-    <SectionTitle>Chętnie zaproponuję Ci coś jeszcze</SectionTitle>
+    <SectionTitle>{title}</SectionTitle>
     <Content>
       <div>
         <P>

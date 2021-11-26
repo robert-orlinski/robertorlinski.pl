@@ -18,7 +18,7 @@ type Props = {
   postsInTopic: PostType[];
 };
 
-const Post: FC<Props> = ({ currentTopic, postsInTopic }) => {
+const Topic: FC<Props> = ({ currentTopic, postsInTopic }) => {
   const { name, featuredImage } = currentTopic;
 
   const meta = {
@@ -76,4 +76,4 @@ export const getStaticPaths = () => {
   };
 };
 
-export default Post;
+export default Topic;

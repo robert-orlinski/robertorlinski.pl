@@ -5,6 +5,7 @@ import { POSTS_PATH } from '../constants';
 import { Post } from 'Types/content';
 
 import postsCache from 'Cache/posts.json';
+import shuffle from 'Helpers/functions/shuffle';
 
 const env = process.env.NODE_ENV || 'development';
 
@@ -21,6 +22,12 @@ export const getPosts = async () => {
   return await getPostsByDateDescending();
 };
 
+export const getRandomPosts = async (numberOfPostsToReturn: number) => {
+  const posts = await getPostsByDateDescending();
+
+  return shuffle(posts).slice(0, numberOfPostsToReturn);
+};
+
 export const getNewestPosts = async () => {
   const posts = await getPosts();
   const lastSixPosts = posts.slice(0, 6);
@@ -28,7 +35,11 @@ export const getNewestPosts = async () => {
   return lastSixPosts;
 };
 
-export const getRelatedPosts = async (currentPostSlug: string, givenTopicName: string) => {
+export const getRelatedPosts = async (
+  currentPostSlug: string,
+  givenTopicName: string,
+  numberOfPostsToReturn: number,
+) => {
   const posts = await getPostsByDateDescending();
   const postsWithoutTheCurrentOne = posts.filter(({ slug }) => slug !== currentPostSlug);
 
@@ -36,12 +47,12 @@ export const getRelatedPosts = async (currentPostSlug: string, givenTopicName: s
     topics.includes(givenTopicName),
   );
 
-  if (theRestOfPostsInGivenTopic.length >= 3) {
-    const threePostsInGivenTopic = theRestOfPostsInGivenTopic.slice(0, 3);
+  if (theRestOfPostsInGivenTopic.length >= numberOfPostsToReturn) {
+    const threePostsInGivenTopic = theRestOfPostsInGivenTopic.slice(0, numberOfPostsToReturn);
 
     return threePostsInGivenTopic;
   } else {
-    const numberOfPostsNeeded = 3 - theRestOfPostsInGivenTopic.length;
+    const numberOfPostsNeeded = numberOfPostsToReturn - theRestOfPostsInGivenTopic.length;
     const theRestFromOtherTopics = postsWithoutTheCurrentOne
       .filter(({ topics }) => !topics.includes(givenTopicName))
       .slice(0, numberOfPostsNeeded);

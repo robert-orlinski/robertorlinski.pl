@@ -89,13 +89,13 @@ describe('single post', () => {
 
 describe('related posts', () => {
   it('returns 3 related posts', async () => {
-    const relatedPosts = await getRelatedPosts('with-code', 'Front-end');
+    const relatedPosts = await getRelatedPosts('with-code', 'Front-end', 4);
 
-    expect(relatedPosts).toHaveLength(3);
+    expect(relatedPosts).toHaveLength(4);
   });
 
   it('not return current post', async () => {
-    const relatedPosts = await getRelatedPosts('with-code', 'Front-end');
+    const relatedPosts = await getRelatedPosts('with-code', 'Front-end', 4);
 
     relatedPosts.forEach(({ slug }) => {
       expect(slug).not.toEqual('with-code');
@@ -103,7 +103,7 @@ describe('related posts', () => {
   });
 
   it('returns 2 posts from current topic', async () => {
-    const relatedPosts = await getRelatedPosts('with-code', 'Front-end');
+    const relatedPosts = await getRelatedPosts('with-code', 'Front-end', 4);
 
     const relatedPostsFromCurrentTopic = relatedPosts.filter(({ topics }) =>
       topics.includes('Front-end'),
@@ -113,9 +113,11 @@ describe('related posts', () => {
   });
 
   it('returns 1 newest post from different than current topic', async () => {
-    const relatedPosts = await getRelatedPosts('with-code', 'Front-end');
+    const relatedPosts = await getRelatedPosts('with-code', 'Front-end', 4);
 
     const postsTopics = relatedPosts.map(({ topics }) => topics).flat();
+
+    console.log(postsTopics);
 
     expect(postsTopics[2]).toContain('WordPress');
   });

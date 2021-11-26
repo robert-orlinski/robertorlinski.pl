@@ -15,7 +15,7 @@ const meta = {
     'Jeśli interesuje Cię współpraca lub po prostu chcesz pogadać, to tutaj znajdziesz kontakt do mnie!',
 };
 
-const Newsletter = () => (
+const Contact = () => (
   <>
     <Head {...meta} />
     <MainBanner
@@ -51,4 +51,4 @@ const Newsletter = () => (
   </>
 );
 
-export default Newsletter;
+export default Contact;

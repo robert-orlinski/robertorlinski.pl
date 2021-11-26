@@ -21,7 +21,7 @@ import { PostsContainer } from 'Types/content';
 
 import bannerImage from 'Images/banners/books.jpg';
 
-const Home: FC<PostsContainer> = () => {
+const Topics: FC<PostsContainer> = () => {
   const meta = {
     title: `Tematy ${addressSeparator} ${siteName}`,
     description:
@@ -80,4 +80,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default Home;
+export default Topics;

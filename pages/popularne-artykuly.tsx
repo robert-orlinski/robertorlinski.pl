@@ -14,7 +14,7 @@ import { PostsContainer } from 'Types/content';
 
 import bannerImage from 'Images/banners/best.jpg';
 
-const Blog: FC<PostsContainer> = ({ posts }) => {
+const PopularPosts: FC<PostsContainer> = ({ posts }) => {
   const meta = {
     title: `Popularne artykuły ${addressSeparator} ${siteName}`,
     description:
@@ -46,4 +46,4 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
-export default Blog;
+export default PopularPosts;
