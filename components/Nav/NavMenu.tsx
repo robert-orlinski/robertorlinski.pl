@@ -13,7 +13,7 @@ const NavMenu = () => (
     {mainMenu &&
       mainMenu.map(({ href, title }, i) => (
         <TopMenuItem key={`main-menu-${i}`}>
-          <LinkContainer href={href}>
+          <LinkContainer {...{ href }}>
             <StyledLink>{title}</StyledLink>
           </LinkContainer>
         </TopMenuItem>

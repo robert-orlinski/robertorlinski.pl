@@ -28,7 +28,9 @@ const ListedPost: FC<Post> = ({ title, topics, slug, readingTime }) => {
           <PostMeta {...{ topics, readingTime }} />
         </MetaContainer>
         <Title>
-          <Link href={link}>{title}</Link>
+          <Link tabIndex={-1} href={link}>
+            {title}
+          </Link>
         </Title>
       </Content>
     </ListedPostContainer>

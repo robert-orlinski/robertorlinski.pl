@@ -10,12 +10,12 @@ import { getTopicLink } from 'Helpers/data/topics';
 import { Topic as TopicType } from 'Types/data';
 
 const Topic: FC<TopicType> = ({ name, slug, featuredImage }) => {
-  const link = getTopicLink(slug);
+  const href = getTopicLink(slug);
 
   return (
     <Container>
       <Image src={featuredImage} alt="" objectFit="cover" width="550" height="330" />
-      <LinkContainer href={link}>
+      <LinkContainer {...{ href }}>
         <Name as="a">{name}</Name>
       </LinkContainer>
     </Container>
