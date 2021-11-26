@@ -10,9 +10,9 @@ import Search from 'Components/Search';
 import Hamburger from 'Components/Hamburger';
 import Brand from 'Components/Brand';
 
-import NavBar from './NavBar';
-import NavMenu from './NavMenu';
-import NavLinks from './NavLinks';
+import NavBar from './parts/NavBar';
+import NavMenu from './parts/NavMenu';
+import NavLinks from './parts/NavLinks';
 
 import { to } from 'Devices';
 

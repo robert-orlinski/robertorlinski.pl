@@ -1,6 +1,6 @@
-export { default as Magnifier } from './Magnifier';
+export { default as Magnifier } from './parts/Magnifier';
 
-export { default as Instagram } from './socialMedia/Instagram';
-export { default as Facebook } from './socialMedia/Facebook';
-export { default as YouTube } from './socialMedia/YouTube';
-export { default as GitHub } from './socialMedia/GitHub';
+export { default as Instagram } from './parts/socialMedia/Instagram';
+export { default as Facebook } from './parts/socialMedia/Facebook';
+export { default as YouTube } from './parts/socialMedia/YouTube';
+export { default as GitHub } from './parts/socialMedia/GitHub';

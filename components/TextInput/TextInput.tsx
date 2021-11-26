@@ -2,7 +2,7 @@ import { FC, forwardRef, Ref, InputHTMLAttributes } from 'react';
 import { DeepMap, FieldError, FieldValues, UseFormRegister } from 'react-hook-form';
 import styled from 'styled-components';
 
-import ErrorIcon from './ErrorIcon';
+import ErrorIcon from './parts/ErrorIcon';
 
 type Props = {
   label: string;

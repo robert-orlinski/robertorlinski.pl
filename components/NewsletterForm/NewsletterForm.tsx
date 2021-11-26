@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
 import styled from 'styled-components';
 
-import { SubmitButton } from './inputs/SubmitButton';
-import { EmailInput } from './inputs/EmailInput';
-import { NameInput } from './inputs/NameInput';
-import { Error } from './Error';
+import { SubmitButton } from './parts/inputs/SubmitButton';
+import { EmailInput } from './parts/inputs/EmailInput';
+import { NameInput } from './parts/inputs/NameInput';
+import { Error } from './parts/ErrorAlert';
 
 import subscribeToTheNewsletter from 'Helpers/requests/subscribeToTheNewsletter';
 

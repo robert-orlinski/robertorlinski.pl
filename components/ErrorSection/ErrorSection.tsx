@@ -11,11 +11,11 @@ type Props = {
   };
 };
 
-const Error: FC<Props> = ({ children, withButton: { href, title } = {} }) => (
+const ErrorSection: FC<Props> = ({ children, withButton: { href, title } = {} }) => (
   <TextBlock>
     <NarrowTitle level={2}>{children}</NarrowTitle>
     {href && title && <Button href={href}>{title}</Button>}
   </TextBlock>
 );
 
-export default Error;
+export default ErrorSection;

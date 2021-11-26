@@ -5,7 +5,7 @@ import useDebounce from 'Hooks/useDebounce';
 
 import TextInput from 'Components/TextInput';
 import PostsList from 'Components/PostsList';
-import Error from 'Components/Error';
+import Error from 'Components/ErrorSection';
 
 import searchForPosts from 'Helpers/requests/searchForPosts';
 

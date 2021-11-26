@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import TextWithLinks from 'Components/TextWithLinks';
 import Separator from 'Components/Separator';
 import Wrapper from 'Components/Wrapper';
-import FooterMenu from './FooterMenu';
+import FooterMenu from './parts/FooterMenu';
 import Brand from 'Components/Brand';
 
 import contentMenu from 'Data/footer/contentMenu';

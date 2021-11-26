@@ -7,7 +7,7 @@ import TopicsGroup from 'Components/TopicsGroup';
 import MainBanner from 'Components/MainBanner';
 import TextBlock from 'Components/TextBlock';
 import Button from 'Components/Button';
-import Error from 'Components/Error';
+import Error from 'Components/ErrorSection';
 import Head from 'Components/Head';
 import P from 'Components/P';
 

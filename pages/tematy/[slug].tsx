@@ -4,7 +4,7 @@ import Head from 'Components/Head';
 import Wrapper from 'Components/Wrapper';
 import PostsList from 'Components/PostsList';
 import MainBanner from 'Components/MainBanner';
-import Error from 'Components/Error';
+import Error from 'Components/ErrorSection';
 
 import { getTopic, getTopicsPaths } from 'Helpers/data/topics';
 import { getPostsByTopic } from 'Helpers/content/posts';

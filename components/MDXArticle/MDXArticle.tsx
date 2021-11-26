@@ -16,9 +16,9 @@ import H5 from 'Components/H5';
 import H6 from 'Components/H6';
 import P from 'Components/P';
 
-import Anchor from './MDXComponents/Anchor';
-import Ul from './MDXComponents/Ul';
-import Ol from './MDXComponents/Ol';
+import Anchor from './parts/Anchor';
+import Ul from './parts/Ul';
+import Ol from './parts/Ol';
 
 type Props = { source: string } & JSX.IntrinsicElements['article'];
 

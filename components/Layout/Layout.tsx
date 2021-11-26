@@ -1,8 +1,8 @@
 import { FC } from 'react';
 
-import FocusVisibleWhileUserIsTabbing from './FocusVisibleWhileUserIsTabbing';
-import CssVariables from './CssVariables';
-import GlobalStyle from './GlobalStyle';
+import FocusVisibleWhileUserIsTabbing from './parts/FocusVisibleWhileUserIsTabbing';
+import CssVariables from './parts/CssVariables';
+import GlobalStyle from './parts/GlobalStyle';
 
 import Footer from 'Components/Footer';
 
