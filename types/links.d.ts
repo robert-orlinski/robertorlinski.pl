@@ -15,6 +15,7 @@ export type UnderlinedLinkStyle = {
 export type Link = {
   isExternal?: boolean;
   children: ReactChild;
+  className?: string;
 } & UnderlinedLinkStyle &
   LinkContainer;
 

@@ -5,16 +5,16 @@ import LinkContainer from 'Components/LinkContainer';
 
 import { Link as LinkType } from 'Types/links';
 
-const Link: FC<LinkType> = ({ children, href, isUnderlineVisible, isExternal }) => {
+const Link: FC<LinkType> = ({ className, children, href, isUnderlineVisible, isExternal }) => {
   isExternal ||= href.includes('http');
 
   return isExternal ? (
-    <UnderlinedLink target="_blank" rel="noreferrer" {...{ href, isUnderlineVisible }}>
+    <UnderlinedLink target="_blank" rel="noreferrer" {...{ href, isUnderlineVisible, className }}>
       {children}
     </UnderlinedLink>
   ) : (
     <LinkContainer {...{ href }}>
-      <UnderlinedLink {...{ isUnderlineVisible }}>{children}</UnderlinedLink>
+      <UnderlinedLink {...{ isUnderlineVisible, className }}>{children}</UnderlinedLink>
     </LinkContainer>
   );
 };
