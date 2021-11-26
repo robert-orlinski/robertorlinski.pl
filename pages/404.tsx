@@ -37,15 +37,16 @@ const Page404: FC<Props> = ({ randomPosts }) => (
         alt: 'Załamy Robur, trzymający się za głowę 🙈',
       }}
     />
-    <Wrapper as="main">
+    <Wrapper>
       <TextBlock>
+        <P>Ten Robert powyżej też nie odnalazł swojej ulubionej podstrony.</P>
         <P>
-          Ten Robert powyżej jest załamany pewnie znacznie mocniej od Ciebie, ale nawet pomimo tego,
-          mogę podrzucić Ci 2 rzeczy na otarcie łez po nieznalezieniu strony!
+          Aby Ciebie nie pozostawić z niczym tak jak jego, podrzucam Ci 2 grupy treści, wśród
+          których mam nadzieję, że znajdziesz coś dla siebie!
         </P>
       </TextBlock>
     </Wrapper>
-    <Wrapper withSpaceBelow>
+    <Wrapper>
       <SectionTitle>3 wpisy, które mogą Cię zainteresować:</SectionTitle>
       <PostsList posts={randomPosts} />
     </Wrapper>
