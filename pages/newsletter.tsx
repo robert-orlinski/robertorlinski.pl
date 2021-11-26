@@ -29,7 +29,7 @@ const Newsletter = () => (
       title="Co powiesz na dodatkowe treści?"
       image={{
         src: bannerImage,
-        alt: 'Robert robiący rzeczy na kompiku na tle cudownych Alp.',
+        alt: 'Górska rzeczka z górami w tle.',
       }}
     />
     <main>
