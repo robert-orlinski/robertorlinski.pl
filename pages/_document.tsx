@@ -11,11 +11,11 @@ import { ServerStyleSheet } from 'styled-components';
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const sheet = new ServerStyleSheet();
-    const originalRenderPage = ctx.renderPage;
+    const { renderPage } = ctx;
 
     try {
       ctx.renderPage = () =>
-        originalRenderPage({
+        renderPage({
           enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
         });
 
