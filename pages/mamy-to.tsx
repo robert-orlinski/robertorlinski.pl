@@ -31,7 +31,7 @@ const NewsletterSuccess = () => (
           Teraz już oficjalnie - mamy kontakt na mailu! Jeśli tylko Cię to interesuje, to e-booka z
           30 rzeczami, o które trzeba zadbać oddając stronę na WordPressie, znajdziesz poniżej:
         </P>
-        <DistantButton href="/bonusy/niezbednik-wordpress-developera.pdf">
+        <DistantButton href="https://static.robertorlinski.pl/niezbednik-wordpress-developera.pdf">
           Pobierz e-book
         </DistantButton>
         <P>Niech służy!</P>
