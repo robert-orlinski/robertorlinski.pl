@@ -117,8 +117,6 @@ describe('related posts', () => {
 
     const postsTopics = relatedPosts.map(({ topics }) => topics).flat();
 
-    console.log(postsTopics);
-
     expect(postsTopics[2]).toContain('WordPress');
   });
 });
