@@ -3,8 +3,15 @@ import { createGlobalStyle } from 'styled-components';
 import { to } from 'Devices';
 
 const GlobalStyle = createGlobalStyle`
-  * {
+  *,
+  ::before,
+  ::after {
     box-sizing: border-box;
+  }
+
+  ::selection {
+    background-color: var(--brand-color);
+    color: #fff;
   }
 
   html,
@@ -85,11 +92,7 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
   }
 
-  *::selection {
-    background-color: var(--brand-color);
-    color: #fff;
-  }
-
+  
   h1,
   h2,
   h3,

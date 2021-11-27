@@ -6,6 +6,6 @@ type Props = {
   as: 'ul' | 'ol';
 };
 
-const List: FC<Props> = ({ as }) => <P {...{ as }} />;
+const List: FC<Props> = ({ as, ...props }) => <P {...{ as }} {...props} />;
 
 export default List;
