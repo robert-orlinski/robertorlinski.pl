@@ -108,12 +108,12 @@ Nasz CSS (a w sumie to SCSS) jest trooooszeczkę dłuższy:
       transform: rotate(225deg);
       transition: transform 220ms 120ms ease-in-out;
 
-      &:before {
+      &::before {
         top: 0;
         transition: top 100ms ease-out;
       }
 
-      &:after {
+      &::after {
         bottom: 0;
         transform: rotate(-90deg);
         transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out;
@@ -169,12 +169,12 @@ Gdy nasze hamburger menu stanie się już aktywne, to właściwości sprawią, �
     transform: rotate(225deg);
     transition: transform 220ms 120ms ease-in-out;
 
-    &:before {
+    &::before {
       top: 0;
       transition: top 100ms ease-out;
     }
 
-    &:after {
+    &::after {
       bottom: 0;
       transform: rotate(-90deg);
       transition: bottom 100ms ease-out, transform 220ms 120ms ease-in-out;
