@@ -277,6 +277,21 @@ const postRedirects = [
     destination: '/artykuly/wordpress-gutenberg-008',
     permanent: true,
   },
+  {
+    source: '/wordpress-gutenberg-007',
+    destination: '/artykuly/wordpress-gutenberg-007',
+    permanent: true,
+  },
+  {
+    source: '/wordpress-gutenberg-006',
+    destination: '/artykuly/wordpress-gutenberg-006',
+    permanent: true,
+  },
+  {
+    source: '/wordpress-gutenberg-005',
+    destination: '/artykuly/wordpress-gutenberg-005',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
