@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@mapbox/rehype-prism": "^0.8.0",
+    "bemquery-core": "file:../../../Downloads/bemquery-core",
     "dayjs": "^1.10.7",
     "esbuild": "^0.13.12",
     "mdx-bundler": "^7.0.0",
