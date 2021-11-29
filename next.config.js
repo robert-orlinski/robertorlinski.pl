@@ -307,6 +307,11 @@ const postRedirects = [
     destination: '/artykuly/wordpress-gutenberg-004',
     permanent: true,
   },
+  {
+    source: '/nauka-wordpressa-w-2021-roku',
+    destination: '/artykuly/nauka-wordpressa-w-2021-roku',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
