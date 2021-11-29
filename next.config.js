@@ -297,6 +297,11 @@ const postRedirects = [
     destination: '/artykuly/plynne-przewijanie-witryny',
     permanent: true,
   },
+  {
+    source: '/jak-szybciej-renderowac-strony-internetowe',
+    destination: '/artykuly/jak-szybciej-renderowac-strony-internetowe',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

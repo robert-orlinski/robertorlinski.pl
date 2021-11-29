@@ -1,0 +1,209 @@
+---
+title: Szybsze renderowanie stron internetowych, dzięki właściwościom contain i content-visibility
+seoTitle: Szybkie strony dzięki contain i content-visibility w CSS
+abstract: Właściwości contain oraz content-visibility, pozwalają na znacznie szybsze renderowanie stron internetowych. To o nich jest ten artykuł 💥
+isPublished: true
+topics:
+  - Front-end
+date: 22.02.2021
+isPopular: false
+---
+
+W tym artykule powiem Ci o trzech właściwościach CSSa, które poprawią wydajność i użyteczność Twoich stron. Pozwolą Ci przejąć kontrolę nad tym jak i kiedy renderują się style poszczególnych elementów.
+
+A właściwości te, to:
+
+- `contain`
+- `content-visibility`
+- `contain-intrinsic-size`
+
+Na początku przedstawię Ci, jak przeglądarki stylują strony internetowe, a później jakie zastosowanie w tym procesie, mają wymienione powyżej właściwości.
+
+Okej, to zacznijmy od początku.
+
+## Jak przeglądarki ładują i renderują strony internetowe?
+
+Abyśmy mogli zobaczyć zdefiniowany przez nas wygląd serwisu, musi on przejść przez 4 etapy renderowania:
+
+1. **Parse** - krok, podczas którego przeglądarka tworzy strukturę strony dla HTMLa, a później dla CSSa. Dzięki temu wie, z czego składa się nasza strona i jakie selektory CSSa dotyczą jakich elementów.
+2. **Layout** - krok, w którym przeglądarka ustala, jakie wymiary będą miały nasze elementy. Bierze pod uwagę zdefiniowane przez nas style, jak i oblicza rozmiary elementów niezdefiniowanych na sztywno (tych, których rozmiary zależą od innych elementów, najczęściej rodziców).
+3. **Paint** - w tym kroku przeglądarka wypełnia piksel po pikselu cały widok, wg tego co udało jej się obliczyć wcześniej.
+4. **Composite** - wisienka na torcie, w której ustalane są warstwy konkretnego serwisu. To tutaj dopiero przeglądarka decyduje, że na przykład nawigacja na Twojej stronie będzie przykrywać baner pod nią.
+
+I co dla nas w tej chwili szczególnie ważne - każdy z tych kroków każe nam czekać na swoje wykonanie. Dopiero po zrealizowaniu się wszystkich możemy zobaczyć naszą stronę w pełnej okazałości.
+
+## Okej, to jaką rolę w tym wszystkim mają właściwości z początku?
+
+> W skrócie, pozwalają nam wybierać **które z etapów renderowania** (lub pojedynczych zadań realizowanych w tych etapach) **są pomijane**.
+>
+> Pomijane w ogóle (właściwość `contain`) lub wtedy, gdy nie widzimy na ekranie danego elementu (właściwość `content-visibility`).
+
+I tak naprawdę, właściwość `contain`, jest matką tego o czym tu rozmawiamy.
+
+Bez niej nie byłoby `content-visibility`, bo ta druga właściwość w głównej swojej roli to tak naprawdę `contain` z kilkoma wartościami, działającą tylko wtedy, gdy elementu nie widać na ekranie. I tak samo, bez niej niepotrzebna byłaby właściwość `contain-intrinsic-size`.
+
+Wiem, że na ten moment może wydawać się to zagmatwane, ale do końca artykułu gwarantuję Ci, że wszystko się rozjaśni ✨
+
+### Właściwość `contain` i jej możliwości
+
+Może ona przyjąć takie oto wartości:
+
+```css
+contain: size;
+contain: layout;
+contain: paint;
+contain: style;
+
+contain: content;
+contain: strict;
+contain: none;
+```
+
+I może przyjmować też kilka właściwości jednocześnie, na przykład:
+
+```css
+contain: size paint;
+```
+
+Powiedzmy jaką dokładnie robotę, wszystkie te wartości wykonują.
+
+#### `Contain: size`
+
+Za pomocą tej wartości, możemy powiedzieć **przeglądarce**, że **nie musi zwracać uwagi na wielkość dzieci konkretnego elementu.** Dzięki temu, cała kalkulacja szerokości i wysokości rodzica, jest pomijana.
+
+Natomiast to **wymaga od nas, abyśmy zdefiniowali te rozmiary na sztywno** - w końcu gdy przeglądarka pominie ich ustalanie wg wielkości potomków (a jednocześnie sami tego nie zrobimy), to zostaniemy z elementem o wielkości 0x0 px.
+
+Możesz zerknąć na te 2 figury:
+
+import CodePenIframe from 'CodePenIframe';
+
+<CodePenIframe id="mdOMBQz" title="(CSS) contain: size" />
+
+Po lewej widzisz domyślne zachowanie, po prawej z kolei wersję z właściwością `contain`, bez ustalonej wysokości.
+
+#### `Contain: layout`
+
+Wartość `layout` mówi przeglądarce, że **potomkowie konkretnego elementu nie mają wpływu na inne elementy na stronie i w drugą stronę** - elementy strony nie mają wpływu na potomków elementu, do którego dodamy właściwość `contain`.
+
+Dodatkowo, gdy do elementu dodamy `contain: layout`, to otrzyma on własny kontekst warstw, podobnie jak to dzieje się w elementach, do których dodamy `position: relative`. Przez to wszystkie użycia `z-index`, `top`, `left` itp. będą wydarzać się względem tego elementu.
+
+Natomiast co ciekawe, element, do którego dodamy `contain: layout`, może dalej mieć wpływ na inne części strony. Wszystko przez to, że jego potomkowie nie mogą mieć wpływu na inne części strony, ale mają na niego. Na przykład, są w stanie zmienić jego wielkość, a gdy on - element nadrzędny, do którego dodaliśmy właściwość `contain` - zmieni swoją wielkość, to wpłynie na ułożenie elementów wokół niego.
+
+#### `Contain: paint`
+
+Tu z kolei mamy do czynienia z `overflow: hidden` na sterydach.
+
+`Contain: paint`, pozwala nam obciąć wszystkich potomków danego elementu, w taki sposób, aby te nie były renderowane i tym samym pokazywane, gdy wychodzą poza jego przestrzeń. Na razie sprawia wrażenie dokładnie takiego samego, co `overflow: hidden`.
+
+Ale właśnie, tu dochodzą sterydy (ale bardzo zdrowe):
+
+- `Contain: paint` pomija renderowanie swoich dzieci, gdy nie ma ich w viewporcie (zakłada, że jeśli nic nie może wychodzić poza element, którego nie widzi użytkownik, to nie ma potrzeby generowania jego podelementów, bo użytkownik i tak ich nie zobaczy).
+- I podobnie, jak wartość `layout`, `paint` tworzy nowy kontekst warstw, więc w jego obrębie możemy używać np. właściwości top, left itp.
+
+#### `Contain: style`
+
+Ostania właściwość (z tych głównych). Nie bez powodu, bo jest tak naprawdę najmniej znacząca z naszej czwórki. A dodatkowo [istnieje ryzyko, że wypadnie ze specyfikacji](https://drafts.csswg.org/css-contain-2/#style-containment).
+
+Ogranicza ona kontekst właściwości:
+
+- `counter-increment`
+- `counter-set`
+
+...oraz wartości:
+
+- `open-quote`
+- `close-quote`
+- `no-open-quote`
+- `no-close-quote`
+
+...dla wartości `content`.
+
+Dzięki temu, gdy użyjemy czegoś z wypisanych rzeczy, zastosowanie to będzie miało wpływ tylko na element, na którym użyliśmy `contain: style` oraz jego potomków.
+
+Ograniczamy tym samym potrzebę sprawdzania, czy w innym obrębie strony nie istnieje coś, co te właściwości modyfikuje.
+
+#### `Contain: content`
+
+Tu jest już bardzo prosto. Są to wartości `layout` oraz `paint`, wyrażone jednym słowem.
+
+#### `Contain: strict`
+
+Podobnie jak w poprzednim akapicie, ale tym razem do `layout` oraz `paint`, dochodzi jeszcze `size`.
+
+#### `Contain: none`
+
+Tego chyba nie muszę tłumaczyć :)
+
+### To teraz `content-visibility`
+
+A za nią również `contain-intrinsic-size`, ale do tej drugiej wrócimy za chwilkę. `Content-visiblity` oferuje 3 możliwe wartości:
+
+```
+content-visiblity: none;
+content-visiblity: auto;
+content-visiblity: hidden;
+```
+
+Powiedzmy sobie o dwóch ostatnich.
+
+#### `Content-visiblity: auto`
+
+Tutaj dzieje się cała zabawa. Otóż, `content-visibility: auto`, daje konkretnemu elementowi:
+
+```css
+contain: layout style paint size;
+```
+
+Czyli tak naprawdę wszystko, co oferuje nam omówiona wcześniej właściwość `contain`. A całość aplikuje się wtedy, gdy element jest poza viewportem (czyli użytkownik go nie widzi).
+
+A dzięki temu, po prostu się nie renderuje, przez co strona ładuje się znacznie, znacznie szybciej. Najpierw skupia się na tym, co widzi użytkownik i dopiero gdy to jest wygenerowane w pełni, przechodzi do dalszych części strony.
+
+> Chyba że zjedziemy w dół na danej witrynie - wtedy priorytet się zmienia, bo inne elementy stają się tym, co widzimy na ekranie.
+
+#### `Content-visibility: hidden`
+
+Tu jest znacznie prościej, bo za pomocą tej właściwości po prostu chowamy konkretny element, bardzo podobnie jak robimy to w przypadku `display: none` oraz `visibility: hidden`. Biorąc po troszku z zachowania obu.
+
+Bo element schowany za pomocą `content-visibility: hidden`, nie zniszczy swojego stanu renderowania (podobnie jak dzieje się to w przypadku `visibility: hidden`, ale z drugiej strony stanie się zupełnie niedostępny (tak jak dzieje się to dla elementów schowanych za pomocą `display: none`).
+
+### I jeszcze obiecany `contain-intrinsic-size`
+
+Jest on placeholderem wielkości elementów, na które nałożyliśmy `contain: size`, w tym `content-visibility: auto`.
+
+Gdy do elementu dodamy wspomniane właściwości, to zacznie on się zachowywać tak, jakby nie miał w sobie żadnej zawartości. Dlatego gdy chcemy, aby jego wysokość nie wynosiła 0 pikseli, to musimy na sztywno zdefiniować jego wysokość i szerokość.
+
+> A co jeśli mamy element, na przykład generowany z backendu, na którym nie jesteśmy w stanie ustawić stałej szerokości i wysokości, bo nie wiemy ile będą wynosić?
+
+Wtedy pojawia się problem, bo gdy nie ustawimy dla niego sztywnej wielkości, a przy tym zabierzemy z niego `contain: size` lub dojedziemy do danego elementu, na którym jest `content-visibility: auto`, to zaaplikuje on swoją prawdziwą wysokość, wg swoich potomków. A to doprowadzi do tego, że nasza strona będzie po prostu skakać, przez co stanie się mniej przyjemna dla użytkowników i zacznie gorzej wypadać w [metrykach](https://web.dev/cls/).
+
+I tu na pomoc przychodzi nam właśnie:
+
+```css
+contain-intrinsic-size: 1000px;
+```
+
+Przypisując tę właściwość w pokazany wyżej sposób, mówimy przeglądarce, żeby zarezerwowała 1000px szerokości i wysokości na dany element.
+
+Dzięki temu, gdy zostanie on już w pełni załadowany (na przykład przy zjechaniu do konkretnej sekcji, na której mamy `content-visibility: auto`), to struktura strony nie przesunie się tak bardzo lub nie przesunie się w ogóle (to jest efekt, do którego dążymy) jeśli wysokość elementu będzie równa dokładnie 1000 pikseli.
+
+## A czy na coś jeszcze wpływają nasze właściwości, poza wydajnością?
+
+Tak, ale tu niestety już nie tak pozytywnie - na dostępność.
+
+Elementy, do których dodamy `content-visibility` lub `content: paint` (który jest częścią tego pierwszego), niestety [przestają być dostępne dla technologii wspomagających przeglądanie stron internetowych](https://marcysutton.com/content-visibility-accessible-semantics), na przykład czytników ekranowych.
+
+Dlatego musisz uważać z tym, jak korzystasz z owych właściwości - renderować za ich pomocą elementy mniej istotne (na przykład stopkę z analogicznymi linkami, do nawigacji na górze lub zwykły tekst ze zdjęciami, bez nagłówków, linków i formularzy).
+
+## Wszystko super, a jak ze wsparciem przeglądarek?
+
+No i przyszedł pan maruda.
+
+Nie no, tak serio to nie jest z tym tak najgorzej.
+
+W dniu pisania tego artykułu (20.02.2021), `contain` radzi sobie dobrze:
+
+[![](https://robertorlinski.pl/wp-content/uploads/2021/02/CanIUse-content-visibility-1-1024x440.jpg)](https://caniuse.com/css-containment)Content-visibility troszkę słabiej:
+
+[![](https://robertorlinski.pl/wp-content/uploads/2021/02/CanIUse-content-visibility-1024x387.jpg)](https://caniuse.com/css-content-visibility)Natomiast możemy liczyć na zmienę tego stanu rzeczy, bo na przykład [twórcy Firefoxa, myślą o pracach nad tą funkcją](https://github.com/mozilla/standards-positions/issues/135). Bardzo możliwe, że jeśli czytasz te słowa jakiś czas po stworzeniu tego artykułu, to już zdążyło się w tym kontekście poprawić.
+
+I to będzie na tyle, mam nadzieję, że ten artykuł był dla Ciebie jak najbardziej przydatny! Jeśli tak, to możesz też zawsze podrzucić ten artykuł osobie, która może wynieść z niego wartość ✨
