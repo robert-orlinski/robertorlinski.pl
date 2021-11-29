@@ -292,6 +292,11 @@ const postRedirects = [
     destination: '/artykuly/wordpress-gutenberg-005',
     permanent: true,
   },
+  {
+    source: '/plynne-przewijanie-witryny',
+    destination: '/artykuly/plynne-przewijanie-witryny',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

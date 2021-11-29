@@ -1,0 +1,199 @@
+---
+title: Płynne przewijanie strony, do wskazanego punktu – 3 świetne sposoby
+seoTitle: Płynne przewijanie strony, do wskazanego punktu
+abstract: W artykule piszę o trzech sposobach, które pozwolą nam dodać płynne przewijanie do wskazanego elementu na swojej stronie internetowej 🌊
+isPublished: true
+topics:
+  - Front-end
+date: 01.03.2021
+isPopular: true
+---
+
+Podczas przeglądania Internetu nie sposób ominąć efektu, w którym po kliknięciu w konkretny link, nasz widok płynnie przenosi się na sekcję, do której ten odnośnik prowadził - tzw. efekt smooth scroll. A czy wiesz, że do utworzenia czegoś takiego wystarczy Ci trochę kodu JavaScript lub nawet jedna właściwość CSSa?
+
+Jeśli nie, to w tym wpisie chciałbym pokazać Ci 3 sposoby na implementację takiego efektu na własnej stronie internetowej. Zapraszam do lektury!
+
+## Sposób 1: Smooth scroll, dzięki właściwości `scroll-behavior`
+
+Już większość [nowych przeglądarek, wspiera właściwość wymienioną w podtytule](https://caniuse.com/css-scroll-behavior), dzięki czemu w większości przypadków jesteśmy w stanie użyć jednej linii w CSSie, aby osiągnąć nasz efekt!
+
+Za co odpowiada właściwość `scroll-behavior`? W skrócie ustawia sposób, w jaki (dla konkretnego elementu na stronie) zachowa się scroll po tym gdy zostanie “przejęty” przez konkretny link.
+
+Stwórzmy bardzo prostą strukturę HTMLa, który posłuży za bazę dla naszego efektu:
+
+```html
+<a href="#example">Kliknij, aby przejść pod wskazany odnośnik</a>
+
+<span id="example">I oto jesteś!</span>
+```
+
+I co najważniejsze, dodajmy kod CSS, w którym umieścimy naszą właściwość z wartością `smooth` do elementu `html`:
+
+```css
+html {
+  scroll-behavior: smooth;
+}
+```
+
+Od tej chwili efekt zacznie działać, co widać na załączonym przykładzie:
+
+import CodePenIframe from 'CodePenIframe';
+
+<CodePenIframe id="wybgVE" title="Płynne przewijanie do wskazanego punktu - Scroll-behavior" />
+
+## Sposób 2: Biblioteka [moveTo.js](https://github.com/hsnaydd/moveTo)
+
+Jeśli chcemy zapewnić wsparcie dla większej ilości przeglądarek lub spersonalizować nasz efekt, to na pewno warto będzie się pochylić nad biblioteką wymienioną w podtytule.
+
+Jest lekka, oparta tylko o VanillaJS i bardzo prosta w użyciu (w sumie jak większość tego typu rozwiązań).
+
+Na początku warto będzie ją wrzucić na naszą stronę. Możemy zrobić to za pomocą npma:
+
+```bash
+npm install moveto
+```
+
+..Yarna:
+
+```bash
+yarn add moveto
+```
+
+...Bowera:
+
+```bash
+bower install moveTo
+```
+
+...lub oczywiście wrzucając całość z pliku, pobranego z GitHuba lub CDNa. Dla tego drugiego:
+
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moveTo/1.8.2/moveTo.min.js"></script>
+```
+
+A później oczywiście, warto byłoby zainicjować naszą bibliotekę. Możemy zrobić to w JavaScript\'cie:
+
+```js
+const moveTo = new MoveTo();
+const target = document.querySelector('.element');
+moveTo.move(target);
+```
+
+I co jeszcze istotne, do samego obiektu biblioteki, możemy wrzucić odrobinę parametrów:
+
+```js
+new MoveTo({
+  tolerance: 0,
+  duration: 800,
+  easing: 'easeOutQuart',
+  container: window,
+});
+```
+
+Z pełną powagą muszę przyznać, że powyższe opcje, skopiowałem żywcem z tego, co twórca zapisał na GitHubie biblioteki (nawet odruchowo dodałem średnik, bo tak - lubię średniki, a później go usunąłem, by całość jednak była bezczelną kopią), dlatego na [powyższego GitHuba](https://github.com/hsnaydd/moveTo#options) Cię zapraszam, po wyjaśnienie tych opcji.
+
+Czy pozostaje nam coś jeszcze? Sama struktura linku, który kieruje do odpowiedniego miejsca. Wg tego, pod co podpiąłem się w kodzie JSa:
+
+```html
+<a href="#element-docelowy" class="element" data-mt-duration="300"
+  >Kliknij, by zjechać do konkretnego elementu</a
+>
+```
+
+I jak zapewne jeszcze widać, do elementu został dodany atrybut `data-mt-duration`. Otóż, każdą opcję, którą jesteśmy w stanie zadeklarować w JSie, możemy również dodać dla konkretnego elementu w HTMLu, poprzedzając jej nazwę, frazą `data-mt`.
+
+Mamy to! Chyba wszystko, co dało się powiedzieć o tej bibliotece, zostało powiedziane, więc przejdźmy do jeszcze jednego i tym samym ostatniego sposobu.
+
+## Sposób 3: Płynne przewijanie oparte o bibliotekę [jQuery](https://jquery.com/)
+
+Nie mogło tu zabraknąć naszej starej przyjaciółki.
+
+I wiem - używanie jQuery w tych czasach przez wiele osób uważane jest za zbędne, ale to nie przeszkadza mi wrzucić tego sposobu, bo kod, który zaraz Ci pokażę, towarzyszy front-end developerom od czasów, w których ja na chleb mówiłem peb.
+
+Wróćmy do naszego króciutkiego kodu HTML, z pierwszego przykładu:
+
+```html
+<a href="#example">Kliknij, aby przejść pod wskazany odnośnik</a>
+
+<span id="example">I oto jesteś!</span>
+```
+
+Z kolei tak oto prezentuje się funkcja odpowiedzialna za obsługę naszego efektu oraz oczywiście jej wywołanie na końcu:
+
+```js
+function scroll(e) {
+  const href = $(this).attr('href');
+
+  e.preventDefault();
+
+  $('html, body').animate(
+    {
+      scrollTop: $(href).offset().top,
+    },
+    800,
+  );
+
+  location.hash = href;
+}
+
+$('a[href^="#"]').click(scroll);
+```
+
+Może przeanalizujemy ten kod linia po linii:
+
+```js
+function scroll(e) {
+
+  var href = $(this).attr('href');
+```
+
+Po deklaracji funkcji scroll z parametrem `e` (potrzebnym do obsługi zdarzeń w JS), tworzymy zmienną `href`, która zawrze wartość atrybutu, a jakże: `href` odnośnika, dla którego nasza funkcja została wywołana.
+
+```js
+e.preventDefault();
+```
+
+Tu za pomocą wbudowanej funkcji preventDefault() usuwamy domyślne zachowanie naszego linku.
+
+```js
+$('html, body').animate(
+  {
+    scrollTop: $(href).offset().top,
+  },
+  800,
+);
+```
+
+Chyba najważniejszy element omawianego skryptu. Łapiemy elementy `html` oraz `body` (potrzebujemy obu, aby efekt działał we wszystkich przeglądarkach) i wykonujemy dla nich funkcję wbudowaną w jQuery o nazwie `animate()`. Za jej pomocą animujemy zmianę wartości górnego przewinięcia okna przeglądarki (`scrollTop`) na ilość pikseli od początku witryny do elementu docelowego.
+
+Całość tak naprawdę sprowadza się do tego, że po prostu nasz widok przejeżdża do elementu docelowego 🎉
+
+Po zamknięciu klamry, w której została umieszczona funkcja wpisujemy długość wykonywania się animacji w milisekundach.
+
+```js
+  location.hash = href;
+
+};
+```
+
+Na końcu aktualizujemy adres witryny o identyfikator elementu, do którego przenosił nasz link. Dzięki temu witryna nie straci na dostępności.
+
+Oczywiście samo zadeklarowanie funkcji nic nam nie da, jeśli później jej nie wywołamy:
+
+```js
+$('a[href*="#"]').click(scroll);
+```
+
+Stanie się to gdy użytkownik kliknie na jakikolwiek link, w którym znajduje się hash.
+
+I tak oto prezentuje się cały cały, działający skrypt, który w każdej chwili możesz użyć na swojej stronie internetowej!
+
+Poniżej, podobnie jak w przypadku właściwości `scroll-behavior`, podrzucam Ci działający przykład z CodePena:
+
+<CodePenIframe id="EQJBqK" title="Płynne przewijanie do wskazanego punktu - jQuery" />
+
+## I tak oto, mamy nasz smooth scroll!
+
+Smooth scroll możemy zaimplementować na naszych stronach bardzo prosto - za pomocą samego CSSa, biblioteki w czystym JSie lub krótkiego skryptu jQuery - w zależności od tego, jakie akurat mamy potrzeby.
+
+Standardowo w razie jakichkolwiek pytań lub sugestii zapraszam Cię do komentowania przeczytanego artykułu, a jeśli okazał się dla Ciebie pomocny, to jak zwykle będę meeega wdzięczny za jego udostępnienie!
