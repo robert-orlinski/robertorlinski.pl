@@ -302,6 +302,11 @@ const postRedirects = [
     destination: '/artykuly/jak-szybciej-renderowac-strony-internetowe',
     permanent: true,
   },
+  {
+    source: '/wordpress-gutenberg-004',
+    destination: '/artykuly/wordpress-gutenberg-004',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

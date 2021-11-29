@@ -1,0 +1,172 @@
+---
+title: 'Własne bloki w WordPress Gutenberg #004 –  RichText'
+seoTitle: RichText - idealny sposób na pola tekstowe w Gutenbergu
+abstract: RichText, to wbudowany komponent WordPress Gutenberga i jednocześnie, idealny sposób na dodawanie pól tekstowych, do naszych bloków 💪
+isPublished: true
+topics:
+  - WordPress
+  - Własne bloki w WordPress Gutenberg
+date: 18.01.2021
+isPopular: false
+---
+
+Pora zacząć tworzyć nasz spis treści w taki sposób, aby zaczął w końcu przypominać spis treści!
+
+A tak jak wszystkie bloki i elementy interfejsu w Gutenbergu, tak i nasz spis treści, będzie zawierał w sobie [wbudowane komponenty Gutenberga](https://github.com/WordPress/gutenberg/tree/master/packages/components/src).
+
+A najczęściej wykorzystywanym komponentem (gdy chodzi o tworzenie konkretnych bloków), jest tekst sformatowany. Więc to właśnie o nim, chcę Ci opowiedzieć w tej części.
+
+import VideoInterlude from 'VideoInterlude';
+
+<VideoInterlude id="51xGSH7Nbkk" title="Własne bloki w WordPress Gutenberg #004 – RichText" />
+
+## Dlaczego akurat [RichText](https://developer.wordpress.org/block-editor/developers/richtext/)?
+
+Zdecydowana większość naszych bloków, będzie zawierała w sobie jakieś teksty. Wobec tego, nie ma żadnego sensu, żebyśmy wymyślali koło na nowo, gdy właśnie RichText, pozwala nam taki tekst bardzo ładnie ułożyć i sformatować.
+
+W końcu domyślne zachowanie nagłówków, paragrafów, list i tym podobnych elementów w Gutenbergu, jest bardzo przyjemne! A to właśnie tekst sformatowany, stoi za tym zachowaniem.
+
+## Wobec tego, jak możemy go użyć?
+
+W pierwszej kolejności, musimy go zaimportować, do naszego głównego pliku JavaScriptu, nad którym cały czas pracujemy:
+
+```jsx
+import { RichText } from '@wordpress/block-editor';
+```
+
+Jednocześnie pamiętając o dodaniu zależności `wp-editor`, do pliku PHP, w którym pobieramy wszystkie assety, związane z tworzonym przez nas blokiem (które udało nam się zdefiniować już w [pierwszej części serii o Gutenbergu](https://robertorlinski.pl/2020/11/16/wordpress-gutenberg-001/)):
+
+```php
+wp_register_script(
+  'table-of-contents',
+  plugin_dir_url( __FILE__ ) . 'build/index.js',
+  array( 'wp-blocks', 'wp-editor' )
+);
+```
+
+I od teraz, w funkcji `edit()`, będziemy w stanie skorzystać z tagu:
+
+```jsx
+<RichText />
+```
+
+...a w funkcji `save()`, z właściwości `Content`, tego samego tagu:
+
+```jsx
+<RichText.Content />
+```
+
+## W takim razie, jakie atrybuty możemy przypisać do naszych tagów?
+
+Opowiem Ci o tych najważniejszych oraz takich, które bezpośrednio przydadzą nam się w samym tworzeniu spisu treści.
+
+Resztę z kolei, będziesz miał/a okazję poznać, przy okazji zadania domowego, więc (jak tak naprawdę zawsze) warto będzie je przerobić!
+
+### Może najpierw tag `<RichText />` w funkcji `edit()`
+
+Zacznijmy od tagów wymaganych; jest ich dokładnie dwójka:
+
+- **value** - tutaj umieszczamy konkretny atrybut, który ulegnie zmianie, wg tego, jaki tekst wrzucimy w naszym polu;
+- **onChange** - metoda, która uruchamia się za każdym razem, gdy nasze pole, zostanie zedytowane - zazwyczaj będziemy używać jej po prostu do aktualizacji atrybutów, później przekazywanych do funkcji `edit()`.
+
+I dalej mamy kilka atrybutów opcjonalnych, których użyjemy w przypadku naszego spisu treści:
+
+- **tagName** - tag, w ramach którego zostanie wyświetlone nasze pole;
+- **placeholder** - tekst, który pokaże się, gdy nie zaczniemy jeszcze edytować samego pola
+- **multiline** - podobnie jak w przypadku atrybutów, tak i tu podajemy tag, w ramach którego zostanie zamknięta każda kolejna linia, jaką dodamy do naszego tekstu formatowanego (np. w ramach tagu `<li>` lub `<p>`).
+
+### Z kolei dla `<RichText.Content />` w funkcji `save()`, nie musimy pamiętać wielu atrybutów
+
+Korzystać będziemy dokładnie z dwóch (i to powtarzających się z poprzednią listą):
+
+- **value**;
+- **tagName**.
+
+Pozwoliłem sobie nie dublować ich tłumaczenia.
+
+## Użyjmy tekstu sformatowanego w naszym bloku!
+
+Aby nie rozmieniać się na drobne, podrzucam Ci cały kod spisu treści, który pozwoli go zrealizować za pomocą dwóch pól RichText. Oczywiście ważniejsze jego elementy, wytłumaczę Ci trochę niżej:
+
+```jsx
+import './index.scss';
+import { registerBlockType } from '@wordpress/blocks';
+import { RichText } from '@wordpress/block-editor';
+
+registerBlockType('rob/table-of-contents', {
+  title: 'Spis treści',
+  description: 'Sekcja z nagłówiem oraz spisem treści, konkretnego artykułu',
+  icon: 'editor-table',
+  keywords: ['zawartość', 'lista', 'table of contents'],
+  category: 'content',
+
+  attributes: {
+    title: {
+      type: 'string',
+      source: 'html',
+      selector: 'h2',
+    },
+    list: {
+      type: 'array',
+      source: 'children',
+      selector: 'ol',
+    },
+  },
+
+  edit({ attributes, setAttributes }) {
+    const { title, list } = attributes;
+
+    function setTitle(newTitle) {
+      setAttributes({ title: newTitle });
+    }
+
+    function setListContent(newList) {
+      setAttributes({ list: newList });
+    }
+
+    return (
+      <div class="table-of-contents">
+        <RichText tagName="h2" placeholder="Tytuł spisu treści" value={title} onChange={setTitle} />
+        <RichText
+          tagName="ol"
+          placeholder="Spis treści"
+          value={list}
+          multiline="li"
+          onChange={setListContent}
+        />
+      </div>
+    );
+  },
+
+  save({ attributes }) {
+    const { title, list } = attributes;
+
+    return (
+      <div class="table-of-contents">
+        <h2>{title}</h2>
+        <RichText.Content tagName="ol" value={list} />
+      </div>
+    );
+  },
+});
+```
+
+Tak naprawdę nie zmieniło się tutaj dużo, od [poprzedniego wpisu](./wordpress-gutenberg-003) - całość została bardziej rozbudowana, niż przepisana.
+
+W pierwszej kolejności, w atrybutach widzimy nowy atrybut: `list`, który będzie zawierał w sobie sam spis treści, i który jest również rozwiązaniem zadania domowego, z [części o atrybutach w Gutenbergu](./wordpress-gutenberg-003)!
+
+Później mamy 2 funkcje, odpowiedzialne za zmianę poszczególnych atrybutów, podczas edycji odpowiadających im pól tekstowych. I przy nich warto się na chwilkę zatrzymać.
+
+Poprzednio owe atrybuty, zmienialiśmy wrzucając do nich wartości pobrane z eventów, a teraz, zupełnie tak nie jest!
+
+Jak widać, np. przy każdej edycji pola z tytułem, atrybut `title`, zostaje po prostu zastąpiony zmienną `newTitle`. A dzieje się tak, bo **RichText nie przekazuje do naszej funkcji całego eventu, a tylko wpisywaną do niego wartość, którą od razu jesteśmy w stanie użyć**.
+
+Dalej używamy już naszych tagów RichText z atrybutami, o których mieliśmy okazję pomówić sobie w jednym poprzednich akapitów.
+
+## I to tyle! Od teraz wiesz już jak najlepiej dodawać miejsca na tekst w Twoich blokach ✨
+
+I jak zawsze - nie może obyć się bez zadania domowego!
+
+Zajrzyj pod ten [link i przeczytaj więcej o wszystkich właściwościach](https://github.com/WordPress/gutenberg/blob/master/packages/block-editor/src/components/rich-text/README.md), z których pozwala korzystać ten komponent.
+
+Znajdziesz tam wiele dodatkowych informacji, które na pewno Ci się przydadzą, przy tworzeniu własnych bloków Gutenberga! 🎉
