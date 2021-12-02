@@ -1,0 +1,150 @@
+---
+title: Jak używać wartości z WordPressa, w plikach CSS oraz JavaScript?
+seoTitle: Wartości z WordPressa, w plikach CSS i JS
+abstract: Wiesz, że istnieją 2 funkcje, dzięki którym możesz przekazywać wartości z WordPressa, do plików CSS i JS? Właśnie o nich tu opowiadam!
+isPublished: true
+topics:
+  - WordPress
+date: 08.12.2020
+isPopular: false
+---
+
+WordPress, bazuje na PHPie, który jak wiadomo, daje nam możliwość zapisu do bazy danych, a później odczytu, zapisanych w niej wartości, w plikach HTML (a będąc precyzyjnym - w plikach o rozszerzeniu .php, ale zawierających często więcej HTMLa, niż samego PHPa).
+
+Ale właśnie, zdanie to oznacza, że jesteśmy w stanie, korzystać z tych właściwości, tylko w przypadku plików z rozszerzeniem .php, co wyklucza, kod JS i CSS, konkretnej strony.
+
+W teorii!
+
+import VideoInterlude from 'VideoInterlude';
+
+<VideoInterlude id="BOuv5d3gUKw" title="Jak używać wartości z WordPressa, w plikach JS i CSS?" />
+
+## W praktyce są funkcja, które umożliwia nam wstrzyknięcie konkretnych wartości z WordPressa do plików JavaScript, jak i CSS
+
+A wyglądają w ten oto sposób.
+
+Dla plików CSS:
+
+```php
+wp_add_inline_style( string $handle, string $custom_css );
+```
+
+> W tej oto funkcji, w pierwszym argumencie wrzucamy ID konkretnego arkusza, który wcześniej zarejestrowaliśmy w samym WordPressie, a w drugim z kolei, podajemy ciąg tekstowy, z naszymi stylami.
+
+I dla plików JS:
+
+```php
+wp_localize_script( string $handle, string $js_object, array $wp_variables );
+```
+
+> Tutaj z kolei, przekazujemy tablicę z wartościami, pobranymi z bazy danych, do konkretnego skryptu (w parametrze trzecim), którego ID podaliśmy w pierwszym parametrze.
+>
+> Dodatkowo ustalamy nazwę obiektu, z którego będziemy w stanie wyciągać konkretne wartości, już w pliku JavaScript.
+>
+> (A o tym, dlaczego słówko do wziąłem w cudzysłowie - to za chwilę wyjaśnię ✨)
+
+## Nie ma co czekać - zobaczmy 2 przykłady!
+
+Pobierzmy 2 pliki - CSS i JavaScript do naszego motywu WordPressa:
+
+```php
+function rob_register_assets() {
+    wp_enqueue_style(
+        'main-css',
+        get_theme_file_uri( 'assets/css/main.css' ),
+        false
+    );
+
+    wp_enqueue_script(
+        'main-js',
+        get_theme_file_uri( 'assets/js/main.js' ),
+        false,
+        false,
+        true
+    );
+}
+add_action( 'wp_enqueue_scripts', 'rob_register_assets' );
+```
+
+I teraz, jeśli chcemy, dla pierwszego pliku zdefiniować tło banera naszej strony, możemy posłużyć się takim oto skrawkiem kodu:
+
+```php
+function rob_add_css() {
+    $main_custom_css = "
+        .banner {
+            background-image: url('{$background_url}');
+        }
+    ";
+
+    wp_add_inline_style( 'main-css', $main_custom_css );
+}
+add_action( 'wp_enqueue_scripts', 'rob_add_css' );
+```
+
+I tyle! Po podpięciu naszej funkcji, do hooku wp_enqueue_scripts, style zaczną się aplikować.
+
+Z kolei, jeśli w pliku JS, chcielibyśmy użyć np. zmiennej z ścieżką do motywu, możemy dodać następujący kod, właśnie w pliku PHP:
+
+```php
+function rob_add_js_variables() {
+    $variables = array(
+        'templateDirectory' => get_template_directory_uri(),
+    );
+    wp_localize_script( 'main-js', 'wordpressVars', $variables);
+}
+add_action( 'wp_enqueue_scripts', 'rob_add_js_variables' );
+```
+
+I od teraz, w tym pliku JS, jesteśmy w stanie wyświetlić ścieżkę do obecnie używanego motywu, korzystając z właściwości templateDirectory, obiektu wordpressVars:
+
+```
+const wpT  emplateDirectory = wordpressVars.templateDirectory;
+```
+
+## A tak w sumie - jak WordPress to robi?
+
+Już pokazuję.
+
+Spójrzmy sobie, co wyrzuca WordPress, w wynikowym pliku HTML, gdy dodamy kod CSS z konkretnymi zmiennymi, pobranymi z WordPressa:
+
+```html
+<link
+  rel="stylesheet"
+  id="main-css"
+  href="http://testy.local/wp-content/themes/twentytwenty/assets/css/main.css?ver=5.5.1"
+  type="text/css"
+  media=""
+/>
+<style id="main-inline-css" type="text/css">
+  .banner {
+    background-image: url('http://testy.local/wp-content/uploads/2020/09/background.jpg');
+  }
+</style>
+```
+
+Jak widać, WordPress po prostu dodaje nasz osadzony kod, pod linkiem do właściwego pliku CSS, dzięki czemu, wykona się on dokładnie po nim.
+
+I rzecz bardzo podobna, dzieje się, gdy podepniemy plik JS, wrzucając do niego pokazaną wcześniej zmienną:
+
+```html
+<script type="text/javascript" id="main-js-extra">
+  /* <![CDATA[ */
+  var wordpressVars = {
+    templateDirectory: 'http:\/\/testy.local\/wp-content\/themes\/twentytwenty',
+  };
+  /* ]]> */
+</script>
+<script
+  type="text/javascript"
+  src="http://testy.local/wp-content/themes/twentytwenty/assets/js/main.js?ver=5.5.1"
+  id="main-js"
+></script>
+```
+
+Jak widać, funkcja ta tworzy skrypt bezpośrednio wpisany, w plik HTML, zawierający wartości, które do niego przekazujemy. Sam skrypt, pojawia się dokładnie nad linkiem, do pliku podanego jako argument funkcji `wp_localize_script()`.
+
+(Swoją drogą, jeśli interesuje Cię, dlaczego w powyższym kodzie, który ukradłem z jednego z moich projektów, adresy wyglądają tak specyficznie, to polecam Ci zapoznać się z narzędziem [ngrok.io](https://ngrok.com/) - cudna sprawa, o której, jeśli tylko będziesz chciał lub chciała, kiedyś chętnie opowiem).
+
+## I tak oto, możemy używać wartości z WordPressa, w plikach JS, jak i CSS!
+
+Mam nadzieję, że ta krótka dawka wiedzy, będzie dla Ciebie przydatna. A jeśli uważasz, że warto coś dodać, to oczywiście nie wahaj się zescrollować strony i podzielić się tym w komentarzu do tego artykułu 🔥

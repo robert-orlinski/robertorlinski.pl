@@ -322,6 +322,11 @@ const postRedirects = [
     destination: '/artykuly/wordpress-gutenberg-003',
     permanent: true,
   },
+  {
+    source: '/wartosci-z-wordpressa-w-plikach-css-i-js',
+    destination: '/artykuly/wartosci-z-wordpressa-w-plikach-css-i-js',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
