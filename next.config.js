@@ -312,6 +312,11 @@ const postRedirects = [
     destination: '/artykuly/nauka-wordpressa-w-2021-roku',
     permanent: true,
   },
+  {
+    source: '/parcel-bundler',
+    destination: '/artykuly/parcel-bundler',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
