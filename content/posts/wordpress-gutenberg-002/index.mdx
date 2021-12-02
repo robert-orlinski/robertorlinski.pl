@@ -1,0 +1,235 @@
+---
+title: 'Własne bloki w WordPress Gutenberg #002 - właściwości, własne kategorie bloków i style CSS'
+seoTitle: Właściwości, style CSS i kategorie bloków Gutenberg
+abstract: W drugiej częsci serii WordPress Gutenberg, zajmiemy się właściwościami, kategoriami oraz stylami CSS, własnych bloków Gutenberga 💥
+isPublished: true
+topics:
+  - WordPress
+  - Własne bloki w WordPress Gutenberg
+date: 02.12.2020
+isPopular: false
+---
+
+Kolejna część naszego cyklu i tym samym kolejne elementy, które warto będzie przyswoić w kontekście tworzenia komponentów WordPress Gutenberga.
+
+To, co chciałbym Ci dziś pokazać, to:
+
+1. Za co odpowiadają poszczególne podstawowe właściwości, niezbędne do działania konkretnego bloku.
+2. Jak tworzyć własne kategorie bloków Gutenberga.
+3. Jak korzystać z plików SCSSa, podczas ich tworzenia.
+4. Jak podpinać arkusze CSS (napisane przez siebie lub wygenerowane z SCSSa) do konkretnych bloków. Osobno dla naszego edytora i osobno dla konkretnego artykułu lub strony, widocznej dla użytkownika.
+
+import VideoInterlude from 'VideoInterlude';
+
+<VideoInterlude
+  id="yGEkbXR38Ys"
+  title="Własne bloki w WordPress Gutenberg #002 - właściwości, własne kategorie bloków i style CSS"
+/>
+
+Nie przedłużając - działamy!
+
+## Wróćmy do naszego prostego bloku, utworzonego w części pierwszej kursu
+
+Cały kod, zapisany wtedy w pliku `index.js`, wygląda w ten sposób:
+
+```jsx
+import { registerBlockType } from '@wordpress/blocks';
+
+registerBlockType('rob/table-of-contents', {
+  title: 'Spis treści',
+  description: 'Sekcja z nagłówiem oraz spisem treści, konkretnego artykułu',
+  icon: 'editor-table',
+  keywords: ['zawartość', 'lista', 'table of contents'],
+  category: 'layout',
+
+  edit() {
+    return <p>Coś innego, niż "Hello world".</p>;
+  },
+
+  save() {},
+});
+```
+
+**Przejdźmy przez niego linia po linii.**
+
+W pierwszej kolejności, importujemy funkcję `registerBlockType` i od razu używamy, podając nazwę bloku, razem ze zdefiniowaną przez nas przestrzenią nazw, w ramach pierwszego argumentu oraz wszystkimi właściwościami, jak i metodami, definiującymi dany blok, w ramach argumentu drugiego.
+
+> W tym przypadku jest to namespace `rob`, ale oczywiście Ty w to miejsce, możesz wrzucić ciąg tekstowy, który będzie zupełnie inny.
+
+## Z podstawowych właściwości każdego nowego bloku Gutenberga, na pewno warto wyróżnić:
+
+```jsx
+title: 'Spis treści',
+description: 'Sekcja z nagłówiem oraz spisem treści, konkretnego artykułu',
+icon: 'editor-table',
+keywords: [ 'zawartość', 'lista', 'table of contents' ],
+category: 'layout',
+```
+
+Pierwsze 2 parametry są najbardziej oczywiste. Mamy nazwę bloku, którą widzimy już w samym edytorze oraz opis bloku.
+
+Później jest ikonka, która może pochodzić z tzw. [dashicons WordPressa](https://developer.wordpress.org/resource/dashicons) lub zostać dodana, jako kod z pliku .svg, na przykład:
+
+```jsx
+icon: <svg height="512pt" viewBox="0 -52 512.00001 512" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m0 113.292969h113.292969v-113.292969h-113.292969zm30.003906-83.289063h53.289063v53.289063h-53.289063zm0 0"/><path d="m149.296875 0v113.292969h362.703125v-113.292969zm332.699219 83.292969h-302.695313v-53.289063h302.695313zm0 0"/><path d="m0 260.300781h113.292969v-113.292969h-113.292969zm30.003906-83.292969h53.289063v53.289063h-53.289063zm0 0"/><path d="m149.296875 260.300781h362.703125v-113.292969h-362.703125zm30.003906-83.292969h302.695313v53.289063h-302.695313zm0 0"/><path d="m0 407.308594h113.292969v-113.296875h-113.292969zm30.003906-83.292969h53.289063v53.289063h-53.289063zm0 0"/><path d="m149.296875 407.308594h362.703125v-113.296875h-362.703125zm30.003906-83.292969h302.695313v53.289063h-302.695313zm0 0"/></svg>,
+```
+
+I co bardzo ciekawe, możemy również wyróżnić konkretną ikonkę, definiując jej kolor oraz kolor samego tła (działa to dla ikon dodanych w ramach kodu .svg, jak i dashikon). Na przykład za pomocą takiego kodu:
+
+```jsx
+icon: {
+    background: '#37474F',
+    foreground: '#4DB6AC',
+    src: <svg height="512pt" viewBox="0 -52 512.00001 512" width="512pt" xmlns="http://www.w3.org/2000/svg"><path d="m0 113.292969h113.292969v-113.292969h-113.292969zm30.003906-83.289063h53.289063v53.289063h-53.289063zm0 0"/><path d="m149.296875 0v113.292969h362.703125v-113.292969zm332.699219 83.292969h-302.695313v-53.289063h302.695313zm0 0"/><path d="m0 260.300781h113.292969v-113.292969h-113.292969zm30.003906-83.292969h53.289063v53.289063h-53.289063zm0 0"/><path d="m149.296875 260.300781h362.703125v-113.292969h-362.703125zm30.003906-83.292969h302.695313v53.289063h-302.695313zm0 0"/><path d="m0 407.308594h113.292969v-113.296875h-113.292969zm30.003906-83.292969h53.289063v53.289063h-53.289063zm0 0"/><path d="m149.296875 407.308594h362.703125v-113.296875h-362.703125zm30.003906-83.292969h302.695313v53.289063h-302.695313zm0 0"/></svg>,
+},
+```
+
+Kolejna właściwość, to z kolei grupa słów kluczowych (zapisanych w formie tablicy), które decydują o tym, po jakich frazach będziemy w stanie wyszukać konkretny blok, korzystając z widocznej na powyższym zrzucie wyszukiwarki.
+
+I ostatnia, to oczywiście kategoria danego bloku, która mówi, do której sekcji w edytorze, zostanie on przyporządkowany. Z kolei same kategorie, które domyślnie istnieją w Gutenbergu, to:
+
+- common;
+- formatting;
+- layout;
+- widgets;
+- embed.
+
+Własne komponenty, możemy przypisywać do każdej z tych kategorii lub do innych, zdefiniowanych już własnoręcznie.
+
+## Właśnie - jak możemy zdefiniować nową kategorię?
+
+Za pomocą poniższego kodu PHP, dodanego gdzieś w tworzonym przez nas pluginie (ja zrobiłem to w głównym pliku - `table-of-contents.php`) lub w plikach używanego w danej chwili motywu:
+
+```php
+function custom_blocks_block_categories( $categories ) {
+    return array_merge(
+        $categories,
+        array(
+            array(
+                'slug' 	=> 'content',
+                'title' => __( 'Zawartść', 'table-of-contents' )
+            ),
+        )
+    );
+}
+add_filter( 'block_categories', 'custom_blocks_block_categories', 10, 2 );
+```
+
+**Co się tu dzieje?**
+
+Filtrujemy funkcję wbudowaną `block_categories`, dodając do $categories, nowy element - tablicę, definiującą konkretną kategorię bloków.
+
+Tablica ta, zawiera w sobie slug nowo-utworzonej kategorii oraz nazwę, pokazującą się w liście wszystkich bloków.
+
+W ten oto sposób, przypisując nasz spis treści, do nowo utworzonej kategorii:
+
+```jsx
+category: 'content',
+```
+
+...w liście wszystkich bloków, zastaniemy taki oto obraz:
+
+![Nowa](https://nowywordpress.pl/wp-content/uploads/2020/10/nowa-kategoria-blokow-e1604170341921.png)## A teraz, zajmijmy się stylami CSS
+
+A dokładnie plikami SCSS. Bo dzięki temu, że w [poprzedniej części serii](https://robertorlinski.pl/2020/11/16/wordpress-gutenberg-001/), zainstalowaliśmy paczkę `@wordpress/scripts`, teraz bardzo łatwo możemy automatycznie kompilować pliki SCSS, do CSS, podobnie jak robimy to z plikami JavaScriptu, zapisanymi w składni JSXa.
+
+A dokładnie, wystarczy, że utworzymy konkretny plik, o rozszerzeniu `.scss` w folderze `/src` i **zaimportujemy go do pliku index.js, który utworzyliśmy wcześniej!**
+
+Dla przykładu, ja utworzę plik, o nazwie `index.scss`, właśnie w tym katalogu, a na początku wspomnianego pliku JS, wrzucę taką oto linijkę:
+
+```jsx
+import './index.scss';
+```
+
+I od teraz, w momencie gdy odpalimy nasz projekt lub go zbudujemy, w folderze `/build`, pojawi się plik `index.css` z odpowiednio skompilowanym kodem CSS!
+
+Z tą linijką, sam plik `index.js`, od tej chwili wygląda w ten sposób:
+
+```jsx
+import './index.scss';
+import { registerBlockType } from '@wordpress/blocks';
+
+registerBlockType('rob/table-of-contents', {
+  title: 'Spis treści',
+  description: 'Sekcja z nagłówiem oraz spisem treści, konkretnego artykułu',
+  icon: 'editor-table',
+  keywords: ['zawartość', 'lista', 'table of contents'],
+  category: 'content',
+
+  edit() {
+    return <p>Coś innego, niż "Hello world".</p>;
+  },
+
+  save() {},
+});
+```
+
+## A z kolei plik index.css, możemy podpiąć pod nasz blok!
+
+Nie bez powodu, tutaj oraz w tytule całego artykułu, na siłę wspominam o arkuszach, a nie stylach samych w sobie. Robię tak dlatego, że jedną z właściwości bloków WordPressa, są tzw. `styles`, o których powiem wkrótce, a które to (tylko krótko napominając), pozwalają nam definiować kilka wizualnych wariantów danego bloku, za pomocą właściwości `styles`, funkcji `registerBlockType`.
+
+A tutaj z kolei, mówimy tylko o podpinaniu arkuszy CSS, spełniających swoją standardową rolę - określających, jak będzie wyglądać dany blok.
+
+Całość zrealizujemy w wspomnianej w pierwszej części serii, funkcji `register_block_type`, zapisanej w PHPie. Tam w pierwszej części serii, zapisaliśmy taki oto skrawek kodu:
+
+```php
+register_block_type( 'rob/table-of-contents', array(
+  'editor_script' => 'table-of-contents'
+) );
+```
+
+I teraz, dodamy do niego 2 dodatkowe elementy, kończąc z następującą zawartością:
+
+```php
+register_block_type( 'rob/table-of-contents', array(
+    'editor_script' => 'table-of-contents',
+    'editor_style'  => 'table-of-contents-style',
+    'style'         => 'table-of-contents-style',
+) );
+```
+
+Jak łatwo się domyślić, do `editor_style` podpinamy identyfikator arkusza, ładującego się w samym edytorze (dzięki czemu, edytując konkretny blok, możemy od razu widzieć go w pełnej okazałości, bez sprawdzania podglądu konkretnej podstrony lub artykułu).
+
+Z kolei do klucza `style`, przypiszemy arkusz, który pokaże się już na samym front-endzie.
+
+Tutaj i tutaj, możemy wrzucić dokładnie te same identyfikatory i w ten sposób podpiąć taki sam arkusz, natomiast nic nie stoi na przeszkodzie, aby to rozdzielić i coś trochę innego ładować w panelu, jak i w wersji widocznej dla użytkownika.
+
+I oczywiście, **zdefiniować trzeba sam arkusz styli!** Zrobimy to, rozszerzając funkcję `add_gutenberg_assets`, zdefiniowaną już w poprzedniej części kursu, o zastosowanie innej funkcji, tym razem wbudowanej - `wp_register_style`:
+
+```php
+function add_gutenberg_assets() {
+
+    wp_register_script(
+        'table-of-contents',
+        plugin_dir_url( __FILE__ ) . 'build/index.js',
+        array( 'wp-blocks' )
+    );
+
+    wp_register_style(
+        'table-of-contents-style',
+        plugin_dir_url( __FILE__ ) . 'build/index.css'
+    );
+
+    register_block_type( 'rob/table-of-contents', array(
+        'editor_script' => 'table-of-contents',
+        'editor_style'  => 'table-of-contents-style',
+        'style'         => 'table-of-contents-style',
+    ) );
+
+}
+add_action( 'init', 'add_gutenberg_assets' );
+```
+
+Oczywiście plik, który podpięliśmy, to wygenerowany wcześniej w folderze `/build`, plik `index.css`.
+
+## To co? Zadanie domowe!
+
+Tym razem będzie bardzo szybko 🌿
+
+Sprawdź, co się stanie (w kodzie HTML edytora), gdy w obrębie funkcji `add_gutenberg_assets` utworzysz nowy, testowy blok WordPressa i podepniesz pod niego dokładnie te same style, które zostały już użyte dla bloku ze spisem treści.
+
+> Sam kod HTML, możesz oczywiście podejrzeć, sprawdzając źródło strony, po kliknięciu prawym przyciskiem myszy, na Twój edytor Gutenberga.
+
+Czy plik `main.css` ładowany jest 2 razy, coś się psuje, a może nic się nie zmieniło i przez to ładuje się on raz, dla obu bloków?
+
+Gdy już to stwierdzisz, nie zapomnij dać znać poniżej, w komentarzu!
