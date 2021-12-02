@@ -1,0 +1,287 @@
+---
+title: 'Własne bloki w WordPress Gutenberg #003 –  atrybuty'
+seoTitle: Atrybuty w WordPress Gutenberg
+abstract: Jak deklaruje się atrybuty w WordPress Gutenberg, które stanowią spoiwo edytowanego i wyświetlanego bloku? O tym jest ten artykuł!
+isPublished: true
+topics:
+  - WordPress
+  - Własne bloki w WordPress Gutenberg
+date: 23.12.2020
+isPopular: false
+---
+
+Atrybuty w WordPress Gutenbergu, pozwalają nam definiować, jakie dane, będą przekazywane podczas edycji bloku, a później wyświetlane na front-endzie.
+
+**Są spoiwem**, które mówi parserowi, na jakie dane ma zwrócić uwagę zapisując HTML konkretnego bloku do bazy danych i później go odczytując (bo tak, **bloki Gutenberga są zapisywane w bazie danych, w formie HTMLa**, o czym sobie jeszcze powiemy).
+
+import VideoInterlude from 'VideoInterlude';
+
+<VideoInterlude id="8G2fhYcAySM" title="Własne bloki w WordPress Gutenberg #003 – atrybuty" />
+
+## W takim razie, jak możemy je deklarować?
+
+Robimy to w kodzie konkretnego bloku, deklarując je, jako osobną właściwość, nad głównymi metodami `edit()` oraz `save()`, w ten oto sposób:
+
+```js
+attributes: {
+  title: {
+    type: 'string',
+  },
+},
+```
+
+W ten sposób, dajemy znać Gutenbergowi, że do customowego bloku, przekazywana będzie wartość o identyfikatorze `title`, o typie string.
+
+## Właśnie - typy atrybutów!
+
+**Jest to jedyna wartość, jaką musimy wrzucić do naszego atrybutu, aby całość zaczęła działać.** O reszcie zaraz sobie powiemy, ale na ten moment, to jest jedyny niezbędny element.
+
+Atrybuty, mają 7 typów (idąc za [dokumentacją](https://developer.wordpress.org/block-editor/developers/block-api/block-attributes/)):
+
+- null;
+- array;
+- object;
+- string;
+- integer;
+- boolean;
+- number.
+
+Dzięki temu, korzystając z konkretnego atrybutu, JavaScript od razu będzie wiedzieć jakiego typu jest dany parametr i w sposób właściwy dla danego typu, będzie go traktować.
+
+> I tu warto wspomnieć o jednej kwestii organizacyjnej - mianowicie ten artykuł jest bardzo teoretyczny. Opisuję w nim wszystko, co powinieneś wiedzieć o samych atrybutach, ale po działający kod, który wyświetli wartość
+
+## Poza tym, mamy również źródło konkretnego atrybutu
+
+I tu dochodzimy do tego, o czym wspominałem na początku:
+
+> WordPress Gutenberg zapisuje wszystkie bloki, razem z wartościami, które są do nich wrzucane, w bazie danych w postaci kodu HTML.
+>
+> Dopiero parser, w jego przypadku biblioteka [HPQ](https://github.com/aduth/hpq), wyciąga dane wartości z kodu, aby poprawnie je wyświetlić.
+
+Co to dla nas oznacza?
+
+Poza bardzo nieprzyjemnym błędem, o którym powiemy sobie przy różnicy między statycznymi, a dynamicznymi blokami Gutenberga, za kilka części tej serii, oznacza to, że **przykładowy, mega prosty blok, w bazie będzie wyglądać w ten oto sposób**:
+
+```html
+<!-- wp:rob/table-of-contents {"title":"Pewien ładny tytuł"} -->
+<nav class="table-of-contents" class="wp-block-rob-table-of-contents">
+  <h2>Pewien ładny tytuł</h2>
+</nav>
+<!-- /wp:rob/table-of-contents -->
+```
+
+A przynajmniej tak będzie wyglądać, gdy nie sprecyzujemy źródła konkretnego atrybutu, czyli zapiszemy go tak, jak w pierwszym przykładzie.
+
+Bo tak, możemy sprecyzować źródło danego atrybutu, na przykład określając je jako `html`, w ten sposób:
+
+```js
+attributes: {
+  title: {
+    type: 'string',
+    source: 'html',
+    selector: "h2",
+  },
+},
+```
+
+...co w połączeniu z ostatnią właściwością `selector`, pozwoli parserowi, **wyciągnąć konkretny atrybut Gutenberga, z kodu HTMLa, dokładnie z selektora h2.**
+
+Co w bazie danych, nie zapisze się już w taki sposób, jak widać powyżej, ale w taki:
+
+```html
+<!-- wp:rob/table-of-contents -->
+<nav class="table-of-contents" class="wp-block-rob-table-of-contents">
+  <h2>Tytuł spisu treści</h2>
+</nav>
+<!-- /wp:rob/table-of-contents -->
+```
+
+W końcu Gutenberg nie potrzebuje już naszego atrybutu, zaszytego w obiekcie, wrzuconym w komentarzu, bo wie, że ma sobie go pobrać z kodu HTML, dokładnie z selektora `<h2>`, którego napotka podczas przetwarzania powyższego kodu.
+
+## Powiedzmy sobie jeszcze trochę o samych źródłach
+
+Pozwolę sobie wyróżnić 5 atrybutów, bo to one przydają się najczęściej:
+
+- html (już pokazany na przykładzie);
+- text;
+- attribute;
+- children;
+- query;
+
+A omówię 3 ostatnie, bo pierwsze zostały już wspomniane (i nie da się ukryć - są siłą rzeczy najprostsze).
+
+### Źródło - attribute
+
+Tutaj jako wartość naszego gutenbergowego atrybutu, pobieramy atrybut danego elementu HTMLa, dla przykładu `src` z obrazka:
+
+```js
+attributes: {
+  title: {
+    type: 'string',
+    source: 'attribute',
+    selector: "img",
+    attribute: 'src',
+  },
+},
+```
+
+Wtedy również, poza zdefiniowaniem naszego selektora, musimy podać nazwę konkretnego atrybutu, z którego Gutenberg już pobierze sobie dane.
+
+### Źródło - children
+
+Tutaj, wartością zwracaną jest tablica powtarzanych elementów, które są dziećmi konkretnego skrawka HTMLa, którego selektor podajemy:
+
+```js
+attributes: {
+  list: {
+    type: "array",
+    source: "children",
+    selector: "ol",
+  },
+},
+```
+
+Taki atrybut, zwróci nam elementy listy numerowanej, na przykład takiej:
+
+```html
+<ol class="list">
+  <li class="list__item">Element 1</li>
+  <li class="list__item">Element 2</li>
+  <li class="list__item">Element 3</li>
+</ol>
+```
+
+### Źródło - query
+
+Chyba najbardziej rozbudowana z opcji, bo nie zwracająca konkretnej wartości, ale obiekt lub tablicę, w zależności od tego, jaki typ atrybutu wpiszemy.
+
+Mając listę podobnych elementów, na przykład takich oto postów z bloga:
+
+```html
+<!-- wp:cgb/block-test-block -->
+<ul class="posts-list">
+  <li class="post">
+    <h3 class="post__title">Artykuł 1</h3>
+    <p class="post__content">Zawartość artkułu</p>
+  </li>
+  <li class="post">
+    <h3 class="post__title">Artykuł 2</h3>
+    <p class="post__content">Zawartość artkułu</p>
+  </li>
+  <li class="post">
+    <h3 class="post__title">Artykuł 3</h3>
+    <p class="post__content">Zawartość artkułu</p>
+  </li>
+</ul>
+<!-- /wp:cgb/block-test-block -->
+```
+
+...jesteśmy w stanie pobrać tablicę z wszystkimi tytułami oraz zajawkami, za pomocą następującego kodu:
+
+```js
+attributes: {
+  content: {
+    type: 'array',
+    source: 'query',
+    selector: '.post',
+    query: {
+      title: {
+        type: 'text',
+        selector: '.post__title',
+        source: 'html',
+      },
+      description: {
+        type: 'text',
+        selector: '.post__content',
+        source: 'html',
+      },
+    },
+  },
+},
+```
+
+## I jak widać, przy okazji poprzednich przykładów, poznaliśmy kilka dodatkowych właściwości
+
+A dokładnie:
+
+- selector - nazwa selektora, z którego chcemy pobrać zawartość;
+- attribute - atrybut danego selektora (jeśli tylko on zostanie wrzucony do atrybytów).
+
+I dodatkowo, mamy jeszcze jedną, która może Ci się przydać:
+
+- multiline - przyjmuje za wartość tag HTMLa, w którym znajdzie się każda linia, którą dodamy w edytorze Gutenberga. Na przykład, gdybyśmy chcieli wyróżnić każdą z nich, tagami `<p>`, to moglibyśmy zapisać coś takiego:
+
+```js
+attributes: {
+  list: {
+    type: "string",
+    multiline: "p",
+  }
+}
+```
+
+## I tak naprawdę, w tej chwili wiemy o atrybutach wszystko co najważniejsze!
+
+Jedyne co nam pozostaje, to przekazać je do naszych funkcji `edit()` oraz `save()`, w następujący sposób:
+
+```jsx
+edit({ attributes, setAttributes }) {
+  return <p>Coś innego, niż "Hello world".</p>;
+},
+
+save({ attributes }) {}
+```
+
+I od tej chwili, wewnątrz tych funkcji, będziemy mieli dostęp do obiektu z wszystkimi zdefiniowanymi atrybutami oraz w przypadku funkcji `edit()`, do metody `setAttributes()`, która pozwala w ogóle edytować atrybuty (więcej na ten temat wspominam w nagraniu do tego artykułu, a jeszcze więcej powiemy sobie o tym w kolejnej części).
+
+## I jeszcze efekt końcowy naszego bloku (na obecny moment) ☀️
+
+Wyświetlmy input, do którego będziemy w stanie wrzucić konkretny tekst, a później za pomocą atrybutów przekazać go do naszej funkcji `save()`.
+
+A później wyświetlić na front-endzie, jako nagłówek:
+
+```jsx
+import './index.scss';
+import { registerBlockType } from '@wordpress/blocks';
+
+registerBlockType('rob/table-of-contents', {
+  title: 'Spis treści',
+  description: 'Sekcja z nagłówiem oraz spisem treści, konkretnego artykułu',
+  icon: 'editor-table',
+  keywords: ['zawartość', 'lista', 'table of contents'],
+  category: 'content',
+
+  attributes: {
+    title: {
+      type: 'string',
+      source: 'html',
+      selector: 'h2',
+    },
+  },
+
+  edit({ attributes, setAttributes }) {
+    const { title } = attributes;
+
+    function setTitle(event) {
+      const newTitle = event.target.value;
+      setAttributes({ title: newTitle });
+    }
+
+    return <input type="text" value={title} onChange={setTitle} />;
+  },
+
+  save({ attributes }) {
+    const { title } = attributes;
+
+    return <h2>{title}</h2>;
+  },
+});
+```
+
+## Mamy to! Pora na zadanie domowe
+
+Zadeklaruj 2 atrybuty - **tytułu** oraz **listy**, z których składać się będzie spis treści, (który tworzymy w ramach serii), nadając im odpowiednie właściwości.
+
+Zapewne w następnej części, już od początku te atrybuty będą przeze mnie utworzone, natomiast mam nadzieję, że mimo tego nie będziesz brać zadania od kolegi - Roberta z kolejnego filmu lub artykułu, a zrobisz całość sam lub sama i dzięki temu przećwiczysz temat atrybutów 😏
+
+Oczywiście nie zapomnij podzielić się rozwiązaniem w komentarzu!

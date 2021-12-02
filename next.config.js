@@ -317,6 +317,11 @@ const postRedirects = [
     destination: '/artykuly/parcel-bundler',
     permanent: true,
   },
+  {
+    source: '/wordpress-gutenberg-003',
+    destination: '/artykuly/wordpress-gutenberg-003',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
