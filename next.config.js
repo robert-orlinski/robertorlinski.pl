@@ -347,6 +347,11 @@ const postRedirects = [
     destination: '/artykuly/jak-zasypiac-szybciej-dzieki-prokrastynacji',
     permanent: true,
   },
+  {
+    source: '/programista-wolontariusz',
+    destination: '/artykuly/programista-wolontariusz',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
