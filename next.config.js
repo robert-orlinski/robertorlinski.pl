@@ -367,6 +367,11 @@ const postRedirects = [
     destination: '/artykuly/jak-skopiowac-strone-internetowa-na-swoj-komputer',
     permanent: true,
   },
+  {
+    source: '/materialy-do-nauki-jezyka-angielskiego',
+    destination: '/artykuly/materialy-do-nauki-jezyka-angielskiego',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
