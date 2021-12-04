@@ -362,6 +362,11 @@ const postRedirects = [
     destination: '/artykuly/variable-fonts',
     permanent: true,
   },
+  {
+    source: '/jak-skopiowac-strone-internetowa-na-swoj-komputer',
+    destination: '/artykuly/jak-skopiowac-strone-internetowa-na-swoj-komputer',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

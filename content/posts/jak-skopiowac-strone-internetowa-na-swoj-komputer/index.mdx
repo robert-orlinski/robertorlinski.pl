@@ -1,0 +1,93 @@
+---
+title: Jak skopiować stronę internetową, na swój komputer?
+abstract: Czy kiedykolwiek zastanawiałeś/aś się jak można zrobić tzw. mirror strony internetowej czyli jej pełną kopię? Właśnie o tym jest ten artykuł!
+isPublished: true
+topics:
+  - Narzędzia
+date: 23.09.2019
+isPopular: false
+---
+
+Niedawno, w pracy, otrzymałem zadanie, które polegało na przeniesieniu sporej ilości zdjęć, wgranych na stronę, do której plików nie było żadnego dostępu.
+
+Pomyślałem sobie - czy istnieje jakiś skrypt, który pobierze je za mnie, mając tylko adres strony i odnośniki do konkretnych grafik, w kodzie?
+
+Oczywiście, że istnieje!
+
+## A jego nazwą jest `wget`
+
+Prosty programik w konsoli, który pozwala nam pobierać pliki z internetu, w tym całe strony internetowe.
+
+Instalujemy i wpisujemy odpowiednią komendę, w wierszu poleceń, a cała witryna, pojedynczy dokument, pliki lub inne dane, pobierają się automatycznie, do katalogu, w którym się akurat znajdujemy, z poziomu właśnie konsoli.
+
+## Instalacja samego skryptu
+
+### Windows:
+
+Pobieramy paczkę lub sam skrypt na przykład z [eternallybored.org](https://eternallybored.org/misc/wget/) i po otrzymaniu pliku _wget.exe_, wrzucamy go do katalogu:
+
+```bash
+c:\Windows\System32
+```
+
+Od teraz możemy odpalać go z poziomu wiersza poleceń.
+
+### Mac OS:
+
+W tym przypadku najlepszym wyborem, będzie skorzystanie z Homebrew, dobrego przyjaciela każdego bardziej grzebiącego użytkownika Mac OSa.
+
+Homebrew, instalujemy, wpisując w nasz terminal:
+
+```bash
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+```
+
+Mając już, ten manager pakietów, samo wget, instalujemy po prostu wpisując:
+
+```bash
+brew install wget
+```
+
+### Linux:
+
+Tu sprawa jest o tyle skomplikowana, że nie na każdej dystrybucji skrypt instalujemy tak samo, więc jeśli akurat Ty używasz Linuxa, to możesz zajrzeć na przykład na [TecMint](https://www.tecmint.com/install-wget-in-linux/).
+
+## Korzystanie z wget
+
+Możliwości samego skryptu są całkiem spore, pomimo tego, że sam jest dość malutki, więc może pokażę tutaj tylko te dość podstawowe, ale jednocześnie, najczęściej używane.
+
+Jeśli tylko interesuje Cię reszta opcji, to zawsze możesz zajrzeć do [dokumentacji wget](https://www.gnu.org/software/wget/manual/) lub wpisać komendę z flagą pomocy, odpowiednią dla danego systemu. Na przykład w przypadku Mac OSa:
+
+```bash
+ wget --help
+```
+
+Ale przechodząc do rzeczy, konkretną stronę, pobieramy, wpisując w naszą konsolę, komendę pokroju:
+
+```bash
+ wget -r https://www.example.com
+```
+
+Przy okazji, możemy też pobrać ją, zmieniając wszystkie linki, na lokalne (prowadzące poprawnie do naszych lokalnych plików):
+
+```bash
+wget --convert-links -r https://www.example.com
+```
+
+Lub wszystkie zmienić na posiadające rozszerzenie .html:
+
+```bash
+wget --html-extension -r https://www.example.com
+```
+
+I na koniec, to co mi się przydało. Jesteśmy w stanie pobierać konkretne pliki, składające się na stronę, na przykład dany typ (w tym przypadku .png):
+
+```bash
+wget -A "*.png" -r https://www.example.com
+```
+
+## Oczywiście to tylko część możliwości!
+
+Tak jak wspominałem, jest tego znacznie więcej. Oczywiście całość sprowadza się w sumie do pobierania plików, ale właśnie w tym prostym przeznaczeniu, kryje się cała magia.
+
+Mam nadzieję, że kiedyś, ułatwi Ci to jakąś część pracy!
