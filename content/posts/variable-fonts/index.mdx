@@ -1,0 +1,80 @@
+---
+title: Variable typography, czyli fonty, które znamy, napisane od nowa
+seoTitle: Variable typography na stronach internetowych
+abstract: Variable typography (variable fonts), to fonty, które mogą przyjąć dowolną grubość w ustalonym przedziale (np. 566). O nich jest ten wpis!
+isPublished: true
+topics:
+  - Front-end
+date: 14.04.2020
+isPopular: false
+---
+
+Jakiś czas temu, Google Fonts dodało nowy filtr, wg którego możemy segregować konkretne fonty (tak, przy okazji [artykułu o ciekawych czcionkach](/swietne-fonty), właśnie spoza wspomnianego serwisu od Google\'a, sporo z Was, wspominało mi, że w komputerze są fonty, a czcionką to sobie mogę odbić literkę na kartce, więc się douczyłem i teraz piszę fonty, o!).
+
+I nie mogę ukryć, że było to pierwsze w moim życiu, zetknięcie się z ideą właśnie variable fontów (zmiennych fontów? Hmm, dziwnie to brzmi w pełni po polsku).
+
+Ale sam fakt dowiedzenia się o tym dość późno, nie zmienia faktu, że zajarałem się okrutnie i teraz chciałbym Wam o nich opowiedzieć, bo wydaje mi się, że są pewnego rodzaju przełomem, w historii tworzenia stron internetowych i wszystkiego, co jakkolwiek wykorzystuje typografię cyfrową.
+
+Ale oczywiście, blog ten jest w większej mierze o tworzeniu stron, więc pokażę, jak używać tego, o czym tu rozmawiamy, na ich przykładzie!
+
+## To czym są tzw. variable fonts?
+
+Troszkę trudno jest tworzyć ich definicję, bez rozpoczynania od Są to fonty, które i tym samym popełniania błędu logicznego, więc może nie będzie to typowa definicja, ale coś troszkę obok.
+
+No to tak, charakteryzują się faktem, że w przeciwieństwie do ich klasycznych odpowiedników, składających się z konkretnych grubości, na przykład 400, 500 oraz 700, fonty zmienne nie mają ustalonych grubości (oraz innych parametrów, o których zaraz wspomnimy) - mają ich zakres, w ramach którego możemy oscylować.
+
+## Może zobaczmy na przykładzie
+
+Świetnie widać to tutaj: [Variable font experiment](https://variable-font-experiments.glitch.me/) - mamy 2 paseczki, za pomocą których możemy manipulować grubością naszego fontu oraz jego szerokością (w przypadku innych fontów, możemy operować na kilku innych wartościach, takich jak na przykład poziom pochylenia - tak, dzięki temu możemy pisać kursywą, pochyloną na przykład o 50%). To tak w gwoli ścisłości; o wszystkich opcjach, możesz jak najbardziej przeczytać na przykład na [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide#Registered_axes_and_existing_CSS_attributes).
+
+Wszystko to, składa się na tzw. oś zmiany (z ang. variation axis), czyli wszystkie parametry, za pomocą których możemy manipulować naszym fontem.
+
+## I co tak naprawdę to rozwiązanie, może nam dać?
+
+Całkiem niemało - przede wszystkim zaczynamy ładować jeden plik, zamiast kilku (czasami nawet kilkunastu), co pozytywnie wpływa na szybkość naszej strony.
+
+Poza tym, zaczynamy być w stanie sensownie animować grubości fontów! Co w przypadku ich zwykłych wersji nie ma żadnego prawa bytu, bo jak dobrze wiemy, podczas takiej animacji, są one w stanie pokazać tylko te grubości, które pobraliśmy, co w efekcie wygląda, jakby nasz font skakał od grubości startowej, przez każdą pobraną, aż do docelowej.
+
+Przy variable fontach, nie ma takiego problemu, co świetnie widać na [przykładzie, który szybciutko przygotowałem.](https://static.robertorlinski.pl/variable-fonts-demo)
+
+Chociaż uwaga! W tym przypadku trzeba uważać na jedną kwestię - optymalizację. Nie przesadzajmy z tego typu animacjami, bo nasze przeglądarki mogą mieć problem z wyrobieniem i zwyczajnie zacinać konkretną stronę, szczególnie na słabych komputerach.
+
+## Dobrze, wszystko super, tylko w takim razie, jak możemy użyć takiego cuda, na stronie internetowej?
+
+Ależ już odpowiadam.
+
+**Po pierwsze**, potrzebujemy samego fontu, a dokładnie pliku z naszym fontem.
+
+A zdobyć możemy go z całkiem sporej ilości miejsc - na przykład z [Google Fonts](https://fonts.google.com/?vfonly) (po wejściu w link, wyświetlą Wam się tylko fonty zmienne), o których wspominałem na początku; strony [v-fonts.com](https://v-fonts.com/); lub po prostu [wpisując w Google](https://www.google.com/search?q=variable+fonts+library&oq=variable+fonts+library), odpowiednią frazę!
+
+**Po drugie**, niezbędnym będzie podpięcie go w kodzie naszej strony:
+
+```css
+@font-face {
+  font-family: 'Playfair Display';
+  src: url('playfair-display.ttf');
+}
+```
+
+Ty działamy wg klasycznej właściwości `@font-face`, chyba nie jest to nic nowego.
+
+**I po trzecie**, warto byłoby ich użyć:
+
+```css
+p {
+  font-family: 'Playfair Display';
+  font-variation-settings: 'wght' 400;
+}
+```
+
+Ten konkretny przypadek dotyczy fontu Playfair Display, który pozwala nam manipulować tylko grubością, ale jak już wspominałem wartości składających się na właściwość `font-variation-settings` może być więcej, w zależności od tego, na co powala konkretny krój), na przykład:
+
+```css
+font-variation-settings: 'wght' 400;
+font-variation-settings: 'wght' 400, 'wdth' 100;
+font-variation-settings: 'wght' 400, 'wdth' 100, 'ital' 0.5;
+```
+
+I tak oto, możemy się bawić!
+
+Do usłyszenia przy następnej okazji c:
