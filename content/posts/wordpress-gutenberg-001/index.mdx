@@ -1,0 +1,178 @@
+---
+title: 'Własne bloki w WordPress Gutenberg #001 – wprowadzenie, środowisko i pierwszy blok'
+seoTitle: Własne bloki w WordPress Gutenberg - wprowadzenie
+abstract: Pierwszy odcinek serii o tworzeniu bloków dla WordPress Gutenberga, w którym skonfigurujemy środowisko i stworzymy pierwszy prosty blok.
+isPublished: true
+topics:
+  - WordPress
+  - Własne bloki w WordPress Gutenberg
+date: 16.11.2020
+isPopular: false
+---
+
+Serie poradników nie mogą być inne, niż wszystko na świecie - muszą mieć swój początek, główną treść oraz zakończenie. Dlatego też w tej części serii o tworzeniu bloków Gutenberga, opowiem Ci trochę o samej serii, a później skonfigurujemy środowisko, aby pisanie samego kodu, było jak najprzyjemniejsze, a na końcu odpalimy nawet pierwszy, działający komponent. A co się będziemy ograniczać.
+
+## Nie tracąc Twojego czasu - o czym jest ta seria?
+
+O tworzeniu własnych bloków, które później będzie można używać na podstronach lub artykułach w WordPressie.
+
+Blok, który tu utworzymy, to streszczenie wpisu lub innego tekstu. Streszczenie, w kilku formach do wyboru, do którego będzie można wrzucić trochę treści.
+
+import VideoInterlude from 'VideoInterlude';
+
+<VideoInterlude
+  id="=kS9AEiklL64"
+  title="Własne bloki w WordPress Gutenberg #001 - wprowadzenie, środowisko i pierwszy blok"
+/>
+
+Całość zamkniemy w obrębie wtyczki, którą będzie można doinstalować do jakiejkolwiek strony, dzięki czemu, blok nie będzie zależny od konkretnego motywu.
+
+I o czym jeszcze warto wspomnieć, na końcu każdego artykułu, będę wrzucać proste ćwiczenie - na rozruszanie Twojej głowy oraz dla utrwalenia konkretnej partii informacji!
+
+## I to tyle! Działajmy - stwórzmy wtyczkę, która zawrze w sobie kod całego komponentu
+
+Pozwolę sobie nie tłumaczyć konkretnych działań przy tworzeniu pluginu, dlatego że po prostu są to rzeczy proste i nie wejdziemy tu w żadne niuanse, odnoszące się do samych wtyczek.
+
+> Natomiast, jeśli jeszcze nigdy nie miałeś lub nie miałaś okazji tworzyć żadnego rozszerzenia dla WordPressa, to zachęcam, aby [odrobić tę lekcję](https://developer.wordpress.org/plugins/intro/), bo w całej tej serii, mogą się pojawiać momenty, które świadomie będę pomijać lub nie tłumaczyć z odpowiednią starannością (w przypadku działań z rzeczami niezwiązanymi stricte z Gutenbergiem).
+
+I tak, na starcie wystarczy nam jeden, jedyny plik:
+
+- table-of-contents.php
+
+...w folderze naszego pluginu, nazwanym `table-of-contents.php`. Stąd też nazwa głównego pliku wtyczki.
+
+Do tego, warto będzie dodać:
+
+- /src/index.js
+- /build
+
+W pliku `index.js`, znajdzie się robocza wersja kodu JS, tworzonego przez nas komponentu, który później będzie konwertowany do wersji możliwej do odczytania przez przeglądarkę, z folderu `/build`.
+
+> Ale jak to możliwej do odczytania przez przeglądarkę? To przeglądarka nie ogarnie kodu, który my zapiszemy?
+
+Tak się składa, że nie.
+
+Wszystko przez to, że kod ten, zostanie stworzony wg reguł składni JSX, która nie jest interpretowana przez przeglądarki.
+
+## To tak, mamy strukturę plików, potrzebujemy jeszcze narzędzia, które będzie konwertować pliki zapisane w JSX, na kod przyjazny dla przeglądarek
+
+A zdobędziemy je, dzięki [npmowi](https://www.npmjs.com/). Po instalacji [node'a](https://nodejs.org/en/), wraz z którym nasz npm zagości na komputerze, możemy wejść do katalogu, utworzonego przez nas pluginu i użyć komendy:
+
+```bash
+npm init
+```
+
+Za jej pomocą postawimy nowy projekt. To, jakie dane Ty ustawisz dla danego projektu, to już stoi po Twojej stronie, ja zostawię wszystko w domyślnej formie.
+
+Po tym, warto będzie użyć kolejnej komendy, tym razem w celu instalacji paczki [@wordpress/scripts](https://www.npmjs.com/package/@wordpress/scripts):
+
+```bash
+npm install --save-dev @wordpress/scripts
+```
+
+Jest to paczka instalująca nam mniej więcej 45 ton modułów, zawierających wszystko, czego potrzebujemy do tworzenia nowych bloków Gutenberga.
+
+I to, co instaluje nas w tej chwili najbardziej, to 2 komendy:
+
+```bash
+wp-scripts start
+wp-scripts build
+```
+
+Pierwsza z nich, włącza nasłuchiwanie wszystkich zmian w folderze /src/ i gdy jakieś się pojawią, wyrzuca przekonwertowany plik, do folderu /build/. Wystarczy, że użyjemy jej raz, a pliki zaczną się na bieżąco kompilować.
+
+Druga robi praktycznie to samo, ale jednorazowo, dodatkowo minifikując nasze pliki źródłowe.
+
+> Dodatkowo, warto wspomnieć, że komendy te jesteśmy w stanie zmodyfikować, ustawiając folder źródłowy oraz docelowy. Więcej o tym, oczywiście możesz przeczytać w [dokumentacji samej paczki](https://www.npmjs.com/package/@wordpress/scripts).
+
+Z kolei do obiektu scripts istniejącego już w pliku packages.json (utworzonym podczas stawiania całego projektu, za pomocą npma), musimy dodać 2 właściwości:
+
+```jsx
+"scripts": {
+  "build": "wp-scripts build",
+  "start": "wp-scripts start"
+}
+```
+
+Dzięki nim, będziemy w stanie korzystać z opisanych powyżej komend.
+
+Oczywiście nazwy samych poleceń (build i start), które będziemy wpisywać w konsoli, możesz nazwać jak tylko chcesz - tak, aby było Ci wygodnie je później zapamiętać.
+
+## To co? Wygenerujmy jakiś prosty plik
+
+W pliku /src/index.js, wrzucę ekstremalnie prostą strukturę bloku Gutenberga, z odrobiną składni JSX w metodzie edit() (oczywiście więcej o tym, co się w niej znajduje, powiem już w kolejnej części tej serii):
+
+```jsx
+import { registerBlockType } from '@wordpress/blocks';
+
+registerBlockType('rob/table-of-contents', {
+  title: 'Spis treści',
+  description: 'Sekcja z nagłówiem oraz spisem treści, konkretnego artykułu',
+  icon: 'editor-table',
+  keywords: ['zawartość', 'lista', 'table of contents'],
+  category: 'layout',
+
+  edit() {
+    return <p>Coś innego, niż "Hello world".</p>;
+  },
+
+  save() {},
+});
+```
+
+A w terminalu wpiszę:
+
+```bash
+npm start
+```
+
+Dzięki temu poleceniu, od teraz w folderze /build/ pojawiły się 3 pliki, z których najważniejszym dla nas jest index.js.
+
+I tak oto, mamy działąjący blok Gutenberga!
+
+Fakt - bardzo prosty blok i de facto taki, z którym nic nie będziemy w stanie zrobić, bo wypisze on nam tylko tekst w edytorze, ale ważne na ten moment jest to, że możemy go po prostu dołączyć do całego edytora i z niego skorzystać!
+
+## I właśnie - podepnijmy ten blok do naszej instalacji WordPressa
+
+A zrobimy to oczywiście w głównym pliku utworzonego na początku rozszerzenia, w pliku `table-of-contents.php`:
+
+```php
+function add_gutenberg_assets() {
+
+    wp_register_script(
+        'table-of-contents',
+        plugin_dir_url( __FILE__ ) . 'build/index.js',
+        array( 'wp-blocks' )
+    );
+
+    register_block_type( 'rob/table-of-contents', array(
+        'editor_script' => 'table-of-contents'
+    ) );
+
+}
+add_action( 'init', 'add_gutenberg_assets' );
+```
+
+Jak widać, utworzyliśmy tu funkcję, którą podpinamy pod hook init, rejestrującą sam skrypt z blokiem Gutenberga (wraz z jedną dependencją wp-scripts, która na ten moment nam wystarczy) oraz podpinającą sam blok pod WordPressa.
+
+I warto zatrzymać się w tym miejscu.
+
+> Aby dodać konkretny blok do edytora WordPressa, musimy najpierw zarejestrować go w PHP, a później, w samej funkcji rejestrującej go, podać nazwę utworzonego skryptu JS, w których dopiero deklarować możemy wszystko, co opisuje konkretny blok i sprawia, że w ogóle jest on w stanie działać.
+>
+> PHP w tym przypadku decyduje tylko o tym, kiedy konkretne skrypty oraz style CSS, będą używane.
+
+Bo tak, jedną kwestią będzie klucz editor_script w funkcji register_block_type(), który decyduje jakie skrypty zostaną uruchomione w samym edytorze, natomiast poza nim istnieje jeszcze editor_style oraz style.
+
+Ale o nich powiemy sobie więcej, w następnej części.
+
+## To co? Odpalmy naszą wtyczkę i spróbujmy dodać sam blok!
+
+Włączając samą wtyczkę i wchodząc od teraz do edytora Gutenberga, jesteśmy w stanie znaleźć utworzony blok i wrzucić go do konkretnego postu, strony lub czegokolwiek tylko chcemy.
+
+## I na koniec - ćwiczenie dla Ciebie
+
+Po dodaniu nowo utworzonego bloku, zapisz konkretną stronę lub artykuł i sprawdź, jak wygląda owy blok na front-endzie.
+
+Czy wszystko wygląda tak, jak powinno? A jeśli nie, to czy masz pomysł, co można zrobić, aby napis, wrzucony w metodzie edit(), poprawnie się wyświetlił, również w widoku użytkownika?
+
+Gdy już znajdziesz odpowiedzi, czym prędzej pędź do kolejnej części tego kursu!
