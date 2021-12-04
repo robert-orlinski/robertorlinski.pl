@@ -332,6 +332,21 @@ const postRedirects = [
     destination: '/artykuly/wordpress-gutenberg-002',
     permanent: true,
   },
+  {
+    source: '/wordpress-gutenberg-001',
+    destination: '/artykuly/wordpress-gutenberg-001',
+    permanent: true,
+  },
+  {
+    source: '/kontrola-zasobow-pobieranych-przez-wtyczki',
+    destination: '/artykuly/kontrola-zasobow-pobieranych-przez-wtyczki',
+    permanent: true,
+  },
+  {
+    source: '/jak-zasypiac-szybciej-dzieki-prokrastynacji',
+    destination: '/artykuly/jak-zasypiac-szybciej-dzieki-prokrastynacji',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
