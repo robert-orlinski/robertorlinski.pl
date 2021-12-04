@@ -377,6 +377,11 @@ const postRedirects = [
     destination: '/artykuly/jak-nie-siedziec-ciagle-w-telefonie',
     permanent: true,
   },
+  {
+    source: '/focus-widoczny-tylko-podczas-nawigowania-klawiatura',
+    destination: '/artykuly/focus-widoczny-tylko-podczas-nawigowania-klawiatura',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

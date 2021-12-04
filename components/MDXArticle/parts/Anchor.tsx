@@ -1,7 +1,9 @@
 import Link from 'Components/Link';
 
 const Anchor = ({ children, href }: any) => {
-  if (children && children.type === 'img' && !href) {
+  const childrenIsStyledImage = children && children.type && children.type.name === 'Img';
+
+  if (childrenIsStyledImage && !href) {
     return (
       <Link href={children.props.src} isExternal isUnderlineVisible>
         {children}
