@@ -352,6 +352,16 @@ const postRedirects = [
     destination: '/artykuly/programista-wolontariusz',
     permanent: true,
   },
+  {
+    source: '/gutenberg-ukochane-dziecko-wordpressa',
+    destination: '/artykuly/gutenberg-ukochane-dziecko-wordpressa',
+    permanent: true,
+  },
+  {
+    source: '/variable-fonts',
+    destination: '/artykuly/variable-fonts',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);
