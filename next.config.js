@@ -372,6 +372,11 @@ const postRedirects = [
     destination: '/artykuly/materialy-do-nauki-jezyka-angielskiego',
     permanent: true,
   },
+  {
+    source: '/jak-nie-siedziec-ciagle-w-telefonie',
+    destination: '/artykuly/jak-nie-siedziec-ciagle-w-telefonie',
+    permanent: true,
+  },
 ];
 
 const redirects = transferRedirects.concat(postRedirects);

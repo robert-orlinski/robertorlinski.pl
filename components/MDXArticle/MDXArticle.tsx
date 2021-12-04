@@ -17,6 +17,7 @@ import H6 from 'Components/H6';
 import P from 'Components/P';
 
 import Anchor from './parts/Anchor';
+import Img from './parts/Img';
 import Ul from './parts/Ul';
 import Ol from './parts/Ol';
 
@@ -40,6 +41,7 @@ const MDXArticle: FC<Props> = ({ source, className }) => {
           code: Highlight,
           pre: CodeBlock,
           a: Anchor,
+          img: Img,
           h1: H1,
           h2: H2,
           h3: H3,
