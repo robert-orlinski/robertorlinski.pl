@@ -9,7 +9,7 @@ const mySummary: Array<Text> = [
   {
     type: 'link',
     text: 'open source',
-    href: '/projekty#open-source',
+    href: 'https://github.com/robert-orlinski/',
   },
   {
     type: 'text',
@@ -17,9 +17,9 @@ const mySummary: Array<Text> = [
     href: '',
   },
   {
-    type: 'link',
+    type: 'text',
     text: 'dla klientów',
-    href: '/projekty#komercyjne',
+    href: '',
   },
   {
     type: 'text',
@@ -59,7 +59,7 @@ const mySummary: Array<Text> = [
   {
     type: 'link',
     text: 'aktywista',
-    href: '/programista-wolontariusz',
+    href: '/artykuly/programista-wolontariusz',
   },
   {
     type: 'text',
