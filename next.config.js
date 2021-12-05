@@ -19,7 +19,7 @@ const postRedirects = [
   },
   {
     source: '/narzedzia-do-organizacji',
-    destination: '/artykuly/narzedzia-do-organizacji',
+    destination: '/artykuly/narzedzia-dla-produktywnosci',
     permanent: true,
   },
   {
