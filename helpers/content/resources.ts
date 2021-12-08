@@ -16,22 +16,17 @@ dayjs.extend(customParseFormat);
 
 const { readFile, readdir, copyFile } = fs.promises;
 
-export const getResourcePaths = async (resourcesDirectory: string) => {
-  const resources = await readdir(resourcesDirectory);
+export const filterPublishedResources = <T>(resources: Resource[] & T) =>
+  resources.filter(({ isPublished }) => isPublished);
 
-  const resourcePaths = resources.map((slug) => ({ params: { slug } }));
-
-  return resourcePaths;
-};
-
-export const getResources = async <T>(resourcesDirectory: string, imagesFolderName: string) => {
+export const getResources = async (resourcesDirectory: string, pluralResourceType: string) => {
   const resourceSlugs = await readdir(resourcesDirectory);
 
   const resourcesToResolve = resourceSlugs.map(async (resourceSlug: string) => {
-    const { metaData } = await getResourceBySlug<T & Resource>(
+    const { metaData } = await getResourceBySlug(
       resourcesDirectory,
       resourceSlug,
-      imagesFolderName,
+      pluralResourceType,
     );
 
     return metaData;
@@ -42,13 +37,15 @@ export const getResources = async <T>(resourcesDirectory: string, imagesFolderNa
   return resources;
 };
 
-export const getResourcesByDateDescending = async <T>(
+export const getResourcesByDateDescending = async (
   resourcesDirectory: string,
-  imagesFolderName: string,
+  pluralResourceType: string,
 ) => {
-  const resources = await getResources<T>(resourcesDirectory, imagesFolderName);
+  const resources = await getResources(resourcesDirectory, pluralResourceType);
 
-  const sortedResources = resources.sort((a, b) => {
+  const publishedResources = filterPublishedResources(resources);
+
+  const sortedResources = publishedResources.sort((a, b) => {
     const firstDate = dayjs(a.date, 'DD.MM.YYYY');
     const secondDate = dayjs(b.date, 'DD.MM.YYYY');
 
@@ -80,17 +77,17 @@ const getResourceReadingTime = (content: string) => {
   return formattedReadingTime;
 };
 
-export const getResourceBySlug = async <T>(
+export const getResourceBySlug = async (
   resourcesDirectory: string,
   resourceSlug: string,
-  imagesFolderName: string,
+  pluralResourceType: string,
 ) => {
   const resourcePath = path.join(resourcesDirectory, resourceSlug);
   const resourceMainFile = path.join(resourcePath, 'index.mdx');
 
   const source = await getResourceSourceBySlug(resourceMainFile);
 
-  const imagesDirectory = `/images/${imagesFolderName}/${resourceSlug}/`;
+  const imagesDirectory = `/images/${pluralResourceType}/${resourceSlug}/`;
 
   const { content, metaData } = await prepareMDX(source, {
     resourcePath,
@@ -118,5 +115,5 @@ export const getResourceBySlug = async <T>(
     },
   };
 
-  return resource as ResourceWithContent<T>;
+  return resource as ResourceWithContent<Resource>;
 };

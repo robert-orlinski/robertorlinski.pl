@@ -48,8 +48,7 @@ const Article = styled(MDXArticle)`
 type Props = { params: { slug: string } };
 
 export const getStaticProps = async ({ params: { slug } }: Props) => {
-  const currentPost = await getPostBySlug(slug);
-  const { content, metaData } = currentPost;
+  const { content, metaData } = await getPostBySlug(slug);
 
   const currentPostMainTopic = metaData.topics[0];
 

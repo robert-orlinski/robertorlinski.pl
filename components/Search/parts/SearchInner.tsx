@@ -18,7 +18,6 @@ const SearchInner = forwardRef((props, ref) => {
 
   useDebounce(
     async () => {
-      console.log('as');
       const results = await searchForPosts(query);
 
       setPosts(results);

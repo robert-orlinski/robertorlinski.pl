@@ -45,10 +45,10 @@ describe('sorting posts', () => {
 });
 
 describe('retrieving posts list', () => {
-  it('returns 5 posts from folder which contains 5 posts', async () => {
+  it('returns 4 posts from folder which contains 5 posts but 4 are published', async () => {
     const posts = await getPosts();
 
-    expect(posts).toHaveLength(5);
+    expect(posts).toHaveLength(4);
   });
 
   it('contains "metodologia-bem" post\'s title', async () => {
@@ -89,13 +89,13 @@ describe('single post', () => {
 
 describe('related posts', () => {
   it('returns 3 related posts', async () => {
-    const relatedPosts = await getRelatedPosts('with-code', 'Front-end', 4);
+    const relatedPosts = await getRelatedPosts('with-code', 'Front-end', 3);
 
-    expect(relatedPosts).toHaveLength(4);
+    expect(relatedPosts).toHaveLength(3);
   });
 
   it('not return current post', async () => {
-    const relatedPosts = await getRelatedPosts('with-code', 'Front-end', 4);
+    const relatedPosts = await getRelatedPosts('with-code', 'Front-end', 3);
 
     relatedPosts.forEach(({ slug }) => {
       expect(slug).not.toEqual('with-code');
@@ -103,7 +103,7 @@ describe('related posts', () => {
   });
 
   it('returns 2 posts from current topic', async () => {
-    const relatedPosts = await getRelatedPosts('with-code', 'Front-end', 4);
+    const relatedPosts = await getRelatedPosts('with-code', 'Front-end', 3);
 
     const relatedPostsFromCurrentTopic = relatedPosts.filter(({ topics }) =>
       topics.includes('Front-end'),
@@ -112,11 +112,11 @@ describe('related posts', () => {
     expect(relatedPostsFromCurrentTopic.length).toEqual(2);
   });
 
-  it('returns 1 newest post from different than current topic', async () => {
-    const relatedPosts = await getRelatedPosts('with-code', 'Front-end', 4);
+  it('returns 1 post from different than current topic (assuming that there are 2 posts in current topic and needed are 3)', async () => {
+    const relatedPosts = await getRelatedPosts('with-code', 'Front-end', 3);
 
     const postsTopics = relatedPosts.map(({ topics }) => topics).flat();
 
-    expect(postsTopics[2]).toContain('WordPress');
+    expect(postsTopics[2]).toContain('Praca');
   });
 });

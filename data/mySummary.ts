@@ -3,7 +3,7 @@ import { Text } from 'Types/data';
 const mySummary: Array<Text> = [
   {
     type: 'text',
-    text: 'Tworzę kod ',
+    text: 'Tworzę kod: ',
     href: '',
   },
   {
@@ -13,22 +13,22 @@ const mySummary: Array<Text> = [
   },
   {
     type: 'text',
-    text: ', jak i ',
-    href: '',
-  },
-  {
-    type: 'text',
-    text: 'dla klientów',
-    href: '',
-  },
-  {
-    type: 'text',
     text: ', ',
     href: '',
   },
   {
     type: 'link',
-    text: 'piszę artykuły',
+    text: 'na etacie, jak i dla klientów',
+    href: 'https://www.linkedin.com/in/robert-orlinski/',
+  },
+  {
+    type: 'text',
+    text: '. ',
+    href: '',
+  },
+  {
+    type: 'link',
+    text: 'Piszę artykuły',
     href: '/artykuly',
   },
   {

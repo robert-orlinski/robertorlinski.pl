@@ -1,18 +1,13 @@
-import { getResourcesByDateDescending, getResourceBySlug, getResourcePaths } from './resources';
+import { getResourcesByDateDescending, getResourceBySlug } from './resources';
 import { getTopic } from '../data/topics';
 import { POSTS_PATH } from '../constants';
 
-import { Post } from 'Types/content';
+import { Post, ResourceWithContent } from 'Types/content';
 
 import postsCache from 'Cache/posts.json';
 import shuffle from 'Helpers/functions/shuffle';
 
 const env = process.env.NODE_ENV || 'development';
-
-export const getPostsPaths = () => getResourcePaths(POSTS_PATH);
-
-export const getPostsByDateDescending = async () =>
-  await getResourcesByDateDescending<Post>(POSTS_PATH, 'posts');
 
 export const getPosts = async () => {
   if (env === 'production') {
@@ -21,6 +16,17 @@ export const getPosts = async () => {
 
   return await getPostsByDateDescending();
 };
+
+export const getPostsPaths = async () => {
+  const posts = await getPosts();
+
+  const paths = posts.map(({ slug }) => ({ params: { slug } }));
+
+  return paths;
+};
+
+export const getPostsByDateDescending = async () =>
+  (await getResourcesByDateDescending(POSTS_PATH, 'posts')) as Post[];
 
 export const getRandomPosts = async (numberOfPostsToReturn: number) => {
   const posts = await getPostsByDateDescending();
@@ -89,4 +95,8 @@ export const getPostsBySearchQuery = async (query: string) => {
   return postsInGivenQuery;
 };
 
-export const getPostBySlug = (slug: string) => getResourceBySlug<Post>(POSTS_PATH, slug, 'posts');
+export const getPostBySlug = async (slug: string) => {
+  const post = await getResourceBySlug(POSTS_PATH, slug, 'posts');
+
+  return post as ResourceWithContent<Post>;
+};
