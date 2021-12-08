@@ -11,10 +11,10 @@ import { getPostsByTopic } from 'Helpers/content/posts';
 import siteName from 'SiteName';
 
 import { Post as PostType } from 'Types/content';
-import { Topic } from 'Types/data';
+import { Topic as TopicType } from 'Types/data';
 
 type Props = {
-  currentTopic: Topic;
+  currentTopic: TopicType;
   postsInTopic: PostType[];
 };
 
