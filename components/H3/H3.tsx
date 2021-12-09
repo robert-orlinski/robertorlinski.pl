@@ -1,5 +1,5 @@
-import H from '../H';
+import H, { DeterminedHeader } from '../H';
 
-const H3 = (props: JSX.IntrinsicElements['h3']) => <H level={3} {...props} />;
+const H3 = (props: DeterminedHeader) => <H {...props} level={3} />;
 
 export default H3;

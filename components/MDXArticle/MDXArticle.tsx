@@ -7,19 +7,13 @@ import VideoInterlude from 'Components/VideoInterlude';
 import Blockquote from 'Components/Blockquote';
 import CodeBlock from 'Components/CodeBlock';
 import Highlight from 'Components/Highlight';
+import List from 'Components/List';
 import Li from 'Components/Li';
-import H1 from 'Components/H1';
-import H2 from 'Components/H2';
-import H3 from 'Components/H3';
-import H4 from 'Components/H4';
-import H5 from 'Components/H5';
-import H6 from 'Components/H6';
 import P from 'Components/P';
+import H from 'Components/H';
 
 import Anchor from './parts/Anchor';
 import Img from './parts/Img';
-import Ul from './parts/Ul';
-import Ol from './parts/Ol';
 
 type Props = { source: string } & JSX.IntrinsicElements['article'];
 
@@ -65,5 +59,15 @@ const Article = styled.article`
     font-size: 1.1rem;
   }
 `;
+
+const H1 = (props: JSX.IntrinsicElements['h1']) => <H level={1} isAnchor={true} {...props} />;
+const H2 = (props: JSX.IntrinsicElements['h2']) => <H level={2} isAnchor={true} {...props} />;
+const H3 = (props: JSX.IntrinsicElements['h3']) => <H level={3} isAnchor={true} {...props} />;
+const H4 = (props: JSX.IntrinsicElements['h4']) => <H level={4} isAnchor={true} {...props} />;
+const H5 = (props: JSX.IntrinsicElements['h5']) => <H level={5} isAnchor={true} {...props} />;
+const H6 = (props: JSX.IntrinsicElements['h6']) => <H level={6} isAnchor={true} {...props} />;
+
+const Ul = (props: JSX.IntrinsicElements['ul']) => <List as="ul" {...props} />;
+const Ol = (props: JSX.IntrinsicElements['ol']) => <List as="ol" {...props} />;
 
 export default MDXArticle;

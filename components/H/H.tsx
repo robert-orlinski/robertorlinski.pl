@@ -4,12 +4,15 @@ import toSlug from 'Helpers/functions/toSlug';
 
 import Link from 'Components/Link';
 
+export type DeterminedHeader = {
+  isAnchor?: boolean;
+} & JSX.IntrinsicElements['h1'];
+
 type Props = {
   level: 1 | 2 | 3 | 4 | 5 | 6;
-  isAnchor?: boolean;
-};
+} & DeterminedHeader;
 
-const H: FC<Props> = ({ level, isAnchor = true, ...props }) => {
+const H: FC<Props> = ({ level, isAnchor = false, ...props }) => {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
 
   const { children } = props;

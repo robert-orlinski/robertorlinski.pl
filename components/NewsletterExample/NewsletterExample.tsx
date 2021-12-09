@@ -40,7 +40,7 @@ const NewsletterExample = () => (
       </Blockquote>
       <P>Przejdźmy do rzeczy 🚀</P>
       <P>(Link do materiałów, na które ostatnio wpadłem, będą na końcu maila - jak zwykle ✨)</P>
-      <H4>Jak mogę stań się idealnym kandydatem na to stanowisko?</H4>
+      <H4>Jak mogę stać się idealnym kandydatem na to stanowisko?</H4>
       <P>
         Uważam, że nie ma lepszego pytania, które można zadać na rozmowie kwalifikacyjnej. Serio.
       </P>
