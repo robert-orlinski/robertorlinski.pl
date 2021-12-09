@@ -1,4 +1,4 @@
-const transferRedirects = [
+const pageRedirects = [
   {
     source: '/wszystkie-wpisy',
     destination: '/artykuly',
@@ -384,7 +384,15 @@ const postRedirects = [
   },
 ];
 
-const redirects = transferRedirects.concat(postRedirects);
+const dynamicPathsRedirects = [
+  {
+    source: '/(\\d{4})/(\\d{2})/(\\d{2})/:slug',
+    destination: '/artykuly/:slug',
+    permanent: false,
+  },
+];
+
+const redirects = pageRedirects.concat(postRedirects, dynamicPathsRedirects);
 
 module.exports = {
   reactStrictMode: true,
