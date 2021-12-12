@@ -24,7 +24,7 @@ const PostHeader: FC<Post> = ({ title, topics, date, slug }) => {
 const Container = styled.header`
   padding: 6.2rem 0 3rem;
 
-  @media ${to.tablet} {
+  @media ${to.tabletL} {
     padding: 3rem 0 1.75rem;
   }
 `;
