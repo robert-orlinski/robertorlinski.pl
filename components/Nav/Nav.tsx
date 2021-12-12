@@ -35,7 +35,8 @@ const Nav = () => {
           <Hamburger
             onClick={toggleNavVisibility}
             isCrossed={isNavVisibleOnMobile}
-            ariaLabelConstantPart="menu nawigacyjne"
+            ariaLabelForClosed="Otwórz menu nawigacyjne"
+            ariaLabelForOpened="Zamknij menu nawigacyjne"
             isHiddenOnDesktop={true}
           />
         </Container>

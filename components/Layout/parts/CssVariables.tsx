@@ -32,6 +32,7 @@ const CssVariables = createGlobalStyle`
     --input-height: 2.5rem;
     --brand-height: 1.8rem;
     --hamburger-size: 1.66rem;
+    --hamburger-width: 2px;
 
     --section-gap: 3.8rem;
     --text-gap: 1.5rem;
@@ -41,6 +42,8 @@ const CssVariables = createGlobalStyle`
     --short-transition-duration: 250ms;
     --medium-transition-duration: 500ms;
     --long-transition-duration: 750ms;
+
+    --button-cubic-bezier: cubic-bezier(0.35, 0.9, 0.5, 1);
     --fancy-cubic-bezier: cubic-bezier(0.77, 0, 0.175, 1);
 
     --min-z-index: 10;

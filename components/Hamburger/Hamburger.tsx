@@ -10,18 +10,23 @@ type ButtonProps = {
   isHiddenOnDesktop?: boolean;
 };
 
-type Props = ButtonProps & HTMLAttributes<HTMLAnchorElement> & { ariaLabelConstantPart: string };
+type Props = {
+  ariaLabelForClosed?: string;
+  ariaLabelForOpened?: string;
+} & ButtonProps &
+  HTMLAttributes<HTMLAnchorElement>;
 
 const Hamburger: FC<Props> = ({
   onClick,
   isCrossed,
-  ariaLabelConstantPart,
+  ariaLabelForClosed = 'Otwórz',
+  ariaLabelForOpened = 'Zamknij',
   isHiddenOnDesktop = false,
   className,
 }) => (
   <Button
     onClick={onClick}
-    aria-label={`${isCrossed ? 'Zamknij' : 'Otwórz'} ${ariaLabelConstantPart}`}
+    aria-label={isCrossed ? ariaLabelForOpened : ariaLabelForClosed}
     {...{
       isCrossed,
       isHiddenOnDesktop,
@@ -67,7 +72,7 @@ const Inner = styled.span`
   &::before,
   &::after {
     display: block;
-    height: 2px;
+    height: var(--hamburger-width);
 
     background-color: var(--dark-gray);
     transition: transform var(--short-transition-duration);

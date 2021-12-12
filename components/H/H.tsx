@@ -33,8 +33,6 @@ const H: FC<Props> = ({ level, isAnchor = false, ...props }) => {
 const BaseTag = styled.h1`
   padding-bottom: 0.8em;
 
-  scroll-margin-top: var(--nav-height);
-
   &:not(:nth-child(1)) {
     padding-top: 1em;
   }

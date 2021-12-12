@@ -8,12 +8,13 @@ import MDXArticle from 'Components/MDXArticle';
 import RawHeader from 'Components/RawHeader';
 import PostHeader from 'Components/PostHeader';
 import RelatedPosts from 'Components/RelatedPosts';
+import NewsletterPopup from 'Components/NewsletterPopup';
 
 import { getPostBySlug, getPostsPaths, getRelatedPosts } from 'Helpers/content/posts';
-
-import siteName from 'SiteName';
-import { PostWithContentAndRelatedPosts } from 'Types/content';
 import { from } from 'Devices';
+import siteName from 'SiteName';
+
+import { PostWithContentAndRelatedPosts } from 'Types/content';
 
 const Post: FC<PostWithContentAndRelatedPosts> = ({ metaData, content, relatedPosts }) => {
   const seoTitle = metaData.seoTitle || metaData.title;
@@ -31,6 +32,7 @@ const Post: FC<PostWithContentAndRelatedPosts> = ({ metaData, content, relatedPo
       <Wrapper as="main" size="medium" withSpaceBelow>
         <PostHeader {...metaData} />
         <Article source={content} />
+        <NewsletterPopup />
       </Wrapper>
       <RelatedPosts posts={relatedPosts} />
     </>

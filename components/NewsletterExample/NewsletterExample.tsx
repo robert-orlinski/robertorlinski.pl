@@ -14,7 +14,7 @@ import P from 'Components/P';
 import { from, to } from 'Devices';
 
 const NewsletterExample = () => (
-  <Wrapper withSpaceAbove withSpaceBelow>
+  <Wrapper withSpaceAbove withSpaceBelow id="przykladowe-wydanie">
     <Title>Jak dokładnie to wygląda?</Title>
     <Container as="article" size="small">
       <VisuallyHiddenElement as="header">

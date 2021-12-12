@@ -6,7 +6,7 @@ import LinkContainer from 'Components/LinkContainer';
 import { Button as ButtonType } from 'Types/links';
 
 type InnerProps = {
-  size?: 'default' | 'big';
+  size?: 'default' | 'big' | 'custom';
   withSpaceAbove?: boolean;
   withSpaceBelow?: boolean;
 };
@@ -16,9 +16,10 @@ const Button: FC<ButtonType & InnerProps> = ({
   href,
   type,
   onClick,
-  size,
   withSpaceAbove,
   withSpaceBelow,
+  className,
+  size = 'default',
 }) =>
   href ? (
     <LinkContainer href={href}>
@@ -27,6 +28,7 @@ const Button: FC<ButtonType & InnerProps> = ({
           size,
           withSpaceAbove,
           withSpaceBelow,
+          className,
         }}
       >
         {children}
@@ -41,6 +43,7 @@ const Button: FC<ButtonType & InnerProps> = ({
         size,
         withSpaceAbove,
         withSpaceBelow,
+        className,
       }}
     >
       {children}
@@ -49,7 +52,7 @@ const Button: FC<ButtonType & InnerProps> = ({
 
 const ButtonInner = styled.a<InnerProps>`
   --transition-duration: var(--short-transition-duration);
-  --transition-timing-function: cubic-bezier(0.35, 0.9, 0.5, 1);
+  --transition-timing-function: var(--button-cubic-bezier);
 
   display: inline-block;
   position: relative;
@@ -63,7 +66,12 @@ const ButtonInner = styled.a<InnerProps>`
     color var(--transition-duration) var(--transition-timing-function),
     transform var(--transition-duration) var(--transition-timing-function);
 
-  padding: ${({ size }) => (size === 'big' ? '0.45rem 2.2rem 0.75rem' : '0.27rem 1.2rem 0.55rem')};
+  svg {
+    transition: fill var(--transition-duration) var(--transition-timing-function);
+  }
+
+  padding: ${({ size }) =>
+    size === 'big' ? '0.45rem 2.2rem 0.75rem' : size === 'default' ? '0.27rem 1.2rem 0.55rem' : ''};
 
   ${({ withSpaceAbove }) =>
     withSpaceAbove &&
@@ -97,6 +105,10 @@ const ButtonInner = styled.a<InnerProps>`
     color: #fff;
 
     transform: translateY(-2px);
+
+    svg {
+      fill: #fff;
+    }
 
     &::after {
       opacity: 1;

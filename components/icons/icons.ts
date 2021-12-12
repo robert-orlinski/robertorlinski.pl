@@ -1,5 +1,7 @@
 export { default as Magnifier } from './parts/Magnifier';
 export { default as Hyperlink } from './parts/Hyperlink';
+export { default as FlyingLetter } from './parts/FlyingLetter';
+export { default as Cross } from './parts/Cross';
 
 export { default as Instagram } from './parts/socialMedia/Instagram';
 export { default as Facebook } from './parts/socialMedia/Facebook';

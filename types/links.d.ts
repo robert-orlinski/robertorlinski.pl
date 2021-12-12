@@ -22,7 +22,6 @@ export type Link = {
 export type Button = {
   type?: 'submit' | 'button';
   onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement> | undefined;
-  children: ReactChild;
 } & {
   [P in keyof LinkContainer]?: LinkContainer[P];
-};
+} & (JSX.IntrinsicElements['a'] | JSX.IntrinsicElements['button']);

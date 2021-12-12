@@ -28,7 +28,7 @@ const Newsletter: FC<Props> = ({ title = 'Chętnie zaproponuję Ci coś jeszcze'
           używając go, a to zawsze jest milsze ☀️
         </P>
       </div>
-      <NewsletterForm />
+      <NewsletterForm isInline />
     </Content>
   </Wrapper>
 );

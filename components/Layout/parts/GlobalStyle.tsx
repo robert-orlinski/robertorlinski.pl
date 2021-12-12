@@ -150,8 +150,13 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--monospace);
   }
 
+  b,
   strong {
-    font-weight: 600;
+    font-weight: 500;
+  }
+
+  [id] {
+    scroll-margin-top: var(--nav-height);
   }
 `;
 

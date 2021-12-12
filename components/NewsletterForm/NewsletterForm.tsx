@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import { SubmitButton } from './parts/inputs/SubmitButton';
 import { EmailInput } from './parts/inputs/EmailInput';
@@ -11,7 +11,11 @@ import subscribeToTheNewsletter from 'Helpers/requests/subscribeToTheNewsletter'
 
 import { ErrorMessage, NewsletterData } from 'Types/newsletter';
 
-const NewsletterForm = () => {
+type Props = {
+  isInline?: boolean;
+};
+
+const NewsletterForm: FC<Props> = ({ isInline }) => {
   const {
     register,
     handleSubmit,
@@ -29,7 +33,7 @@ const NewsletterForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(handleSignUp)}>
+    <Form onSubmit={handleSubmit(handleSignUp)} {...{ isInline }}>
       <NameInput {...{ register, errors }} />
       <EmailInput {...{ register, errors }} />
       <SubmitButton />
@@ -38,8 +42,12 @@ const NewsletterForm = () => {
   );
 };
 
-const Form = styled.form`
-  margin-top: -0.7rem;
+const Form = styled.form<Props>`
+  ${({ isInline }) =>
+    isInline &&
+    css`
+      margin-top: -0.5rem;
+    `};
 `;
 
 export default NewsletterForm;

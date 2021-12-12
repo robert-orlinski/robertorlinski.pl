@@ -17,7 +17,7 @@ const SearchContainer: FC<Props> = ({ isVisible, children, closeHandler }) => (
     {isVisible && <OverflowHidden />}
     <Container {...{ isVisible }} role="search">
       <Content as="div">{children}</Content>
-      <CloseButton onClick={closeHandler} aria-label="Zamknij wyszukiwarkę" />
+      <CloseButton onClick={closeHandler} />
     </Container>
   </>
 );

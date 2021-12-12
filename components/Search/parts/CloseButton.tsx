@@ -6,7 +6,12 @@ import Hamburger from 'Components/Hamburger';
 import { to } from 'Devices';
 
 const CloseButton: FC<HTMLAttributes<HTMLAnchorElement>> = ({ onClick }) => (
-  <Button isCrossed={true} {...{ onClick }} ariaLabelConstantPart="wyszukiwarkę" />
+  <Button
+    isCrossed={true}
+    ariaLabelForClosed="Otwórz wyszukiwarkę"
+    ariaLabelForOpened="Zamknij wyszukiwarkę"
+    {...{ onClick }}
+  />
 );
 
 const Button = styled(Hamburger)`
