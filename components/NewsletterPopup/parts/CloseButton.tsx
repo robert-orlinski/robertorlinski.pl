@@ -5,8 +5,8 @@ import CustomButton from './CustomButton';
 
 import { Cross } from 'Components/icons';
 
-const CloseButton: FC<JSX.IntrinsicElements['button']> = ({ className }) => (
-  <Button {...{ className }}>
+const CloseButton: FC<JSX.IntrinsicElements['button']> = ({ className, onClick }) => (
+  <Button {...{ className, onClick }}>
     <CrossIcon />
   </Button>
 );
@@ -23,7 +23,10 @@ const Button = styled(CustomButton).attrs({ size: 'custom' })`
   top: calc(var(--button-size) * -0.5);
   right: calc(var(--button-size) * -0.5);
 
-  border-radius: 50%;
+  &,
+  &::after {
+    border-radius: 50%;
+  }
 `;
 
 const CrossIcon = styled(Cross)`

@@ -1,15 +1,16 @@
-import { useState } from 'react';
-
 import Invite from './parts/Invite';
 import Popup from './parts/Popup';
 
+import useToggle from 'Hooks/useToggle';
+
 const NewsletterPopup = () => {
-  const [popupState, setPopupState] = useState<'default' | 'opened' | 'closed'>('default');
+  const [isPopupVisible, togglePopupVisibility] = useToggle(false);
+  const [isInviteVisible, toggleInviteVisibility] = useToggle(true);
 
   return (
     <aside>
-      <Invite />
-      <Popup />
+      <Invite isVisible={isInviteVisible} {...{ togglePopupVisibility, toggleInviteVisibility }} />
+      <Popup isVisible={isPopupVisible} {...{ togglePopupVisibility }} />
     </aside>
   );
 };

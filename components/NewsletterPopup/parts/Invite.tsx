@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import styled from 'styled-components';
 
 import CloseButton from './CloseButton';
@@ -5,25 +6,30 @@ import CustomButton from './CustomButton';
 
 import { FlyingLetter } from 'Components/icons';
 
-const Invite = () => (
-  <Container>
-    <OpeningButton size="custom">
+import { ContainerProps, PopupVisibilitySetter, InviteVisibilitySetter } from '../types';
+
+type Props = ContainerProps & PopupVisibilitySetter & InviteVisibilitySetter;
+
+const Invite: FC<Props> = ({ isVisible, togglePopupVisibility, toggleInviteVisibility }) => (
+  <Container {...{ isVisible }}>
+    <OpeningButton size="custom" onClick={togglePopupVisibility}>
       <Icon />
       Interesujesz się Front-endem lub WordPressem?
     </OpeningButton>
-    <CloseButton />
+    <CloseButton onClick={toggleInviteVisibility} />
   </Container>
 );
 
-const Container = styled.div`
+const Container = styled.div<ContainerProps>`
   position: fixed;
 
   z-index: var(--extreme-z-index);
   right: 2rem;
   bottom: 2rem;
 
-  /* transform: translateY(150px); */
   transition: transform var(--short-transition-duration) ease;
+
+  ${({ isVisible }) => !isVisible && `transform: translateY(150px);`}
 `;
 
 const OpeningButton = styled(CustomButton)`

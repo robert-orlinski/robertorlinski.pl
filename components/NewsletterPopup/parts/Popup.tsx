@@ -11,14 +11,14 @@ import CloseButton from './CloseButton';
 
 import { from, to } from 'Devices';
 
+import { ContainerProps, PopupVisibilitySetter } from '../types';
+
 import Cover from 'Images/banners/me-in-lavender.jpg';
 
-type Props = {
-  isVisible: boolean;
-};
+type Props = ContainerProps & PopupVisibilitySetter;
 
-const Popup: FC<Props> = ({ isVisible }) => (
-  <Container isVisible>
+const Popup: FC<Props> = ({ isVisible, togglePopupVisibility }) => (
+  <Container {...{ isVisible }}>
     <Inner>
       <ImageContainer>
         <Image src={Cover} alt="" placeholder="blur" objectFit="cover" layout="fill" />
@@ -44,12 +44,12 @@ const Popup: FC<Props> = ({ isVisible }) => (
         </Text>
         <NewsletterForm />
       </Content>
-      <BiggerCloseButton />
+      <BiggerCloseButton onClick={togglePopupVisibility} />
     </Inner>
   </Container>
 );
 
-const Container = styled.div<Props>`
+const Container = styled.div<ContainerProps>`
   display: flex;
   align-items: center;
 
@@ -61,18 +61,19 @@ const Container = styled.div<Props>`
 
   visibility: hidden;
   opacity: 0;
-  transition: opacity 300ms 400ms ease, visibility 1ms calc(500ms + 200ms) ease;
+  transition: opacity var(--short-transition-duration) var(--short-transition-duration) ease,
+    visibility 1ms var(--medium-transition-duration) ease;
 
   ${({ isVisible }) =>
     isVisible &&
     css`
       visibility: visible;
       opacity: 1;
-      transition: opacity 300ms 1ms ease, visibility 1ms ease;
+      transition: opacity var(--short-transition-duration) 1ms ease, visibility 1ms ease;
 
       ${Inner} {
         transform: translateY(0);
-        transition: transform 400ms 301ms ease;
+        transition: transform var(--short-transition-duration) var(--short-transition-duration) ease;
       }
     `}
 `;
