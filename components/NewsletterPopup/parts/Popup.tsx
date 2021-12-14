@@ -11,13 +11,15 @@ import CloseButton from './CloseButton';
 
 import { from, to } from 'Devices';
 
-import { ContainerProps, PopupVisibilitySetter } from '../types';
+import { ContainerProps } from '../types';
 
 import Cover from 'Images/banners/me-in-lavender.jpg';
 
-type Props = ContainerProps & PopupVisibilitySetter;
+type Props = {
+  handlePopupClose: () => void;
+} & ContainerProps;
 
-const Popup: FC<Props> = ({ isVisible, togglePopupVisibility }) => (
+const Popup: FC<Props> = ({ isVisible, handlePopupClose }) => (
   <Container {...{ isVisible }}>
     <Inner>
       <ImageContainer>
@@ -44,7 +46,7 @@ const Popup: FC<Props> = ({ isVisible, togglePopupVisibility }) => (
         </Text>
         <NewsletterForm />
       </Content>
-      <BiggerCloseButton onClick={togglePopupVisibility} />
+      <BiggerCloseButton onClick={handlePopupClose} />
     </Inner>
   </Container>
 );

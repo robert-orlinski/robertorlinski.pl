@@ -36,6 +36,7 @@
     "next": "12.0.3",
     "polish-plurals": "^1.1.0",
     "react": "17.0.2",
+    "react-cookie": "^4.1.1",
     "react-dom": "17.0.2",
     "react-hook-form": "^7.19.1",
     "react-lite-youtube-embed": "^2.1.0",

@@ -6,17 +6,20 @@ import CustomButton from './CustomButton';
 
 import { FlyingLetter } from 'Components/icons';
 
-import { ContainerProps, PopupVisibilitySetter, InviteVisibilitySetter } from '../types';
+import { ContainerProps } from '../types';
 
-type Props = ContainerProps & PopupVisibilitySetter & InviteVisibilitySetter;
+type Props = {
+  togglePopupVisibility: () => void;
+  handleInviteDismiss: () => void;
+} & ContainerProps;
 
-const Invite: FC<Props> = ({ isVisible, togglePopupVisibility, toggleInviteVisibility }) => (
+const Invite: FC<Props> = ({ isVisible, togglePopupVisibility, handleInviteDismiss }) => (
   <Container {...{ isVisible }}>
     <OpeningButton size="custom" onClick={togglePopupVisibility}>
       <Icon />
       Interesujesz się Front-endem lub WordPressem?
     </OpeningButton>
-    <CloseButton onClick={toggleInviteVisibility} />
+    <CloseButton onClick={handleInviteDismiss} />
   </Container>
 );
 
