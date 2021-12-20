@@ -80,22 +80,6 @@ const VideoStyles = createGlobalStyle`
 
     background-size: cover;
 
-    &::before {
-      display: block;
-      position: absolute;
-      content: '';
-      top: 0;
-
-      width: 100%;
-      height: 60px;
-      padding-bottom: 50px;
-
-      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAADGCAYAAAAT+OqFAAAAdklEQVQoz42QQQ7AIAgEF/T/D+kbq/RWAlnQyyazA4aoAB4FsBSA/bFjuF1EOL7VbrIrBuusmrt4ZZORfb6ehbWdnRHEIiITaEUKa5EJqUakRSaEYBJSCY2dEstQY7AuxahwXFrvZmWl2rh4JZ07z9dLtesfNj5q0FU3A5ObbwAAAABJRU5ErkJggg==)
-        repeat-x top;
-
-      transition: all 0.2s cubic-bezier(0, 0, 0.2, 1);
-    }
-
     &::after {
       display: block;
       content: '';
