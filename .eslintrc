@@ -1,21 +1,13 @@
 {
+  "parser": "@typescript-eslint/parser",
   "extends": ["next", "plugin:jest-dom/recommended", "plugin:testing-library/react"],
-  "plugins": ["unused-imports", "testing-library", "jest-dom"],
+  "plugins": ["testing-library", "jest-dom", "@typescript-eslint"],
   "rules": {
-    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "off",
     "jsx-a11y/alt-text": "off",
     "react/display-name": "off",
     "import/no-anonymous-default-export": "off",
-    "unused-imports/no-unused-imports": "error",
-    "unused-imports/no-unused-vars": [
-      "warn",
-      {
-        "vars": "all",
-        "varsIgnorePattern": "^_",
-        "args": "after-used",
-        "argsIgnorePattern": "^_"
-      }
-    ],
     "react/no-unescaped-entities": [
       "error",
       {

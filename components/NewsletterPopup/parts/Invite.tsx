@@ -17,7 +17,9 @@ const Invite: FC<Props> = ({ isVisible, togglePopupVisibility, handleInviteDismi
   <Container {...{ isVisible }}>
     <OpeningButton size="custom" onClick={togglePopupVisibility}>
       <Icon />
-      Interesujesz się Front-endem lub WordPressem?
+      Pssst!
+      <br />
+      Interesujesz się front-endem lub programowaniem ogólnie? Kliknij!
     </OpeningButton>
     <CloseButton onClick={handleInviteDismiss} />
   </Container>
@@ -36,7 +38,7 @@ const Container = styled.div<ContainerProps>`
 `;
 
 const OpeningButton = styled(CustomButton)`
-  max-width: 12.5rem;
+  max-width: 15rem;
   padding: 0.65rem 1rem 0.8rem;
 
   font-size: 0.85rem;

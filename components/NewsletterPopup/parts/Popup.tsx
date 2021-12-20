@@ -85,17 +85,19 @@ const Inner = styled(Wrapper).attrs({ as: 'figure', size: 'big' })`
   align-items: center;
   position: relative;
 
+  height: 35.5rem;
+
   background-color: #fff;
 
   transform: translateY(calc(-100vh - 500px));
   transition: transform 400ms ease;
 
   @media ${from.tabletL} {
-    height: 80vh;
+    max-height: 80vh;
   }
 
   @media ${from.laptop} {
-    height: 70vh;
+    max-height: 80vh;
   }
 `;
 

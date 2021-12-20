@@ -26,8 +26,6 @@ const setup = () => {
   };
 };
 
-beforeEach(() => {});
-
 describe('render', () => {
   it('renders component', () => {
     const { name, email, button } = setup();
