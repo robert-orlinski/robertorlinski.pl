@@ -13,7 +13,12 @@ Wiadomo jak to jest z tymi wtyczkami.
 
 Najchętniej, nie używalibyśmy ani jednej, bo czym ich więcej, tym z reguły wolniejsza strona, tym więcej podatności w konkretnym serwisie i wreszcie większa potrzeba dbania o niego - chociażby przez regularne aktualizacje, czy odnawianie licencji, w przypadku tych płatnych pluginów.
 
-[yt id=hNaLeFaJVnA\]
+import VideoInterlude from 'VideoInterlude';
+
+<VideoInterlude
+  id="a6CtXekVir8"
+  title="Własne bloki w WordPress Gutenberg #008 – panel boczny (sidebar)"
+/>
 
 Ale jest też inna kategoria sytuacji.
 
@@ -77,11 +82,13 @@ Huh, sporo tego.
 
 Co dla nas najważniejsze - oba pluginy, pobierają łącznie 6 arkuszy stylów oraz 4 pliki JS, i to pomimo faktu, że żaden nie jest realnie używany, na tej konkretnej podstronie (w tym przypadku - stronie głównej motywu Twenty Twenty)!
 
+import NewsletterInterlude from 'NewsletterInterlude';
+
+<NewsletterInterlude />
+
 Więc tak, definitywnie trzeba coś z tym zrobić.
 
 Zostawmy ten konkretny kod, aby na bieżąco wiedzieć, czy nasze usuwanie konkretnych assetów, przynosi skutek i przejdźmy właśnie do tej czynności.
-
-![](./klawiatura.jpg)
 
 ## To jak możemy usunąć jakikolwiek skrypt JS lub styl CSS, z konkretnej strony?
 

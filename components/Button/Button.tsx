@@ -6,9 +6,10 @@ import LinkContainer from 'Components/LinkContainer';
 import { Button as ButtonType } from 'Types/links';
 
 type InnerProps = {
-  size?: 'default' | 'big' | 'custom';
   withSpaceAbove?: boolean;
   withSpaceBelow?: boolean;
+  size?: 'default' | 'big' | 'custom';
+  tone?: 'light' | 'dark';
 };
 
 const Button: FC<ButtonType & InnerProps> = ({
@@ -20,12 +21,14 @@ const Button: FC<ButtonType & InnerProps> = ({
   withSpaceBelow,
   className,
   size = 'default',
+  tone = 'dark',
 }) =>
   href ? (
     <LinkContainer href={href}>
       <ButtonInner
         {...{
           size,
+          tone,
           withSpaceAbove,
           withSpaceBelow,
           className,
@@ -41,6 +44,7 @@ const Button: FC<ButtonType & InnerProps> = ({
         type,
         onClick,
         size,
+        tone,
         withSpaceAbove,
         withSpaceBelow,
         className,
@@ -57,9 +61,10 @@ const ButtonInner = styled.a<InnerProps>`
   display: inline-block;
   position: relative;
 
-  border: 1px solid var(--dark-gray);
+  border: 1px solid var(--theme);
   margin-top: 0.5rem;
 
+  color: var(--theme);
   text-align: center;
 
   transition: background-color var(--transition-duration) var(--transition-timing-function),
@@ -85,6 +90,17 @@ const ButtonInner = styled.a<InnerProps>`
       margin-bottom: 0.8rem;
     `};
 
+  ${({ tone }) =>
+    tone === 'dark'
+      ? css`
+          --theme: var(--dark-gray);
+          --shadow-color: rgba(0, 0, 0, 0.1);
+        `
+      : css`
+          --theme: #fff;
+          --shadow-color: rgba(255, 255, 255, 0.1);
+        `};
+
   &::after {
     content: '';
     position: absolute;
@@ -95,7 +111,7 @@ const ButtonInner = styled.a<InnerProps>`
     top: 0;
     opacity: 0;
 
-    box-shadow: 0 0.85rem 1.8rem 0 rgba(0, 0, 0, 0.11), 0 0.28rem 0.85rem 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0.85rem 1.8rem 0 var(--shadow-color), 0 0.28rem 0.85rem 0 var(--shadow-color);
 
     transition: opacity var(--transition-duration) var(--transition-timing-function);
   }

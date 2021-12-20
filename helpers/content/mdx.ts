@@ -53,8 +53,9 @@ const prepareMDX = async (
       write: true,
     }),
     globals: {
-      CodePenIframe: 'codePenIframe',
+      NewsletterInterlude: 'newsletterInterlude',
       VideoInterlude: 'videoInterlude',
+      CodePenIframe: 'codePenIframe',
     },
   });
 

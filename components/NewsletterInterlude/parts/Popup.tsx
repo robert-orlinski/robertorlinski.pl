@@ -11,25 +11,32 @@ import CloseButton from './CloseButton';
 
 import { from, to } from 'Devices';
 
-import { ContainerProps } from '../types';
-
 import Cover from 'Images/banners/me-in-lavender.jpg';
 
+type ContainerProps = {
+  isVisible: boolean;
+};
+
 type Props = {
-  handlePopupClose: () => void;
+  togglePopupVisibility: () => void;
 } & ContainerProps;
 
-const Popup: FC<Props> = ({ isVisible, handlePopupClose }) => (
+const Popup: FC<Props> = ({ isVisible, togglePopupVisibility }) => (
   <Container {...{ isVisible }}>
     <Inner>
       <ImageContainer>
-        <Image src={Cover} alt="" placeholder="blur" objectFit="cover" layout="fill" />
+        <Image
+          src={Cover}
+          alt="Robert siedzący na polu lawendy - jak zawsze z komputerem."
+          placeholder="blur"
+          objectFit="cover"
+          layout="fill"
+        />
       </ImageContainer>
       <Content>
-        <h2>Jesteś programistą lub programistką?</h2>
         <Text>
           <P>
-            W takim razie, może zainteresować Cię mój newsletter! Podsyłam tam{' '}
+            Podsyłam tam
             <strong>
               wartościowe materiały ze świata front-endu, produktywności, programowania ogólnie,
               oraz tego bloga.
@@ -46,7 +53,7 @@ const Popup: FC<Props> = ({ isVisible, handlePopupClose }) => (
         </Text>
         <NewsletterForm />
       </Content>
-      <BiggerCloseButton onClick={handlePopupClose} />
+      <BiggerCloseButton onClick={togglePopupVisibility} />
     </Inner>
   </Container>
 );
@@ -80,7 +87,7 @@ const Container = styled.div<ContainerProps>`
     `}
 `;
 
-const Inner = styled(Wrapper).attrs({ as: 'figure', size: 'big' })`
+const Inner = styled(Wrapper).attrs({ as: 'article', size: 'big' })`
   display: flex;
   align-items: center;
   position: relative;
@@ -120,7 +127,7 @@ const ImageContainer = styled.div`
   }
 `;
 
-const Content = styled.article`
+const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

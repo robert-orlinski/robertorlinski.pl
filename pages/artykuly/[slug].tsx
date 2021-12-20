@@ -8,7 +8,6 @@ import MDXArticle from 'Components/MDXArticle';
 import RawHeader from 'Components/RawHeader';
 import PostHeader from 'Components/PostHeader';
 import RelatedPosts from 'Components/RelatedPosts';
-import NewsletterPopup from 'Components/NewsletterPopup';
 
 import { getPostBySlug, getPostsPaths, getRelatedPosts } from 'Helpers/content/posts';
 import { from } from 'Devices';
@@ -32,7 +31,6 @@ const Post: FC<PostWithContentAndRelatedPosts> = ({ metaData, content, relatedPo
       <Wrapper as="main" size="medium" withSpaceBelow>
         <PostHeader {...metaData} />
         <Article source={content} />
-        <NewsletterPopup />
       </Wrapper>
       <RelatedPosts posts={relatedPosts} />
     </>

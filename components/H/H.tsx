@@ -13,7 +13,7 @@ type Props = {
 } & DeterminedHeader;
 
 const H: FC<Props> = ({ level, isAnchor = false, ...props }) => {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  const tag = `h${level}` as keyof JSX.IntrinsicElements;
 
   const { children } = props;
 
@@ -21,13 +21,13 @@ const H: FC<Props> = ({ level, isAnchor = false, ...props }) => {
     const sluggedHeader = toSlug(children);
 
     return (
-      <BaseTag id={sluggedHeader} as={Tag}>
+      <BaseTag id={sluggedHeader} as={tag}>
         <AnchorLink href={`#${sluggedHeader}`}>{children}</AnchorLink>
       </BaseTag>
     );
   }
 
-  return <BaseTag as={Tag}>{children}</BaseTag>;
+  return <BaseTag as={tag}>{children}</BaseTag>;
 };
 
 const BaseTag = styled.h1`
