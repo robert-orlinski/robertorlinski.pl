@@ -2,8 +2,8 @@
 . "$(dirname "$0")/_/husky.sh"
 
 npm run lint
-
 npm test
+npx tsc
 
 npm run cache 
 git add cache/posts.json

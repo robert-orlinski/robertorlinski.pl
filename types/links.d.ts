@@ -16,6 +16,7 @@ export type Link = {
   isExternal?: boolean;
   children: ReactChild;
   className?: string;
+  tabIndex?: number;
 } & UnderlinedLinkStyle &
   LinkContainer;
 
