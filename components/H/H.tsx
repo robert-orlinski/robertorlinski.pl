@@ -9,25 +9,23 @@ export type DeterminedHeader = {
 } & JSX.IntrinsicElements['h1'];
 
 type Props = {
-  level: 1 | 2 | 3 | 4 | 5 | 6;
+  as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 } & DeterminedHeader;
 
-const H: FC<Props> = ({ level, isAnchor = false, ...props }) => {
-  const tag = `h${level}` as keyof JSX.IntrinsicElements;
-
+const H: FC<Props> = ({ as, isAnchor = false, ...props }) => {
   const { children } = props;
 
   if (typeof children === 'string' && isAnchor) {
     const sluggedHeader = toSlug(children);
 
     return (
-      <BaseTag id={sluggedHeader} as={tag}>
+      <BaseTag id={sluggedHeader} {...{ as }}>
         <AnchorLink href={`#${sluggedHeader}`}>{children}</AnchorLink>
       </BaseTag>
     );
   }
 
-  return <BaseTag as={tag}>{children}</BaseTag>;
+  return <BaseTag {...{ as }}>{children}</BaseTag>;
 };
 
 const BaseTag = styled.h1`

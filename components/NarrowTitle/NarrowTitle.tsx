@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import H from 'Components/H';
+import H2 from 'Components/H2';
 
-const NarrowTitle = styled(H)`
+const NarrowTitle = styled(H2)`
   max-width: 600px;
 
   margin-left: auto;

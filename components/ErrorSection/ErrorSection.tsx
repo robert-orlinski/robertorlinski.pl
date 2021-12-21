@@ -13,7 +13,7 @@ type Props = {
 
 const ErrorSection: FC<Props> = ({ children, withButton: { href, title } = {} }) => (
   <TextBlock>
-    <NarrowTitle level={2}>{children}</NarrowTitle>
+    <NarrowTitle>{children}</NarrowTitle>
     {href && title && <Button href={href}>{title}</Button>}
   </TextBlock>
 );

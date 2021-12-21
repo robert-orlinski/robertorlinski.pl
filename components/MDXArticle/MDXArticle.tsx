@@ -62,12 +62,12 @@ const Article = styled.article`
   }
 `;
 
-const H1 = (props: JSX.IntrinsicElements['h1']) => <H level={1} isAnchor={true} {...props} />;
-const H2 = (props: JSX.IntrinsicElements['h2']) => <H level={2} isAnchor={true} {...props} />;
-const H3 = (props: JSX.IntrinsicElements['h3']) => <H level={3} isAnchor={true} {...props} />;
-const H4 = (props: JSX.IntrinsicElements['h4']) => <H level={4} isAnchor={true} {...props} />;
-const H5 = (props: JSX.IntrinsicElements['h5']) => <H level={5} isAnchor={true} {...props} />;
-const H6 = (props: JSX.IntrinsicElements['h6']) => <H level={6} isAnchor={true} {...props} />;
+const H1 = (props: JSX.IntrinsicElements['h1']) => <H as="h1" isAnchor={true} {...props} />;
+const H2 = (props: JSX.IntrinsicElements['h2']) => <H as="h2" isAnchor={true} {...props} />;
+const H3 = (props: JSX.IntrinsicElements['h3']) => <H as="h3" isAnchor={true} {...props} />;
+const H4 = (props: JSX.IntrinsicElements['h4']) => <H as="h4" isAnchor={true} {...props} />;
+const H5 = (props: JSX.IntrinsicElements['h5']) => <H as="h5" isAnchor={true} {...props} />;
+const H6 = (props: JSX.IntrinsicElements['h6']) => <H as="h6" isAnchor={true} {...props} />;
 
 const Ul = (props: JSX.IntrinsicElements['ul']) => <List as="ul" {...props} />;
 const Ol = (props: JSX.IntrinsicElements['ol']) => <List as="ol" {...props} />;

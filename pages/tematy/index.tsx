@@ -55,7 +55,7 @@ const Topics: FC<PostsContainer> = () => {
               ))}
 
             <TextBlock>
-              <NarrowTitle level={2}>Wolisz nie ograniczać się do konkretnej tematyki?</NarrowTitle>
+              <NarrowTitle>Wolisz nie ograniczać się do konkretnej tematyki?</NarrowTitle>
               <CenteredText as="footer">
                 <Button href="/artykuly">Zobacz wszystkie artykuły</Button>
               </CenteredText>

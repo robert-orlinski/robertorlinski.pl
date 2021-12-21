@@ -31,7 +31,8 @@ const prepareMDX = async (
 
   const { resourcePath, imagesDirectory } = options;
 
-  const { code, frontmatter } = await bundleMDX(source, {
+  const { code, frontmatter } = await bundleMDX({
+    source,
     cwd: resourcePath,
     xdmOptions: (options) => ({
       ...options,
