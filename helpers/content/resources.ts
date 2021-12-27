@@ -16,10 +16,13 @@ dayjs.extend(customParseFormat);
 
 const { readFile, readdir, copyFile } = fs.promises;
 
-export const filterPublishedResources = <T>(resources: Resource[] & T) =>
+export const filterPublishedResources = <T>(resources: Resource[] & T): Resource[] =>
   resources.filter(({ isPublished }) => isPublished);
 
-export const getResources = async (resourcesDirectory: string, pluralResourceType: string) => {
+export const getResources = async (
+  resourcesDirectory: string,
+  pluralResourceType: string,
+): Promise<Resource[]> => {
   const resourceSlugs = await readdir(resourcesDirectory);
 
   const resourcesToResolve = resourceSlugs.map(async (resourceSlug: string) => {
@@ -40,7 +43,7 @@ export const getResources = async (resourcesDirectory: string, pluralResourceTyp
 export const getResourcesByDateDescending = async (
   resourcesDirectory: string,
   pluralResourceType: string,
-) => {
+): Promise<Resource[]> => {
   const resources = await getResources(resourcesDirectory, pluralResourceType);
 
   const publishedResources = filterPublishedResources(resources);
@@ -55,7 +58,7 @@ export const getResourcesByDateDescending = async (
   return sortedResources;
 };
 
-const getResourceSourceBySlug = async (resourcePath: string) => {
+const getResourceSourceBySlug = async (resourcePath: string): Promise<string> => {
   const resourceSourceBuffer = await readFile(resourcePath);
   const resourceSource = resourceSourceBuffer.toString();
 
