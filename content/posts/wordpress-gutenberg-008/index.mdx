@@ -61,7 +61,22 @@ return (
 
 ...natomiast to rozwiązanie zawsze będzie trochę słabsze.
 
-Pomimo, że w tym przypadku użycie tej metody nie niesie za sobą większych zagrożeń, niż sposób pierwszy, to dobrze jest się przyzwyczajać do nieużywania jej - nie jest to dobra praktyka, bo potrafi te zagrożenia nieść, szczególnie gdy piszemy bardziej rozbudowane bloki lub tworzymy coś w Reactcie, będącym podstawą Gutenberga.
+Pomimo, że w tym przypadku użycie tej metody nie niesie za sobą większych zagrożeń, niż sposób pierwszy, to dobrze jest się przyzwyczajać do nieużywania jej - nie jest to dobra praktyka, bo potrafi te zagrożenia nieść, szczególnie gdy piszemy bardziej rozbudowane bloki lub tworzymy coś w Reactcie, będącym podstawą Gutenberga.
+
+I poza tym, jeszcze w ramach trzeciej możliwości, możemy skorzystać z komponentu `<RichText.Content />` dla tytułu, podobnie jak robimy to dla listy pod nim 🎉
+
+W ten sposób:
+
+```jsx
+return (
+  <div class="table-of-contents-block">
+    <RichText.Content tagName="h2" value={title} />
+    <RichText.Content tagName="ol" value={list} />
+  </div>
+);
+```
+
+Wtedy źródłem naszego atrybutu title nie musi być już children, a bardziej intuicyjny html, tak samo jak w przypadku skorzystania z `dangerouslySetInnerHTML`.
 
 ### Zadanie domowe numer 2:
 
