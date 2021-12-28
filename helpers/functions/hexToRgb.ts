@@ -1,4 +1,4 @@
-const hexToRgb = (hex: string) => {
+const hexToRgb = (hex: string): string | null => {
   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   const hexToConvert = hex.replace(shorthandRegex, (m, r, g, b) => r + r + g + g + b + b);
 

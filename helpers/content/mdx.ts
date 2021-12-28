@@ -4,6 +4,7 @@ import { bundleMDX } from 'mdx-bundler';
 import { remarkMdxImages } from 'remark-mdx-images';
 
 import rehypePrism from '@mapbox/rehype-prism';
+import { ResourceWithContent } from 'Types/content';
 
 const prepareMDX = async (
   source: string,
@@ -11,7 +12,11 @@ const prepareMDX = async (
     resourcePath: string;
     imagesDirectory: string;
   },
-) => {
+): Promise<
+  ResourceWithContent<{
+    [key: string]: any;
+  }>
+> => {
   if (process.platform === 'win32') {
     process.env.ESBUILD_BINARY_PATH = path.join(
       process.cwd(),

@@ -1,6 +1,6 @@
 import { Text } from 'Types/data';
 
-const copyright: Array<Text> = [
+const copyright: Text[] = [
   {
     type: 'text',
     text: 'Zaprojektowane i zakodowane przeze mnie. Napisałem też ',

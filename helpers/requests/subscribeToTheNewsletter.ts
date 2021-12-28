@@ -10,7 +10,7 @@ const subscribeToTheNewsletter = async (data: NewsletterData): Promise<string | 
   const { error } = await response.json();
 
   if (error) {
-    return error;
+    return error as string;
   } else {
     router.push('/praktycznie-to-mamy');
   }

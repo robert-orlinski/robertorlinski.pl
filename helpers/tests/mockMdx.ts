@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-const mockMdx = () => {
+const mockMdx = (): void => {
   jest
     .spyOn(require('../content/mdx'), 'default')
     .mockImplementation((source, { resourcePath }: any) => {

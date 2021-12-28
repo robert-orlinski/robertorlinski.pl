@@ -1,6 +1,6 @@
 import { Text } from 'Types/data';
 
-const mySummary: Array<Text> = [
+const mySummary: Text[] = [
   {
     type: 'text',
     text: 'Tworzę kod: ',

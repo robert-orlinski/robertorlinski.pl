@@ -2,14 +2,14 @@ import { getResourcesByDateDescending, getResourceBySlug } from './resources';
 import { getTopic } from '../data/topics';
 import { POSTS_PATH } from '../constants';
 
-import { Post, ResourceWithContent } from 'Types/content';
+import { PathParams, Post, ResourceWithContent } from 'Types/content';
 
 import postsCache from 'Cache/posts.json';
 import shuffle from 'Helpers/functions/shuffle';
 
 const env = process.env.NODE_ENV || 'development';
 
-export const getPosts = async () => {
+export const getPosts = async (): Promise<Post[]> => {
   if (env === 'production') {
     return postsCache;
   }
@@ -17,7 +17,7 @@ export const getPosts = async () => {
   return await getPostsByDateDescending();
 };
 
-export const getPostsPaths = async () => {
+export const getPostsPaths = async (): Promise<PathParams<'slug'>> => {
   const posts = await getPosts();
 
   const paths = posts.map(({ slug }) => ({ params: { slug } }));
@@ -25,16 +25,16 @@ export const getPostsPaths = async () => {
   return paths;
 };
 
-export const getPostsByDateDescending = async () =>
+export const getPostsByDateDescending = async (): Promise<Post[]> =>
   (await getResourcesByDateDescending(POSTS_PATH, 'posts')) as Post[];
 
-export const getRandomPosts = async (numberOfPostsToReturn: number) => {
+export const getRandomPosts = async (numberOfPostsToReturn: number): Promise<Post[]> => {
   const posts = await getPostsByDateDescending();
 
   return shuffle(posts).slice(0, numberOfPostsToReturn);
 };
 
-export const getNewestPosts = async () => {
+export const getNewestPosts = async (): Promise<Post[]> => {
   const posts = await getPosts();
   const lastSixPosts = posts.slice(0, 6);
 
@@ -45,7 +45,7 @@ export const getRelatedPosts = async (
   currentPostSlug: string,
   givenTopicName: string,
   numberOfPostsToReturn: number,
-) => {
+): Promise<Post[]> => {
   const posts = await getPostsByDateDescending();
   const postsWithoutTheCurrentOne = posts.filter(({ slug }) => slug !== currentPostSlug);
 
@@ -67,13 +67,13 @@ export const getRelatedPosts = async (
   }
 };
 
-export const getPopularPosts = async () => {
+export const getPopularPosts = async (): Promise<Post[]> => {
   const posts = await getPostsByDateDescending();
 
   return posts.filter(({ isPopular }) => isPopular);
 };
 
-export const getPostsByTopic = async (topicSlug: string) => {
+export const getPostsByTopic = async (topicSlug: string): Promise<Post[]> => {
   const posts = await getPosts();
   const { name: givenTopicName } = getTopic(topicSlug);
 
@@ -82,7 +82,7 @@ export const getPostsByTopic = async (topicSlug: string) => {
   return postsInGivenTopic;
 };
 
-export const getPostsBySearchQuery = async (query: string) => {
+export const getPostsBySearchQuery = async (query: string): Promise<Post[]> => {
   const posts = await getPosts();
 
   const postsInGivenQuery = posts.filter(({ title }) => {
@@ -95,7 +95,7 @@ export const getPostsBySearchQuery = async (query: string) => {
   return postsInGivenQuery;
 };
 
-export const getPostBySlug = async (slug: string) => {
+export const getPostBySlug = async (slug: string): Promise<ResourceWithContent<Post>> => {
   const post = await getResourceBySlug(POSTS_PATH, slug, 'posts');
 
   return post as ResourceWithContent<Post>;

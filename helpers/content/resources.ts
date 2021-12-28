@@ -65,7 +65,7 @@ const getResourceSourceBySlug = async (resourcePath: string): Promise<string> =>
   return resourceSource;
 };
 
-const getResourceReadingTime = (content: string) => {
+const getResourceReadingTime = (content: string): string => {
   const contentReadingTime = readingTime(content).minutes;
   const roundedReadingTime = Math.round(contentReadingTime);
   const readingTimePlural = polishPlurals(
@@ -84,7 +84,7 @@ export const getResourceBySlug = async (
   resourcesDirectory: string,
   resourceSlug: string,
   pluralResourceType: string,
-) => {
+): Promise<ResourceWithContent<Resource>> => {
   const resourcePath = path.join(resourcesDirectory, resourceSlug);
   const resourceMainFile = path.join(resourcePath, 'index.mdx');
 

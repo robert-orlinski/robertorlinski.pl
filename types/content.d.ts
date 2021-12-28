@@ -14,7 +14,7 @@ export type ResourceWithContent<T> = {
 
 export type Post = {
   readingTime: string;
-  topics: Array<string>;
+  topics: string[];
   isPopular: boolean;
 } & Resource;
 
@@ -25,3 +25,5 @@ export type PostWithContentAndRelatedPosts = {
 export type PostsContainer = {
   posts: Post[];
 };
+
+export type PathParams<T> = Record<'params', { [key: T]: string }>[];

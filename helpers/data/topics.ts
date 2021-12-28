@@ -1,18 +1,17 @@
 import topicsGroups from '../../data/taxonomies/topics';
 
 import { Topic } from 'Types/data';
+import { PathParams } from 'Types/content';
 
-export const getTopics = () => {
-  const topicsGrouped: Array<Topic[]> = topicsGroups.map(({ topics }) =>
-    topics.map((topic) => topic),
-  );
+export const getTopics = (): Topic[] => {
+  const topicsGrouped: Topic[][] = topicsGroups.map(({ topics }) => topics.map((topic) => topic));
 
   const topics: Topic[] = topicsGrouped.flat();
 
   return topics;
 };
 
-export const getTopicsPaths = () => {
+export const getTopicsPaths = (): PathParams<'slug'> => {
   const topics = getTopics();
 
   const topicsPaths = topics.map(({ slug }) => ({ params: { slug } }));
@@ -20,7 +19,7 @@ export const getTopicsPaths = () => {
   return topicsPaths;
 };
 
-export const getTopic = (nameOrSlug: string) => {
+export const getTopic = (nameOrSlug: string): Topic => {
   const allTopics = getTopics();
 
   const wantedTopic = allTopics.find(
@@ -30,10 +29,10 @@ export const getTopic = (nameOrSlug: string) => {
   return wantedTopic as Topic;
 };
 
-export const getPrimaryTopic = (topics: Array<string>) => {
+export const getPrimaryTopic = (topics: string[]): Topic => {
   const primaryTopicNameOrSlug = topics[0];
 
   return getTopic(primaryTopicNameOrSlug);
 };
 
-export const getTopicLink = (slug: string) => `/tematy/${slug}`;
+export const getTopicLink = (slug: string): string => `/tematy/${slug}`;

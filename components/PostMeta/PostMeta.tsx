@@ -7,7 +7,7 @@ import Separator from 'Components/Separator';
 import { getPrimaryTopic, getTopicLink } from 'Helpers/data/topics';
 
 type Props = {
-  topics: Array<string>;
+  topics: string[];
   readingTime?: string;
   date?: string;
 };
