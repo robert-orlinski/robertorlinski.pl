@@ -13,6 +13,7 @@ module.exports = {
   moduleNameMapper: {
     Devices: '<rootDir>/helpers/devices.ts',
     SiteName: '<rootDir>/helpers/metaData/siteName.ts',
+    SiteUrl: '<rootDir>/helpers/metaData/siteUrl.ts',
     AddressSeparator: '<rootDir>/helpers/metaData/addressSeparator.ts',
     Slogan: '<rootDir>/helpers/metaData/slogan.ts',
     '^Components/(.*)$': '<rootDir>/components/$1',

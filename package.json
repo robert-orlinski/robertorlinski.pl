@@ -17,6 +17,7 @@
   "_moduleAliases": {
     "Devices": "helpers/devices.ts",
     "SiteName": "helpers/metaData/siteName.ts",
+    "SiteUrl": "helpers/metaData/siteUrl.ts",
     "AddressSeparator": "helpers/metaData/addressSeparator.ts",
     "Slogan": "helpers/metaData/slogan.ts",
     "Components": "components",
@@ -28,6 +29,7 @@
     "Cache": "cache"
   },
   "dependencies": {
+    "@giscus/react": "^1.0.1",
     "@mapbox/rehype-prism": "^0.8.0",
     "dayjs": "^1.10.7",
     "esbuild": "^0.14.6",

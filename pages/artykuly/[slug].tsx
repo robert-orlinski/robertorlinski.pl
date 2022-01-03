@@ -14,14 +14,16 @@ import { from } from 'Devices';
 import siteName from 'SiteName';
 
 import { PostWithContentAndRelatedPosts } from 'Types/content';
+import Comments from 'Components/Comments';
+import CommentsInvite from 'Components/CommentsInvite';
+import Newsletter from 'Components/Newsletter';
 
 const Post: FC<PostWithContentAndRelatedPosts> = ({ metaData, content, relatedPosts }) => {
   const seoTitle = metaData.seoTitle || metaData.title;
 
   const meta = {
     title: `${seoTitle} | ${siteName}`,
-    description:
-      'Wszystkie artykuły, które do tej pory pojawiły się na blogu. Przeczytasz o front-endzie, WordPressie, trochę przemyśleń i trochę rzeczy związanych z designem oraz pracą jako programista',
+    description: metaData.abstract,
   };
 
   return (
@@ -31,8 +33,11 @@ const Post: FC<PostWithContentAndRelatedPosts> = ({ metaData, content, relatedPo
       <Wrapper as="main" size="medium" withSpaceBelow>
         <PostHeader {...metaData} />
         <Article source={content} />
+        <CommentsInvite />
       </Wrapper>
       <RelatedPosts posts={relatedPosts} />
+      <Newsletter />
+      <Comments title={seoTitle} />
     </>
   );
 };

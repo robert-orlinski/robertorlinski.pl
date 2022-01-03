@@ -1,0 +1,36 @@
+:root {
+  --github-color: #2da44e;
+}
+
+.rounded,
+.btn,
+.gsc-comment-box-textarea {
+  border-radius: 0;
+}
+
+.rounded-t {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.gsc-comment-box-separator {
+  border-top-width: 1px;
+}
+
+.gsc-comment-box-preview {
+  border-bottom-width: 1px;
+}
+
+.btn-primary {
+  background-color: var(--github-color);
+  color: #fff;
+}
+
+.btn-primary:hover:not([disabled]) {
+  background-color: #000;
+  color: #fff;
+}
+
+.btn-primary[disabled]:hover {
+  cursor: default;
+}

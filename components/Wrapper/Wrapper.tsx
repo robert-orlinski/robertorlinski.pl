@@ -6,6 +6,8 @@ type Props = {
   size?: 'tiny' | 'small' | 'medium' | 'big' | 'default';
   withSpaceAbove?: boolean;
   withSpaceBelow?: boolean;
+  withBorderAbove?: boolean;
+  withBorderBelow?: boolean;
 };
 
 const sizes = {
@@ -40,6 +42,18 @@ const Wrapper = styled.section<Props>`
     withSpaceBelow &&
     css`
       padding-bottom: var(--wrapper-gap);
+    `}
+
+  ${({ withBorderAbove }) =>
+    withBorderAbove &&
+    css`
+      border-top: 1px solid var(--line-gray);
+    `}
+
+  ${({ withBorderBelow }) =>
+    withBorderBelow &&
+    css`
+      border-bottom: 1px solid var(--line-gray);
     `}
 
   ${({ size }) =>

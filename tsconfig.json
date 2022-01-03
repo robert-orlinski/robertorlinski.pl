@@ -18,6 +18,7 @@
     "paths": {
       "Devices": ["helpers/devices.ts"],
       "SiteName": ["helpers/metaData/siteName.ts"],
+      "SiteUrl": ["helpers/metaData/siteUrl.ts"],
       "AddressSeparator": ["helpers/metaData/addressSeparator.ts"],
       "Slogan": ["helpers/metaData/slogan.ts"],
       "Components/*": ["components/*"],
