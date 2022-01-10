@@ -43,13 +43,11 @@ const Home: FC<PostsContainer> = ({ posts }) => {
       <Wrapper as="main">
         <TextBlock>
           <P>
-            Przez parę ostatnich lat pracowałem z WordPressem, aż do momentu, w którym okazało się,
-            że nie tak wiele może mnie w nim już zaskoczyć - dlatego niedawno przerzuciłem się w
-            pełni na front-end.
+            Działałem jako freelancer, pomagałem rozwijać agencję kreatywną, a niedawno zacząłem pracę jako front-end developer, aby współtworzyć naprawdę duże projekty, a przez to zbierać jeszcze więcej doświadczeń!
           </P>
           <TextWithLinks text={mySummary} />
           <CenteredText as="footer">
-            <Button href="/popularne-artykuly">Popularne artykuły</Button>
+            <Button href="/popularne-artykuly">Sprawdź najchętniej czytane artykuły!</Button>
           </CenteredText>
         </TextBlock>
         <NewArticles {...{ posts }} />
