@@ -5,18 +5,18 @@ import Head from 'Components/Head';
 import Wrapper from 'Components/Wrapper';
 import MDXArticle from 'Components/MDXArticle';
 
+import Comments from 'Components/Comments';
 import RawHeader from 'Components/RawHeader';
+import Newsletter from 'Components/Newsletter';
 import PostHeader from 'Components/PostHeader';
 import RelatedPosts from 'Components/RelatedPosts';
+import CommentsInvite from 'Components/CommentsInvite';
 
 import { getPostBySlug, getPostsPaths, getRelatedPosts } from 'Helpers/content/posts';
 import { from } from 'Devices';
 import siteName from 'SiteName';
 
 import { PostWithContentAndRelatedPosts } from 'Types/content';
-import Comments from 'Components/Comments';
-import CommentsInvite from 'Components/CommentsInvite';
-import Newsletter from 'Components/Newsletter';
 
 const Post: FC<PostWithContentAndRelatedPosts> = ({ metaData, content, relatedPosts }) => {
   const seoTitle = metaData.seoTitle || metaData.title;

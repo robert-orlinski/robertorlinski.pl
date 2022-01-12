@@ -28,6 +28,7 @@ const Comments: FC<Props> = ({ title }) => (
       reactionsEnabled="0"
       emitMetadata="0"
       theme={theme}
+      lang="pl"
     />
   </Container>
 );

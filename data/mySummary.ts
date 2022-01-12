@@ -18,7 +18,7 @@ const mySummary: Text[] = [
   },
   {
     type: 'link',
-    text: 'na etacie, jak i dla klientów',
+    text: 'na etacie, jak i czasami dla klientów',
     href: 'https://www.linkedin.com/in/robert-orlinski/',
   },
   {
