@@ -3,7 +3,7 @@ import { existsSync, mkdirSync, writeFile } from 'fs';
 import { getPosts } from 'Helpers/content/posts';
 
 const generatePostsCache = async (): Promise<void> => {
-  const cacheDir = resolve(__dirname, '../../cache');
+  const cacheDir = resolve(__dirname, '../cache');
 
   const postsToCache = await getPosts();
   const cacheFileContents = JSON.stringify(postsToCache);

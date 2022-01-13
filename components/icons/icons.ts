@@ -3,6 +3,7 @@ export { default as Hyperlink } from './parts/Hyperlink';
 export { default as FlyingLetter } from './parts/FlyingLetter';
 export { default as Envelope } from './parts/Envelope';
 export { default as Cross } from './parts/Cross';
+export { default as RSS } from './parts/RSS';
 
 export { default as Instagram } from './parts/socialMedia/Instagram';
 export { default as Facebook } from './parts/socialMedia/Facebook';

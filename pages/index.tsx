@@ -26,7 +26,7 @@ const Home: FC<PostsContainer> = ({ posts }) => {
   const meta = {
     title: `${siteName} ${addressSeparator} ${slogan}`,
     description:
-      'W WordPressie widziałem już dużo, więc teraz skupiam się na front-endzie. Programuję dla siebie oraz klientów, piszę na blogu i nagrywam filmy na YouTubie. Po godzinach działam jako aktywista ✨',
+      'W WordPressie widziałem już dużo, więc teraz skupiam się na front-endzie. Programuję dla siebie oraz klientów, piszę na blogu i nagrywam filmy na YouTubie. Po godzinach działam jako aktywista ✨',
   };
 
   return (
@@ -36,14 +36,16 @@ const Home: FC<PostsContainer> = ({ posts }) => {
         title="Cześć, jestem Robert!"
         image={{
           src: bannerImage,
-          alt: 'Robert zamierzający uderzyć ogromny, pluszowy przycisk "enter", który jednocześnie można podłączyć na USB i tym samym zatwierdzać rzeczy z potężnym impetem.',
+          alt: 'Robert zamierzający uderzyć ogromny, pluszowy przycisk "enter", który jednocześnie można podłączyć na USB i tym samym zatwierdzać rzeczy z potężnym impetem.',
         }}
         isImageFluid
       />
       <Wrapper as="main">
         <TextBlock>
           <P>
-            Działałem jako freelancer, pomagałem rozwijać agencję kreatywną, a niedawno zacząłem pracę jako front-end developer, aby współtworzyć naprawdę duże projekty, a przez to zbierać jeszcze więcej doświadczeń!
+            Działałem jako freelancer, później pomagałem rozwijać agencję kreatywną, a niedawno
+            zacząłem pracę jako front-end developer, aby współtworzyć naprawdę duże projekty, a
+            przez to zbierać jeszcze więcej doświadczeń!
           </P>
           <TextWithLinks text={mySummary} />
           <CenteredText as="footer">

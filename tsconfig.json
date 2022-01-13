@@ -17,7 +17,9 @@
     "jsx": "preserve",
     "paths": {
       "Devices": ["helpers/devices.ts"],
+      "BlogAuthor": ["helpers/metaData/blogAuthor.ts"],
       "SiteName": ["helpers/metaData/siteName.ts"],
+      "SiteTitle": ["helpers/metaData/siteTitle.ts"],
       "SiteUrl": ["helpers/metaData/siteUrl.ts"],
       "AddressSeparator": ["helpers/metaData/addressSeparator.ts"],
       "Slogan": ["helpers/metaData/slogan.ts"],

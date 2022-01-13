@@ -12,11 +12,13 @@
     "test": "jest",
     "prepare": "husky install",
     "ts-node-esm": "node --no-warnings --loader ts-node/esm --experimental-specifier-resolution=node",
-    "cache": "npm run ts-node-esm ./scripts/cache/index.ts"
+    "generate": "npm run ts-node-esm ./scripts/index.ts"
   },
   "_moduleAliases": {
     "Devices": "helpers/devices.ts",
+    "BlogAuthor": "helpers/metaData/blogAuthor.ts",
     "SiteName": "helpers/metaData/siteName.ts",
+    "SiteTitle": "helpers/metaData/siteTitle.ts",
     "SiteUrl": "helpers/metaData/siteUrl.ts",
     "AddressSeparator": "helpers/metaData/addressSeparator.ts",
     "Slogan": "helpers/metaData/slogan.ts",
@@ -29,10 +31,10 @@
     "Cache": "cache"
   },
   "dependencies": {
+    "@giscus/react": "robert-orlinski/giscus-component#package",
     "@mapbox/rehype-prism": "^0.8.0",
     "dayjs": "^1.10.7",
     "esbuild": "^0.14.11",
-    "@giscus/react": "robert-orlinski/giscus-component#package",
     "mdx-bundler": "^8.0.1",
     "module-alias": "^2.2.2",
     "next": "12.0.7",
@@ -53,6 +55,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
+    "@types/rss": "^0.0.29",
     "@types/styled-components": "^5.1.19",
     "@typescript-eslint/eslint-plugin": "^5.9.1",
     "@typescript-eslint/parser": "^5.9.1",
@@ -71,6 +74,7 @@
     "npm": "^8.3.0",
     "prettier": "^2.5.1",
     "react-test-renderer": "^17.0.2",
+    "rss": "^1.2.2",
     "run-node": "^2.0.0",
     "ts-node": "^10.4.0",
     "typescript": "4.5.4"
