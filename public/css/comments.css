@@ -44,3 +44,7 @@
 .gsc-comment-author {
   padding-top: 1rem;
 }
+
+.gsc-reactions-popover {
+  background-color: #fff;
+}
