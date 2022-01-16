@@ -3,9 +3,15 @@
 }
 
 .rounded,
+.rounded-md,
 .btn,
 .gsc-comment-box-textarea {
   border-radius: 0;
+}
+
+.rounded-b-md {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .rounded-t {
@@ -33,4 +39,8 @@
 
 .btn-primary[disabled]:hover {
   cursor: default;
+}
+
+.gsc-comment-author {
+  padding-top: 1rem;
 }
