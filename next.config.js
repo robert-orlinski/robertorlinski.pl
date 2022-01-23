@@ -1,4 +1,4 @@
-const pageRedirects = [
+const pagesRedirects = [
   {
     source: '/wszystkie-wpisy',
     destination: '/artykuly',
@@ -6,7 +6,23 @@ const pageRedirects = [
   },
 ];
 
-const postRedirects = [
+const topicsRedirects = [
+  {
+    source: '/tematy/filozofia',
+    destination: '/tematy/przemyslenia',
+    permanent: true,
+  },
+];
+
+const goodiesRedirects = [
+  {
+    source: '/7-narzedzi-dla-szybkich-stron',
+    destination: 'https://static.robertorlinski.pl/7-narzedzi-dla-szybkich-stron.pdf',
+    permanent: true,
+  },
+];
+
+const postsRedirects = [
   {
     source: '/witaj-swiecie-programajstrow',
     destination: '/artykuly/witaj-swiecie-programajstrow',
@@ -48,6 +64,11 @@ const postRedirects = [
     permanent: true,
   },
   {
+    source: '/przyspieszamy-strone-wordpressie-5-sprawdzonych-sposobow',
+    destination: '/artykuly/jak-przyspieszyc-strone-na-wordpressie',
+    permanent: true,
+  },
+  {
     source: '/jak-dodac-certyfikat-ssl',
     destination: '/artykuly/jak-dodac-certyfikat-ssl',
     permanent: true,
@@ -68,7 +89,22 @@ const postRedirects = [
     permanent: true,
   },
   {
+    source: '/wpisy-na-blogu',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-005',
+    permanent: true,
+  },
+  {
     source: '/dobre-praktyki-css',
+    destination: '/artykuly/dobre-praktyki-css',
+    permanent: true,
+  },
+  {
+    source: '/15-dobrych-praktyk-css',
+    destination: '/artykuly/dobre-praktyki-css',
+    permanent: true,
+  },
+  {
+    source: '/css-dobre-praktyki',
     destination: '/artykuly/dobre-praktyki-css',
     permanent: true,
   },
@@ -89,6 +125,11 @@ const postRedirects = [
   },
   {
     source: '/nawigacja-w-motywie-wordpress',
+    destination: '/artykuly/jak-stworzyc-motyw-wordpress-008',
+    permanent: true,
+  },
+  {
+    source: '/nawigacja-aktywacja-i-wyswietlenie',
     destination: '/artykuly/jak-stworzyc-motyw-wordpress-008',
     permanent: true,
   },
@@ -118,7 +159,17 @@ const postRedirects = [
     permanent: true,
   },
   {
+    source: '/swietne-czcionki-importowane-r',
+    destination: '/artykuly/swietne-fonty',
+    permanent: true,
+  },
+  {
     source: '/dodatki-dla-tworcow-stron-internetowych',
+    destination: '/artykuly/dodatki-dla-tworcow-stron-internetowych',
+    permanent: true,
+  },
+  {
+    source: '/dodatki-dla-tworcow-stron',
     destination: '/artykuly/dodatki-dla-tworcow-stron-internetowych',
     permanent: true,
   },
@@ -130,6 +181,11 @@ const postRedirects = [
   {
     source: '/10-darmowych-szablonow-psd',
     destination: '/artykuly/10-darmowych-szablonow-psd',
+    permanent: true,
+  },
+  {
+    source: '/animacja-elementu-przewijania',
+    destination: '/artykuly/efekt-pojawiania-sie-elementow',
     permanent: true,
   },
   {
@@ -198,6 +254,11 @@ const postRedirects = [
     permanent: true,
   },
   {
+    source: '/nawigacja-ktora-chowa-sie-podczas-przewijania-w-dol-i-ukazuje-gdy-scrollujemy-w-gore',
+    destination: '/artykuly/nawigacja-chowajaca-sie-podczas-przewijania-w-dol',
+    permanent: true,
+  },
+  {
     source: '/nawigacja-podczas-przewijania',
     destination: '/artykuly/nawigacja-chowajaca-sie-podczas-przewijania-w-dol',
     permanent: true,
@@ -208,12 +269,22 @@ const postRedirects = [
     permanent: true,
   },
   {
+    source: '/10-wtyczek-do-visual-studio-code',
+    destination: '/artykuly/wtyczki-do-visual-studio-code',
+    permanent: true,
+  },
+  {
     source: '/wtyczki-do-visual-studio-code',
     destination: '/artykuly/wtyczki-do-visual-studio-code',
     permanent: true,
   },
   {
     source: '/7-mixin-scss',
+    destination: '/artykuly/7-mixin-scss',
+    permanent: true,
+  },
+  {
+    source: '/7-mixin-sass',
     destination: '/artykuly/7-mixin-scss',
     permanent: true,
   },
@@ -229,6 +300,12 @@ const postRedirects = [
   },
   {
     source: '/tworzenie-stron-do-edycji-bez-kodu',
+    destination: '/artykuly/tworzenie-edytowalnych-stron-w-wordpress',
+    permanent: true,
+  },
+  {
+    source:
+      '/3-niezawodne-sposoby-na-tworzenie-stron-opartych-o-wordpress-i-mozliwych-do-prostej-edycji-bez-zagladania-w-kod',
     destination: '/artykuly/tworzenie-edytowalnych-stron-w-wordpress',
     permanent: true,
   },
@@ -363,6 +440,11 @@ const postRedirects = [
     permanent: true,
   },
   {
+    source: '/trudno-o-cenniejszego-wolontariusza-niz-programista/',
+    destination: '/artykuly/programista-wolontariusz',
+    permanent: true,
+  },
+  {
     source: '/gutenberg-ukochane-dziecko-wordpressa',
     destination: '/artykuly/gutenberg-ukochane-dziecko-wordpressa',
     permanent: true,
@@ -379,6 +461,11 @@ const postRedirects = [
   },
   {
     source: '/materialy-do-nauki-jezyka-angielskiego',
+    destination: '/artykuly/materialy-do-nauki-jezyka-angielskiego',
+    permanent: true,
+  },
+  {
+    source: '/mater-do-nauki-jezyka-angielskiego',
     destination: '/artykuly/materialy-do-nauki-jezyka-angielskiego',
     permanent: true,
   },
@@ -407,7 +494,12 @@ const dynamicPathsRedirects = [
   },
 ];
 
-const redirects = pageRedirects.concat(postRedirects, dynamicPathsRedirects);
+const redirects = pagesRedirects.concat(
+  topicsRedirects,
+  goodiesRedirects,
+  postsRedirects,
+  dynamicPathsRedirects,
+);
 
 module.exports = {
   reactStrictMode: true,
