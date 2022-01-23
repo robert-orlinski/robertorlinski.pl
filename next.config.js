@@ -293,6 +293,16 @@ const postRedirects = [
     permanent: true,
   },
   {
+    source: '/wordpress-gutenberg-009',
+    destination: '/artykuly/wordpress-gutenberg-009',
+    permanent: true,
+  },
+  {
+    source: '/wordpress-gutenberg-010',
+    destination: '/artykuly/wordpress-gutenberg-010',
+    permanent: true,
+  },
+  {
     source: '/plynne-przewijanie-witryny',
     destination: '/artykuly/plynne-przewijanie-witryny',
     permanent: true,
@@ -375,6 +385,11 @@ const postRedirects = [
   {
     source: '/jak-nie-siedziec-ciagle-w-telefonie',
     destination: '/artykuly/jak-nie-siedziec-ciagle-w-telefonie',
+    permanent: true,
+  },
+  {
+    source: '/focus-widoczny-tylko-podczas-nawigowania-klawiatura',
+    destination: '/artykuly/focus-widoczny-tylko-podczas-nawigowania-klawiatura',
     permanent: true,
   },
   {
