@@ -37,7 +37,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType('rob/table-of-contents', {
   title: 'Spis treści',
-  description: 'Sekcja z nagłówiem oraz spisem treści, konkretnego artykułu',
+  description: 'Sekcja z nagłówkiem oraz spisem treści, konkretnego artykułu',
   icon: 'editor-table',
   keywords: ['zawartość', 'lista', 'table of contents'],
   category: 'layout',
@@ -52,7 +52,7 @@ registerBlockType('rob/table-of-contents', {
 
 **Przejdźmy przez niego linia po linii.**
 
-W pierwszej kolejności, importujemy funkcję `registerBlockType` i od razu używamy, podając nazwę bloku, razem ze zdefiniowaną przez nas przestrzenią nazw, w ramach pierwszego argumentu oraz wszystkimi właściwościami, jak i metodami, definiującymi dany blok, w ramach argumentu drugiego.
+W pierwszej kolejności, importujemy funkcję `registerBlockType()` i od razu używamy, podając nazwę bloku, razem ze zdefiniowaną przez nas przestrzenią nazw, w ramach pierwszego argumentu oraz wszystkimi właściwościami, jak i metodami, definiującymi dany blok, w ramach argumentu drugiego.
 
 > W tym przypadku jest to namespace `rob`, ale oczywiście Ty w to miejsce, możesz wrzucić ciąg tekstowy, który będzie zupełnie inny.
 
@@ -60,7 +60,7 @@ W pierwszej kolejności, importujemy funkcję `registerBlockType` i od razu uży
 
 ```jsx
 title: 'Spis treści',
-description: 'Sekcja z nagłówiem oraz spisem treści, konkretnego artykułu',
+description: 'Sekcja z nagłówkiem oraz spisem treści, konkretnego artykułu',
 icon: 'editor-table',
 keywords: [ 'zawartość', 'lista', 'table of contents' ],
 category: 'layout',
@@ -107,7 +107,7 @@ function custom_blocks_block_categories( $categories ) {
         array(
             array(
                 'slug' 	=> 'content',
-                'title' => __( 'Zawartść', 'table-of-contents' )
+                'title' => __( 'Zawartość', 'table-of-contents' )
             ),
         )
     );
@@ -117,7 +117,7 @@ add_filter( 'block_categories', 'custom_blocks_block_categories', 10, 2 );
 
 **Co się tu dzieje?**
 
-Filtrujemy funkcję wbudowaną `block_categories`, dodając do $categories, nowy element - tablicę, definiującą konkretną kategorię bloków.
+Filtrujemy funkcję wbudowaną `block_categories()`, dodając do `$categories`, nowy element - tablicę, definiującą konkretną kategorię bloków.
 
 Tablica ta, zawiera w sobie slug nowo-utworzonej kategorii oraz nazwę, pokazującą się w liście wszystkich bloków.
 
@@ -127,11 +127,9 @@ W ten oto sposób, przypisując nasz spis treści, do nowo utworzonej kategorii:
 category: 'content',
 ```
 
-...w liście wszystkich bloków, zastaniemy taki oto obraz:
+## A teraz, zajmijmy się stylami CSS
 
-![Nowa](https://nowywordpress.pl/wp-content/uploads/2020/10/nowa-kategoria-blokow-e1604170341921.png)## A teraz, zajmijmy się stylami CSS
-
-A dokładnie plikami SCSS. Bo dzięki temu, że w [poprzedniej części serii](https://robertorlinski.pl/2020/11/16/wordpress-gutenberg-001/), zainstalowaliśmy paczkę `@wordpress/scripts`, teraz bardzo łatwo możemy automatycznie kompilować pliki SCSS, do CSS, podobnie jak robimy to z plikami JavaScriptu, zapisanymi w składni JSXa.
+A dokładnie plikami SCSS. Bo dzięki temu, że w [poprzedniej części serii](/wordpress-gutenberg-001), zainstalowaliśmy paczkę `@wordpress/scripts`, teraz bardzo łatwo możemy automatycznie kompilować pliki SCSS, do CSS, podobnie jak robimy to z plikami JavaScriptu, zapisanymi w składni JSXa.
 
 A dokładnie, wystarczy, że utworzymy konkretny plik, o rozszerzeniu `.scss` w folderze `/src` i **zaimportujemy go do pliku index.js, który utworzyliśmy wcześniej!**
 
@@ -151,7 +149,7 @@ import { registerBlockType } from '@wordpress/blocks';
 
 registerBlockType('rob/table-of-contents', {
   title: 'Spis treści',
-  description: 'Sekcja z nagłówiem oraz spisem treści, konkretnego artykułu',
+  description: 'Sekcja z nagłówkiem oraz spisem treści, konkretnego artykułu',
   icon: 'editor-table',
   keywords: ['zawartość', 'lista', 'table of contents'],
   category: 'content',
@@ -166,11 +164,11 @@ registerBlockType('rob/table-of-contents', {
 
 ## A z kolei plik index.css, możemy podpiąć pod nasz blok!
 
-Nie bez powodu, tutaj oraz w tytule całego artykułu, na siłę wspominam o arkuszach, a nie stylach samych w sobie. Robię tak dlatego, że jedną z właściwości bloków WordPressa, są tzw. `styles`, o których powiem wkrótce, a które to (tylko krótko napominając), pozwalają nam definiować kilka wizualnych wariantów danego bloku, za pomocą właściwości `styles`, funkcji `registerBlockType`.
+Nie bez powodu, tutaj oraz w tytule całego artykułu, na siłę wspominam o arkuszach, a nie stylach samych w sobie. Robię tak dlatego, że jedną z właściwości bloków WordPressa, są tzw. `styles`, o których powiem wkrótce, a które to (tylko krótko napominając), pozwalają nam definiować kilka wizualnych wariantów danego bloku, za pomocą właściwości `styles`, funkcji `registerBlockType()`.
 
 A tutaj z kolei, mówimy tylko o podpinaniu arkuszy CSS, spełniających swoją standardową rolę - określających, jak będzie wyglądać dany blok.
 
-Całość zrealizujemy w wspomnianej w pierwszej części serii, funkcji `register_block_type`, zapisanej w PHPie. Tam w pierwszej części serii, zapisaliśmy taki oto skrawek kodu:
+Całość zrealizujemy w wspomnianej w pierwszej części serii, funkcji `register_block_type()`, zapisanej w PHPie. Tam w pierwszej części serii, zapisaliśmy taki oto skrawek kodu:
 
 ```php
 register_block_type( 'rob/table-of-contents', array(
@@ -226,7 +224,7 @@ Oczywiście plik, który podpięliśmy, to wygenerowany wcześniej w folderze `/
 
 Tym razem będzie bardzo szybko 🌿
 
-Sprawdź, co się stanie (w kodzie HTML edytora), gdy w obrębie funkcji `add_gutenberg_assets` utworzysz nowy, testowy blok WordPressa i podepniesz pod niego dokładnie te same style, które zostały już użyte dla bloku ze spisem treści.
+Sprawdź, co się stanie (w kodzie HTML edytora), gdy w obrębie funkcji `add_gutenberg_assets()` utworzysz nowy, testowy blok WordPressa i podepniesz pod niego dokładnie te same style, które zostały już użyte dla bloku ze spisem treści.
 
 > Sam kod HTML, możesz oczywiście podejrzeć, sprawdzając źródło strony, po kliknięciu prawym przyciskiem myszy, na Twój edytor Gutenberga.
 

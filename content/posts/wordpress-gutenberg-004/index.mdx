@@ -34,7 +34,7 @@ W pierwszej kolejności, musimy go zaimportować, do naszego głównego pliku Ja
 import { RichText } from '@wordpress/block-editor';
 ```
 
-Jednocześnie pamiętając o dodaniu zależności `wp-editor`, do pliku PHP, w którym pobieramy wszystkie assety, związane z tworzonym przez nas blokiem (które udało nam się zdefiniować już w [pierwszej części serii o Gutenbergu](https://robertorlinski.pl/2020/11/16/wordpress-gutenberg-001/)):
+Jednocześnie pamiętając o dodaniu zależności `wp-editor`, do pliku PHP, w którym pobieramy wszystkie assety, związane z tworzonym przez nas blokiem (które udało nam się zdefiniować już w [pierwszej części serii o Gutenbergu](/wordpress-gutenberg-001)):
 
 ```php
 wp_register_script(
@@ -95,7 +95,7 @@ import { RichText } from '@wordpress/block-editor';
 
 registerBlockType('rob/table-of-contents', {
   title: 'Spis treści',
-  description: 'Sekcja z nagłówiem oraz spisem treści, konkretnego artykułu',
+  description: 'Sekcja z nagłówkiem oraz spisem treści, konkretnego artykułu',
   icon: 'editor-table',
   keywords: ['zawartość', 'lista', 'table of contents'],
   category: 'content',
