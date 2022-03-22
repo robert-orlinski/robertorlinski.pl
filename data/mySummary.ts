@@ -28,7 +28,7 @@ const mySummary: Text[] = [
   },
   {
     type: 'link',
-    text: 'Piszę artykuły',
+    text: 'Piszę artykuły',
     href: '/artykuly',
   },
   {

@@ -43,9 +43,9 @@ const Home: FC<PostsContainer> = ({ posts }) => {
       <Wrapper as="main">
         <TextBlock>
           <P>
-            Działałem jako freelancer, później pomagałem rozwijać agencję kreatywną, a niedawno
-            zacząłem pracę jako front-end developer, aby współtworzyć naprawdę duże projekty, a
-            przez to zbierać jeszcze więcej doświadczeń!
+            Działałem jako freelancer, później pomagałem rozwijać agencję kreatywną skupiającą się
+            na WordPressie, a jakiś czas temu zacząłem pracę jako front-end developer, aby
+            współtworzyć większe aplikacje, a przez to zbierać jeszcze więcej doświadczeń!
           </P>
           <TextWithLinks text={mySummary} />
           <CenteredText as="footer">
