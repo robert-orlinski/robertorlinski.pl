@@ -1,3 +1,5 @@
+import { TopicName } from './data';
+
 export type Resource = {
   slug: string;
   title: string;
@@ -14,7 +16,7 @@ export type ResourceWithContent<T> = {
 
 export type Post = {
   readingTime: string;
-  topics: string[];
+  topics: TopicName[];
   isPopular: boolean;
 } & Resource;
 

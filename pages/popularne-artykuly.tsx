@@ -14,29 +14,26 @@ import { PostsContainer } from 'Types/content';
 
 import bannerImage from 'Images/banners/best.jpg';
 
-const PopularPosts: FC<PostsContainer> = ({ posts }) => {
-  const meta = {
-    title: `Popularne artykuły ${addressSeparator} ${siteName}`,
-    description:
-      'A tu z kolei, znajdziesz artykuły najpopularniejsze! Wszystko, co do tej pory najczęściej pomagało czytelnikom, znajduje się w tym miejscu.',
-  };
-
-  return (
-    <>
-      <Head {...meta} />
-      <MainBanner
-        title="Popularne artykuły"
-        image={{
-          src: bannerImage,
-          alt: '',
-        }}
-      />
-      <Wrapper as="main" withSpaceBelow>
-        <PostsList {...{ posts }} />
-      </Wrapper>
-    </>
-  );
-};
+const PopularPosts: FC<PostsContainer> = ({ posts }) => (
+  <>
+    <Head
+      title={`Popularne artykuły ${addressSeparator} ${siteName}`}
+      description="A tu z kolei, znajdziesz artykuły najpopularniejsze! Wszystko, co do tej pory najczęściej pomagało czytelnikom, znajduje się w tym miejscu."
+      featuredImage={bannerImage.src}
+      contentType="website"
+    />
+    <MainBanner
+      title="Popularne artykuły"
+      image={{
+        src: bannerImage,
+        alt: '',
+      }}
+    />
+    <Wrapper as="main" withSpaceBelow>
+      <PostsList {...{ posts }} />
+    </Wrapper>
+  </>
+);
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getPopularPosts();

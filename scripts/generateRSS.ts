@@ -7,9 +7,11 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 import { getPosts } from 'Helpers/content/posts';
 
-import siteTitle from 'SiteTitle';
 import siteUrl from 'SiteUrl';
 import blogAuthor from 'BlogAuthor';
+import siteName from 'SiteName';
+import addressSeparator from 'AddressSeparator';
+import slogan from 'Slogan';
 
 dayjs.extend(customParseFormat);
 
@@ -19,7 +21,7 @@ const generateRSS = async (): Promise<void> => {
   const posts = await getPosts();
 
   const feed = new RSS({
-    title: siteTitle,
+    title: `${siteName} ${addressSeparator} ${slogan}`,
     site_url: siteUrl,
     feed_url: `${siteUrl}/rss.xml`,
     language: 'pl',

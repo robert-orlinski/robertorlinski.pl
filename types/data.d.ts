@@ -6,6 +6,8 @@ export type Text = {
   href: LinkHref;
 };
 
+export type TopicName = string;
+
 export type Topic = {
   name: string;
   slug: string;

@@ -9,19 +9,15 @@ import P from 'Components/P';
 import siteName from 'SiteName';
 import addressSeparator from 'AddressSeparator';
 
-import bannerImage from 'Images/banners/me-broken.jpg';
 import SectionTitle from 'Components/SectionTitle';
+import Newsletter from 'Components/Newsletter';
 import PostsList from 'Components/PostsList';
 
 import { getRandomPosts } from 'Helpers/content/posts';
 
-import { Post } from 'Types/content';
-import Newsletter from 'Components/Newsletter';
+import bannerImage from 'Images/banners/me-broken.jpg';
 
-const meta = {
-  title: `Toż to strona 404! ${addressSeparator} ${siteName}`,
-  description: 'Klasyczna strona 404, która mówi nam, że danej ścieżki nie ma w ramach serwisu 🦔',
-};
+import { Post } from 'Types/content';
 
 type Props = {
   randomPosts: Post[];
@@ -29,7 +25,12 @@ type Props = {
 
 const Page404: FC<Props> = ({ randomPosts }) => (
   <>
-    <Head {...meta} />
+    <Head
+      title={`Toż to strona 404! ${addressSeparator} ${siteName}`}
+      description="Klasyczna strona 404, która mówi nam, że danej ścieżki nie ma w ramach serwisu 🦔"
+      featuredImage={bannerImage.src}
+      contentType="website"
+    />
     <MainBanner
       title="Toż to strona 404!"
       image={{

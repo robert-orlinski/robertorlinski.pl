@@ -10,14 +10,14 @@ import addressSeparator from 'AddressSeparator';
 
 import bannerImage from 'Images/banners/me-in-austria.jpg';
 
-const meta = {
-  title: `Mamy to! ${addressSeparator} ${siteName}`,
-  description: 'Teraz już oficjalnie - mamy kontakt na mailu!',
-};
-
 const NewsletterSuccess = () => (
   <>
-    <Head {...meta} />
+    <Head
+      title={`Mamy to! ${addressSeparator} ${siteName}`}
+      description="'Teraz już oficjalnie - mamy kontakt na mailu!"
+      featuredImage={bannerImage.src}
+      contentType="website"
+    />
     <MainBanner
       title="Mamy to!"
       image={{

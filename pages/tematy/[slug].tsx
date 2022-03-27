@@ -21,14 +21,14 @@ type Props = {
 const Topic: FC<Props> = ({ currentTopic, postsInTopic }) => {
   const { name, featuredImage } = currentTopic;
 
-  const meta = {
-    title: `${name} | ${siteName}`,
-    description: `Wszystkie artykuły, które do tej pory pojawiły się w ramach tematu "${name}".`,
-  };
-
   return (
     <>
-      <Head {...meta} />
+      <Head
+        title={`${name} | ${siteName}`}
+        description={`Wszystkie artykuły, które do tej pory pojawiły się w ramach tematu "${name}".`}
+        featuredImage={featuredImage}
+        contentType="website"
+      />
       <MainBanner
         title={name}
         image={{

@@ -13,18 +13,19 @@ import P from 'Components/P';
 
 import siteName from 'SiteName';
 import addressSeparator from 'AddressSeparator';
+
 import { to } from 'Devices';
 
 import bannerImage from 'Images/banners/river.jpg';
 
-const meta = {
-  title: `Newsletter ${addressSeparator} ${siteName}`,
-  description: 'Dodatkowe, front-endowe treści, prosto na Twoją skrzynkę odbiorczą!',
-};
-
 const Newsletter = () => (
   <>
-    <Head {...meta} />
+    <Head
+      title={`Newsletter ${addressSeparator} ${siteName}`}
+      description="Dodatkowe, front-endowe treści, prosto na Twoją skrzynkę odbiorczą!"
+      featuredImage={bannerImage.src}
+      contentType="website"
+    />
     <MainBanner
       title="Co powiesz na dodatkowe treści?"
       image={{

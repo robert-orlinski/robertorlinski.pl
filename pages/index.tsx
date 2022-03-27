@@ -22,42 +22,39 @@ import { PostsContainer } from 'Types/content';
 
 import bannerImage from 'Images/banners/me.jpg';
 
-const Home: FC<PostsContainer> = ({ posts }) => {
-  const meta = {
-    title: `${siteName} ${addressSeparator} ${slogan}`,
-    description:
-      'W WordPressie widziałem już dużo, więc teraz skupiam się na front-endzie. Programuję dla siebie oraz klientów, piszę na blogu i nagrywam filmy na YouTubie. Po godzinach działam jako aktywista ✨',
-  };
-
-  return (
-    <>
-      <Head {...meta} />
-      <MainBanner
-        title="Cześć, jestem Robert!"
-        image={{
-          src: bannerImage,
-          alt: 'Robert zamierzający uderzyć ogromny, pluszowy przycisk "enter", który jednocześnie można podłączyć na USB i tym samym zatwierdzać rzeczy z potężnym impetem.',
-        }}
-        isImageFluid
-      />
-      <Wrapper as="main">
-        <TextBlock>
-          <P>
-            Działałem jako freelancer, później pomagałem rozwijać agencję kreatywną skupiającą się
-            na WordPressie, a jakiś czas temu zacząłem pracę jako front-end developer, aby
-            współtworzyć większe aplikacje, a przez to zbierać jeszcze więcej doświadczeń!
-          </P>
-          <TextWithLinks text={mySummary} />
-          <CenteredText as="footer">
-            <Button href="/popularne-artykuly">Sprawdź najchętniej czytane artykuły!</Button>
-          </CenteredText>
-        </TextBlock>
-        <NewArticles {...{ posts }} />
-        <Newsletter />
-      </Wrapper>
-    </>
-  );
-};
+const Home: FC<PostsContainer> = ({ posts }) => (
+  <>
+    <Head
+      title={`${siteName} ${addressSeparator} ${slogan}`}
+      description="W WordPressie widziałem już dużo, więc teraz skupiam się na front-endzie. Programuję dla siebie oraz klientów, piszę na blogu i nagrywam filmy na YouTubie. Po godzinach działam jako aktywista ✨"
+      featuredImage={bannerImage.src}
+      contentType="website"
+    />
+    <MainBanner
+      title="Cześć, jestem Robert!"
+      image={{
+        src: bannerImage,
+        alt: 'Robert zamierzający uderzyć ogromny, pluszowy przycisk "enter", który jednocześnie można podłączyć na USB i tym samym zatwierdzać rzeczy z potężnym impetem.',
+      }}
+      isImageFluid
+    />
+    <Wrapper as="main">
+      <TextBlock>
+        <P>
+          Działałem jako freelancer, później pomagałem rozwijać agencję kreatywną, a jakiś czas temu
+          zacząłem pracę jako front-end developer, aby współtworzyć większe aplikacje i platformy, a
+          przez to zbierać jeszcze więcej doświadczeń!
+        </P>
+        <TextWithLinks text={mySummary} />
+        <CenteredText as="footer">
+          <Button href="/popularne-artykuly">Sprawdź najchętniej czytane artykuły</Button>
+        </CenteredText>
+      </TextBlock>
+      <NewArticles {...{ posts }} />
+      <Newsletter />
+    </Wrapper>
+  </>
+);
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getNewestPosts();

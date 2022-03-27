@@ -13,31 +13,36 @@ import RelatedPosts from 'Components/RelatedPosts';
 import CommentsInvite from 'Components/CommentsInvite';
 
 import { getPostBySlug, getPostsPaths, getRelatedPosts } from 'Helpers/content/posts';
+import { getPostFeaturedImage } from 'Helpers/components/posts';
 import { from } from 'Devices';
 import siteName from 'SiteName';
 
 import { PostWithContentAndRelatedPosts } from 'Types/content';
 
 const Post: FC<PostWithContentAndRelatedPosts> = ({ metaData, content, relatedPosts }) => {
-  const seoTitle = metaData.seoTitle || metaData.title;
+  const { seoTitle, title, topics, date, slug, abstract } = metaData;
+  const metaTitle = seoTitle || title;
 
-  const meta = {
-    title: `${seoTitle} | ${siteName}`,
-    description: metaData.abstract,
-  };
+  const featuredImage = getPostFeaturedImage(slug);
 
   return (
     <>
-      <Head {...meta} />
+      <Head
+        title={`${metaTitle} | ${siteName}`}
+        description={abstract}
+        featuredImage={featuredImage}
+        contentType="article"
+        publicationDate={date}
+      />
       <RawHeader />
       <Wrapper as="main" size="medium" withSpaceBelow>
-        <PostHeader {...metaData} />
+        <PostHeader {...{ title, topics, date, featuredImage }} />
         <Article source={content} />
         <CommentsInvite />
       </Wrapper>
       <RelatedPosts posts={relatedPosts} />
       <Newsletter />
-      <Comments title={seoTitle} />
+      <Comments title={metaTitle} />
     </>
   );
 };

@@ -9,15 +9,14 @@ import addressSeparator from 'AddressSeparator';
 
 import bannerImage from 'Images/banners/me-at-louvre.jpg';
 
-const meta = {
-  title: `Kontakt ${addressSeparator} ${siteName}`,
-  description:
-    'Jeśli interesuje Cię współpraca lub po prostu chcesz pogadać, to tutaj znajdziesz kontakt do mnie!',
-};
-
 const Contact = () => (
   <>
-    <Head {...meta} />
+    <Head
+      title={`Kontakt ${addressSeparator} ${siteName}`}
+      description="Jeśli interesuje Cię współpraca lub po prostu chcesz pogadać, to tutaj znajdziesz kontakt do mnie!"
+      featuredImage={bannerImage.src}
+      contentType="website"
+    />
     <MainBanner
       title="Kontakt"
       image={{

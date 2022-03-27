@@ -4,22 +4,23 @@ import Image from 'next/image';
 
 import PostMeta from 'Components/PostMeta';
 
-import { getPostFeaturedImage } from 'Helpers/components/posts';
-
-import { Post } from 'Types/content';
 import { to } from 'Devices';
+import { TopicName } from 'Types/data';
 
-const PostHeader: FC<Post> = ({ title, topics, date, slug }) => {
-  const featuredImage = getPostFeaturedImage(slug);
-
-  return (
-    <Container>
-      <PostMeta {...{ topics, date }} />
-      <Title>{title}</Title>
-      <Image src={featuredImage} alt="" width="850" height="500" />
-    </Container>
-  );
+type Props = {
+  title: string;
+  topics: TopicName[];
+  date: string;
+  featuredImage: string;
 };
+
+const PostHeader: FC<Props> = ({ title, topics, date, featuredImage }) => (
+  <Container>
+    <PostMeta {...{ topics, date }} />
+    <Title>{title}</Title>
+    <Image src={featuredImage} alt="" width="850" height="500" />
+  </Container>
+);
 
 const Container = styled.header`
   padding: 6.2rem 0 3rem;

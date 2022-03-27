@@ -6,8 +6,10 @@ import Separator from 'Components/Separator';
 
 import { getPrimaryTopic, getTopicLink } from 'Helpers/data/topics';
 
+import { TopicName } from 'Types/data';
+
 type Props = {
-  topics: string[];
+  topics: TopicName[];
   readingTime?: string;
   date?: string;
 };

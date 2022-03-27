@@ -52,6 +52,7 @@ const GlobalStyle = createGlobalStyle`
   input {
     font-family: var(--sans-serif);
     font-size: 1rem;
+    font-weight: 500;
   }
 
   section,
@@ -91,7 +92,6 @@ const GlobalStyle = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
-
   
   h1,
   h2,
@@ -152,7 +152,7 @@ const GlobalStyle = createGlobalStyle`
 
   b,
   strong {
-    font-weight: 500;
+    font-weight: 600;
   }
 
   [id] {

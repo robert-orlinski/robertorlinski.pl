@@ -14,29 +14,26 @@ import { PostsContainer } from 'Types/content';
 
 import bannerImage from 'Images/banners/forest.jpg';
 
-const Blog: FC<PostsContainer> = ({ posts }) => {
-  const meta = {
-    title: `Artykuły ${addressSeparator} ${siteName}`,
-    description:
-      'Wszystkie artykuły, które do tej pory pojawiły się na blogu. Przeczytasz o front-endzie, WordPressie, trochę przemyśleń i trochę rzeczy związanych z designem oraz pracą jako programista',
-  };
-
-  return (
-    <>
-      <Head {...meta} />
-      <MainBanner
-        title="Wszystkie artykuły"
-        image={{
-          src: bannerImage,
-          alt: '',
-        }}
-      />
-      <Wrapper as="main" withSpaceBelow>
-        <PostsList {...{ posts }} />
-      </Wrapper>
-    </>
-  );
-};
+const Blog: FC<PostsContainer> = ({ posts }) => (
+  <>
+    <Head
+      title={`Artykuły ${addressSeparator} ${siteName}`}
+      description="Wszystkie artykuły, które do tej pory pojawiły się na blogu. Przeczytasz o front-endzie, WordPressie, trochę przemyśleń i trochę rzeczy związanych z designem oraz pracą jako programista."
+      featuredImage={bannerImage.src}
+      contentType="website"
+    />
+    <MainBanner
+      title="Wszystkie artykuły"
+      image={{
+        src: bannerImage,
+        alt: '',
+      }}
+    />
+    <Wrapper as="main" withSpaceBelow>
+      <PostsList {...{ posts }} />
+    </Wrapper>
+  </>
+);
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getPosts();

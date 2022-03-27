@@ -10,37 +10,34 @@ import addressSeparator from 'AddressSeparator';
 
 import bannerImage from 'Images/banners/frisbee.jpg';
 
-const NewsletterConfirmation = () => {
-  const meta = {
-    title: `Praktycznie to mamy! ${addressSeparator} ${siteName}`,
-    description:
-      'Potwierdź swój adres. Po wejściu w link, który powinien być już na Twojej skrzynce odbiorczej, będę w stanie podrzucać Ci dobre rzeczy związane z tematami, które poruszam na blogu.',
-  };
-
-  return (
-    <>
-      <Head {...meta} />
-      <MainBanner
-        title="Praktycznie to mamy!"
-        image={{
-          src: bannerImage,
-          alt: 'Robert robiący rzeczy na kompiku przed piramidą w Luwrze.',
-        }}
-      />
-      <Wrapper as="main">
-        <TextBlock>
-          <P>Fajnie, że będziemy mieli tam kontakt!</P>
-          <P>
-            Jedna tylko sprawa - <strong>potwierdź swój adres.</strong> Po wejściu w link, który
-            powinien być już na Twojej skrzynce odbiorczej, będę w stanie przesłać Ci e-book i
-            podrzucać dobre rzeczy związane z tematami, które poruszam na blogu.
-          </P>
-          <P>Do zobaczenia!</P>
-          <Button href="/">Strona główna</Button>
-        </TextBlock>
-      </Wrapper>
-    </>
-  );
-};
+const NewsletterConfirmation = () => (
+  <>
+    <Head
+      title={`Praktycznie to mamy! ${addressSeparator} ${siteName}`}
+      description="Potwierdź swój adres. Po wejściu w link, który powinien być już na Twojej skrzynce odbiorczej, będę w stanie podrzucać Ci dobre rzeczy związane z tematami, które poruszam na blogu."
+      featuredImage={bannerImage.src}
+      contentType="website"
+    />
+    <MainBanner
+      title="Praktycznie to mamy!"
+      image={{
+        src: bannerImage,
+        alt: 'Robert robiący rzeczy na kompiku przed piramidą w Luwrze.',
+      }}
+    />
+    <Wrapper as="main">
+      <TextBlock>
+        <P>Fajnie, że będziemy mieli tam kontakt!</P>
+        <P>
+          Jedna tylko sprawa - <strong>potwierdź swój adres.</strong> Po wejściu w link, który
+          powinien być już na Twojej skrzynce odbiorczej, będę w stanie przesłać Ci e-book i
+          podrzucać dobre rzeczy związane z tematami, które poruszam na blogu.
+        </P>
+        <P>Do zobaczenia!</P>
+        <Button href="/">Strona główna</Button>
+      </TextBlock>
+    </Wrapper>
+  </>
+);
 
 export default NewsletterConfirmation;
