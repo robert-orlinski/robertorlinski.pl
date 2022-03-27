@@ -4,12 +4,22 @@
         <description><![CDATA[Robert Orliński | Programuję i dzielę się wiedzą o programowaniu 🚀]]></description>
         <link>http://localhost:3000</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 27 Mar 2022 19:28:07 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 27 Mar 2022 19:36:01 GMT</lastBuildDate>
         <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
         <copyright><![CDATA[2022 Robert Orliński]]></copyright>
         <language><![CDATA[pl]]></language>
         <managingEditor><![CDATA[Robert Orliński]]></managingEditor>
         <webMaster><![CDATA[Robert Orliński]]></webMaster>
+        <item>
+            <title><![CDATA[Własne bloki w WordPress Gutenberg #010 - co dalej?]]></title>
+            <description><![CDATA[Ostatnia część serii o tworzeniu własnych bloków Gutenberga - pokazuję w niej, co możesz przyswoić w dalszej kolejności, aby się rozwijać!]]></description>
+            <link>http://localhost:3000/wordpress-gutenberg-010</link>
+            <guid isPermaLink="false">wordpress-gutenberg-010</guid>
+            <category><![CDATA[WordPress]]></category>
+            <category><![CDATA[Własne bloki w WordPress Gutenberg]]></category>
+            <dc:creator><![CDATA[Robert Orliński]]></dc:creator>
+            <pubDate>Sun, 23 Jan 2022 23:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Własne bloki w WordPress Gutenberg #009 - edytujemy nasz panel boczny! Wybór kolorów i pole zakresu]]></title>
             <description><![CDATA[W tej części serii o tworzeniu własnych bloków w WordPress Gutenberg, zedytujemy panel boczny dodając do niego 2 przydatne komponenty!]]></description>
