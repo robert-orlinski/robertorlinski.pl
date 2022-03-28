@@ -4,7 +4,7 @@
         <description><![CDATA[Robert Orliński | Programuję i dzielę się wiedzą o programowaniu 🚀]]></description>
         <link>http://localhost:3000</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 27 Mar 2022 19:36:01 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 28 Mar 2022 07:02:58 GMT</lastBuildDate>
         <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
         <copyright><![CDATA[2022 Robert Orliński]]></copyright>
         <language><![CDATA[pl]]></language>
@@ -151,15 +151,6 @@
             <category><![CDATA[Własne bloki w WordPress Gutenberg]]></category>
             <dc:creator><![CDATA[Robert Orliński]]></dc:creator>
             <pubDate>Sun, 17 Jan 2021 23:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Czy warto uczyć się WordPressa, w 2021 roku?]]></title>
-            <description><![CDATA[Czy warto poznawać WordPressa w 2021 roku? Czy istnieje praca dla WordPress Developerów? Na te i inne pytania odpowiadam w artykule ✨]]></description>
-            <link>http://localhost:3000/nauka-wordpressa-w-2021-roku</link>
-            <guid isPermaLink="false">nauka-wordpressa-w-2021-roku</guid>
-            <category><![CDATA[WordPress]]></category>
-            <dc:creator><![CDATA[Robert Orliński]]></dc:creator>
-            <pubDate>Sun, 10 Jan 2021 23:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Parcel Bundler, czyli Webpack bez konfiguracji?]]></title>

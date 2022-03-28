@@ -36,7 +36,7 @@ const Popup: FC<Props> = ({ isVisible, togglePopupVisibility }) => (
       <Content>
         <Text>
           <P>
-            Podsyłam tam
+            Podsyłam tam{' '}
             <strong>
               wartościowe materiały ze świata front-endu, produktywności, programowania ogólnie,
               oraz tego bloga.
