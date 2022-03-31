@@ -1,28 +1,32 @@
 import { FC } from 'react';
 import { GetStaticProps } from 'next';
 
-import CenteredText from 'Components/CenteredText';
 import TextWithLinks from 'Components/TextWithLinks';
-import NewArticles from 'Components/NewArticles';
+import CenteredText from 'Components/CenteredText';
+import PostsExcerpt from 'Components/PostsExcerpt';
 import MainBanner from 'Components/MainBanner';
 import Newsletter from 'Components/Newsletter';
 import TextBlock from 'Components/TextBlock';
-import Wrapper from 'Components/Wrapper';
 import Button from 'Components/Button';
 import Head from 'Components/Head';
 import P from 'Components/P';
 
-import { getNewestPosts } from 'Helpers/content/posts';
+import { getPopularPosts, getPosts } from 'Helpers/content/posts';
 import addressSeparator from 'AddressSeparator';
 import mySummary from 'Data/mySummary';
 import siteName from 'SiteName';
 import slogan from 'Slogan';
 
-import { PostsContainer } from 'Types/content';
+import { Post } from 'Types/content';
 
 import bannerImage from 'Images/banners/me.jpg';
 
-const Home: FC<PostsContainer> = ({ posts }) => (
+type Props = {
+  newestPosts: Post[];
+  popularPosts: Post[];
+};
+
+const Home: FC<Props> = ({ newestPosts, popularPosts }) => (
   <>
     <Head
       title={`${siteName} ${addressSeparator} ${slogan}`}
@@ -38,29 +42,51 @@ const Home: FC<PostsContainer> = ({ posts }) => (
       }}
       isImageFluid
     />
-    <Wrapper as="main">
+    <main>
       <TextBlock>
         <P>
-          Działałem jako freelancer, później pomagałem rozwijać agencję kreatywną, a jakiś czas temu
-          zacząłem pracę jako front-end developer, aby współtworzyć większe aplikacje i platformy, a
-          przez to zbierać jeszcze więcej doświadczeń!
+          Działałem jako freelancer, później pomagałem rozwijać się agencji kreatywnej, a od pewnego
+          czasu, współtworzę większe aplikacje i platformy - jako front-end developer.
         </P>
         <TextWithLinks text={mySummary} />
         <CenteredText as="footer">
-          <Button href="/popularne-artykuly">Sprawdź najchętniej czytane artykuły</Button>
+          <Button href="/tematy">Jakie tematy tu poruszam?</Button>
         </CenteredText>
       </TextBlock>
-      <NewArticles {...{ posts }} />
+      <PostsExcerpt
+        title="Popularne artykuły"
+        posts={popularPosts}
+        button={{
+          href: '/popularne-artykuly',
+          title: 'Wszystkie popularne artykuły',
+        }}
+      />
+      <PostsExcerpt
+        title="Najnowsze artykuły"
+        posts={newestPosts}
+        button={{
+          href: '/artykuly',
+          title: 'Wszystkie artykuły',
+        }}
+        withSpaceAbove
+      />
       <Newsletter />
-    </Wrapper>
+    </main>
   </>
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getNewestPosts();
+  const posts = await getPosts();
+  const lastSixPosts = posts.slice(0, 6);
+
+  const popularPosts = await getPopularPosts();
+  const popularThreePosts = popularPosts.slice(0, 3);
 
   return {
-    props: { posts },
+    props: {
+      newestPosts: lastSixPosts,
+      popularPosts: popularThreePosts,
+    },
   };
 };
 

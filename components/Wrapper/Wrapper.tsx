@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { to } from 'Devices';
 
-type Props = {
+export type Props = {
   size?: 'tiny' | 'small' | 'medium' | 'big' | 'default';
   withSpaceAbove?: boolean;
   withSpaceBelow?: boolean;

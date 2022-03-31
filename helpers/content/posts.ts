@@ -34,13 +34,6 @@ export const getRandomPosts = async (numberOfPostsToReturn: number): Promise<Pos
   return shuffle(posts).slice(0, numberOfPostsToReturn);
 };
 
-export const getNewestPosts = async (): Promise<Post[]> => {
-  const posts = await getPosts();
-  const lastSixPosts = posts.slice(0, 6);
-
-  return lastSixPosts;
-};
-
 export const getRelatedPosts = async (
   currentPostSlug: string,
   givenTopicName: string,

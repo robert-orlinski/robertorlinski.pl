@@ -9,15 +9,14 @@ import P from 'Components/P';
 import siteName from 'SiteName';
 import addressSeparator from 'AddressSeparator';
 
-import SectionTitle from 'Components/SectionTitle';
 import Newsletter from 'Components/Newsletter';
-import PostsList from 'Components/PostsList';
 
 import { getRandomPosts } from 'Helpers/content/posts';
 
 import bannerImage from 'Images/banners/me-broken.jpg';
 
 import { Post } from 'Types/content';
+import PostsExcerpt from 'Components/PostsExcerpt';
 
 type Props = {
   randomPosts: Post[];
@@ -47,10 +46,7 @@ const Page404: FC<Props> = ({ randomPosts }) => (
         </P>
       </TextBlock>
     </Wrapper>
-    <Wrapper>
-      <SectionTitle>3 wpisy, które mogą Cię zainteresować:</SectionTitle>
-      <PostsList posts={randomPosts} />
-    </Wrapper>
+    <PostsExcerpt title="3 wpisy, które mogą Cię zainteresować:" posts={randomPosts} />
     <Newsletter title="Oraz mój newsletter:" />
   </>
 );

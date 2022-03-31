@@ -13,7 +13,7 @@ import P from 'Components/P';
 
 import topicsGroups from 'Data/taxonomies/topics';
 
-import { getNewestPosts } from 'Helpers/content/posts';
+import { getPosts } from 'Helpers/content/posts';
 import addressSeparator from 'AddressSeparator';
 import siteName from 'SiteName';
 
@@ -70,10 +70,11 @@ const Topics: FC<PostsContainer> = () => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getNewestPosts();
+  const posts = await getPosts();
+  const lastSixPosts = posts.slice(0, 6);
 
   return {
-    props: { posts },
+    props: { posts: lastSixPosts },
   };
 };
 

@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
 
 import CoveringLink from 'Components/CoveringLink';
 import Link from 'Components/Link';
@@ -21,7 +20,7 @@ const ListedPost: FC<Post> = ({ title, topics, slug, readingTime }) => {
     <ListedPostContainer>
       <CoveringLink href={link} zIndex="med" />
       <ThumbnailContainer>
-        <Thumbnail as={Image} src={featuredImage} alt="" width="500" height="300" />
+        <Thumbnail src={featuredImage} alt="" />
       </ThumbnailContainer>
       <Content>
         <MetaContainer>
@@ -41,10 +40,10 @@ const ThumbnailContainer = styled.figure`
   overflow: hidden;
 `;
 
-const Thumbnail = styled.div`
-  position: absolute;
-  transition: transform var(--long-transition-duration);
+const Thumbnail = styled.img`
+  aspect-ratio: 165/100;
   object-fit: cover;
+  transition: transform var(--long-transition-duration);
 
   ${ListedPostContainer}:hover & {
     transform: scale(1.05);

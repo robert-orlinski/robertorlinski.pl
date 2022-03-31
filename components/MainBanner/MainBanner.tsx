@@ -28,17 +28,11 @@ const MainBanner: FC<Props> = ({ title, image: { src, alt }, isImageFluid }) => 
         <MainTitle>{title}</MainTitle>
         {isImageFixed ? (
           <FixedImageContainer>
-            <Image
-              {...{ src, alt }}
-              width="880"
-              height="560"
-              objectFit="cover"
-              placeholder={isImageFromPath ? 'empty' : 'blur'}
-            />
+            <Image {...{ src, alt }} width="880" height="560" objectFit="cover" priority />
           </FixedImageContainer>
         ) : (
           <ImageContainer>
-            <Image {...{ src, alt }} placeholder="blur" />
+            <Image {...{ src, alt }} priority />
           </ImageContainer>
         )}
       </Banner>

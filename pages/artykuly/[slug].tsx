@@ -9,7 +9,6 @@ import Comments from 'Components/Comments';
 import RawHeader from 'Components/RawHeader';
 import Newsletter from 'Components/Newsletter';
 import PostHeader from 'Components/PostHeader';
-import RelatedPosts from 'Components/RelatedPosts';
 import CommentsInvite from 'Components/CommentsInvite';
 
 import { getPostBySlug, getPostsPaths, getRelatedPosts } from 'Helpers/content/posts';
@@ -18,6 +17,7 @@ import { from } from 'Devices';
 import siteName from 'SiteName';
 
 import { PostWithContentAndRelatedPosts } from 'Types/content';
+import PostsExcerpt from 'Components/PostsExcerpt';
 
 const Post: FC<PostWithContentAndRelatedPosts> = ({ metaData, content, relatedPosts }) => {
   const { seoTitle, title, topics, date, slug, abstract } = metaData;
@@ -40,7 +40,14 @@ const Post: FC<PostWithContentAndRelatedPosts> = ({ metaData, content, relatedPo
         <Article source={content} />
         <CommentsInvite />
       </Wrapper>
-      <RelatedPosts posts={relatedPosts} />
+      <PostsExcerpt
+        title="Mogą Cię zainteresować:"
+        posts={relatedPosts}
+        withSpaceAbove
+        withSpaceBelow
+        withBorderAbove
+        withBorderBelow
+      />
       <Newsletter />
       <Comments title={metaTitle} />
     </>
