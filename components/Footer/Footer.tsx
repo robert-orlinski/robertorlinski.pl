@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import TextWithLinks from 'Components/TextWithLinks';
 import Separator from 'Components/Separator';
 import Wrapper from 'Components/Wrapper';
 import FooterMenu from './parts/FooterMenu';
@@ -8,8 +7,8 @@ import Brand from 'Components/Brand';
 
 import contentMenu from 'Data/footer/contentMenu';
 import formalitiesMenu from 'Data/footer/formalitiesMenu';
-import copyright from 'Data/footer/copyright';
 import { from, to } from 'Devices';
+import Link from 'Components/Link';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -26,7 +25,14 @@ const Footer = () => {
       </Top>
       <Bottom size="tiny">
         <p>Copyright | {currentYear}</p>
-        <TextWithLinks text={copyright} />
+        <p>Zaprojektowane i zakodowane przeze mnie ✨</p>
+        <p>
+          Cały kod z kolei, znajdziesz na{' '}
+          <Link href="https://github.com/robert-orlinski/robertorlinski.pl" isUnderlineVisible>
+            moim GitHubie
+          </Link>
+          !
+        </p>
       </Bottom>
     </FooterWrapper>
   );

@@ -11,7 +11,7 @@ import Button from 'Components/Button';
 import Head from 'Components/Head';
 import P from 'Components/P';
 
-import { getPopularPosts, getPosts } from 'Helpers/content/posts';
+import { getPosts } from 'Helpers/content/posts';
 import addressSeparator from 'AddressSeparator';
 import mySummary from 'Data/mySummary';
 import siteName from 'SiteName';
@@ -77,15 +77,15 @@ const Home: FC<Props> = ({ newestPosts, popularPosts }) => (
 
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getPosts();
-  const lastSixPosts = posts.slice(0, 6);
 
-  const popularPosts = await getPopularPosts();
-  const popularThreePosts = popularPosts.slice(0, 3);
+  const menuOrderedPopularPosts = [...posts]
+    .sort((a, b) => a.menuOrder - b.menuOrder) // Lowest on top
+    .filter(({ isPopular }) => isPopular);
 
   return {
     props: {
-      newestPosts: lastSixPosts,
-      popularPosts: popularThreePosts,
+      newestPosts: posts.slice(0, 6),
+      popularPosts: menuOrderedPopularPosts.slice(0, 3),
     },
   };
 };

@@ -1,14 +1,15 @@
 ---
-title: Metodologia BEM – wszystko, co trzeba o niej wiedzieć
+title: Metodologia BEM - wszystko, co trzeba o niej wiedzieć
 abstract: Metodologia BEM 🤔 O co w niej chodzi? Dlaczego jest taka popularna? Jak z niej korzystać? Jakich błędów nie popełniać? O tym jest ten wpis!
 isPublished: true
 topics:
   - Front-end
 date: 18.10.2021
 isPopular: true
+menuOrder: -3
 ---
 
-W programowaniu dobrze jest stosować się do przyjętych norm, aby nasz kod był łatwejszy w zrozumieniu przez innych deweloperów i znacznie bardziej przemyślany - w końcu jeśli dana metodologia powstała, to bardzo często oznacza, że ktoś wymyślił już i sprawdził w boju to koło i my nie musimy robić tego na nowo.
+W programowaniu dobrze jest stosować się do przyjętych norm, aby nasz kod był łatwiejszy w zrozumieniu przez innych deweloperów i znacznie bardziej przemyślany - w końcu jeśli dana metodologia powstała, to bardzo często oznacza, że ktoś wymyślił już i sprawdził w boju to koło i my nie musimy robić tego na nowo.
 
 I tak jak HTML ma znaczniki semantyczne, języki programowania - wzorce projektowe i frameworki, tak CSS posiada konkretne metodologie.
 
@@ -27,7 +28,7 @@ One wszystkie zwykle będą się powtarzać w obrębie witryny (w końcu słabym
 W przypadku bloków (lub inaczej komponentów) jest najprościej:
 
 ```css
-.blok 
+.blok
 .blok-skladajacy-sie-z-kilku-wyrazow
 ```
 
@@ -46,7 +47,7 @@ Dzięki temu znacznie łatwiej dzieli się poszczególne elementy na stronie na 
 I jak wspomniałem - są jeszcze modyfikatory. Zapisujemy je podobnie jak elementy, tylko że zamiast znaków podkreślenia, używamy myślników, w ten oto sposób:
 
 ```css
-.blok--modyfikator
+.blok--modyfikator 
 .blok__element--modyfikator
 ```
 
@@ -57,7 +58,7 @@ Jak widać możemy modyfikować całe bloki jak i pojedyncze elementy. Co jeszcz
 .blog__element .blok__element--modyfikator
 
 // Tak niekoniecznie
-.blok__element--modyfikator
+.blok__element--modyfikator;
 ```
 
 Może spójrzmy na konkretny przykład, w którym stworzymy prosty element banera na stronie:

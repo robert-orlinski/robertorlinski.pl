@@ -18,6 +18,7 @@ export type Post = {
   readingTime: string;
   topics: TopicName[];
   isPopular: boolean;
+  menuOrder: number;
 } & Resource;
 
 export type PostWithContentAndRelatedPosts = {

@@ -4,8 +4,8 @@ import {
   getPosts,
   getPostsByDateDescending,
   getPostBySlug,
-  getPopularPosts,
   getRelatedPosts,
+  getPostsByTopic,
 } from '../posts';
 
 import mockMdx from 'Helpers/tests/mockMdx';
@@ -51,17 +51,21 @@ describe('retrieving posts list', () => {
     expect(posts).toHaveLength(4);
   });
 
+  it('returns posts in given topic', async () => {
+    const posts = await getPostsByTopic('front-end');
+
+    expect(posts).toHaveLength(3);
+
+    posts.forEach((post) => {
+      expect(post.topics).toContain('Front-end');
+    });
+  });
+
   it('contains "metodologia-bem" post\'s title', async () => {
     const posts = await getPosts();
     const postTitles = posts.map(({ title }) => title);
 
-    expect(postTitles).toContain('Metodologia BEM – wszystko, co trzeba o niej wiedzieć');
-  });
-
-  it('returns all popular posts', async () => {
-    const popularPosts = await getPopularPosts();
-
-    expect(popularPosts).toHaveLength(3);
+    expect(postTitles).toContain('Metodologia BEM - wszystko, co trzeba o niej wiedzieć');
   });
 });
 
@@ -112,7 +116,7 @@ describe('related posts', () => {
     expect(relatedPostsFromCurrentTopic.length).toEqual(2);
   });
 
-  it('returns 1 post from different than current topic (assuming that there are 2 posts in current topic and needed are 3)', async () => {
+  it('returns 1 post from different than current topic (assuming that there are 2 posts in current topic and 3 are needed)', async () => {
     const relatedPosts = await getRelatedPosts('with-code', 'Front-end', 3);
 
     const postsTopics = relatedPosts.map(({ topics }) => topics).flat();

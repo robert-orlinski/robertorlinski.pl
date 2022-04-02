@@ -8,7 +8,7 @@ import PostsList from 'Components/PostsList';
 
 import siteName from 'SiteName';
 import addressSeparator from 'Helpers/metaData/addressSeparator';
-import { getPopularPosts } from 'Helpers/content/posts';
+import { getPosts } from 'Helpers/content/posts';
 
 import { PostsContainer } from 'Types/content';
 
@@ -36,10 +36,14 @@ const PopularPosts: FC<PostsContainer> = ({ posts }) => (
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getPopularPosts();
+  const posts = await getPosts();
+
+  const menuOrderedPopularPosts = posts
+    .sort((a, b) => a.menuOrder - b.menuOrder) // Lowest on top
+    .filter(({ isPopular }) => isPopular);
 
   return {
-    props: { posts },
+    props: { posts: menuOrderedPopularPosts },
   };
 };
 

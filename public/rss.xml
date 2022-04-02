@@ -4,7 +4,7 @@
         <description><![CDATA[Robert Orliński | Programuję i dzielę się wiedzą o programowaniu 🚀]]></description>
         <link>http://localhost:3000</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 31 Mar 2022 20:15:30 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 02 Apr 2022 21:22:40 GMT</lastBuildDate>
         <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
         <copyright><![CDATA[2022 Robert Orliński]]></copyright>
         <language><![CDATA[pl]]></language>
@@ -78,7 +78,7 @@
             <pubDate>Tue, 19 Oct 2021 22:00:00 GMT</pubDate>
         </item>
         <item>
-            <title><![CDATA[Metodologia BEM – wszystko, co trzeba o niej wiedzieć]]></title>
+            <title><![CDATA[Metodologia BEM - wszystko, co trzeba o niej wiedzieć]]></title>
             <description><![CDATA[Metodologia BEM 🤔 O co w niej chodzi? Dlaczego jest taka popularna? Jak z niej korzystać? Jakich błędów nie popełniać? O tym jest ten wpis!]]></description>
             <link>http://localhost:3000/metodologia-bem</link>
             <guid isPermaLink="false">metodologia-bem</guid>

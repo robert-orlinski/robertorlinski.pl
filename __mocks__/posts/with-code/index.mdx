@@ -7,6 +7,7 @@ topics:
   - Front-end
 date: 30.04.2017
 isPopular: true
+menuOrder: 0
 ---
 
 Ostatnio Bartłomiej Mąkina z bloga [Devcorner.pl](http://devcorner.pl) stworzył artykuł, w którym wymienia 7 złych praktyk podczas pisania kodu CSS. Zainspirowało mnie to do stworzenia swojego wpisu, w którym przedstawiam przeciwieństwo, czyli dobre praktyki :)
@@ -226,16 +227,18 @@ Jeśli na przykład posiadamy ciemne tło i białą czcionkę dla wielu element�
 
 Oczywiście nie wszystkie style są dziedziczone (np. margines). W tym [miejscu](https://stackoverflow.com/questions/5612302/which-css-properties-are-inherited) możecie znaleźć listę wszystkich elementów, które działają w ten sposób.
 
-### 11. Posiadanie jednego pliku CSS
+### 11. <s>Posiadanie jednego pliku CSS</s>
 
 Gdy nie korzystamy z bundlera, ani żadnego innego narzędzia, które usprawnia naszą pracę z kodem, dobrze jest połączyć cały kod CSS w jeden plik w przypadku mniejszych stron, po to aby ograniczyć ilość zapytań, które znacznie spowalniają ładowanie się strony.
 
+**Aktualizacja na dzień 05.12.2021:** Przez to, jak popularny jest już [HTTP/2](https://en.wikipedia.org/wiki/HTTP/2) łączenie plików CSS (jak i aplikuje się to również dla JavaScriptu) w jeden wielki plik, nie ma już takiej wartości. Często lepiej jest przeciwnie - podzielić nasze style na kilka mniejszych plików, ładowanych tylko dla konkretnych widoków.
+
 ### 12. Utrzymywanie kodu CSS poza plikiem HTML
 
-W sumie po to aby oddzielić treść strony od jej wyglądu, zostały stworzone kaskadowe arkusze stylów. ;) Całość szczególnie dotyczy stylowania in-line, które jest bardzo dużym błędem i wygląda w ten sposób:
+W sumie po to aby oddzielić treść strony od jej wyglądu, zostały stworzone kaskadowe arkusze stylów! Całość szczególnie dotyczy stylowania in-line, które jest bardzo dużym błędem i wygląda w ten sposób:
 
 ```html
-<h1 style="color: #10131a;"></h1>
+<h1 style="color: #10131a"></h1>
 ```
 
 ### 13. Minifikacja kodu

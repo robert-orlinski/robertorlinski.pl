@@ -29,7 +29,7 @@ export const getPostsByDateDescending = async (): Promise<Post[]> =>
   (await getResourcesByDateDescending(POSTS_PATH, 'posts')) as Post[];
 
 export const getRandomPosts = async (numberOfPostsToReturn: number): Promise<Post[]> => {
-  const posts = await getPostsByDateDescending();
+  const posts = await getPosts();
 
   return shuffle(posts).slice(0, numberOfPostsToReturn);
 };
@@ -39,7 +39,7 @@ export const getRelatedPosts = async (
   givenTopicName: string,
   numberOfPostsToReturn: number,
 ): Promise<Post[]> => {
-  const posts = await getPostsByDateDescending();
+  const posts = await getPosts();
   const postsWithoutTheCurrentOne = posts.filter(({ slug }) => slug !== currentPostSlug);
 
   const theRestOfPostsInGivenTopic = postsWithoutTheCurrentOne.filter(({ topics }) =>
@@ -58,12 +58,6 @@ export const getRelatedPosts = async (
 
     return theRestOfPostsInGivenTopic.concat(theRestFromOtherTopics);
   }
-};
-
-export const getPopularPosts = async (): Promise<Post[]> => {
-  const posts = await getPostsByDateDescending();
-
-  return posts.filter(({ isPopular }) => isPopular);
 };
 
 export const getPostsByTopic = async (topicSlug: string): Promise<Post[]> => {
