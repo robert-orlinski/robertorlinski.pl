@@ -8,13 +8,12 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import prepareMDX from './mdx';
 
 import { polishPlurals } from 'polish-plurals';
-import { FEATURED_IMAGE_NAME } from '../constants';
 
 import { Resource, ResourceWithContent } from 'Types/content';
 
 dayjs.extend(customParseFormat);
 
-const { readFile, readdir, copyFile } = fs.promises;
+const { readFile, readdir } = fs.promises;
 
 export const filterPublishedResources = <T>(resources: Resource[] & T): Resource[] =>
   resources.filter(({ isPublished }) => isPublished);
@@ -98,16 +97,6 @@ export const getResourceBySlug = async (
   });
 
   const readingTime = getResourceReadingTime(content);
-
-  const featuredImageToCopy = path.join(resourcePath, FEATURED_IMAGE_NAME);
-  const copiedFeaturedImage = path.join(
-    process.cwd(),
-    'public',
-    imagesDirectory,
-    FEATURED_IMAGE_NAME,
-  );
-
-  await copyFile(featuredImageToCopy, copiedFeaturedImage);
 
   const resource: unknown = {
     content,

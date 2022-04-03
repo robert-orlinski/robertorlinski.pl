@@ -7,21 +7,17 @@ import PostMeta from 'Components/PostMeta';
 
 import ListedPostContainer from './parts/ListedPostContainer';
 
-import { getPostFeaturedImage, getPostLink } from 'Helpers/components/posts';
+import { getPostLink } from 'Helpers/components/posts';
 
 import { Post } from 'Types/content';
 import { between } from 'Devices';
 
 const ListedPost: FC<Post> = ({ title, topics, slug, readingTime }) => {
-  const featuredImage = getPostFeaturedImage(slug);
   const link = getPostLink(slug);
 
   return (
     <ListedPostContainer>
       <CoveringLink href={link} zIndex="med" />
-      <ThumbnailContainer>
-        <Thumbnail src={featuredImage} alt="" />
-      </ThumbnailContainer>
       <Content>
         <MetaContainer>
           <PostMeta {...{ topics, readingTime }} />
@@ -35,20 +31,6 @@ const ListedPost: FC<Post> = ({ title, topics, slug, readingTime }) => {
     </ListedPostContainer>
   );
 };
-
-const ThumbnailContainer = styled.figure`
-  overflow: hidden;
-`;
-
-const Thumbnail = styled.img`
-  aspect-ratio: 165/100;
-  object-fit: cover;
-  transition: transform var(--long-transition-duration);
-
-  ${ListedPostContainer}:hover & {
-    transform: scale(1.05);
-  }
-`;
 
 const Content = styled.div`
   @media ${between.tabletAndTabletL} {
