@@ -4,7 +4,7 @@
         <description><![CDATA[Robert Orliński | Programuję i dzielę się wiedzą o programowaniu 🚀]]></description>
         <link>http://localhost:3000</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 03 Apr 2022 10:58:44 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 03 Apr 2022 15:07:44 GMT</lastBuildDate>
         <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
         <copyright><![CDATA[2022 Robert Orliński]]></copyright>
         <language><![CDATA[pl]]></language>
@@ -334,15 +334,6 @@
             <category><![CDATA[Front-end]]></category>
             <dc:creator><![CDATA[Robert Orliński]]></dc:creator>
             <pubDate>Sun, 01 Jul 2018 22:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Wtyczki do Visual Studio Code – instalacja oraz 10 świetnych przykładów]]></title>
-            <description><![CDATA[W tym wpisie przekażę Ci 10 dodatków, które umilają mi codzienną pracę z Visual Studio Code i sprawiają, że staje się bardziej efektywna.]]></description>
-            <link>http://localhost:3000/wtyczki-do-visual-studio-code</link>
-            <guid isPermaLink="false">wtyczki-do-visual-studio-code</guid>
-            <category><![CDATA[Narzędzia]]></category>
-            <dc:creator><![CDATA[Robert Orliński]]></dc:creator>
-            <pubDate>Mon, 07 May 2018 22:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[12 sposobów na pozyskiwanie zleceń jako freelancer – kompletna lista]]></title>
