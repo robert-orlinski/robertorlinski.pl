@@ -12,30 +12,31 @@ import PostHeader from 'Components/PostHeader';
 import CommentsInvite from 'Components/CommentsInvite';
 
 import { getPostBySlug, getPostsPaths, getRelatedPosts } from 'Helpers/content/posts';
+import { getPostFeaturedImage } from 'Helpers/components/posts';
 import { from } from 'Devices';
 import siteName from 'SiteName';
 
 import { PostWithContentAndRelatedPosts } from 'Types/content';
 import PostsExcerpt from 'Components/PostsExcerpt';
 
-import bannerImage from 'Images/banners/forest.jpg';
-
 const Post: FC<PostWithContentAndRelatedPosts> = ({ metaData, content, relatedPosts }) => {
-  const { seoTitle, title, topics, date, abstract } = metaData;
+  const { seoTitle, title, topics, date, slug, abstract } = metaData;
   const metaTitle = seoTitle || title;
+
+  const featuredImage = getPostFeaturedImage(slug);
 
   return (
     <>
       <Head
         title={`${metaTitle} | ${siteName}`}
         description={abstract}
-        featuredImage={bannerImage.src}
+        featuredImage={featuredImage}
         contentType="article"
         publicationDate={date}
       />
       <RawHeader />
       <Wrapper as="main" size="medium" withSpaceBelow>
-        <PostHeader {...{ title, topics, date, featuredImage: bannerImage.src }} />
+        <PostHeader {...{ title, topics, date, featuredImage }} />
         <Article source={content} />
         <CommentsInvite />
       </Wrapper>
