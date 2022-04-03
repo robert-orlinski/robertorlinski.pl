@@ -28,11 +28,18 @@ const MainBanner: FC<Props> = ({ title, image: { src, alt }, isImageFluid }) => 
         <MainTitle>{title}</MainTitle>
         {isImageFixed ? (
           <FixedImageContainer>
-            <Image {...{ src, alt }} width="880" height="560" objectFit="cover" priority />
+            <Image
+              {...{ src, alt }}
+              width="880"
+              height="560"
+              objectFit="cover"
+              priority
+              loading="eager"
+            />
           </FixedImageContainer>
         ) : (
           <ImageContainer>
-            <Image {...{ src, alt }} priority />
+            <Image {...{ src, alt }} priority loading="eager" />
           </ImageContainer>
         )}
       </Banner>
