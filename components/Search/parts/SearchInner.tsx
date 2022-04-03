@@ -46,7 +46,11 @@ const SearchInner = forwardRef((props, ref) => {
           (posts.length ? (
             <PostsList {...{ posts }} />
           ) : (
-            <Error>Nie znalazłem nic, co pasuje do tej frazy. Może spróbujesz wpisać inną?</Error>
+            <>
+              <Error>
+                Nie istnieje tytuł artykułu, który pasuje do tej frazy. Może spróbujesz wpisać inną?
+              </Error>
+            </>
           ))}
       </Results>
     </>
