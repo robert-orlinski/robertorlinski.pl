@@ -34,19 +34,19 @@ const Page404: FC<Props> = ({ randomPosts }) => (
       title="Toż to strona 404!"
       image={{
         src: bannerImage,
-        alt: 'Załamy Robur, trzymający się za głowę 🙈',
+        alt: 'Załamy Robur, trzymający się za głowę.',
       }}
     />
     <Wrapper>
       <TextBlock>
-        <P>Ten Robert powyżej też nie odnalazł swojej ulubionej podstrony.</P>
+        <P>Ten Robert powyżej też nie odnalazł swojej ulubionej podstrony.</P>
         <P>
-          Aby Ciebie nie pozostawić z niczym tak jak jego, podrzucam Ci 2 grupy treści, wśród
-          których mam nadzieję, że znajdziesz coś dla siebie!
+          Aby Ciebie nie pozostawić z niczym tak jak jego, podrzucam 2 grupy treści, wśród których
+          mam nadzieję, znajdziesz coś dla siebie!
         </P>
       </TextBlock>
     </Wrapper>
-    <PostsExcerpt title="3 wpisy, które mogą Cię zainteresować:" posts={randomPosts} />
+    <PostsExcerpt title="3 wpisy, które mogą Cię zainteresować:" posts={randomPosts} />
     <Newsletter title="Oraz mój newsletter:" />
   </>
 );
