@@ -22,7 +22,9 @@ export const getTopicsPaths = (): PathParams<'slug'> => {
 export const getTopic = (nameOrSlug: string): Topic => {
   const allTopics = getTopics();
 
-  const wantedTopic = allTopics.find((topic) => nameOrSlug === topic.slug || topic.name);
+  const wantedTopic = allTopics.find(
+    (topic) => nameOrSlug === topic.slug || nameOrSlug === topic.name,
+  );
 
   return wantedTopic as Topic;
 };
