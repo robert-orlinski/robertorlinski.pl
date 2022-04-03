@@ -39,7 +39,7 @@ const prepareMDX = async (
   const { code, frontmatter } = await bundleMDX({
     source,
     cwd: resourcePath,
-    xdmOptions: (options) => ({
+    mdxOptions: (options) => ({
       ...options,
       remarkPlugins: [...(options.remarkPlugins ?? []), remarkMdxImages],
       rehypePlugins: [...(options.rehypePlugins ?? []), rehypePrism],

@@ -20,6 +20,7 @@ const setup = () => {
   const button = screen.getByRole('button');
 
   return {
+    user: userEvent.setup(),
     name,
     email,
     button,
@@ -38,41 +39,41 @@ describe('render', () => {
 
 describe('validation', () => {
   it('throws an error if there is no email', async () => {
-    const { button } = setup();
+    const { user, button } = setup();
 
-    userEvent.click(button);
+    await user.click(button);
 
     const errorIcon = await screen.findByRole('img', { name: 'Wystąpił błąd' });
     expect(errorIcon).toBeInTheDocument();
   });
 
   it('throws an error if there is no email and name is provided', async () => {
-    const { name, button } = setup();
+    const { user, name, button } = setup();
 
-    userEvent.type(name, 'Name');
-    userEvent.click(button);
+    await user.type(name, 'Name');
+    await user.click(button);
 
     const errorIcon = await screen.findByRole('img', { name: 'Wystąpił błąd' });
     expect(errorIcon).toBeInTheDocument();
   });
 
   it('throws an error if email is invalid', async () => {
-    const { email, button } = setup();
+    const { user, email, button } = setup();
 
-    userEvent.type(email, 'test-email@');
-    userEvent.click(button);
+    await user.type(email, 'test-email@');
+    await user.click(button);
 
     const errorIcon = await screen.findByRole('img', { name: 'Wystąpił błąd' });
     expect(errorIcon).toBeInTheDocument();
   });
 
   it('sends a form if there is a proper email and no username', async () => {
-    const { email, button } = setup();
+    const { user, email, button } = setup();
 
     fetchMock.mockResponse(JSON.stringify({ error: '' }));
 
-    userEvent.type(email, 'test-email@test-domain.com');
-    userEvent.click(button);
+    await user.type(email, 'test-email@test-domain.com');
+    await user.click(button);
 
     await waitFor(() => {
       const confirmationUrl = mockRouter.pathname;
@@ -82,13 +83,13 @@ describe('validation', () => {
   });
 
   it('sends a form if there is a proper email and username', async () => {
-    const { name, email, button } = setup();
+    const { user, name, email, button } = setup();
 
     fetchMock.mockResponse(JSON.stringify({ error: '' }));
 
-    userEvent.type(name, 'Name');
-    userEvent.type(email, 'test-email@test-domain.com');
-    userEvent.click(button);
+    await user.type(name, 'Name');
+    await user.type(email, 'test-email@test-domain.com');
+    await user.click(button);
 
     await waitFor(() => {
       const confirmationUrl = mockRouter.pathname;
@@ -98,7 +99,7 @@ describe('validation', () => {
   });
 
   it('sends a form if there is a proper email and username but returns error if is present (comes from API)', async () => {
-    const { name, email, button } = setup();
+    const { user, name, email, button } = setup();
 
     const errorMessage = 'Coś poszło nie tak :c';
 
@@ -108,10 +109,10 @@ describe('validation', () => {
       }),
     );
 
-    userEvent.type(name, 'Name');
-    userEvent.type(email, 'test-email@test-domain.com');
+    await user.type(name, 'Name');
+    await user.type(email, 'test-email@test-domain.com');
 
-    userEvent.click(button);
+    await user.click(button);
 
     const error = await screen.findByText(errorMessage);
     expect(error).toBeInTheDocument();

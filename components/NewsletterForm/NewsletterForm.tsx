@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import styled, { css } from 'styled-components';
 
 import { SubmitButton } from './parts/inputs/SubmitButton';
@@ -20,7 +20,7 @@ const NewsletterForm: FC<Props> = ({ isInline }) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FieldValues>();
+  } = useForm<NewsletterData>();
 
   const [errorMessage, setErrorMessage] = useState<ErrorMessage>(false);
 

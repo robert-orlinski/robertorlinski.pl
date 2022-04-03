@@ -13,6 +13,7 @@ const setup = () => {
   const openingButton = screen.getByRole('button', { name: 'Otwórz wyszukiwarkę' });
 
   return {
+    user: userEvent.setup(),
     openingButton,
   };
 };
@@ -26,30 +27,30 @@ describe('render', () => {
 });
 
 describe('search container visibility', () => {
-  it('shows form after magnifier click', () => {
-    const { openingButton } = setup();
+  it('shows form after magnifier click', async () => {
+    const { user, openingButton } = setup();
 
-    userEvent.click(openingButton);
+    await user.click(openingButton);
 
     const input = screen.getByRole('textbox', { name: 'Szukaj' });
     expect(input).toBeInTheDocument();
   });
 
-  it('hides form after cross click', () => {
-    const { openingButton } = setup();
+  it('hides form after cross click', async () => {
+    const { user, openingButton } = setup();
 
-    userEvent.click(openingButton);
+    await user.click(openingButton);
 
     const closeButton = screen.getByRole('button', { name: 'Zamknij wyszukiwarkę' });
-    userEvent.click(closeButton);
+    await user.click(closeButton);
   });
 
   it('hides form after "Esc" key press', async () => {
-    const { openingButton } = setup();
+    const { user, openingButton } = setup();
 
-    userEvent.click(openingButton);
+    await user.click(openingButton);
 
-    userEvent.keyboard('{Escape}');
+    await user.keyboard('{Escape}');
 
     await waitFor(() => {
       const closeButton = screen.queryByRole('button', { name: 'Zamknij wyszukiwarkę' });

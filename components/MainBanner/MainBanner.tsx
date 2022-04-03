@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 import Wrapper from 'Components/Wrapper';
 import Nav from 'Components/Nav';

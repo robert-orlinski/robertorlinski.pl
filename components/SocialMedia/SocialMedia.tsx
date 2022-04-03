@@ -36,19 +36,14 @@ const SocialIcon = styled(SmallIcon)`
 
 const icons = [
   {
-    name: 'Facebook',
-    href: 'https://www.facebook.com/robertorlinski.blog',
-    component: <SocialIcon as={Facebook} />,
+    name: 'YouTube',
+    href: 'https://www.youtube.com/channel/UC_qgM2UztycBZGQLNaGs9Jg',
+    component: <SocialIcon as={YouTube} />,
   },
   {
     name: 'LinkedIn',
     href: 'https://www.linkedin.com/in/robert-orlinski/',
     component: <SocialIcon as={LinkedIn} />,
-  },
-  {
-    name: 'YouTube',
-    href: 'https://www.youtube.com/channel/UC_qgM2UztycBZGQLNaGs9Jg',
-    component: <SocialIcon as={YouTube} />,
   },
   {
     name: 'Instagram',
@@ -59,6 +54,11 @@ const icons = [
     name: 'GitHub',
     href: 'https://github.com/robert-orlinski',
     component: <SocialIcon as={GitHub} />,
+  },
+  {
+    name: 'Facebook',
+    href: 'https://www.facebook.com/robertorlinski.blog',
+    component: <SocialIcon as={Facebook} />,
   },
   {
     name: 'RSS',
