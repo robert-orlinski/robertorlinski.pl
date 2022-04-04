@@ -1,5 +1,5 @@
 export type ElementWithCustomZIndex = {
-  zIndex?: 'min' | 'med' | 'max' | 'extreme';
+  zIndex?: 'min' | 'mid' | 'max' | 'extreme';
 };
 
 export type PolymorphicElement = {

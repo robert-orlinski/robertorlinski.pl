@@ -18,7 +18,7 @@ const ListedPost: FC<Post> = ({ title, topics, slug, readingTime }) => {
 
   return (
     <ListedPostContainer>
-      <CoveringLink href={link} zIndex="med" />
+      <CoveringLink href={link} zIndex="mid" />
       <ThumbnailContainer>
         <Thumbnail src={featuredImage} alt="" />
       </ThumbnailContainer>

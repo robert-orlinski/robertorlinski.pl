@@ -40,7 +40,7 @@ const CssVariables = createGlobalStyle`
     --fancy-cubic-bezier: cubic-bezier(0.77, 0, 0.175, 1);
 
     --min-z-index: 10;
-    --med-z-index: 20;
+    --mid-z-index: 20;
     --max-z-index: 30;
     --extreme-z-index: 10000;
 
