@@ -2,12 +2,12 @@ import { CatalogedLink } from 'Types/links';
 
 const formalitiesMenu: CatalogedLink[] = [
   {
-    href: '/kontakt',
-    title: 'Kontakt',
+    href: '/newsletter',
+    title: 'Newsletter',
   },
   {
-    href: '/polityka-prywatnosci',
-    title: 'Polityka prywatności',
+    href: '/kontakt',
+    title: 'Kontakt',
   },
 ];
 
