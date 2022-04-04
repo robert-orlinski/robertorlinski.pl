@@ -38,6 +38,7 @@ const SearchInner = forwardRef((props, ref) => {
           name="query"
           autoComplete="off"
           onChange={handleInputChange}
+          type="search"
           {...{ ref }}
         />
       </Form>

@@ -62,6 +62,10 @@ const GlobalStyle = createGlobalStyle`
     position: relative;
   }
 
+  input {
+    border-radius: 0;
+  }
+
   button {
     display: block;
     appearance: none;

@@ -26,7 +26,7 @@ const TextInput: FC<Props> = forwardRef(
             id={name}
             aria-invalid={isErrorThrown}
             placeholder={label}
-            {...{ isErrorThrown, ...props }}
+            {...{ ref, isErrorThrown, ...props }}
             {...register(name, { required, pattern })}
           />
           <Label htmlFor={name}>{label}</Label>

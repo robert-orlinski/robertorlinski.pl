@@ -32,7 +32,7 @@ describe('search container visibility', () => {
 
     await user.click(openingButton);
 
-    const input = screen.getByRole('textbox', { name: 'Szukaj' });
+    const input = screen.getByRole('searchbox', { name: 'Szukaj' });
     expect(input).toBeInTheDocument();
   });
 
