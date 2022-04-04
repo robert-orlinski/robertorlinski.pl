@@ -35,8 +35,9 @@ const Topic: FC<Props> = ({ currentTopic, postsInTopic }) => {
           src: featuredImage,
           alt: '',
         }}
+        withAdditionalSpaceOnPhone
       />
-      <Wrapper as="main" withSpaceAbove withSpaceBelow>
+      <Wrapper as="main" withSpaceBelow>
         {postsInTopic.length ? (
           <PostsGrid posts={postsInTopic} />
         ) : (

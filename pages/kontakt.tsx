@@ -23,7 +23,6 @@ const Contact = () => (
         src: bannerImage,
         alt: '',
       }}
-      isImageFluid
     />
     <main>
       <TextBlock>

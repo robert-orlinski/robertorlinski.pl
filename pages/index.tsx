@@ -40,7 +40,6 @@ const Home: FC<Props> = ({ newestPosts, popularPosts }) => (
         src: bannerImage,
         alt: 'Robert zamierzający uderzyć ogromny, pluszowy przycisk "enter", który jednocześnie można podłączyć na USB i tym samym zatwierdzać rzeczy z potężnym impetem.',
       }}
-      isImageFluid
     />
     <main>
       <TextBlock>

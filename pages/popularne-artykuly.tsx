@@ -28,8 +28,9 @@ const PopularPosts: FC<PostsContainer> = ({ posts }) => (
         src: bannerImage,
         alt: '',
       }}
+      withAdditionalSpaceOnPhone
     />
-    <Wrapper as="main" withSpaceAbove withSpaceBelow>
+    <Wrapper as="main" withSpaceBelow>
       <PostsGrid {...{ posts }} />
     </Wrapper>
   </>

@@ -8,39 +8,31 @@ import SectionTitle from 'Components/SectionTitle';
 
 import { from, to } from 'Devices';
 
+type WrapperProps = {
+  withAdditionalSpaceOnPhone?: boolean;
+};
+
 type Props = {
   title: string;
   image: {
     src: StaticImageData | string;
     alt: string;
   };
-  isImageFluid?: boolean;
-};
+} & WrapperProps;
 
-const MainBanner: FC<Props> = ({ title, image: { src, alt }, isImageFluid }) => {
-  const isImageFromPath = typeof src === 'string';
-  const isImageFixed = !isImageFluid || isImageFromPath;
+const MainBanner: FC<Props> = ({ title, image: { src, alt }, withAdditionalSpaceOnPhone }) => (
+  <header>
+    <Nav />
+    <Banner {...{ withAdditionalSpaceOnPhone }}>
+      <MainTitle>{title}</MainTitle>
+      <ImageContainer>
+        <Image {...{ src, alt }} width="880" height="560" objectFit="cover" priority />
+      </ImageContainer>
+    </Banner>
+  </header>
+);
 
-  return (
-    <header>
-      <Nav />
-      <Banner>
-        <MainTitle>{title}</MainTitle>
-        {isImageFixed ? (
-          <FixedImageContainer>
-            <Image {...{ src, alt }} width="880" height="560" objectFit="cover" priority />
-          </FixedImageContainer>
-        ) : (
-          <ImageContainer>
-            <Image {...{ src, alt }} priority />
-          </ImageContainer>
-        )}
-      </Banner>
-    </header>
-  );
-};
-
-const Banner = styled(Wrapper)`
+const Banner = styled(Wrapper)<WrapperProps>`
   display: flex;
   justify-content: flex-end;
 
@@ -51,7 +43,10 @@ const Banner = styled(Wrapper)`
   @media ${to.phoneL} {
     flex-direction: column-reverse;
 
-    margin-bottom: calc(var(--section-gap) * 0.5);
+    margin-bottom: ${({ withAdditionalSpaceOnPhone }) =>
+      withAdditionalSpaceOnPhone
+        ? 'calc(var(--section-gap) * 1.5)'
+        : 'calc(var(--section-gap) * 0.5)'};
   }
 `;
 
@@ -81,14 +76,6 @@ const ImageContainer = styled.figure`
 
   @media ${from.tabletL} {
     width: 65%;
-  }
-`;
-
-const FixedImageContainer = styled(ImageContainer)`
-  height: clamp(400px, 40vw, 560px);
-
-  @media ${to.phoneL} {
-    height: 60vw;
   }
 `;
 
