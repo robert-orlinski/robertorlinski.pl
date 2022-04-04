@@ -12,16 +12,22 @@ import { getPostFeaturedImage, getPostLink } from 'Helpers/components/posts';
 import { Post } from 'Types/content';
 import { between } from 'Devices';
 
-const ListedPost: FC<Post> = ({ title, topics, slug, readingTime }) => {
-  const featuredImage = getPostFeaturedImage(slug);
+type Props = {
+  isFeaturedImageHidden?: boolean;
+} & Post;
+
+const ListedPost: FC<Props> = ({ title, topics, slug, readingTime, isFeaturedImageHidden }) => {
+  const featuredImage = !isFeaturedImageHidden && getPostFeaturedImage(slug);
   const link = getPostLink(slug);
 
   return (
     <ListedPostContainer>
       <CoveringLink href={link} zIndex="mid" />
-      <ThumbnailContainer>
-        <Thumbnail src={featuredImage} alt="" />
-      </ThumbnailContainer>
+      {featuredImage && (
+        <ThumbnailContainer>
+          <Thumbnail src={featuredImage} alt="" />
+        </ThumbnailContainer>
+      )}
       <Content>
         <MetaContainer>
           <PostMeta {...{ topics, readingTime }} />
