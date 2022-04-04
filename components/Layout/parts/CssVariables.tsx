@@ -45,7 +45,7 @@ const CssVariables = createGlobalStyle`
     --extreme-z-index: 10000;
 
     @media ${to.laptopL} {
-      --title-font-size: clamp(1.5rem, 3.8vw, 4rem);
+      --title-font-size: clamp(2rem, 3.8vw, 4rem);
     }
 
     @media ${to.tabletL} {

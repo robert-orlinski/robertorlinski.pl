@@ -29,7 +29,7 @@ const Blog: FC<PostsContainer> = ({ posts }) => (
         alt: '',
       }}
     />
-    <Wrapper as="main" withSpaceBelow>
+    <Wrapper as="main" withSpaceAbove withSpaceBelow>
       <PostsList {...{ posts }} />
     </Wrapper>
   </>

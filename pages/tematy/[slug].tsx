@@ -36,7 +36,7 @@ const Topic: FC<Props> = ({ currentTopic, postsInTopic }) => {
           alt: '',
         }}
       />
-      <Wrapper as="main" withSpaceBelow>
+      <Wrapper as="main" withSpaceAbove withSpaceBelow>
         {postsInTopic.length ? (
           <PostsList posts={postsInTopic} />
         ) : (
