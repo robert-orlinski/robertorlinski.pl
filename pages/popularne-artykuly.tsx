@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next';
 import Head from 'Components/Head';
 import MainBanner from 'Components/MainBanner';
 import Wrapper from 'Components/Wrapper';
-import PostsList from 'Components/PostsList';
+import PostsGrid from 'Components/PostsGrid';
 
 import siteName from 'SiteName';
 import addressSeparator from 'Helpers/metaData/addressSeparator';
@@ -30,7 +30,7 @@ const PopularPosts: FC<PostsContainer> = ({ posts }) => (
       }}
     />
     <Wrapper as="main" withSpaceAbove withSpaceBelow>
-      <PostsList {...{ posts }} />
+      <PostsGrid {...{ posts }} />
     </Wrapper>
   </>
 );

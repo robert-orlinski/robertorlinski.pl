@@ -7,7 +7,7 @@ import { from } from 'Devices';
 
 import { PostsContainer } from 'Types/content';
 
-const PostsList: FC<PostsContainer> = ({ posts }) => (
+const PostsGrid: FC<PostsContainer> = ({ posts }) => (
   <List>
     {posts.map((post) => {
       const { slug } = post;
@@ -26,4 +26,4 @@ const List = styled.ul`
   }
 `;
 
-export default PostsList;
+export default PostsGrid;

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import useDebounce from 'Hooks/useDebounce';
 
 import TextInput from 'Components/TextInput';
-import PostsList from 'Components/PostsList';
+import PostsGrid from 'Components/PostsGrid';
 import Error from 'Components/ErrorSection';
 
 import searchForPosts from 'Helpers/requests/searchForPosts';
@@ -45,7 +45,7 @@ const SearchInner = forwardRef((props, ref) => {
       <Results aria-live="polite" aria-atomic="true" id="search-results">
         {posts &&
           (posts.length ? (
-            <PostsList {...{ posts }} />
+            <PostsGrid {...{ posts }} />
           ) : (
             <>
               <Error>

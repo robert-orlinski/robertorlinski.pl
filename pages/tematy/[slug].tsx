@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import Head from 'Components/Head';
 import Wrapper from 'Components/Wrapper';
-import PostsList from 'Components/PostsList';
+import PostsGrid from 'Components/PostsGrid';
 import MainBanner from 'Components/MainBanner';
 import Error from 'Components/ErrorSection';
 
@@ -38,7 +38,7 @@ const Topic: FC<Props> = ({ currentTopic, postsInTopic }) => {
       />
       <Wrapper as="main" withSpaceAbove withSpaceBelow>
         {postsInTopic.length ? (
-          <PostsList posts={postsInTopic} />
+          <PostsGrid posts={postsInTopic} />
         ) : (
           <>
             <Error

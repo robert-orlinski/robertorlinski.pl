@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import CenteredText from 'Components/CenteredText';
 import SectionTitle from 'Components/SectionTitle';
-import PostsList from 'Components/PostsList';
+import PostsGrid from 'Components/PostsGrid';
 import Wrapper, { WrapperProps } from 'Components/Wrapper';
 import Button from 'Components/Button';
 
@@ -36,7 +36,7 @@ const PostsExcerpt: FC<Props> = ({
     }}
   >
     <SectionTitle>{title}</SectionTitle>
-    <PostsList {...{ posts }} />
+    <PostsGrid {...{ posts }} />
     {button && (
       <MoreButtonContainer>
         <Button href={button.href}>{button.title}</Button>
