@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import Link from 'Components/Link';
 
@@ -21,7 +21,7 @@ const H: FC<Props> = ({ as, isAnchor = false, ...props }) => {
     const sluggedHeader = toSlug(children);
 
     return (
-      <BaseTag id={sluggedHeader} {...{ as }}>
+      <BaseTag id={sluggedHeader} {...{ as, isAnchor }}>
         <AnchorLink href={`#${sluggedHeader}`}>{children}</AnchorLink>
       </BaseTag>
     );
@@ -30,16 +30,20 @@ const H: FC<Props> = ({ as, isAnchor = false, ...props }) => {
   return <BaseTag {...{ as }}>{children}</BaseTag>;
 };
 
-const BaseTag = styled.h1`
+const BaseTag = styled.h1<DeterminedHeader>`
   padding-bottom: 0.8em;
 
   &:not(:nth-child(1)) {
     padding-top: 1em;
   }
 
-  @media ${to.tablet} {
-    padding-left: 1.6ch;
-  }
+  ${({ isAnchor }) =>
+    isAnchor &&
+    css`
+      @media ${to.tablet} {
+        padding-left: 1.6ch;
+      }
+    `}
 `;
 
 const AnchorLink = styled(Link)`
