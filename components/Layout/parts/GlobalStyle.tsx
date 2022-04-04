@@ -64,6 +64,10 @@ const GlobalStyle = createGlobalStyle`
 
   input {
     border-radius: 0;
+
+    &[type="search"] {
+      appearance: none;
+    }
   }
 
   button {
@@ -82,7 +86,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button,
-  input[type='submit'] {
+  input[type="submit"] {
     border-radius: 0;
     font-family: var(--sans-serif);
   }
