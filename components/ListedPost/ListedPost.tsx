@@ -5,30 +5,32 @@ import CoveringLink from 'Components/CoveringLink';
 import Link from 'Components/Link';
 import PostMeta from 'Components/PostMeta';
 
-import ListedPostContainer from './parts/ListedPostContainer';
+import ListedPostWrapper, { ListedPostWrapperProps } from './parts/ListedPostWrapper';
 
 import { getPostFeaturedImage, getPostLink } from 'Helpers/components/posts';
 
 import { Post } from 'Types/content';
 import { between } from 'Devices';
 
-type Props = {
-  isFeaturedImageHidden?: boolean;
-} & Post;
-
-const ListedPost: FC<Props> = ({ title, topics, slug, readingTime, isFeaturedImageHidden }) => {
-  const featuredImage = !isFeaturedImageHidden && getPostFeaturedImage(slug);
+const ListedPost: FC<ListedPostWrapperProps & Post> = ({
+  title,
+  topics,
+  slug,
+  readingTime,
+  withFeaturedImageHidden,
+}) => {
+  const featuredImage = !withFeaturedImageHidden && getPostFeaturedImage(slug);
   const link = getPostLink(slug);
 
   return (
-    <ListedPostContainer>
+    <ListedPostWrapper {...{ withFeaturedImageHidden }}>
       <CoveringLink href={link} zIndex="mid" />
       {featuredImage && (
         <ThumbnailContainer>
           <Thumbnail src={featuredImage} alt="" />
         </ThumbnailContainer>
       )}
-      <Content>
+      <div>
         <MetaContainer>
           <PostMeta {...{ topics, readingTime }} />
         </MetaContainer>
@@ -37,13 +39,17 @@ const ListedPost: FC<Props> = ({ title, topics, slug, readingTime, isFeaturedIma
             {title}
           </Link>
         </Title>
-      </Content>
-    </ListedPostContainer>
+      </div>
+    </ListedPostWrapper>
   );
 };
 
 const ThumbnailContainer = styled.figure`
   overflow: hidden;
+
+  @media ${between.tabletAndTabletL} {
+    padding-right: 2rem;
+  }
 `;
 
 const Thumbnail = styled.img`
@@ -51,14 +57,8 @@ const Thumbnail = styled.img`
   object-fit: cover;
   transition: transform var(--long-transition-duration);
 
-  ${ListedPostContainer}:hover & {
+  ${ListedPostWrapper}:hover & {
     transform: scale(1.05);
-  }
-`;
-
-const Content = styled.div`
-  @media ${between.tabletAndTabletL} {
-    padding-left: 2rem;
   }
 `;
 

@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import ListedPostContainer from 'Components/ListedPost/parts/ListedPostContainer';
+import ListedPostWrapper from 'Components/ListedPost/parts/ListedPostWrapper';
 
 import { UnderlinedLinkStyle } from 'Types/links';
 
@@ -30,8 +30,8 @@ const UnderlinedLink = styled.a<UnderlinedLinkStyle>`
 
   &:hover,
   &:focus,
-  ${ListedPostContainer}:hover &,
-  ${ListedPostContainer}:focus & {
+  ${ListedPostWrapper}:hover &,
+  ${ListedPostWrapper}:focus & {
     background-size: var(--line-size-hovered, 100% 1px);
     background-position: var(--line-position-hovered, 0 100%);
   }

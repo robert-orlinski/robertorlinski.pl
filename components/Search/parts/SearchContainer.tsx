@@ -33,6 +33,8 @@ const Container = styled.aside<Props>`
   overflow-y: auto;
   background-color: #fff;
 
+  --search-inner-width: min(100%, 570px);
+
   ${({ isVisible }) =>
     isVisible
       ? css`

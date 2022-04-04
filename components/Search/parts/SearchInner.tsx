@@ -4,13 +4,12 @@ import styled from 'styled-components';
 import useDebounce from 'Hooks/useDebounce';
 
 import TextInput from 'Components/TextInput';
-import PostsGrid from 'Components/PostsGrid';
+import PostsList from 'Components/PostsList';
 import Error from 'Components/ErrorSection';
 
 import searchForPosts from 'Helpers/requests/searchForPosts';
 
 import { Post } from 'Types/content';
-import { to } from 'Devices';
 
 const SearchInner = forwardRef((props, ref) => {
   const [query, setQuery] = useState('');
@@ -45,11 +44,11 @@ const SearchInner = forwardRef((props, ref) => {
       <Results aria-live="polite" aria-atomic="true" id="search-results">
         {posts &&
           (posts.length ? (
-            <PostsGrid {...{ posts }} />
+            <PostsList {...{ posts }} />
           ) : (
             <>
               <Error>
-                Nie istnieje tytuł artykułu, który pasuje do tej frazy. Może spróbujesz wpisać inną?
+                Nie istnieje tytuł artykułu, który pasuje do tej frazy. Może spróbujesz wpisać inną?
               </Error>
             </>
           ))}
@@ -59,16 +58,13 @@ const SearchInner = forwardRef((props, ref) => {
 });
 
 const Form = styled.form`
-  width: min(100%, 570px);
+  width: var(--search-inner-width);
+
   margin: 0 auto 3rem;
 `;
 
 const Results = styled.div`
-  padding: calc(var(--hamburger-size) * 0.8) 0 calc(var(--hamburger-size) * 3);
-
-  @media ${to.phoneL} {
-    padding: calc(var(--hamburger-size) * 0) 0 calc(var(--hamburger-size) * 3);
-  }
+  padding-bottom: calc(var(--hamburger-size) * 3);
 `;
 
 export default SearchInner;

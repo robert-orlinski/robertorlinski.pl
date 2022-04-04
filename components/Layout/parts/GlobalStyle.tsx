@@ -67,6 +67,11 @@ const GlobalStyle = createGlobalStyle`
 
     &[type="search"] {
       appearance: none;
+      background-color: transparent;
+
+      &::-webkit-search-cancel-button {
+        display: none;
+      }
     }
   }
 
