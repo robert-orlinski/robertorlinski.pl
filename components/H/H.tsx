@@ -1,8 +1,10 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import toSlug from 'Helpers/functions/toSlug';
 
 import Link from 'Components/Link';
+
+import { to } from 'Devices';
+import toSlug from 'Helpers/functions/toSlug';
 
 export type DeterminedHeader = {
   isAnchor?: boolean;
@@ -33,6 +35,10 @@ const BaseTag = styled.h1`
 
   &:not(:nth-child(1)) {
     padding-top: 1em;
+  }
+
+  @media ${to.tablet} {
+    padding-left: 1.6ch;
   }
 `;
 
