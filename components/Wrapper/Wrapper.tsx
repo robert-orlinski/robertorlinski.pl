@@ -35,13 +35,13 @@ const Wrapper = styled.section<Props>`
   ${({ withSpaceAbove }) =>
     withSpaceAbove &&
     css`
-      padding-top: var(--wrapper-gap);
+      padding-top: var(--section-gap);
     `}
 
   ${({ withSpaceBelow }) =>
     withSpaceBelow &&
     css`
-      padding-bottom: var(--wrapper-gap);
+      padding-bottom: var(--section-gap);
     `}
 
   ${({ withBorderAbove }) =>

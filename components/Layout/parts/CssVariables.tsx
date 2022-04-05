@@ -21,11 +21,13 @@ const CssVariables = createGlobalStyle`
 
     --default-nav-height: 5rem;
 
-    --nav-height: var(--default-nav-height);
     --input-height: 2.5rem;
     --brand-height: 1.8rem;
     --hamburger-size: 1.66rem;
     --hamburger-width: 2px;
+
+    --nav-height: var(--default-nav-height);
+    --nav-padding: calc(var(--nav-height) / 2 - var(--brand-height) / 2);
 
     --section-gap: 3.8rem;
     --text-gap: 1.5rem;

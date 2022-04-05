@@ -52,10 +52,10 @@ const Container = styled.aside<Props>`
 
 const Content = styled(Wrapper)`
   height: 100%;
-  padding: calc(var(--hamburger-size) * 2) calc(var(--hamburger-size) * 2) 0 0;
+  padding: var(--nav-padding) calc(var(--hamburger-size) * 2) 0 0;
 
   @media ${to.tabletL} {
-    padding: var(--hamburger-size) calc(var(--hamburger-size) * 1.5) 0 0;
+    padding-right: calc(var(--hamburger-size) * 1.5);
   }
 `;
 
