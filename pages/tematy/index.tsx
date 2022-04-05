@@ -25,7 +25,7 @@ const Topics: FC<PostsContainer> = () => (
   <>
     <Head
       title={`Tematy ${addressSeparator} ${siteName}`}
-      description="W WordPressie widziałem już dużo, więc teraz skupiam się na front-endzie. Programuję dla siebie oraz klientów, piszę na blogu i nagrywam filmy na YouTubie. Po godzinach działam jako aktywista ✨"
+      description="Znajdziesz tu wszystkie grupy treści, które do tej pory powstały!"
       featuredImage={bannerImage.src}
       contentType="website"
     />
