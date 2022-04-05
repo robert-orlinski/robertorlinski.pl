@@ -5,7 +5,7 @@ import styled, { css } from 'styled-components';
 import { SubmitButton } from './parts/inputs/SubmitButton';
 import { EmailInput } from './parts/inputs/EmailInput';
 import { NameInput } from './parts/inputs/NameInput';
-import { Error } from './parts/ErrorAlert';
+import { Error } from './parts/Error';
 
 import subscribeToTheNewsletter from 'Helpers/requests/subscribeToTheNewsletter';
 

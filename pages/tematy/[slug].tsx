@@ -4,7 +4,6 @@ import Head from 'Components/Head';
 import Wrapper from 'Components/Wrapper';
 import PostsGrid from 'Components/PostsGrid';
 import MainBanner from 'Components/MainBanner';
-import ErrorSection from 'Components/ErrorSection';
 
 import { getTopic, getTopicsPaths } from 'Helpers/data/topics';
 import { getPostsByTopic } from 'Helpers/content/posts';
@@ -38,20 +37,7 @@ const Topic: FC<Props> = ({ currentTopic, postsInTopic }) => {
         withAdditionalSpaceOnPhone
       />
       <Wrapper as="main" withSpaceBelow>
-        {postsInTopic.length ? (
-          <PostsGrid posts={postsInTopic} />
-        ) : (
-          <>
-            <ErrorSection
-              withButton={{
-                href: '/tematy',
-                title: 'Wszystkie tematy',
-              }}
-            >
-              Dziwne, ale w ramach tego tematu, nie ma żadnych postów. Może sprawdzisz inne?
-            </ErrorSection>
-          </>
-        )}
+        <PostsGrid posts={postsInTopic} />
       </Wrapper>
     </>
   );

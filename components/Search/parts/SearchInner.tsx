@@ -5,7 +5,6 @@ import useDebounce from 'Hooks/useDebounce';
 
 import TextInput from 'Components/TextInput';
 import PostsList from 'Components/PostsList';
-import ErrorSection from 'Components/ErrorSection';
 
 import searchForPosts from 'Helpers/requests/searchForPosts';
 
@@ -46,11 +45,9 @@ const SearchInner = forwardRef((props, ref) => {
           (posts.length ? (
             <PostsList {...{ posts }} />
           ) : (
-            <>
-              <ErrorSection>
-                Nie istnieje tytuł artykułu, który pasuje do tej frazy. Może spróbujesz wpisać inną?
-              </ErrorSection>
-            </>
+            <p>
+              Nie istnieje tytuł artykułu, który pasuje do tej frazy. Może spróbujesz wpisać inną?
+            </p>
           ))}
       </Results>
     </>
@@ -59,12 +56,11 @@ const SearchInner = forwardRef((props, ref) => {
 
 const Form = styled.form`
   width: var(--search-inner-width);
-
-  margin: 0 auto 3rem;
 `;
 
 const Results = styled.div`
-  padding-bottom: calc(var(--hamburger-size) * 3);
+  width: var(--search-inner-width);
+  padding: var(--hamburger-size) 0;
 `;
 
 export default SearchInner;

@@ -16,7 +16,6 @@ const PostsList: FC<PostsContainer> = ({ posts }) => (
 );
 
 const PostsListWrapper = styled.ul`
-  width: var(--search-inner-width);
   margin: 0 auto;
 `;
 

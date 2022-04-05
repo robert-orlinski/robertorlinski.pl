@@ -15,13 +15,19 @@ const CloseButton: FC<HTMLAttributes<HTMLAnchorElement>> = ({ onClick }) => (
 );
 
 const Button = styled(Hamburger)`
+  --button-space-to-center: var(--input-height) * 0.5 - var(--hamburger-size) * 0.5;
+
   position: fixed;
 
-  right: var(--wrapper-gap);
-  top: var(--hamburger-size);
+  right: calc(var(--wrapper-gap));
+  top: calc(var(--hamburger-size) * 2 + var(--button-space-to-center));
+
+  @media ${to.tabletL} {
+    top: calc(var(--hamburger-size) + var(--button-space-to-center));
+  }
 
   @media ${to.tablet} {
-    right: 7vw;
+    /* right: 7vw; */
   }
 `;
 

@@ -7,7 +7,6 @@ import TopicsGroup from 'Components/TopicsGroup';
 import MainBanner from 'Components/MainBanner';
 import TextBlock from 'Components/TextBlock';
 import Button from 'Components/Button';
-import ErrorSection from 'Components/ErrorSection';
 import Head from 'Components/Head';
 import P from 'Components/P';
 
@@ -37,34 +36,23 @@ const Topics: FC<PostsContainer> = () => (
       }}
     />
     <main>
-      {topicsGroups ? (
-        <>
-          <TextBlock>
-            <P>
-              Wszystkie tematy, o których kiedykolwiek napisałem, znajdziedsz w tym oto miejscu.
-              Rozgość się i wybierz dokładnie to, co Cię interesuje ✨
-            </P>
-          </TextBlock>
-
-          {topicsGroups
-            .filter(({ groupName }) => groupName !== 'Inne')
-            .map(({ groupName, topics }) => (
-              <TopicsGroup key={groupName} groupName={groupName} topics={topics} />
-            ))}
-
-          <TextBlock>
-            <NarrowTitle>Wolisz nie ograniczać się do konkretnej tematyki?</NarrowTitle>
-            <CenteredText as="footer">
-              <Button href="/artykuly">Zobacz wszystkie artykuły</Button>
-            </CenteredText>
-          </TextBlock>
-        </>
-      ) : (
-        <ErrorSection>
-          Z jakiegoś powodu, tematy się nie wyświetliły. Ja czym prędzej to ogarnę, a tymczasem Ty,
-          możesz sprawdzić inne miejsca na blogu 😌
-        </ErrorSection>
-      )}
+      <TextBlock>
+        <P>
+          Wszystkie tematy, o których kiedykolwiek napisałem, znajdziedsz w tym oto miejscu. Rozgość
+          się i wybierz dokładnie to, co Cię interesuje ✨
+        </P>
+      </TextBlock>
+      {topicsGroups
+        .filter(({ groupName }) => groupName !== 'Inne')
+        .map(({ groupName, topics }) => (
+          <TopicsGroup key={groupName} groupName={groupName} topics={topics} />
+        ))}
+      <TextBlock>
+        <NarrowTitle>Wolisz nie ograniczać się do konkretnej tematyki?</NarrowTitle>
+        <CenteredText as="footer">
+          <Button href="/artykuly">Zobacz wszystkie artykuły</Button>
+        </CenteredText>
+      </TextBlock>
     </main>
   </>
 );

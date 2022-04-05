@@ -30,7 +30,7 @@ const Wrapper = styled.section<Props>`
   margin-left: auto;
 
   --wrapper-width: ${({ size }) => (size ? sizes.desktop[size] : sizes.desktop.default)};
-  --wrapper-gap: var(--section-gap);
+  --wrapper-gap: calc((100vw - var(--wrapper-width)) / 2);
 
   ${({ withSpaceAbove }) =>
     withSpaceAbove &&
