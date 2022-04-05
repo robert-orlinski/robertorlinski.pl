@@ -12,7 +12,8 @@
     "test": "jest",
     "prepare": "husky install",
     "ts-node-esm": "node --no-warnings --loader ts-node/esm --experimental-specifier-resolution=node",
-    "generate": "npm run ts-node-esm ./scripts/index.ts"
+    "generate": "npm run ts-node-esm ./scripts/index.ts",
+    "postbuild": "next-sitemap"
   },
   "_moduleAliases": {
     "Devices": "helpers/devices.ts",
@@ -70,6 +71,7 @@
     "jest": "^27.5.1",
     "jest-fetch-mock": "^3.0.3",
     "next-router-mock": "^0.6.5",
+    "next-sitemap": "^2.5.17",
     "npm": "^8.6.0",
     "prettier": "^2.6.2",
     "react-test-renderer": "^18.0.0",

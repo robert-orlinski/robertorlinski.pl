@@ -4,7 +4,7 @@ import Head from 'Components/Head';
 import Wrapper from 'Components/Wrapper';
 import PostsGrid from 'Components/PostsGrid';
 import MainBanner from 'Components/MainBanner';
-import Error from 'Components/ErrorSection';
+import ErrorSection from 'Components/ErrorSection';
 
 import { getTopic, getTopicsPaths } from 'Helpers/data/topics';
 import { getPostsByTopic } from 'Helpers/content/posts';
@@ -42,14 +42,14 @@ const Topic: FC<Props> = ({ currentTopic, postsInTopic }) => {
           <PostsGrid posts={postsInTopic} />
         ) : (
           <>
-            <Error
+            <ErrorSection
               withButton={{
                 href: '/tematy',
                 title: 'Wszystkie tematy',
               }}
             >
               Dziwne, ale w ramach tego tematu, nie ma żadnych postów. Może sprawdzisz inne?
-            </Error>
+            </ErrorSection>
           </>
         )}
       </Wrapper>

@@ -5,7 +5,7 @@ import useDebounce from 'Hooks/useDebounce';
 
 import TextInput from 'Components/TextInput';
 import PostsList from 'Components/PostsList';
-import Error from 'Components/ErrorSection';
+import ErrorSection from 'Components/ErrorSection';
 
 import searchForPosts from 'Helpers/requests/searchForPosts';
 
@@ -47,9 +47,9 @@ const SearchInner = forwardRef((props, ref) => {
             <PostsList {...{ posts }} />
           ) : (
             <>
-              <Error>
+              <ErrorSection>
                 Nie istnieje tytuł artykułu, który pasuje do tej frazy. Może spróbujesz wpisać inną?
-              </Error>
+              </ErrorSection>
             </>
           ))}
       </Results>

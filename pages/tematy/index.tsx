@@ -7,7 +7,7 @@ import TopicsGroup from 'Components/TopicsGroup';
 import MainBanner from 'Components/MainBanner';
 import TextBlock from 'Components/TextBlock';
 import Button from 'Components/Button';
-import Error from 'Components/ErrorSection';
+import ErrorSection from 'Components/ErrorSection';
 import Head from 'Components/Head';
 import P from 'Components/P';
 
@@ -60,10 +60,10 @@ const Topics: FC<PostsContainer> = () => (
           </TextBlock>
         </>
       ) : (
-        <Error>
+        <ErrorSection>
           Z jakiegoś powodu, tematy się nie wyświetliły. Ja czym prędzej to ogarnę, a tymczasem Ty,
           możesz sprawdzić inne miejsca na blogu 😌
-        </Error>
+        </ErrorSection>
       )}
     </main>
   </>
