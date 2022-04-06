@@ -23,7 +23,7 @@ const Search = () => {
   const showSearchForm = () => {
     toggleSearchVisibility();
 
-    setTimeout(() => searchInputRef.current && searchInputRef.current.focus(), 250);
+    setTimeout(() => searchInputRef.current && searchInputRef.current.focus(), 400); // short-transition-duration + 150
   };
 
   useEffect(() => {
