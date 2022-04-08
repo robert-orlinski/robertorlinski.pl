@@ -1,4 +1,5 @@
-const productionHost = process.env.NEXT_PUBLIC_VERCEL_URL || 'robertorlinski.pl';
+const productionHost =
+  process.env.NEXT_PUBLIC_HOST || process.env.NEXT_PUBLIC_VERCEL_URL || 'robertorlinski.pl';
 const devHost = 'localhost:3000';
 const host = process.env.NODE_ENV === 'production' ? productionHost : devHost;
 
