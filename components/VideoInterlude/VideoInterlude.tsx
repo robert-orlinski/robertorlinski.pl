@@ -58,7 +58,7 @@ const VideoStyles = createGlobalStyle`
       display: block;
       content: '';
 
-      padding-bottom: var(--aspect-ratio);
+      padding-bottom: 56.3%;
     }
 
     & > iframe {
