@@ -1,4 +1,4 @@
-import { ChangeEvent, forwardRef, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import styled from 'styled-components';
 
 import useDebounce from 'Hooks/useDebounce';
@@ -10,7 +10,7 @@ import searchForPosts from 'Helpers/requests/searchForPosts';
 
 import { Post } from 'Types/content';
 
-const SearchInner = forwardRef((props, ref) => {
+const SearchInner = () => {
   const [query, setQuery] = useState('');
   const [posts, setPosts] = useState<Post[] | null>(null);
 
@@ -37,7 +37,6 @@ const SearchInner = forwardRef((props, ref) => {
           autoComplete="off"
           onChange={handleInputChange}
           type="search"
-          {...{ ref }}
         />
       </Form>
       <Results aria-live="polite" aria-atomic="true" id="search-results">
@@ -52,7 +51,7 @@ const SearchInner = forwardRef((props, ref) => {
       </Results>
     </>
   );
-});
+};
 
 const Form = styled.form`
   width: var(--search-inner-width);
