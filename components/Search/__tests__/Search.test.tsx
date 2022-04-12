@@ -59,17 +59,4 @@ describe('search container visibility', () => {
       expect(closeButton).not.toBeInTheDocument();
     });
   });
-
-  it('hides form after ', async () => {
-    const { user, openingButton } = setup();
-
-    await user.click(openingButton);
-
-    await user.keyboard('{Escape}');
-
-    await waitFor(() => {
-      const closeButton = screen.queryByRole('button', { name: 'Zamknij wyszukiwarkę' });
-      expect(closeButton).not.toBeInTheDocument();
-    });
-  });
 });
