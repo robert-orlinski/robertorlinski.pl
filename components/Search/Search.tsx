@@ -1,7 +1,5 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-
-import useToggle from 'Hooks/useToggle';
 
 import SearchContainer from './parts/SearchContainer';
 import SearchInner from './parts/SearchInner';
@@ -12,25 +10,35 @@ import SmallIcon from 'Components/SmallIcon';
 import { Magnifier } from 'Components/icons';
 
 import { to } from 'Devices';
+import { useRouter } from 'next/router';
 
 const Search = () => {
-  const [isSearchVisible, toggleSearchVisibility] = useToggle(false);
+  const { query } = useRouter();
 
-  const handleEscapeKeyPress = ({ key }: KeyboardEvent) =>
-    isSearchVisible && key === 'Escape' && toggleSearchVisibility();
+  const [isSearchVisible, setSearchVisibility] = useState(false);
 
   useEffect(() => {
+    const handleEscapeKeyPress = ({ key }: KeyboardEvent) =>
+      isSearchVisible && key === 'Escape' && setSearchVisibility(false);
+
     window.addEventListener('keydown', handleEscapeKeyPress);
 
     return () => window.removeEventListener('keydown', handleEscapeKeyPress);
   });
 
+  useEffect(() => {
+    // If it's dynamic route
+    if (Object.keys(query).length > 0) {
+      setSearchVisibility(false);
+    }
+  }, [query]);
+
   return (
     <>
-      <Button onClick={() => toggleSearchVisibility()} aria-label="Otwórz wyszukiwarkę">
+      <Button onClick={() => setSearchVisibility(true)} aria-label="Otwórz wyszukiwarkę">
         <SmallIcon as={Magnifier} />
       </Button>
-      <SearchContainer isVisible={isSearchVisible} closeHandler={() => toggleSearchVisibility()}>
+      <SearchContainer isVisible={isSearchVisible} closeHandler={() => setSearchVisibility(false)}>
         <SearchInner />
       </SearchContainer>
     </>
