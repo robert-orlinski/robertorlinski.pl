@@ -11,8 +11,7 @@ type Props = {
 };
 
 const CodePenIframe: FC<Props> = ({ id, title, author = 'ROrlilnski', defaultTab = 'html' }) => {
-  const href = `https://codepen.io/${author}/pen/${id}`;
-  const srcBase = href.replace('/pen/', '/embed/');
+  const srcBase = `https://codepen.io/${author}/embed/${id}`;
 
   return (
     <P>
@@ -21,9 +20,7 @@ const CodePenIframe: FC<Props> = ({ id, title, author = 'ROrlilnski', defaultTab
         src={`${srcBase}?default-tab=${defaultTab}%2Cresult&editable=true`}
         loading="lazy"
         allowFullScreen={true}
-      >
-        Oryginał: {href}
-      </Pen>
+      ></Pen>
     </P>
   );
 };
