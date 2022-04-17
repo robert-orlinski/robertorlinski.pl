@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { LinkContainer as LinkContainerType } from 'Types/links';
 
 const LinkContainer: FC<LinkContainerType> = ({ children, href }) => (
-  <Link href={href} scroll={false} passHref>
+  <Link href={href} passHref>
     {children}
   </Link>
 );
