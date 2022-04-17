@@ -34,8 +34,6 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     font-size: 19.5px;
 
-    scroll-behavior: smooth;
-
     @media ${to.phoneL} {
       font-size: 16.5px;
     }
