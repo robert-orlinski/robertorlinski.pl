@@ -156,12 +156,11 @@ const Head = (props: Props) => {
 
       <link rel="index" title="Strona główna" href={siteUrl} />
 
-      <meta property="og:image" content={props.featuredImage} />
+      <meta property="og:image" content={`${siteUrl}${props.featuredImage}`} />
       <meta property="og:image:width" content="1300" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:type" content="image/jpeg" />
 
-      <meta name="twitter:image" content={props.featuredImage} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content="@robert_orlinski" />
 
