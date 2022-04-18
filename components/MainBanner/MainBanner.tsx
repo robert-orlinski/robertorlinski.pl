@@ -24,7 +24,7 @@ const MainBanner: FC<Props> = ({ title, image: { src, alt }, withAdditionalSpace
   <header>
     <Nav />
     <Banner {...{ withAdditionalSpaceOnPhone }}>
-      <MainTitle>{title}</MainTitle>
+      <MainTitle as="h1">{title}</MainTitle>
       <ImageContainer>
         <Image {...{ src, alt }} width="880" height="560" objectFit="cover" priority />
       </ImageContainer>
