@@ -13,7 +13,7 @@ const Contact = () => (
   <>
     <Head
       title={`Kontakt ${addressSeparator} ${siteName}`}
-      description="Jeśli interesuje Cię współpraca lub po prostu chcesz pogadać, to tutaj znajdziesz kontakt do mnie!"
+      description="Jeśli interesuje Cię współpraca lub po prostu chcesz pogadać, to tutaj znajdziesz kontakt do mnie!"
       featuredImage={bannerImage.src}
       contentType="website"
     />
@@ -27,7 +27,7 @@ const Contact = () => (
     <main>
       <TextBlock>
         <P>
-          Jeśli interesuje Cię współpraca lub po prostu chcesz pogadać, nie bój się napisać na
+          Jeśli interesuje Cię współpraca lub po prostu chcesz pogadać, nie bój się napisać na
           mojego maila:
         </P>
         <P>
@@ -36,14 +36,14 @@ const Contact = () => (
           </Link>
         </P>
         <P>
-          Jestem w stanie doradzić Ci w Twojej ścieżce zawodowej, pomóc z problemem technicznym,
-          wdrożyć procesy wytwarzania oprogramowania w Twojej firmie (
+          Jestem w stanie doradzić w kwestii Twojej kariery, pomóc z problemem technicznym, wdrożyć
+          procesy związane z wytwarzaniem oprogramowania w Twojej firmie (
           <Link href="https://www.linkedin.com/in/robert-orlinski" isExternal isUnderlineVisible>
-            przez 1,5 roku pracowałem jako CTO, ulepszając agencję kreatywną pod kątem IT
+            przez 1,5 roku pomagałem rozwijać agencję kreatywną pod kątem IT
           </Link>
           ), podjąć współpracę blogu i YouTubie, lub pomóc w Twoim projekcie, jako programista!
         </P>
-        <P>Albo po prostu pogadać - o IT, filozofii, życiu lub czymkolwiek innym! Czemu nie ✨</P>
+        <P>Albo po prostu pogadać - o IT, filozofii, życiu lub czymkolwiek innym. Czemu nie ✨</P>
       </TextBlock>
     </main>
   </>
