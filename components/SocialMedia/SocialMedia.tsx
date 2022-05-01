@@ -47,7 +47,7 @@ const icons = [
   },
   {
     name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/robert-orlinski/',
+    href: 'https://www.linkedin.com/in/robert-orlinski',
     component: <SocialIcon as={LinkedIn} />,
   },
   {
