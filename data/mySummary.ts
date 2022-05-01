@@ -39,7 +39,7 @@ const mySummary: Text[] = [
   {
     type: 'link',
     text: 'nagrywam filmy na YouTubie',
-    href: 'https://www.youtube.com/channel/UC_qgM2UztycBZGQLNaGs9Jg',
+    href: 'https://robertorlinski.pl/youtube',
   },
   {
     type: 'text',

@@ -66,7 +66,7 @@ const Head = (props: Props) => {
           'https://www.facebook.com/robert.orlinski.92/',
           'https://www.instagram.com/robert.orlinski/',
           'https://www.linkedin.com/in/robert-orlinski/',
-          'https://www.youtube.com/channel/UC_qgM2UztycBZGQLNaGs9Jg/',
+          'https://robertorlinski.pl/youtube/',
           'https://twitter.com/robert_orlinski/',
         ],
         image: {
