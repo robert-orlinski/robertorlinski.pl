@@ -37,7 +37,7 @@ const SocialIcon = styled(SmallIcon)`
 const icons = [
   {
     name: 'YouTube',
-    href: 'https://www.youtube.com/channel/UC_qgM2UztycBZGQLNaGs9Jg',
+    href: '/youtube',
     component: <SocialIcon as={YouTube} />,
   },
   {

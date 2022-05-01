@@ -1,3 +1,11 @@
+const externalRedirects = [
+  {
+    source: '/youtube',
+    destination: 'https://www.youtube.com/channel/UC_qgM2UztycBZGQLNaGs9Jg',
+    permanent: true,
+  },
+];
+
 const pagesRedirects = [
   {
     source: '/wszystkie-wpisy',
@@ -495,6 +503,7 @@ const dynamicPathsRedirects = [
 ];
 
 const redirects = pagesRedirects.concat(
+  externalRedirects,
   topicsRedirects,
   goodiesRedirects,
   postsRedirects,
