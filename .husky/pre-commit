@@ -3,7 +3,6 @@
 
 npx lint-staged
 npm test
-npx tsc
 
 npm run generate
 git add cache/posts.json

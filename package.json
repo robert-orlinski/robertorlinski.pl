@@ -35,6 +35,9 @@
       "eslint --fix",
       "prettier --write"
     ],
+    "*.{ts,tsx}": [
+      "tsc"
+    ],
     "*.{json,md,yaml,yml,scss,css}": [
       "prettier --write"
     ],
