@@ -4,12 +4,21 @@
         <description><![CDATA[Robert Orliński | Programuję i dzielę się wiedzą o programowaniu 🚀]]></description>
         <link>http://localhost:3000</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 15 May 2022 15:43:55 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 22 May 2022 17:06:36 GMT</lastBuildDate>
         <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
         <copyright><![CDATA[2022 Robert Orliński]]></copyright>
         <language><![CDATA[pl]]></language>
         <managingEditor><![CDATA[Robert Orliński]]></managingEditor>
         <webMaster><![CDATA[Robert Orliński]]></webMaster>
+        <item>
+            <title><![CDATA[Nowy RobertOrlinski.pl = TypeScript + Next.js + Styled Components + mdx-bundler + inne ✨]]></title>
+            <description><![CDATA[Stworzyłem nową wersję mojego bloga i strony osobistej? Po co? Za pomocą jakich technologii? Co się zmieniło?]]></description>
+            <link>http://localhost:3000/nowa-wersja-robertorlinski.pl</link>
+            <guid isPermaLink="false">nowa-wersja-robertorlinski.pl</guid>
+            <category><![CDATA[Front-end]]></category>
+            <dc:creator><![CDATA[Robert Orliński]]></dc:creator>
+            <pubDate>Sat, 21 May 2022 22:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Własne bloki w WordPress Gutenberg #010 - co dalej?]]></title>
             <description><![CDATA[Ostatnia część serii o tworzeniu własnych bloków Gutenberga - pokazuję w niej, co możesz przyswoić w dalszej kolejności, aby się rozwijać!]]></description>

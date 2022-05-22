@@ -53,19 +53,19 @@ const Home: FC<Props> = ({ newestPosts, popularPosts }) => (
         </CenteredText>
       </TextBlock>
       <PostsExcerpt
-        title="Popularne artykuły"
-        posts={popularPosts}
-        button={{
-          href: '/popularne-artykuly',
-          title: 'Wszystkie popularne artykuły',
-        }}
-      />
-      <PostsExcerpt
         title="Najnowsze artykuły"
         posts={newestPosts}
         button={{
           href: '/artykuly',
           title: 'Wszystkie artykuły',
+        }}
+      />
+      <PostsExcerpt
+        title="Popularne artykuły"
+        posts={popularPosts}
+        button={{
+          href: '/popularne-artykuly',
+          title: 'Wszystkie popularne artykuły',
         }}
         withSpaceAbove
       />

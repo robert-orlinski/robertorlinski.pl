@@ -18,7 +18,7 @@ const TextInput: FC<Props> = forwardRef(
     const isValidableInput = register && errors;
 
     if (isValidableInput) {
-      const isErrorThrown = errors[name] ? true : false;
+      const isErrorThrown = !!errors[name];
 
       return (
         <Container>

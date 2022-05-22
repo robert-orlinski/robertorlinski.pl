@@ -127,15 +127,15 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h4 {
-    font-size: 1.42rem;
+    font-size: 1.28rem;
   }
 
   h5 {
-    font-size: 1.35rem;
+    font-size: 1.18rem;
   }
 
   h6 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
   }
 
   ul,

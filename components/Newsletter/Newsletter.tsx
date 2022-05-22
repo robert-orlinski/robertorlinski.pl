@@ -14,7 +14,7 @@ type Props = {
 };
 
 const Newsletter: FC<Props> = ({ title = 'Chętnie zaproponuję Ci coś jeszcze' }) => (
-  <Wrapper withSpaceAbove>
+  <Wrapper withSpaceAbove id="newsletter">
     <SectionTitle>{title}</SectionTitle>
     <Content>
       <div>

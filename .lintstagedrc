@@ -1,0 +1,13 @@
+{
+  "*.{js,jsx,ts,tsx}": [
+    "eslint --fix",
+    "prettier --write"
+  ],
+  "**/*.ts?(x)": [
+    "tsc-files --noEmit next-env.d.ts"
+  ],
+  "*.{json,md,yaml,yml,scss,css}": [
+    "prettier --write"
+  ],
+  "*.js": "eslint --cache --fix"
+}

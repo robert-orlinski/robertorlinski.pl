@@ -30,28 +30,29 @@ const CodeBlock = styled.pre`
     color: #636f88;
   }
 
-  .punctuation {
-    color: #81a1c1;
-  }
-
   .namespace {
     opacity: 0.7;
   }
 
+  .punctuation,
   .property,
   .tag,
   .constant,
   .symbol,
-  .deleted {
+  .deleted,
+  .boolean,
+  .operator,
+  .entity,
+  .url,
+  .language-css .string,
+  .style .string,
+  .variable,
+  .keyword {
     color: #81a1c1;
   }
 
   .number {
     color: #b48ead;
-  }
-
-  .boolean {
-    color: #81a1c1;
   }
 
   .selector,
@@ -63,24 +64,11 @@ const CodeBlock = styled.pre`
     color: #a3be8c;
   }
 
-  .operator,
-  .entity,
-  .url,
-  .language-css .string,
-  .style .string,
-  .variable {
-    color: #81a1c1;
-  }
-
   .atrule,
   .attr-value,
   .function,
   .class-name {
     color: #88c0d0;
-  }
-
-  .keyword {
-    color: #81a1c1;
   }
 
   .regex,
@@ -99,6 +87,10 @@ const CodeBlock = styled.pre`
 
   .entity {
     cursor: help;
+  }
+
+  .language-bash .variable .variable {
+    color: #fff;
   }
 `;
 

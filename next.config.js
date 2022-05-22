@@ -492,6 +492,11 @@ const postsRedirects = [
     destination: '/artykuly/focus-widoczny-tylko-podczas-nawigowania-klawiatura',
     permanent: true,
   },
+  {
+    source: '/nowa-wersja',
+    destination: '/artykuly/nowa-wersja-robertorlinski.pl',
+    permanent: true,
+  },
 ];
 
 const dynamicPathsRedirects = [

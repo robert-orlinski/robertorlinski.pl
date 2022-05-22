@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import { to } from 'Devices';
+
 const Li = styled.li`
   --bullet-size: 0.45rem;
 
@@ -39,6 +41,14 @@ const Li = styled.li`
       font-size: 0.8em;
 
       font-weight: 600;
+    }
+  }
+
+  @media ${to.phoneL} {
+    padding-left: 1.8rem;
+
+    &::before {
+      left: 0.3rem;
     }
   }
 `;
