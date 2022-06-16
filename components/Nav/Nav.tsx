@@ -38,6 +38,7 @@ const Nav = () => {
             ariaLabelForClosed="Otwórz menu nawigacyjne"
             ariaLabelForOpened="Zamknij menu nawigacyjne"
             isHiddenOnDesktop={true}
+            dataName="main-menu-opener"
           />
         </Container>
       </Container>
