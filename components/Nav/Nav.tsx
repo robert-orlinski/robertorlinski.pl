@@ -25,7 +25,7 @@ const Nav = () => {
       <HiddenMainPageTitle />
       <Brand />
       <Container>
-        <NavLinks areVisible={isNavVisibleOnMobile}>
+        <NavLinks areVisible={isNavVisibleOnMobile} dataName="main-menu">
           <NavMenu />
           <SocialMedia />
         </NavLinks>

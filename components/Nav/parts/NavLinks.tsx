@@ -1,12 +1,13 @@
+import { FC } from 'react';
 import styled from 'styled-components';
 
 import { to } from 'Devices';
 
-type Props = {
+type StyledProps = {
   areVisible: boolean;
 };
 
-const NavLinks = styled.div<Props>`
+const NavLinksStyled = styled.div<StyledProps>`
   display: flex;
   justify-content: flex-end;
 
@@ -15,7 +16,7 @@ const NavLinks = styled.div<Props>`
 
     flex-direction: column;
     justify-content: flex-start;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     position: fixed;
     width: var(--width);
@@ -37,5 +38,19 @@ const NavLinks = styled.div<Props>`
     --width: 270px;
   }
 `;
+
+type Props = {
+  dataName?: string;
+} & StyledProps;
+
+const NavLinks: FC<Props> = ({ children, dataName, areVisible }) => {
+  return dataName ? (
+    <NavLinksStyled {...{ areVisible }} data-name={dataName}>
+      {children}
+    </NavLinksStyled>
+  ) : (
+    <NavLinksStyled {...{ areVisible }}>{children}</NavLinksStyled>
+  );
+};
 
 export default NavLinks;
