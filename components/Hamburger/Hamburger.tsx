@@ -13,7 +13,6 @@ type ButtonProps = {
 type Props = {
   ariaLabelForClosed?: string;
   ariaLabelForOpened?: string;
-  dataName?: string;
 } & ButtonProps &
   HTMLAttributes<HTMLAnchorElement>;
 
@@ -24,34 +23,19 @@ const Hamburger: FC<Props> = ({
   ariaLabelForOpened = 'Zamknij',
   isHiddenOnDesktop = false,
   className,
-  dataName,
-}) =>
-  dataName ? (
-    <Button
-      onClick={onClick}
-      aria-label={isCrossed ? ariaLabelForOpened : ariaLabelForClosed}
-      {...{
-        isCrossed,
-        isHiddenOnDesktop,
-        className,
-      }}
-      data-name={dataName}
-    >
-      <Inner />
-    </Button>
-  ) : (
-    <Button
-      onClick={onClick}
-      aria-label={isCrossed ? ariaLabelForOpened : ariaLabelForClosed}
-      {...{
-        isCrossed,
-        isHiddenOnDesktop,
-        className,
-      }}
-    >
-      <Inner />
-    </Button>
-  );
+}) => (
+  <Button
+    onClick={onClick}
+    aria-label={isCrossed ? ariaLabelForOpened : ariaLabelForClosed}
+    {...{
+      isCrossed,
+      isHiddenOnDesktop,
+      className,
+    }}
+  >
+    <Inner />
+  </Button>
+);
 
 const Button = styled(ElementWithOpacity).attrs({
   as: 'button',
