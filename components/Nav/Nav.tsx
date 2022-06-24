@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 
-import { useEffect } from 'react';
 import useToggle from 'Hooks/useToggle';
 import useStickyElement from 'Hooks/useStickyElement';
 
@@ -20,28 +19,6 @@ import { to } from 'Devices';
 const Nav = () => {
   const [isNavVisibleOnMobile, toggleNavVisibility] = useToggle(false);
   const [isSticky] = useStickyElement();
-
-  useEffect(() => {
-    const handleClickOffTheMenu = ({ target }: any) => {
-      const menu = document.querySelector('[data-name=main-menu]');
-      const menuOpener = document.querySelector('[data-name=main-menu-opener]');
-
-      do {
-        if (target === menu || target === menuOpener) return;
-        target = target.parentNode;
-      } while (target != null);
-
-      toggleNavVisibility();
-    };
-
-    if (isNavVisibleOnMobile) {
-      window.addEventListener('click', handleClickOffTheMenu, true);
-    }
-
-    return () => {
-      window.removeEventListener('click', handleClickOffTheMenu, true);
-    };
-  }, [isNavVisibleOnMobile]);
 
   return (
     <NavBar {...{ isSticky }}>
