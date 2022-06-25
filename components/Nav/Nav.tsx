@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import { useRef } from 'react';
 
 import useToggle from 'Hooks/useToggle';
 import useStickyElement from 'Hooks/useStickyElement';
+import useOnClickOutside from 'Hooks/useOnClickOutside';
 
 import HiddenMainPageTitle from 'Components/HiddenMainPageTitle';
 import Separator from 'Components/Separator';
@@ -20,11 +22,18 @@ const Nav = () => {
   const [isNavVisibleOnMobile, toggleNavVisibility] = useToggle(false);
   const [isSticky] = useStickyElement();
 
+  const container = useRef<HTMLDivElement>(null);
+  useOnClickOutside(container, () => {
+    if (isNavVisibleOnMobile) {
+      toggleNavVisibility();
+    }
+  });
+
   return (
     <NavBar {...{ isSticky }}>
       <HiddenMainPageTitle />
       <Brand />
-      <Container>
+      <Container ref={container}>
         <NavLinks areVisible={isNavVisibleOnMobile}>
           <NavMenu />
           <SocialMedia />
