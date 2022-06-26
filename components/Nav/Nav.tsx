@@ -29,8 +29,8 @@ const Nav = () => {
     <NavBar {...{ isSticky }}>
       <HiddenMainPageTitle />
       <Brand />
-      <Container>
-        <ClickAwayListener onClickAway={handleClickAway}>
+      <ClickAwayListener onClickAway={handleClickAway}>
+        <Container>
           <NavLinks areVisible={isNavVisibleOnMobile}>
             <NavMenu />
             <SocialMedia />
@@ -46,8 +46,8 @@ const Nav = () => {
               isHiddenOnDesktop={true}
             />
           </Container>
-        </ClickAwayListener>
-      </Container>
+        </Container>
+      </ClickAwayListener>
     </NavBar>
   );
 };
