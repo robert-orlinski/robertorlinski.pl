@@ -1,4 +1,4 @@
-import { FC, useRef } from 'react';
+import React, { FC, ReactElement, RefObject, useRef } from 'react';
 import useOnClickAway from 'Hooks/useOnClickAway';
 
 type Props = {
@@ -6,10 +6,15 @@ type Props = {
 };
 
 const ClickAwayListener: FC<Props> = ({ children, onClickAway }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  useOnClickAway(containerRef, () => onClickAway());
+  const ref = useRef<HTMLElement>(null);
+  useOnClickAway(ref, () => onClickAway());
 
-  return <div ref={containerRef}>{children}</div>;
+  if (React.Children.count(children) == 1) {
+    const copyWithRef = React.cloneElement(children as ReactElement, { ref: ref });
+    return <React.Fragment>{copyWithRef}</React.Fragment>;
+  }
+
+  return <div ref={ref as RefObject<HTMLDivElement>}>{children}</div>;
 };
 
 export default ClickAwayListener;
