@@ -15,7 +15,7 @@ const NavLinks = styled.div<Props>`
 
     flex-direction: column;
     justify-content: flex-start;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     position: fixed;
     width: var(--width);
