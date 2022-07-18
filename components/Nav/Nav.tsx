@@ -21,15 +21,11 @@ const Nav = () => {
   const [isNavVisibleOnMobile, toggleNavVisibility] = useToggle(false);
   const [isSticky] = useStickyElement();
 
-  const handleClickAway = () => {
-    if (isNavVisibleOnMobile) toggleNavVisibility();
-  };
-
   return (
     <NavBar {...{ isSticky }}>
       <HiddenMainPageTitle />
       <Brand />
-      <ClickAwayListener onClickAway={handleClickAway}>
+      <ClickAwayListener onClickAway={() => isNavVisibleOnMobile && toggleNavVisibility()}>
         <Container>
           <NavLinks areVisible={isNavVisibleOnMobile}>
             <NavMenu />
