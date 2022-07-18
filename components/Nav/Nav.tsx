@@ -9,6 +9,7 @@ import SocialMedia from 'Components/SocialMedia';
 import Search from 'Components/Search';
 import Hamburger from 'Components/Hamburger';
 import Brand from 'Components/Brand';
+import ClickAwayListener from 'Components/ClickAwayListener';
 
 import NavBar from './parts/NavBar';
 import NavMenu from './parts/NavMenu';
@@ -24,23 +25,25 @@ const Nav = () => {
     <NavBar {...{ isSticky }}>
       <HiddenMainPageTitle />
       <Brand />
-      <Container>
-        <NavLinks areVisible={isNavVisibleOnMobile}>
-          <NavMenu />
-          <SocialMedia />
-        </NavLinks>
-        <SeparatorHiddenOnMobile />
+      <ClickAwayListener onClickAway={() => isNavVisibleOnMobile && toggleNavVisibility()}>
         <Container>
-          <Search />
-          <Hamburger
-            onClick={toggleNavVisibility}
-            isCrossed={isNavVisibleOnMobile}
-            ariaLabelForClosed="Otwórz menu nawigacyjne"
-            ariaLabelForOpened="Zamknij menu nawigacyjne"
-            isHiddenOnDesktop={true}
-          />
+          <NavLinks areVisible={isNavVisibleOnMobile}>
+            <NavMenu />
+            <SocialMedia />
+          </NavLinks>
+          <SeparatorHiddenOnMobile />
+          <Container>
+            <Search />
+            <Hamburger
+              onClick={toggleNavVisibility}
+              isCrossed={isNavVisibleOnMobile}
+              ariaLabelForClosed="Otwórz menu nawigacyjne"
+              ariaLabelForOpened="Zamknij menu nawigacyjne"
+              isHiddenOnDesktop={true}
+            />
+          </Container>
         </Container>
-      </Container>
+      </ClickAwayListener>
     </NavBar>
   );
 };
