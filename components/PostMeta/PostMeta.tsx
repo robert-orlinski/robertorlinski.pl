@@ -5,6 +5,7 @@ import ElementWithOpacity from 'Components/ElementWithOpacity';
 import Separator from 'Components/Separator';
 
 import { getPrimaryTopic, getTopicLink } from 'Helpers/data/topics';
+import getISOStringFromPublicationDate from 'Helpers/functions/getISOStringFromPublicationDate';
 
 import { TopicName } from 'Types/data';
 
@@ -24,7 +25,7 @@ const PostMeta: FC<Props> = ({ topics, readingTime, date }) => {
       {date && (
         <>
           <Separator />
-          <span>{date}</span>
+          <time dateTime={getISOStringFromPublicationDate(date)}>{date}</time>
         </>
       )}
       {readingTime && (
