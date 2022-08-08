@@ -31,7 +31,7 @@
     "Cache": "cache"
   },
   "dependencies": {
-    "@giscus/react": "robert-orlinski/giscus-component#package",
+    "@giscus/react": "^2.2.0",
     "@mapbox/rehype-prism": "^0.8.0",
     "dayjs": "^1.11.0",
     "esbuild": "^0.14.30",
