@@ -1,20 +1,27 @@
-import React, { FC, ReactElement, RefObject, useRef } from 'react';
-import useOnClickAway from 'Hooks/useOnClickAway';
+import { ReactNode, useRef, useEffect } from 'react';
 
 type Props = {
+  children: ReactNode;
   onClickAway: () => void;
 };
 
-const ClickAwayListener: FC<Props> = ({ children, onClickAway }) => {
-  const ref = useRef<HTMLElement>(null);
-  useOnClickAway(ref, () => onClickAway());
+const ClickAwayListener = ({ children, onClickAway }: Props) => {
+  const ref = useRef<HTMLDivElement>(null);
 
-  if (React.Children.count(children) == 1) {
-    const copyWithRef = React.cloneElement(children as ReactElement, { ref: ref });
-    return <>{copyWithRef}</>;
-  }
+  useEffect(() => {
+    const handleAction = (event: MouseEvent | TouchEvent) => {
+      if (!ref.current || ref.current.contains(event.target as HTMLDivElement)) return;
+      onClickAway();
+    };
 
-  return <div ref={ref as RefObject<HTMLDivElement>}>{children}</div>;
+    document.addEventListener('mousedown', handleAction);
+
+    return () => {
+      document.removeEventListener('mousedown', handleAction);
+    };
+  }, [ref, onClickAway]);
+
+  return <div ref={ref}>{children}</div>;
 };
 
 export default ClickAwayListener;
