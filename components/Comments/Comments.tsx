@@ -1,6 +1,6 @@
 import { FC } from 'react';
+import { Giscus, Theme } from '@giscus/react';
 import styled from 'styled-components';
-import Giscus from '@giscus/react';
 
 import SectionTitle from 'Components/SectionTitle';
 import Wrapper from 'Components/Wrapper';
@@ -9,7 +9,7 @@ import { from, to } from 'Devices';
 
 import siteUrl from 'SiteUrl';
 
-const theme = `${siteUrl}/css/comments.css`;
+const theme = `${siteUrl}/css/comments.css` as Theme;
 
 type Props = {
   title: string;
