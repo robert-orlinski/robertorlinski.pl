@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Giscus, Theme } from '@giscus/react';
+import Giscus, { Theme } from '@giscus/react';
 import styled from 'styled-components';
 
 import SectionTitle from 'Components/SectionTitle';
