@@ -5,7 +5,6 @@ import { POSTS_PATH } from '../constants';
 import { PathParams, Post, ResourceWithContent } from 'Types/content';
 
 import postsCache from 'Cache/posts.json';
-import postsMock from 'Cache/mock.json';
 import shuffle from 'Helpers/functions/shuffle';
 
 const env = process.env.NODE_ENV || 'development';
@@ -15,7 +14,7 @@ export const getPosts = async (): Promise<Post[]> => {
     return postsCache;
   }
 
-  return postsMock;
+  return await getPostsByDateDescending();
 };
 
 export const getPostsPaths = async (): Promise<PathParams<'slug'>> => {
