@@ -77,9 +77,9 @@ const Home: FC<Props> = ({ newestPosts, popularPosts }) => (
 export const getStaticProps: GetStaticProps = async () => {
   const posts = await getPosts();
 
-  const menuOrderedPopularPosts = [...posts]
-    .sort((a, b) => a.menuOrder - b.menuOrder) // Lowest on top
-    .filter(({ isPopular }) => isPopular);
+  const menuOrderedPopularPosts = posts
+    .filter(({ isPopular }) => isPopular)
+    .sort((a, b) => a.menuOrder - b.menuOrder);
 
   return {
     props: {
