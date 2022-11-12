@@ -4,16 +4,9 @@ import { POSTS_PATH } from '../constants';
 
 import { PathParams, Post, ResourceWithContent } from 'Types/content';
 
-import postsCache from 'Cache/posts.json';
 import shuffle from 'Helpers/functions/shuffle';
 
-const env = process.env.NODE_ENV || 'development';
-
 export const getPosts = async (): Promise<Post[]> => {
-  if (env === 'production') {
-    return postsCache;
-  }
-
   return await getPostsByDateDescending();
 };
 
