@@ -42,6 +42,7 @@ const Home: FC<Props> = ({ newestPosts, popularPosts }) => (
       }}
     />
     <main>
+      <div style={{ display: 'none' }}>{process.env.NODE_ENV}</div>
       <TextBlock>
         <P>
           Działałem jako freelancer, później pomagałem rozwijać się agencji kreatywnej, a od pewnego
