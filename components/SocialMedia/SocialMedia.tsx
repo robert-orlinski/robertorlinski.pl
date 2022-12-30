@@ -4,7 +4,7 @@ import ElementWithOpacity from 'Components/ElementWithOpacity';
 import LinkContainer from 'Components/LinkContainer';
 import SmallIcon from 'Components/SmallIcon';
 
-import { Facebook, LinkedIn, YouTube, Instagram, Twitter, GitHub, RSS } from 'Components/icons';
+import { LinkedIn, YouTube, Instagram, Twitter, GitHub, RSS } from 'Components/icons';
 
 import { to } from 'Devices';
 
@@ -59,11 +59,6 @@ const icons = [
     name: 'Twitter',
     href: 'https://twitter.com/robert_orlinski',
     component: <SocialIcon as={Twitter} />,
-  },
-  {
-    name: 'Facebook',
-    href: 'https://www.facebook.com/robertorlinski.blog',
-    component: <SocialIcon as={Facebook} />,
   },
   {
     name: 'RSS',
