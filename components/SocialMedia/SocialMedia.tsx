@@ -4,7 +4,7 @@ import ElementWithOpacity from 'Components/ElementWithOpacity';
 import LinkContainer from 'Components/LinkContainer';
 import SmallIcon from 'Components/SmallIcon';
 
-import { LinkedIn, YouTube, Instagram, Twitter, GitHub, RSS } from 'Components/icons';
+import { LinkedIn, Instagram, Twitter, GitHub, RSS } from 'Components/icons';
 
 import { to } from 'Devices';
 
@@ -36,19 +36,14 @@ const SocialIcon = styled(SmallIcon)`
 
 const icons = [
   {
-    name: 'YouTube',
-    href: '/youtube',
-    component: <SocialIcon as={YouTube} />,
+    name: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/robert-orlinski',
+    component: <SocialIcon as={LinkedIn} />,
   },
   {
     name: 'GitHub',
     href: 'https://github.com/robert-orlinski',
     component: <SocialIcon as={GitHub} />,
-  },
-  {
-    name: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/robert-orlinski',
-    component: <SocialIcon as={LinkedIn} />,
   },
   {
     name: 'Instagram',
