@@ -30,7 +30,8 @@
       "Hooks/*": ["hooks/*"],
       "Cache/*": ["cache/*"]
     },
-    "typeRoots": ["node_modules/@types", "typings"]
+    "typeRoots": ["node_modules/@types", "typings"],
+    "incremental": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_document.tsx"],
   "exclude": ["node_modules"],
