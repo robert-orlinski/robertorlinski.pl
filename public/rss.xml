@@ -4,9 +4,9 @@
         <description><![CDATA[Robert Orliński | Programuję i dzielę się wiedzą o programowaniu 🚀]]></description>
         <link>http://localhost:3000</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 30 Dec 2022 14:44:31 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 08 Jan 2023 21:37:33 GMT</lastBuildDate>
         <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
-        <copyright><![CDATA[2022 Robert Orliński]]></copyright>
+        <copyright><![CDATA[2023 Robert Orliński]]></copyright>
         <language><![CDATA[pl]]></language>
         <managingEditor><![CDATA[Robert Orliński]]></managingEditor>
         <webMaster><![CDATA[Robert Orliński]]></webMaster>
