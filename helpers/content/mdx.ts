@@ -45,6 +45,7 @@ const prepareMDX = async (
       NewsletterInterlude: 'newsletterInterlude',
       VideoInterlude: 'videoInterlude',
       CodePenIframe: 'codePenIframe',
+      DistantButton: 'distantButton',
     },
   });
 
