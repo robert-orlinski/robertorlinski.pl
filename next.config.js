@@ -14,7 +14,7 @@ const pagesRedirects = [
   },
   {
     source: '/mobile-apps',
-    destination: '/talks/building-mobile-apps-with-no-time-and-experience',
+    destination: '/artykuly/building-mobile-apps-with-no-time-and-experience',
     permanent: true,
   },
 ];
