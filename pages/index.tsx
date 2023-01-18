@@ -19,7 +19,7 @@ import slogan from 'Slogan';
 
 import { Post } from 'Types/content';
 
-import bannerImage from 'Images/banners/me.jpg';
+import bannerImage from 'Images/featured-images/me.jpg';
 
 type Props = {
   newestPosts: Post[];

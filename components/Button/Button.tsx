@@ -1,58 +1,59 @@
-import { FC } from 'react';
+import { FC, MouseEventHandler } from 'react';
 import styled, { css } from 'styled-components';
 
+import { LinkContainer as LinkContainerType } from 'Types/links';
 import LinkContainer from 'Components/LinkContainer';
-
-import { Button as ButtonType } from 'Types/links';
 
 type InnerProps = {
   withSpaceAbove?: boolean;
   withSpaceBelow?: boolean;
   size?: 'default' | 'big' | 'custom';
   tone?: 'light' | 'dark';
+  className?: string;
 };
 
-const Button: FC<ButtonType & InnerProps> = ({
-  children,
-  href,
-  type,
-  onClick,
-  withSpaceAbove,
-  withSpaceBelow,
-  className,
-  size = 'default',
-  tone = 'dark',
-}) =>
-  href ? (
-    <LinkContainer href={href}>
-      <ButtonInner
-        {...{
-          size,
-          tone,
-          withSpaceAbove,
-          withSpaceBelow,
-          className,
-        }}
-      >
-        {children}
-      </ButtonInner>
-    </LinkContainer>
-  ) : (
-    <ButtonInner
-      as="button"
-      {...{
-        type,
-        onClick,
-        size,
-        tone,
-        withSpaceAbove,
-        withSpaceBelow,
-        className,
-      }}
-    >
-      {children}
-    </ButtonInner>
+type ClickableButtonProps =
+  | {
+      type: 'button';
+      onClick: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement> | undefined;
+    }
+  | {
+      type: 'submit';
+    };
+
+export type ButtonProps = (ClickableButtonProps | LinkContainerType) & InnerProps;
+
+const Button: FC<ButtonProps> = (props) => {
+  const size = props.size || 'default';
+  const tone = props.tone || 'dark';
+
+  const propsWithDefaults = { ...props, size, tone };
+
+  if ('type' in propsWithDefaults) {
+    return <ButtonInner as="button" {...propsWithDefaults} />;
+  }
+
+  if ('href' in propsWithDefaults) {
+    const { href, ...propsWithoutHref } = propsWithDefaults;
+    const isExternal = href.includes('http');
+
+    if (isExternal) {
+      return <ButtonInner target="_blank" rel="noreferrer" {...propsWithDefaults} />;
+    }
+
+    return (
+      <LinkContainer href={href}>
+        <ButtonInner {...propsWithoutHref} />
+      </LinkContainer>
+    );
+  }
+
+  console.error(
+    'Button component should be either a `button` element with `type` prop or `a` element with `href` prop.',
   );
+
+  return <></>;
+};
 
 const ButtonInner = styled.a<InnerProps>`
   --transition-duration: var(--short-transition-duration);

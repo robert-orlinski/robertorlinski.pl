@@ -1,4 +1,4 @@
-import DistantButton from 'Components/DistantButton';
+import DistantButtonCentered from 'Components/DistantButtonCentered';
 import MainBanner from 'Components/MainBanner';
 import TextBlock from 'Components/TextBlock';
 import Wrapper from 'Components/Wrapper';
@@ -8,7 +8,7 @@ import P from 'Components/P';
 import siteName from 'SiteName';
 import addressSeparator from 'AddressSeparator';
 
-import bannerImage from 'Images/banners/me-in-austria.jpg';
+import bannerImage from 'Images/featured-images/me-in-austria.jpg';
 
 const NewsletterSuccess = () => (
   <>
@@ -28,12 +28,12 @@ const NewsletterSuccess = () => (
     <Wrapper as="main">
       <TextBlock>
         <P>
-          Teraz już oficjalnie - mamy kontakt na mailu! Jeśli tylko Cię to interesuje, to e-booka z
+          Teraz już oficjalnie - mamy kontakt na mailu! Jeśli tylko Cię to interesuje, to e-booka z
           30 rzeczami, o które trzeba zadbać oddając stronę na WordPressie, znajdziesz poniżej:
         </P>
-        <DistantButton href="https://static.robertorlinski.pl/niezbednik-wordpress-developera.pdf">
+        <DistantButtonCentered href="https://static.robertorlinski.pl/niezbednik-wordpress-developera.pdf">
           Pobierz e-book
-        </DistantButton>
+        </DistantButtonCentered>
         <P>Niech służy!</P>
         <P>Do zobaczenia na Twojej skrzynce odbiorczej ❤️</P>
       </TextBlock>

@@ -16,7 +16,7 @@ import addressSeparator from 'AddressSeparator';
 
 import { to } from 'Devices';
 
-import bannerImage from 'Images/banners/river.jpg';
+import bannerImage from 'Images/featured-images/river.jpg';
 
 const Newsletter = () => (
   <>
