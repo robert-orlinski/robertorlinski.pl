@@ -16,6 +16,7 @@ import H from 'Components/H';
 
 import Anchor from './parts/Anchor';
 import Img from './parts/Img';
+import DistantButton from 'Components/DistantButton';
 
 type Props = { source: string } & JSX.IntrinsicElements['article'];
 
@@ -26,6 +27,7 @@ const MDXArticle: FC<Props> = ({ source, className }) => {
         newsletterInterlude: NewsletterInterlude,
         videoInterlude: VideoInterlude,
         codePenIframe: CodePenIframe,
+        distantButton: DistantButton,
       }),
     [source],
   );

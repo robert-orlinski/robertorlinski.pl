@@ -81,6 +81,11 @@ const topicsGroups: TopicsGroup[] = [
         slug: 'inne',
         featuredImage: `${topicsImagesDir}/others.jpg`,
       },
+      {
+        name: 'Wystąpienia',
+        slug: 'wystapienia',
+        featuredImage: `${topicsImagesDir}/others.jpg`, // To be done: New image and in general, this is more of a placeholder since blog will be bilingual and should have talks as separate content type.
+      },
     ],
   },
 ];

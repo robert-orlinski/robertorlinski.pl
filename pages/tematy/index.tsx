@@ -43,7 +43,7 @@ const Topics: FC<PostsContainer> = () => (
         </P>
       </TextBlock>
       {topicsGroups
-        .filter(({ groupName }) => groupName !== 'Inne')
+        .filter(({ groupName }) => groupName !== 'Inne' && groupName !== 'Talks')
         .map(({ groupName, topics }) => (
           <TopicsGroup key={groupName} groupName={groupName} topics={topics} />
         ))}
