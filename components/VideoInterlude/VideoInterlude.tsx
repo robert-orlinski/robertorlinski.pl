@@ -14,7 +14,7 @@ type Props = {
 const VideoInterlude: FC<Props> = ({ id, title }) => (
   <DarkBox>
     <header>
-      <Title>Psst! Jeśli wolisz oglądać, niż czytać, to ten artykuł ma też wersję wideo!</Title>
+      <Title>Psst! Jeśli wolisz oglądać, niż czytać, to ten artykuł ma też wersję wideo!</Title>
     </header>
     <VideoStyles />
     <Video noCookie={true} poster="maxresdefault" {...{ id, title }} />

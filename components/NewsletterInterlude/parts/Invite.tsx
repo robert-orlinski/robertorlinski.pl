@@ -11,7 +11,7 @@ type Props = {
 const Invite: FC<Props> = ({ togglePopupVisibility }) => (
   <DarkBox as="header">
     <H2>Interesujesz się front-endem lub programowaniem ogólnie?</H2>
-    <Button onClick={togglePopupVisibility} tone="light">
+    <Button onClick={togglePopupVisibility} tone="light" type="button">
       Sprawdź mój newsletter!
     </Button>
   </DarkBox>

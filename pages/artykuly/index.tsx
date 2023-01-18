@@ -12,7 +12,7 @@ import { getPosts } from 'Helpers/content/posts';
 
 import { PostsContainer } from 'Types/content';
 
-import bannerImage from 'Images/banners/forest.jpg';
+import bannerImage from 'Images/featured-images/forest.jpg';
 
 const Blog: FC<PostsContainer> = ({ posts }) => (
   <>

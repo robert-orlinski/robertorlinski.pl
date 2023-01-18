@@ -11,7 +11,7 @@ import CloseButton from './CloseButton';
 
 import { from, to } from 'Devices';
 
-import Cover from 'Images/banners/me-in-lavender.jpg';
+import Cover from 'Images/featured-images/me-in-lavender.jpg';
 
 type ContainerProps = {
   isVisible: boolean;

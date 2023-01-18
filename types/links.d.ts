@@ -1,4 +1,4 @@
-import { ReactChild, MouseEventHandler } from 'react';
+import { ReactChild } from 'react';
 
 export type LinkContainer = {
   href: string;
@@ -13,16 +13,9 @@ export type UnderlinedLinkStyle = {
 };
 
 export type Link = {
-  isExternal?: boolean;
   children: ReactChild;
+  isExternal?: boolean;
   className?: string;
   tabIndex?: number;
 } & UnderlinedLinkStyle &
   LinkContainer;
-
-export type Button = {
-  type?: 'submit' | 'button';
-  onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement> | undefined;
-} & {
-  [P in keyof LinkContainer]?: LinkContainer[P];
-} & (JSX.IntrinsicElements['a'] | JSX.IntrinsicElements['button']);

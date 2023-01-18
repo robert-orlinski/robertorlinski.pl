@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 import PostMeta from 'Components/PostMeta';
 
@@ -11,7 +11,7 @@ type Props = {
   title: string;
   topics: TopicName[];
   date: string;
-  featuredImage: string;
+  featuredImage: StaticImageData | string;
 };
 
 const PostHeader: FC<Props> = ({ title, topics, date, featuredImage }) => (

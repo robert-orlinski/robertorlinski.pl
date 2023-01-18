@@ -18,7 +18,7 @@ import siteName from 'SiteName';
 
 import { PostsContainer } from 'Types/content';
 
-import bannerImage from 'Images/banners/books.jpg';
+import bannerImage from 'Images/featured-images/books.jpg';
 
 const Topics: FC<PostsContainer> = () => (
   <>

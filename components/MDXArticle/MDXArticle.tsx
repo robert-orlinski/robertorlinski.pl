@@ -8,7 +8,8 @@ import CodePenIframe from 'Components/CodePenIframe';
 import Blockquote from 'Components/Blockquote';
 import CodeBlock from 'Components/CodeBlock';
 import Highlight from 'Components/Highlight';
-import List from 'Components/List';
+import Ul from 'Components/Ul';
+import Ol from 'Components/Ol';
 import Li from 'Components/Li';
 import P from 'Components/P';
 import H from 'Components/H';
@@ -68,8 +69,5 @@ const H3 = (props: JSX.IntrinsicElements['h3']) => <H as="h3" isAnchor={true} {.
 const H4 = (props: JSX.IntrinsicElements['h4']) => <H as="h4" isAnchor={true} {...props} />;
 const H5 = (props: JSX.IntrinsicElements['h5']) => <H as="h5" isAnchor={true} {...props} />;
 const H6 = (props: JSX.IntrinsicElements['h6']) => <H as="h6" isAnchor={true} {...props} />;
-
-const Ul = (props: JSX.IntrinsicElements['ul']) => <List as="ul" {...props} />;
-const Ol = (props: JSX.IntrinsicElements['ol']) => <List as="ol" {...props} />;
 
 export default MDXArticle;

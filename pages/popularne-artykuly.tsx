@@ -12,7 +12,7 @@ import { getPosts } from 'Helpers/content/posts';
 
 import { PostsContainer } from 'Types/content';
 
-import bannerImage from 'Images/banners/best.jpg';
+import bannerImage from 'Images/featured-images/best.jpg';
 
 const PopularPosts: FC<PostsContainer> = ({ posts }) => (
   <>

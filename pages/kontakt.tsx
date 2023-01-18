@@ -7,7 +7,7 @@ import P from 'Components/P';
 import siteName from 'SiteName';
 import addressSeparator from 'AddressSeparator';
 
-import bannerImage from 'Images/banners/me-at-louvre.jpg';
+import bannerImage from 'Images/featured-images/me-at-louvre.jpg';
 
 const Contact = () => (
   <>

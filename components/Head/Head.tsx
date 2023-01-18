@@ -7,7 +7,7 @@ import siteUrl from 'SiteUrl';
 import slogan from 'Slogan';
 import addressSeparator from 'AddressSeparator';
 
-import myPhoto from 'Images/banners/me.jpg';
+import myPhoto from 'Images/featured-images/me.jpg';
 import getISOStringFromPublicationDate from 'Helpers/functions/getISOStringFromPublicationDate';
 
 type Schema = {

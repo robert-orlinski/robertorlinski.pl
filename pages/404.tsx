@@ -13,7 +13,7 @@ import Newsletter from 'Components/Newsletter';
 
 import { getRandomPosts } from 'Helpers/content/posts';
 
-import bannerImage from 'Images/banners/me-broken.jpg';
+import bannerImage from 'Images/featured-images/me-broken.jpg';
 
 import { Post } from 'Types/content';
 import PostsExcerpt from 'Components/PostsExcerpt';

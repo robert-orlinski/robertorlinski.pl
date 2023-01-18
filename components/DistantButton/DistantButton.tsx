@@ -1,18 +1,16 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 
-import CenteredText from 'Components/CenteredText';
 import Button from 'Components/Button';
+import { ButtonProps } from 'Components/Button';
 
-import { Button as ButtonType } from 'Types/links';
-
-const DistantButton: FC<ButtonType> = ({ children, href, type, onClick }) => (
-  <DistantButtonContainer>
-    <Button {...{ href, type, onClick }}>{children}</Button>
-  </DistantButtonContainer>
+const DistantButton: FC<ButtonProps> = (props) => (
+  <Container>
+    <Button {...props} />
+  </Container>
 );
 
-const DistantButtonContainer = styled(CenteredText)`
+const Container = styled.div`
   padding-bottom: calc(var(--section-gap) * 0.6);
 `;
 

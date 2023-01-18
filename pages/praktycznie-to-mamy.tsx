@@ -8,7 +8,7 @@ import P from 'Components/P';
 import siteName from 'SiteName';
 import addressSeparator from 'AddressSeparator';
 
-import bannerImage from 'Images/banners/frisbee.jpg';
+import bannerImage from 'Images/featured-images/frisbee.jpg';
 
 const NewsletterConfirmation = () => (
   <>

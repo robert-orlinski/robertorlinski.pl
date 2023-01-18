@@ -6,7 +6,7 @@ import CustomButton from './CustomButton';
 import { Cross } from 'Components/icons';
 
 const CloseButton: FC<JSX.IntrinsicElements['button']> = ({ className, onClick }) => (
-  <Button {...{ className, onClick }}>
+  <Button {...{ className, onClick }} type="button">
     <CrossIcon />
   </Button>
 );
