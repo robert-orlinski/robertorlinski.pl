@@ -12,6 +12,11 @@ const pagesRedirects = [
     destination: '/artykuly',
     permanent: true,
   },
+  {
+    source: '/mobile-apps',
+    destination: '/talks/building-mobile-apps-with-no-time-and-experience',
+    permanent: true,
+  },
 ];
 
 const topicsRedirects = [
