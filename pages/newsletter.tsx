@@ -36,15 +36,16 @@ const Newsletter = () => (
     <main>
       <TextBlock>
         <P>
-          <b>Zero spamu</b>, tylko jakościowy content co parę tygodni - o front-endzie, WordPressie
-          i rzeczach związanych z blogiem 🚀
+          <b>Zero spamu</b>, tylko jakościowy content co parę tygodni - o front-endzie,
+          programowaniu ogólnie, produktywności, karierze programisty, książkach i rzeczach
+          związanych z blogiem 🚀
         </P>
         <NewsletterContainer>
           <NewsletterForm />
         </NewsletterContainer>
       </TextBlock>
       <FeaturesContainer withSpaceBelow>
-        <SectionTitle>Co trafi na Twoją skrzynkę?</SectionTitle>
+        <SectionTitle>Co trafi na Twoją skrzynkę?</SectionTitle>
         <Features>
           <Feature>
             Autorski tekst na temat front-endu, programowania ogólnie, kariery, produktywności,
@@ -52,7 +53,7 @@ const Newsletter = () => (
           </Feature>
           <Feature>
             Najlepsze, ostatnio znalezione miejsca w Internecie, które mnie rozwinęły i sądzę, że
-            rozwiną też Ciebie!
+            rozwiną też Ciebie!
           </Feature>
           <Feature>I nowości z samego bloga! Ostatnie artykuły, filmy i inne materiały ✨</Feature>
         </Features>
