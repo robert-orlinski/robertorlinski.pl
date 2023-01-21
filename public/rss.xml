@@ -4,7 +4,7 @@
         <description><![CDATA[Robert Orliński | Programuję i dzielę się wiedzą o programowaniu 🚀]]></description>
         <link>http://localhost:3000</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 21 Jan 2023 18:23:14 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 21 Jan 2023 19:04:45 GMT</lastBuildDate>
         <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
         <copyright><![CDATA[2023 Robert Orliński]]></copyright>
         <language><![CDATA[pl]]></language>
@@ -85,15 +85,6 @@
             <category><![CDATA[Front-end]]></category>
             <dc:creator><![CDATA[Robert Orliński]]></dc:creator>
             <pubDate>Tue, 19 Oct 2021 22:00:00 GMT</pubDate>
-        </item>
-        <item>
-            <title><![CDATA[Metodologia BEM - wszystko, co trzeba o niej wiedzieć]]></title>
-            <description><![CDATA[Metodologia BEM 🤔 O co w niej chodzi? Dlaczego jest taka popularna? Jak z niej korzystać? Jakich błędów nie popełniać? O tym jest ten wpis!]]></description>
-            <link>http://localhost:3000/metodologia-bem</link>
-            <guid isPermaLink="false">metodologia-bem</guid>
-            <category><![CDATA[Front-end]]></category>
-            <dc:creator><![CDATA[Robert Orliński]]></dc:creator>
-            <pubDate>Sun, 17 Oct 2021 22:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[Pasek postępu, który rozszerza się podczas przewijania strony internetowej]]></title>
@@ -334,6 +325,15 @@
             <category><![CDATA[Praca]]></category>
             <dc:creator><![CDATA[Robert Orliński]]></dc:creator>
             <pubDate>Sun, 12 Aug 2018 22:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Metodologia BEM - wszystko, co trzeba o niej wiedzieć]]></title>
+            <description><![CDATA[Metodologia BEM 🤔 O co w niej chodzi? Dlaczego jest taka popularna? Jak z niej korzystać? Jakich błędów nie popełniać? O tym jest ten wpis!]]></description>
+            <link>http://localhost:3000/metodologia-bem</link>
+            <guid isPermaLink="false">metodologia-bem</guid>
+            <category><![CDATA[Front-end]]></category>
+            <dc:creator><![CDATA[Robert Orliński]]></dc:creator>
+            <pubDate>Sun, 15 Jul 2018 22:00:00 GMT</pubDate>
         </item>
         <item>
             <title><![CDATA[7 świetnych mixinów dla SCSSa, które zauważalnie usprawnią Twoją pracę]]></title>
