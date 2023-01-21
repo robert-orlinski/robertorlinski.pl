@@ -1,4 +1,3 @@
-import DistantButtonCentered from 'Components/DistantButtonCentered';
 import MainBanner from 'Components/MainBanner';
 import TextBlock from 'Components/TextBlock';
 import Wrapper from 'Components/Wrapper';
@@ -27,15 +26,8 @@ const NewsletterSuccess = () => (
     />
     <Wrapper as="main">
       <TextBlock>
-        <P>
-          Teraz już oficjalnie - mamy kontakt na mailu! Jeśli tylko Cię to interesuje, to e-booka z
-          30 rzeczami, o które trzeba zadbać oddając stronę na WordPressie, znajdziesz poniżej:
-        </P>
-        <DistantButtonCentered href="https://static.robertorlinski.pl/niezbednik-wordpress-developera.pdf">
-          Pobierz e-book
-        </DistantButtonCentered>
-        <P>Niech służy!</P>
-        <P>Do zobaczenia na Twojej skrzynce odbiorczej ❤️</P>
+        <P>Teraz już oficjalnie - mamy kontakt na mailu!</P>
+        <P>Do zobaczenia na Twojej skrzynce odbiorczej 🥳</P>
       </TextBlock>
     </Wrapper>
   </>

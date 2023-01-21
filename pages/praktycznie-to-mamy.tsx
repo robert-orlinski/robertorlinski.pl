@@ -29,9 +29,9 @@ const NewsletterConfirmation = () => (
       <TextBlock>
         <P>Fajnie, że będziemy mieli tam kontakt!</P>
         <P>
-          Jedna tylko sprawa - <strong>potwierdź swój adres.</strong> Po wejściu w link, który
-          powinien być już na Twojej skrzynce odbiorczej, będę w stanie przesłać Ci e-book i
-          podrzucać dobre rzeczy związane z tematami, które poruszam na blogu.
+          Jedna tylko sprawa - <strong>potwierdź swój adres.</strong> Dopiero gdy wejdziesz w link,
+          który powinien być już w Twojej skrzynce odbiorczej, będę w stanie podrzucać Ci dobre
+          rzeczy związane z tematami poruszanymi na blogu.
         </P>
         <P>Do zobaczenia!</P>
         <Button href="/">Strona główna</Button>
