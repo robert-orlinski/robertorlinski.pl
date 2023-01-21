@@ -13,9 +13,11 @@ const TopicsGroup: FC<GroupType> = ({ groupName, topics }) => (
     </div>
     <Topics>
       {topics &&
-        topics.map(({ name, slug, featuredImage }) => (
-          <Topic key={name} name={name} slug={slug} featuredImage={featuredImage} />
-        ))}
+        topics
+          .filter((topic) => topic.slug !== 'inne')
+          .map(({ name, slug, featuredImage }) => (
+            <Topic key={name} name={name} slug={slug} featuredImage={featuredImage} />
+          ))}
     </Topics>
   </Group>
 );
