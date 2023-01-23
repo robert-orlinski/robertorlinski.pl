@@ -4,12 +4,21 @@
         <description><![CDATA[Robert Orliński | Programuję i dzielę się wiedzą o programowaniu 🚀]]></description>
         <link>http://localhost:3000</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 23 Jan 2023 11:02:24 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 23 Jan 2023 11:11:04 GMT</lastBuildDate>
         <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
         <copyright><![CDATA[2023 Robert Orliński]]></copyright>
         <language><![CDATA[pl]]></language>
         <managingEditor><![CDATA[Robert Orliński]]></managingEditor>
         <webMaster><![CDATA[Robert Orliński]]></webMaster>
+        <item>
+            <title><![CDATA[How to build a mobile app with no time, experience but at least knowing React 🤷‍♂️]]></title>
+            <description><![CDATA[On 23th of January 2023 I gave a talk on building mobile apps as front-end developers without knowing on how to do it. Here are slides, recording, and things I've talked about!]]></description>
+            <link>http://localhost:3000/building-mobile-apps-with-no-time-and-experience</link>
+            <guid isPermaLink="false">building-mobile-apps-with-no-time-and-experience</guid>
+            <category><![CDATA[Wystąpienia]]></category>
+            <dc:creator><![CDATA[Robert Orliński]]></dc:creator>
+            <pubDate>Sun, 22 Jan 2023 23:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[Nowy RobertOrlinski.pl = TypeScript + Next.js + Styled Components + mdx-bundler + inne ✨]]></title>
             <description><![CDATA[Stworzyłem nową wersję mojego bloga i strony osobistej? Po co? Za pomocą jakich technologii? Co się zmieniło?]]></description>
