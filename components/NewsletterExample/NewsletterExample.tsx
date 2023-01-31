@@ -222,7 +222,10 @@ const NewsletterExample = () => (
           projektach, gdzie wykorzystuję wspomnianą funkcję.
         </P>
         <H5>
-          5. <Link href="https://undraw.co/illustrations">UnDraw Illustations</Link>
+          5.{' '}
+          <Link href="https://undraw.co/illustrations" isUnderlineVisible>
+            UnDraw Illustations
+          </Link>
         </H5>
         <P>Zbiór z toną cudownych ilustracji w .svg. I co najlepsze - do wolnego użytku!</P>
         <P>
