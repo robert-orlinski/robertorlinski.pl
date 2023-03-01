@@ -7,5 +7,4 @@ const protocol = process.env.NODE_ENV === 'production' ? 'https' : 'http';
 module.exports = {
   siteUrl: `${protocol}://${host}`,
   generateRobotsTxt: true,
-  exclude: ['/admin'],
 };
