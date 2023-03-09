@@ -4,12 +4,21 @@
         <description><![CDATA[Robert Orliński | Programuję i dzielę się wiedzą o programowaniu 🚀]]></description>
         <link>http://localhost:3000</link>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 31 Jan 2023 20:37:12 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 09 Mar 2023 08:20:40 GMT</lastBuildDate>
         <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml"/>
         <copyright><![CDATA[2023 Robert Orliński]]></copyright>
         <language><![CDATA[pl]]></language>
         <managingEditor><![CDATA[Robert Orliński]]></managingEditor>
         <webMaster><![CDATA[Robert Orliński]]></webMaster>
+        <item>
+            <title><![CDATA[Wystąpiłem na meet-upie programistycznym - 5 lekcji na przyszłość]]></title>
+            <description><![CDATA[Kilka tygodni temu, po raz pierwszy w życiu miałem przyjemność wystąpić na meet-upie programistycznym. Oto 5 lekcji, które wyniosłem z całego tego doświadczenia.]]></description>
+            <link>http://localhost:3000/wystapienie-na-meetupie-lekcje</link>
+            <guid isPermaLink="false">wystapienie-na-meetupie-lekcje</guid>
+            <category><![CDATA[Rozwój]]></category>
+            <dc:creator><![CDATA[Robert Orliński]]></dc:creator>
+            <pubDate>Wed, 08 Mar 2023 23:00:00 GMT</pubDate>
+        </item>
         <item>
             <title><![CDATA[How to bypass mobile app review thanks to Capacitor, Ionic, and micro frontends 🤯]]></title>
             <description><![CDATA[Are you tired of sending your app to Apple or Google to review it every time you update it? Here I show how you can use micro frontends, Ionic, and Capacitor to bypass more than 90% of reviews like these.]]></description>
@@ -295,7 +304,7 @@
             <description><![CDATA[Każdy z nas ma styczność z angielskim, dlatego chcę przekazać Ci 7 materiałów, z których na co dzień korzystam i uważam za niezwykle pomocne.]]></description>
             <link>http://localhost:3000/materialy-do-nauki-jezyka-angielskiego</link>
             <guid isPermaLink="false">materialy-do-nauki-jezyka-angielskiego</guid>
-            <category><![CDATA[Nauka]]></category>
+            <category><![CDATA[Rozwój]]></category>
             <dc:creator><![CDATA[Robert Orliński]]></dc:creator>
             <pubDate>Sun, 01 Dec 2019 23:00:00 GMT</pubDate>
         </item>
