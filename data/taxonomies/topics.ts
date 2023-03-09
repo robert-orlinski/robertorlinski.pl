@@ -62,8 +62,8 @@ const topicsGroups: TopicsGroup[] = [
         featuredImage: `${topicsImagesDir}/productivity.jpg`,
       },
       {
-        name: 'Nauka',
-        slug: 'nauka',
+        name: 'Rozwój',
+        slug: 'rozwoj',
         featuredImage: `${topicsImagesDir}/learning.jpg`,
       },
       {

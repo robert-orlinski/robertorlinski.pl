@@ -25,6 +25,11 @@ const topicsRedirects = [
     destination: '/tematy/przemyslenia',
     permanent: true,
   },
+  {
+    source: '/tematy/nauka',
+    destination: '/tematy/rozwoj',
+    permanent: true,
+  },
 ];
 
 const goodiesRedirects = [
@@ -500,6 +505,11 @@ const postsRedirects = [
   {
     source: '/nowa-wersja',
     destination: '/artykuly/nowa-wersja-robertorlinski.pl',
+    permanent: true,
+  },
+  {
+    source: '/meetup-lekcje',
+    destination: '/artykuly/wystapienie-na-meetupie-lekcje',
     permanent: true,
   },
 ];
