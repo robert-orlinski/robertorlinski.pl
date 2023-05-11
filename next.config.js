@@ -512,6 +512,11 @@ const postsRedirects = [
     destination: '/artykuly/wystapienie-na-meetupie-lekcje',
     permanent: true,
   },
+  {
+    source: '/wszystkie-artykuly',
+    destination: '/artykuly',
+    permanent: true,
+  },
 ];
 
 const dynamicPathsRedirects = [
