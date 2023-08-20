@@ -517,6 +517,11 @@ const postsRedirects = [
     destination: '/artykuly',
     permanent: true,
   },
+  {
+    source: '/wlasne-bloki-w-wordpress-gutenberg',
+    destination: '/tematy/wlasne-bloki-w-wordpress-gutenberg',
+    permanent: true,
+  },
 ];
 
 const dynamicPathsRedirects = [
