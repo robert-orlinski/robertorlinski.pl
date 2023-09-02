@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import Invite from './parts/Invite';
 import Popup from './parts/Popup';
 
-const NewsletterPopup = () => {
+const NewsletterInterlude = () => {
   const [isPopupVisible, togglePopupVisibility] = useToggle(false);
 
   return (
@@ -26,4 +26,4 @@ const Container = styled.section`
   }
 `;
 
-export default NewsletterPopup;
+export default NewsletterInterlude;
