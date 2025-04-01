@@ -1,11 +1,9 @@
 import { FC } from 'react';
 import { GetStaticProps } from 'next';
 
-import TextWithLinks from 'Components/TextWithLinks';
 import CenteredText from 'Components/CenteredText';
 import PostsExcerpt from 'Components/PostsExcerpt';
 import MainBanner from 'Components/MainBanner';
-import Newsletter from 'Components/Newsletter';
 import TextBlock from 'Components/TextBlock';
 import Button from 'Components/Button';
 import Head from 'Components/Head';
@@ -13,7 +11,6 @@ import P from 'Components/P';
 
 import { getPosts } from 'Helpers/content/posts';
 import addressSeparator from 'AddressSeparator';
-import mySummary from 'Data/mySummary';
 import siteName from 'SiteName';
 import slogan from 'Slogan';
 
@@ -44,16 +41,16 @@ const Home: FC<Props> = ({ newestPosts, popularPosts }) => (
     <main>
       <TextBlock>
         <P>
-          Działałem jako freelancer, później pomagałem rozwijać się agencji kreatywnej, a od pewnego
-          czasu, współtworzę większe aplikacje i platformy - jako front-end developer.
+          Na ten moment nie piszę nowych treści na bloga, ale gdy to robiłem, pisałem o
+          front-endzie, WordPressie oraz pracy jako freelancer. Możliwe, że w ramach tego archiwum,
+          znajdziesz coś przydatnego dla siebie!
         </P>
-        <TextWithLinks text={mySummary} />
         <CenteredText as="footer">
-          <Button href="/tematy">Jakie tematy tu poruszam?</Button>
+          <Button href="/tematy">Jakie tematy tu poruszałem?</Button>
         </CenteredText>
       </TextBlock>
       <PostsExcerpt
-        title="Najnowsze artykuły"
+        title="Ostatnie artykuły"
         posts={newestPosts}
         button={{
           href: '/artykuly',
@@ -68,8 +65,8 @@ const Home: FC<Props> = ({ newestPosts, popularPosts }) => (
           title: 'Wszystkie popularne artykuły',
         }}
         withSpaceAbove
+        withSpaceBelow
       />
-      <Newsletter />
     </main>
   </>
 );

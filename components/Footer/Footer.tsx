@@ -25,13 +25,12 @@ const Footer = () => {
       </Top>
       <Bottom size="tiny">
         <p>Copyright | {currentYear}</p>
-        <p>Zaprojektowane i zakodowane przeze mnie ✨</p>
         <p>
-          Cały kod z kolei, znajdziesz na{' '}
+          Cały kod tego bloga znajdziesz na{' '}
           <Link href="https://github.com/robert-orlinski/robertorlinski.pl" isUnderlineVisible>
             moim GitHubie
           </Link>
-          !
+          .
         </p>
       </Bottom>
     </FooterWrapper>

@@ -7,7 +7,6 @@ import MDXArticle from 'Components/MDXArticle';
 
 import Comments from 'Components/Comments';
 import RawHeader from 'Components/RawHeader';
-import Newsletter from 'Components/Newsletter';
 import PostHeader from 'Components/PostHeader';
 import CommentsInvite from 'Components/CommentsInvite';
 
@@ -48,7 +47,6 @@ const Post: FC<PostWithContentAndRelatedPosts> = ({ metaData, content, relatedPo
         withBorderAbove
         withBorderBelow
       />
-      <Newsletter />
       <Comments title={metaTitle} />
     </>
   );

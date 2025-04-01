@@ -42,7 +42,6 @@ const prepareMDX = async (
       write: true,
     }),
     globals: {
-      NewsletterInterlude: 'newsletterInterlude',
       VideoInterlude: 'videoInterlude',
       CodePenIframe: 'codePenIframe',
       DistantButton: 'distantButton',

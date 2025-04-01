@@ -2,7 +2,6 @@ import { FC, useMemo } from 'react';
 import { getMDXComponent } from 'mdx-bundler/client';
 import styled from 'styled-components';
 
-import NewsletterInterlude from 'Components/NewsletterInterlude';
 import VideoInterlude from 'Components/VideoInterlude';
 import CodePenIframe from 'Components/CodePenIframe';
 import Blockquote from 'Components/Blockquote';
@@ -24,7 +23,6 @@ const MDXArticle: FC<Props> = ({ source, className }) => {
   const MDXContainer = useMemo(
     () =>
       getMDXComponent(source, {
-        newsletterInterlude: NewsletterInterlude,
         videoInterlude: VideoInterlude,
         codePenIframe: CodePenIframe,
         distantButton: DistantButton,
