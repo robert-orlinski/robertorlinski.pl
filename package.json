@@ -37,7 +37,7 @@
     "esbuild": "^0.14.30",
     "mdx-bundler": "^9.0.0",
     "module-alias": "^2.2.2",
-    "next": "12.1.4",
+    "next": "^12.3.7",
     "polish-plurals": "^1.1.0",
     "react": "18.0.0",
     "react-dom": "18.0.0",
