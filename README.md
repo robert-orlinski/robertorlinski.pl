@@ -57,7 +57,7 @@ npm run start
 7. Jest and React Testing Library (for unit and React components testing);
 8. React Hook Form (nice and fast forms).
 
-Additionally, I am using some smaller and bigger tools: ESLint, Prettier, Day.js, rss, polish-plurals, slugify, rehype-prism, and reading-time.
+Additionally, I am using some smaller and bigger tools: ESLint, Prettier, Day.js, rss, polish-plurals, rehype-prism, and reading-time.
 
 ## What I want to implement next?
 
