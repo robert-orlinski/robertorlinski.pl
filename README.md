@@ -34,8 +34,6 @@ npm install
 npm run dev
 ```
 
-If you want to have newsletter running, you will need to define 2 environmental variables (`MAILCHIMP_AUDIENCE_ID` and `MAILCHIMP_API_KEY`) in `.env.local` file.
-
 If you want to build the project, you can use:
 
 ```
