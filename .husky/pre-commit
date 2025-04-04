@@ -1,9 +1,0 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-npx lint-staged
-npm test
-
-npm run generate
-git add cache/posts.json
-git add public/rss.xml

@@ -10,7 +10,6 @@
     "test:changed": "jest --watch",
     "test:watch": "jest --watchAll",
     "test": "jest",
-    "prepare": "husky install",
     "ts-node-esm": "node --no-warnings --loader ts-node/esm --experimental-specifier-resolution=node",
     "generate": "npm run ts-node-esm ./scripts/index.ts",
     "postbuild": "next-sitemap"
@@ -64,7 +63,6 @@
     "eslint-config-next": "12.1.4",
     "eslint-plugin-jest-dom": "^4.0.1",
     "eslint-plugin-testing-library": "^5.2.0",
-    "husky": "^7.0.4",
     "identity-obj-proxy": "^3.0.0",
     "install": "^0.13.0",
     "jest": "^27.5.1",
