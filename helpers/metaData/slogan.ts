@@ -1,3 +1,3 @@
-const slogan = 'Programuję i dzielę się wiedzą o programowaniu 🚀';
+const slogan = 'Blog o front-endzie, WordPressie i nie tylko.';
 
 export default slogan;

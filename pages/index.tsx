@@ -27,7 +27,7 @@ const Home: FC<Props> = ({ newestPosts, popularPosts }) => (
   <>
     <Head
       title={`${siteName} ${addressSeparator} ${slogan}`}
-      description="W WordPressie widziałem już dużo, więc teraz skupiam się na front-endzie. Programuję dla siebie oraz klientów, piszę na blogu i nagrywam filmy na YouTubie. Po godzinach działam jako aktywista ✨"
+      description="Na ten moment nie piszę nowych treści na bloga, ale gdy to robiłem, pisałem o front-endzie, WordPressie oraz pracy jako freelancer. Możliwe, że w ramach tego archiwum, znajdziesz coś przydatnego dla siebie!"
       featuredImage={bannerImage.src}
       contentType="website"
     />

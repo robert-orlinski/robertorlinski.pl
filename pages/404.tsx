@@ -32,7 +32,7 @@ const Page404: FC<Props> = ({ randomPosts }) => (
       title="Toż to strona 404!"
       image={{
         src: bannerImage,
-        alt: 'Załamy Robur, trzymający się za głowę.',
+        alt: 'Załamany Robur, trzymający się za głowę.',
       }}
     />
     <Wrapper>

@@ -61,14 +61,7 @@ const Head = (props: Props) => {
         '@type': ['Person', 'Organization'],
         '@id': `${siteUrl}/#person`,
         name: siteName,
-        sameAs: [
-          'https://www.facebook.com/robertorlinski.blog/',
-          'https://www.facebook.com/robert.orlinski.92/',
-          'https://www.instagram.com/robert.orlinski/',
-          'https://www.linkedin.com/in/robert-orlinski/',
-          'https://robertorlinski.pl/youtube/',
-          'https://twitter.com/robert_orlinski/',
-        ],
+        sameAs: ['https://www.linkedin.com/in/robert-orlinski/', 'https://x.com/robert_orlinski'],
         image: {
           '@type': 'ImageObject',
           '@id': `${siteUrl}/#logo`,
@@ -143,10 +136,6 @@ const Head = (props: Props) => {
       {props.contentType === 'article' && (
         <>
           <meta property="article:author" content="https://www.linkedin.com/in/robert-orlinski/" />
-          <meta
-            property="article:publisher"
-            content="https://www.facebook.com/robertorlinski.blog/"
-          />
           <meta
             property="article:published_time"
             content={getISOStringFromPublicationDate(props.publicationDate)}
