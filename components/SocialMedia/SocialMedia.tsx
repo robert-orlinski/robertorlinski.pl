@@ -42,12 +42,12 @@ const icons = [
   },
   {
     name: 'GitHub',
-    href: 'https://x.com/robert_orlinski',
+    href: 'https://github.com/robert-orlinski',
     component: <SocialIcon as={GitHub} />,
   },
   {
     name: 'X',
-    href: 'https://twitter.com/robert_orlinski',
+    href: 'https://x.com/robert_orlinski',
     component: <SocialIcon as={X} />,
   },
   {
