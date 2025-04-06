@@ -39,8 +39,7 @@ const Page404: FC<Props> = ({ randomPosts }) => (
       <TextBlock>
         <P>Ten Robert powyżej też nie odnalazł swojej ulubionej podstrony.</P>
         <P>
-          Aby Ciebie nie pozostawić z niczym tak jak jego, podrzucam 2 grupy treści, wśród których
-          mam nadzieję, znajdziesz coś dla siebie!
+          Aby Ciebie nie pozostawić z niczym tak jak jego, podrzucam poniżej 3 losowe wpisy z bloga.
         </P>
       </TextBlock>
     </Wrapper>
