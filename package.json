@@ -70,7 +70,7 @@
     "lint-staged": "^12.4.1",
     "next-router-mock": "^0.6.5",
     "next-sitemap": "^2.5.17",
-    "npm": "^8.6.0",
+    "npm": "^8.11.0",
     "prettier": "^2.6.2",
     "react-test-renderer": "^18.0.0",
     "rss": "^1.2.2",
