@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import styled, { css, createGlobalStyle } from 'styled-components';
 
 import Wrapper from 'Components/Wrapper';
@@ -12,7 +12,7 @@ type Props = {
   closeHandler?: () => void;
 };
 
-const SearchContainer: FC<Props> = ({ isVisible, children, closeHandler }) => (
+const SearchContainer: FC<PropsWithChildren<Props>> = ({ isVisible, children, closeHandler }) => (
   <>
     {isVisible && <OverflowHidden />}
     <Container {...{ isVisible }} role="search">
@@ -38,15 +38,19 @@ const Container = styled.aside<Props>`
   ${({ isVisible }) =>
     isVisible
       ? css`
-          transition: visibility 1ms, opacity var(--short-transition-duration),
+          transition:
+            visibility 1ms,
+            opacity var(--short-transition-duration),
             transform var(--short-transition-duration);
         `
       : css`
           transform: scale(0.95);
           opacity: 0;
           visibility: hidden;
-          transition: visibility 1ms var(--short-transition-duration),
-            opacity var(--short-transition-duration), transform var(--short-transition-duration);
+          transition:
+            visibility 1ms var(--short-transition-duration),
+            opacity var(--short-transition-duration),
+            transform var(--short-transition-duration);
         `}
 `;
 

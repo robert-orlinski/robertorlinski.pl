@@ -41,3 +41,6 @@ yarn-error.log*
 
 # public
 /public/images/posts
+# next.js generated types
+next-env.d.ts
+.eslintcache
