@@ -1,14 +1,11 @@
-module.exports = {
+const nextJest = require('next/jest');
+
+const createJestConfig = nextJest({ dir: './' });
+
+module.exports = createJestConfig({
   collectCoverageFrom: ['**/*.{js,jsx,ts,tsx}', '!**/*.d.ts', '!**/node_modules/**'],
-  moduleNameMapper: {
-    '^.+\\.(jpg|jpeg|png|gif|webp|avif|svg)$': '<rootDir>/__mocks__/files.js',
-  },
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
   testEnvironment: 'jsdom',
-  transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
-  },
-  transformIgnorePatterns: ['/node_modules/', '^.+\\.module\\.(css|sass|scss)$'],
   setupFilesAfterEnv: ['<rootDir>/helpers/tests/setup.ts'],
   moduleNameMapper: {
     Devices: '<rootDir>/helpers/devices.ts',
@@ -25,4 +22,4 @@ module.exports = {
     '^Hooks/(.*)$': '<rootDir>/hooks/$1',
     '^Cache/(.*)$': '<rootDir>/cache/$1',
   },
-};
+});

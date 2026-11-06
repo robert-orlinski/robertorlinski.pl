@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import Image, { StaticImageData } from 'next/image';
+import { StaticImageData } from 'next/image';
+import Image from 'next/legacy/image';
 
 import PostMeta from 'Components/PostMeta';
 

@@ -18,7 +18,7 @@ You can find it live at [robertorlinski.pl](https://robertorlinski.pl/) and see 
 
 ## How can you run it in your local environment?
 
-> Right now, I am using node@17.9.0.
+> Requires Node.js 20.9 or newer (Next.js 16 minimum).
 
 Copy the repo:
 

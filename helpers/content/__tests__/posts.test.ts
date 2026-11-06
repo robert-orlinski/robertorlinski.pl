@@ -10,6 +10,8 @@ import {
 
 import mockMdx from 'Helpers/tests/mockMdx';
 
+jest.mock('Helpers/content/mdx', () => ({ __esModule: true, default: jest.fn() }));
+
 mockMdx();
 
 jest.mock('Helpers/constants', () => {

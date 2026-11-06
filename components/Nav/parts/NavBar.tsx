@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import styled, { css } from 'styled-components';
 
 import Wrapper from 'Components/Wrapper';
@@ -7,7 +7,7 @@ type Props = {
   isSticky: boolean;
 };
 
-const NavBar: FC<Props> = ({ children, isSticky }) => (
+const NavBar: FC<PropsWithChildren<Props>> = ({ children, isSticky }) => (
   <Outer {...{ isSticky }}>
     <Inner>{children}</Inner>
   </Outer>
