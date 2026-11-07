@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",
+    "typecheck": "next typegen && tsc --noEmit",
     "test:changed": "jest --watch",
     "test:watch": "jest --watchAll",
     "test": "jest",
