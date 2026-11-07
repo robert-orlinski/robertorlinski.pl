@@ -1,8 +1,8 @@
-import { FC, MouseEventHandler } from 'react';
+import { FC, MouseEventHandler, PropsWithChildren } from 'react';
 import styled, { css } from 'styled-components';
 
 import { LinkContainer as LinkContainerType } from 'Types/links';
-import LinkContainer from 'Components/LinkContainer';
+import RouterLink from 'Components/RouterLink';
 
 type InnerProps = {
   withSpaceAbove?: boolean;
@@ -23,7 +23,7 @@ type ClickableButtonProps =
 
 export type ButtonProps = (ClickableButtonProps | LinkContainerType) & InnerProps;
 
-const Button: FC<ButtonProps> = (props) => {
+const Button: FC<PropsWithChildren<ButtonProps>> = (props) => {
   const size = props.size || 'default';
   const tone = props.tone || 'dark';
 
@@ -34,18 +34,14 @@ const Button: FC<ButtonProps> = (props) => {
   }
 
   if ('href' in propsWithDefaults) {
-    const { href, ...propsWithoutHref } = propsWithDefaults;
+    const { href } = propsWithDefaults;
     const isExternal = href.includes('http');
 
     if (isExternal) {
       return <ButtonInner target="_blank" rel="noreferrer" {...propsWithDefaults} />;
     }
 
-    return (
-      <LinkContainer href={href}>
-        <ButtonInner {...propsWithoutHref} />
-      </LinkContainer>
-    );
+    return <ButtonInner as={RouterLink} {...propsWithDefaults} />;
   }
 
   console.error(
@@ -68,7 +64,8 @@ const ButtonInner = styled.a<InnerProps>`
   color: var(--theme);
   text-align: center;
 
-  transition: background-color var(--transition-duration) var(--transition-timing-function),
+  transition:
+    background-color var(--transition-duration) var(--transition-timing-function),
     color var(--transition-duration) var(--transition-timing-function),
     transform var(--transition-duration) var(--transition-timing-function);
 
@@ -112,7 +109,9 @@ const ButtonInner = styled.a<InnerProps>`
     top: 0;
     opacity: 0;
 
-    box-shadow: 0 0.85rem 1.8rem 0 var(--shadow-color), 0 0.28rem 0.85rem 0 var(--shadow-color);
+    box-shadow:
+      0 0.85rem 1.8rem 0 var(--shadow-color),
+      0 0.28rem 0.85rem 0 var(--shadow-color);
 
     transition: opacity var(--transition-duration) var(--transition-timing-function);
   }
