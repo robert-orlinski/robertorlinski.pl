@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import { StaticImageData } from 'next/image';
-import Image from 'next/legacy/image';
+import Image, { StaticImageData } from 'next/image';
 
 import Wrapper from 'Components/Wrapper';
 import Nav from 'Components/Nav';
@@ -27,7 +26,7 @@ const MainBanner: FC<Props> = ({ title, image: { src, alt }, withAdditionalSpace
     <Banner {...{ withAdditionalSpaceOnPhone }}>
       <MainTitle as="h1">{title}</MainTitle>
       <ImageContainer>
-        <Image {...{ src, alt }} width="880" height="560" objectFit="cover" priority />
+        <BannerImage {...{ src, alt }} width="880" height="560" priority />
       </ImageContainer>
     </Banner>
   </header>
@@ -68,6 +67,13 @@ const MainTitle = styled(SectionTitle)`
 
     background-color: #fff;
   }
+`;
+
+const BannerImage = styled(Image)`
+  display: inline-block;
+  height: auto;
+  aspect-ratio: 880 / 560;
+  object-fit: cover;
 `;
 
 const ImageContainer = styled.figure`
