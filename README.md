@@ -18,7 +18,7 @@ You can find it live at [robertorlinski.pl](https://robertorlinski.pl/) and see 
 
 ## How can you run it in your local environment?
 
-> Right now, I am using node@17.9.0.
+> Requires Node.js 26 (see `.nvmrc`; run `nvm use` or `fnm use`). Vercel builds with Node.js 26.x via `engines` in `package.json`.
 
 Copy the repo:
 

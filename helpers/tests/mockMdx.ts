@@ -6,11 +6,7 @@ const mockMdx = (): void => {
     .mockImplementation((source, { resourcePath }: any) => {
       const dirForFeaturedImage = resourcePath.replace('__mocks__', 'public/images');
 
-      fs.access(dirForFeaturedImage, function (err) {
-        if (err && err.code === 'ENOENT') {
-          fs.mkdirSync(dirForFeaturedImage);
-        }
-      });
+      fs.mkdirSync(dirForFeaturedImage, { recursive: true });
 
       const mockedResourceContent = fs.readFileSync(`${resourcePath}/index.json`, 'utf8');
 

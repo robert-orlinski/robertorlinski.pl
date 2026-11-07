@@ -542,6 +542,16 @@ const redirects = pagesRedirects.concat(
 
 module.exports = {
   reactStrictMode: true,
+  images: {
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+  compiler: {
+    styledComponents: {
+      displayName: true,
+      ssr: true,
+      fileName: true,
+    },
+  },
   async redirects() {
     return redirects;
   },
