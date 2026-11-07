@@ -2,7 +2,7 @@ import { FC, MouseEventHandler, PropsWithChildren } from 'react';
 import styled, { css } from 'styled-components';
 
 import { LinkContainer as LinkContainerType } from 'Types/links';
-import LinkContainer from 'Components/LinkContainer';
+import RouterLink from 'Components/RouterLink';
 
 type InnerProps = {
   withSpaceAbove?: boolean;
@@ -34,18 +34,14 @@ const Button: FC<PropsWithChildren<ButtonProps>> = (props) => {
   }
 
   if ('href' in propsWithDefaults) {
-    const { href, ...propsWithoutHref } = propsWithDefaults;
+    const { href } = propsWithDefaults;
     const isExternal = href.includes('http');
 
     if (isExternal) {
       return <ButtonInner target="_blank" rel="noreferrer" {...propsWithDefaults} />;
     }
 
-    return (
-      <LinkContainer href={href}>
-        <ButtonInner {...propsWithoutHref} />
-      </LinkContainer>
-    );
+    return <ButtonInner as={RouterLink} {...propsWithDefaults} />;
   }
 
   console.error(

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import UnderlinedLink from 'Components/UnderlinedLink';
-import LinkContainer from 'Components/LinkContainer';
+import RouterLink from 'Components/RouterLink';
 import MenuItem from 'Components/MenuItem';
 
 import mainMenu from 'Data/header/mainMenu';
@@ -13,9 +13,9 @@ const NavMenu = () => (
     {mainMenu &&
       mainMenu.map(({ href, title }, i) => (
         <TopMenuItem key={`main-menu-${i}`}>
-          <LinkContainer {...{ href }}>
-            <StyledLink>{title}</StyledLink>
-          </LinkContainer>
+          <StyledLink as={RouterLink} href={href}>
+            {title}
+          </StyledLink>
         </TopMenuItem>
       ))}
   </Menu>

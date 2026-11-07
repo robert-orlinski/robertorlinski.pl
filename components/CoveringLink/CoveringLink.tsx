@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import LinkContainer from 'Components/LinkContainer';
+import RouterLink from 'Components/RouterLink';
 import Overlay from 'Components/Overlay';
 
 import { LinkContainer as LinkContainerType } from 'Types/links';
@@ -9,9 +9,7 @@ import { ElementWithCustomZIndex } from 'Types/styles';
 type Props = LinkContainerType & ElementWithCustomZIndex;
 
 const CoveringLink: FC<Props> = ({ href, zIndex }) => (
-  <LinkContainer {...{ href }}>
-    <Overlay as="a" rel="nofollow" aria-hidden={true} {...{ zIndex }} />
-  </LinkContainer>
+  <Overlay as={RouterLink} href={href} rel="nofollow" aria-hidden={true} {...{ zIndex }} />
 );
 
 export default CoveringLink;

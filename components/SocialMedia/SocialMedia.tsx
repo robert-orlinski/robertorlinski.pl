@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import ElementWithOpacity from 'Components/ElementWithOpacity';
-import LinkContainer from 'Components/LinkContainer';
+import RouterLink from 'Components/RouterLink';
 import SmallIcon from 'Components/SmallIcon';
 
 import { LinkedIn, X, GitHub, RSS } from 'Components/icons';
@@ -12,9 +12,9 @@ const SocialMedia = () => (
   <IconsContainer>
     {icons.map(({ name, href, component }) => (
       <li key={`icon-${name}`}>
-        <LinkContainer {...{ href }}>
-          <ElementWithOpacity target="_blank">{component}</ElementWithOpacity>
-        </LinkContainer>
+        <ElementWithOpacity as={RouterLink} href={href} target="_blank">
+          {component}
+        </ElementWithOpacity>
       </li>
     ))}
   </IconsContainer>

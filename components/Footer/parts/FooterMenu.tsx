@@ -2,7 +2,7 @@ import { FC } from 'react';
 import styled from 'styled-components';
 
 import ElementWithOpacity from 'Components/ElementWithOpacity';
-import LinkContainer from 'Components/LinkContainer';
+import RouterLink from 'Components/RouterLink';
 import MenuItem from 'Components/MenuItem';
 
 import { CatalogedLink } from 'Types/links';
@@ -17,9 +17,9 @@ const FooterMenu: FC<Props> = ({ source }) => (
     {source &&
       source.map(({ href, title }, i) => (
         <MenuItem key={`main-menu-${i}`}>
-          <LinkContainer href={href}>
-            <StyledLink>{title}</StyledLink>
-          </LinkContainer>
+          <StyledLink as={RouterLink} href={href}>
+            {title}
+          </StyledLink>
         </MenuItem>
       ))}
   </Container>

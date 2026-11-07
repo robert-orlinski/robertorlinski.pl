@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import { StaticImageData } from 'next/image';
-import Image from 'next/legacy/image';
+import Image, { StaticImageData } from 'next/image';
 
 import PostMeta from 'Components/PostMeta';
 
@@ -19,7 +18,7 @@ const PostHeader: FC<Props> = ({ title, topics, date, featuredImage }) => (
   <Container>
     <PostMeta {...{ topics, date }} />
     <Title>{title}</Title>
-    <Image src={featuredImage} alt="" width="850" height="500" />
+    <FeaturedImage src={featuredImage} alt="" width="850" height="500" />
   </Container>
 );
 
@@ -29,6 +28,12 @@ const Container = styled.header`
   @media ${to.tabletL} {
     padding: 3rem 0 1.75rem;
   }
+`;
+
+const FeaturedImage = styled(Image)`
+  display: inline-block;
+  height: auto;
+  aspect-ratio: 850 / 500;
 `;
 
 const Title = styled.h1`

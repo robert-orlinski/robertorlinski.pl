@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import styled from 'styled-components';
-import Image from 'next/legacy/image';
+import Image from 'next/image';
 
 import Overlay from 'Components/Overlay';
-import LinkContainer from 'Components/LinkContainer';
+import RouterLink from 'Components/RouterLink';
 
 import { getTopicLink } from 'Helpers/data/topics';
 
@@ -14,10 +14,10 @@ const Topic: FC<TopicType> = ({ name, slug, featuredImage }) => {
 
   return (
     <Container>
-      <Image src={featuredImage} alt="" objectFit="cover" width="550" height="330" />
-      <LinkContainer {...{ href }}>
-        <Name as="a">{name}</Name>
-      </LinkContainer>
+      <Cover src={featuredImage} alt="" width="550" height="330" />
+      <Name as={RouterLink} href={href}>
+        {name}
+      </Name>
     </Container>
   );
 };
@@ -25,6 +25,15 @@ const Topic: FC<TopicType> = ({ name, slug, featuredImage }) => {
 const Container = styled.li`
   display: flex;
   position: relative;
+`;
+
+const Cover = styled(Image)`
+  align-self: stretch;
+
+  margin: 0;
+  height: auto;
+  aspect-ratio: 550 / 330;
+  object-fit: cover;
 `;
 
 const Name = styled(Overlay)`
