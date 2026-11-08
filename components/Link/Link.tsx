@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import UnderlinedLink from 'Components/UnderlinedLink';
-import LinkContainer from 'Components/LinkContainer';
+import RouterLink from 'Components/RouterLink';
 
 import { Link as LinkType } from 'Types/links';
 
@@ -24,9 +24,9 @@ const Link: FC<LinkType> = ({
       {children}
     </UnderlinedLink>
   ) : (
-    <LinkContainer {...{ href }}>
-      <UnderlinedLink {...{ isUnderlineVisible, className, tabIndex }}>{children}</UnderlinedLink>
-    </LinkContainer>
+    <UnderlinedLink as={RouterLink} {...{ href, isUnderlineVisible, className, tabIndex }}>
+      {children}
+    </UnderlinedLink>
   );
 };
 

@@ -26,7 +26,7 @@ const MainBanner: FC<Props> = ({ title, image: { src, alt }, withAdditionalSpace
     <Banner {...{ withAdditionalSpaceOnPhone }}>
       <MainTitle as="h1">{title}</MainTitle>
       <ImageContainer>
-        <Image {...{ src, alt }} width="880" height="560" objectFit="cover" priority />
+        <BannerImage {...{ src, alt }} width="880" height="560" priority />
       </ImageContainer>
     </Banner>
   </header>
@@ -67,6 +67,13 @@ const MainTitle = styled(SectionTitle)`
 
     background-color: #fff;
   }
+`;
+
+const BannerImage = styled(Image)`
+  display: inline-block;
+  height: auto;
+  aspect-ratio: 880 / 560;
+  object-fit: cover;
 `;
 
 const ImageContainer = styled.figure`

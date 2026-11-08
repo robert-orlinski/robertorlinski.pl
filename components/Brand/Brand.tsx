@@ -1,15 +1,13 @@
 import styled from 'styled-components';
 
 import ElementWithOpacity from 'Components/ElementWithOpacity';
-import LinkContainer from 'Components/LinkContainer';
+import RouterLink from 'Components/RouterLink';
 import Logo from './parts/Logo';
 
 const Brand = () => (
-  <LinkContainer href="/">
-    <BrandLink>
-      <Logo />
-    </BrandLink>
-  </LinkContainer>
+  <BrandLink as={RouterLink} href="/">
+    <Logo />
+  </BrandLink>
 );
 
 const BrandLink = styled(ElementWithOpacity)`

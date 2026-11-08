@@ -1,7 +1,7 @@
 import path from 'path';
 
 import { bundleMDX } from 'mdx-bundler';
-import { remarkMdxImages } from 'remark-mdx-images';
+import rehypeMdxImportMedia from 'rehype-mdx-import-media';
 
 import rehypePrism from '@mapbox/rehype-prism';
 import { ResourceWithContent } from 'Types/content';
@@ -24,8 +24,7 @@ const prepareMDX = async (
     cwd: resourcePath,
     mdxOptions: (options) => ({
       ...options,
-      remarkPlugins: [...(options.remarkPlugins ?? []), remarkMdxImages],
-      rehypePlugins: [...(options.rehypePlugins ?? []), rehypePrism],
+      rehypePlugins: [...(options.rehypePlugins ?? []), rehypeMdxImportMedia, rehypePrism],
     }),
     esbuildOptions: (options) => ({
       ...options,

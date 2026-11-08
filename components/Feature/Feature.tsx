@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
 import P from 'Components/P';
 
-const Feature: FC = ({ children }) => (
+const Feature: FC<PropsWithChildren> = ({ children }) => (
   <Container>
     <P>{children}</P>
   </Container>
