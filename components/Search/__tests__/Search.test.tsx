@@ -60,3 +60,30 @@ describe('search container visibility', () => {
     });
   });
 });
+
+describe('search results', () => {
+  it('lists posts returned by the search API', async () => {
+    global.fetch = jest.fn().mockResolvedValue({
+      json: async () => [
+        {
+          slug: 'dobre-praktyki-css',
+          title: 'Dobre praktyki CSS',
+          abstract: 'Abstrakt',
+          readingTime: '5 minut czytania',
+          topics: ['Front-end'],
+          date: '01.01.2022',
+          isPublished: true,
+          isPopular: false,
+          menuOrder: 0,
+        },
+      ],
+    });
+    const { user, openingButton } = setup();
+
+    await user.click(openingButton);
+    await user.type(screen.getByRole('searchbox', { name: 'Szukaj' }), 'css');
+
+    expect(await screen.findByText('Dobre praktyki CSS')).toBeInTheDocument();
+    expect(global.fetch).toHaveBeenLastCalledWith('/api/search?q=css', { method: 'GET' });
+  });
+});
