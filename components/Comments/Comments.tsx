@@ -37,6 +37,10 @@ const Container = styled(Wrapper).attrs({
   withSpaceBelow: true,
   withBorderAbove: true,
 })`
+  giscus-widget::part(iframe) {
+    color-scheme: light;
+  }
+
   @media ${from.tabletL} {
     display: flex;
   }
