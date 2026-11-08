@@ -7,9 +7,8 @@ import Wrapper from 'Components/Wrapper';
 
 import { from, to } from 'Devices';
 
-import siteUrl from 'SiteUrl';
-
-const theme = `${siteUrl}/css/comments.css` as Theme;
+// giscus.app loads this with CORS, which fails on the apex domain's redirect to www, so it needs the final URL.
+const theme = 'https://www.robertorlinski.pl/css/comments.css' as Theme;
 
 type Props = {
   title: string;
