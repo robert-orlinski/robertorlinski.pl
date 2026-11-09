@@ -4,6 +4,7 @@ import { POSTS_PATH } from '../constants';
 
 import { PathParams, Post, ResourceWithContent } from 'Types/content';
 
+import postsCache from 'Cache/posts.json';
 import shuffle from 'Helpers/functions/shuffle';
 
 export const getPosts = async (): Promise<Post[]> => {
@@ -62,8 +63,11 @@ export const getPostsByTopic = async (topicSlug: string): Promise<Post[]> => {
   return postsInGivenTopic;
 };
 
+const getSearchablePosts = async (): Promise<Post[]> =>
+  process.env.NODE_ENV === 'production' ? postsCache : await getPosts();
+
 export const getPostsBySearchQuery = async (query: string): Promise<Post[]> => {
-  const posts = await getPosts();
+  const posts = await getSearchablePosts();
 
   const postsInGivenQuery = posts.filter(({ title }) => {
     const titleToCompare = title.toLowerCase();
