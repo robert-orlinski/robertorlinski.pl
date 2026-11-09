@@ -5,6 +5,7 @@ import { POSTS_PATH } from '../constants';
 import { PathParams, Post, ResourceWithContent } from 'Types/content';
 
 import postsCache from 'Cache/posts.json';
+import normalizeForSearch from 'Helpers/functions/normalizeForSearch';
 import shuffle from 'Helpers/functions/shuffle';
 
 export const getPosts = async (): Promise<Post[]> => {
@@ -69,11 +70,12 @@ const getSearchablePosts = async (): Promise<Post[]> =>
 export const getPostsBySearchQuery = async (query: string): Promise<Post[]> => {
   const posts = await getSearchablePosts();
 
-  const postsInGivenQuery = posts.filter(({ title }) => {
-    const titleToCompare = title.toLowerCase();
-    const queryToCompare = query.toLowerCase();
+  const queryWords = normalizeForSearch(query).split(/\s+/).filter(Boolean);
 
-    return titleToCompare.includes(queryToCompare);
+  const postsInGivenQuery = posts.filter(({ title }) => {
+    const titleToCompare = normalizeForSearch(title);
+
+    return queryWords.every((word) => titleToCompare.includes(word));
   });
 
   return postsInGivenQuery;

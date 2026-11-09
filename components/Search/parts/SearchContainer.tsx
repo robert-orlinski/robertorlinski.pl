@@ -39,7 +39,6 @@ const Container = styled.aside<Props>`
     isVisible
       ? css`
           transition:
-            visibility 1ms,
             opacity var(--short-transition-duration),
             transform var(--short-transition-duration);
         `
