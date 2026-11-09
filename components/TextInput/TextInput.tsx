@@ -1,4 +1,4 @@
-import { FC, forwardRef, Ref, InputHTMLAttributes } from 'react';
+import { forwardRef, InputHTMLAttributes } from 'react';
 import { DeepMap, FieldError, FieldValues, UseFormRegister } from 'react-hook-form';
 import styled from 'styled-components';
 
@@ -13,8 +13,8 @@ type Props = {
   errors?: DeepMap<FieldValues, FieldError>;
 } & Omit<InputHTMLAttributes<HTMLInputElement>, 'pattern'>;
 
-const TextInput: FC<Props> = forwardRef(
-  ({ label, name, required, pattern, register, errors, ...props }, ref: Ref<HTMLInputElement>) => {
+const TextInput = forwardRef<HTMLInputElement, Props>(
+  ({ label, name, required, pattern, register, errors, ...props }, ref) => {
     const isValidableInput = register && errors;
 
     if (isValidableInput) {

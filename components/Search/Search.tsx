@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
 import SearchContainer from './parts/SearchContainer';
@@ -16,6 +16,16 @@ const Search = () => {
   const { query } = useRouter();
 
   const [isSearchVisible, setSearchVisibility] = useState(false);
+  const openingButtonRef = useRef<HTMLAnchorElement>(null);
+  const wasSearchVisible = useRef(false);
+
+  useEffect(() => {
+    if (wasSearchVisible.current && !isSearchVisible) {
+      openingButtonRef.current?.focus();
+    }
+
+    wasSearchVisible.current = isSearchVisible;
+  }, [isSearchVisible]);
 
   useEffect(() => {
     const handleEscapeKeyPress = ({ key }: KeyboardEvent) =>
@@ -35,11 +45,15 @@ const Search = () => {
 
   return (
     <>
-      <Button onClick={() => setSearchVisibility(true)} aria-label="Otwórz wyszukiwarkę">
+      <Button
+        ref={openingButtonRef}
+        onClick={() => setSearchVisibility(true)}
+        aria-label="Otwórz wyszukiwarkę"
+      >
         <SmallIcon as={Magnifier} />
       </Button>
       <SearchContainer isVisible={isSearchVisible} closeHandler={() => setSearchVisibility(false)}>
-        <SearchInner />
+        <SearchInner isVisible={isSearchVisible} />
       </SearchContainer>
     </>
   );
