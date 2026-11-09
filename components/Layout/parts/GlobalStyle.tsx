@@ -31,6 +31,8 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
+    color-scheme: light;
+    background-color: #fff;
     overflow-x: hidden;
     font-size: 19.5px;
 
